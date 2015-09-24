@@ -6,7 +6,7 @@ var HomeView = function(store){
 		this.el.on('keyup', '.search-key', this.findByName);
 	};
 	
-	findByName: function() {
+	this.findByName = function() {
 		var self = this;
 		this.store.findByName($('.search-key').val(), function(employees) {
 			$('.employee-list').html(HomeView.liTemplate(employees));
