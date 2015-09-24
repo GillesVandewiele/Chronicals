@@ -221,3 +221,8 @@ li>a.tappable-active {
     -webkit-transition-duration: .375s;
     -o-transition-duration: .375s;
 }
+
+.employee-image{
+max-height: 20%;
+	width: auto;
+}
