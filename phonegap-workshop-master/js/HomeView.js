@@ -8,14 +8,14 @@ var HomeView = function(store){
 	
 	this.findByName = function() {
 		var self = this;
-		this.store.findByName($('.search-key').val(), function(employees) {
+		store.findByName($('.search-key').val(), function(employees) {
 			$('.employee-list').html(HomeView.liTemplate(employees));
 		});
 	};
 	
 	this.render = function(){
-		$('body').html(this.homeTpl());
-		$('.search-key').on('keyup', $.proxy(this.findByName, this));
+		this.el.html(HomeView.template());
+		return this;
 	};
 	
 	this.initialize();
