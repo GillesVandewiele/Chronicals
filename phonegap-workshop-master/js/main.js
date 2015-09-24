@@ -1,11 +1,11 @@
 var app = {
 
-    findByName: function() {
-        console.log('findByName');
-        this.store.findByName($('.search-key').val(), function(employees) {
+	findByName: function() {
+		var self = this;
+		this.store.findByName($('.search-key').val(), function(employees) {
 			$('.employee-list').html(self.employeeLiTpl(employees));
-        });
-    },
+		});
+	},
 
     initialize: function() {
 		this.homeTpl = Handlebars.compile($("#home-tpl").html());
