@@ -16,9 +16,6 @@
   <script> var Chronic = angular.module('Chronic', ['onsen.directives']); </script>
 
   <script>
-	  window.onload = function(){
-	  	window.alert("hallo kiani");
-	  };
   
     var eventName = 
       'drag dragleft dragright dragup dragdown hold release swipe swipeleft swiperight ' +
@@ -38,11 +35,30 @@
   
   <ons-navigator>
     <ons-page>
-      <ons-gesture-detector style="height: 300px; margin: 50px 50px;">
-      <div id="hoge" style="border: 1px solid #ccc; background-color: #f9f9f9; width: 100%; height: 300px; line-height: 300px; text-align: center; color: #999;">
-        ...
+	    <div class="dashboard" style="height: 100%;">
+		  <ons-row class="row ons-row-inner" style="height: 17%;">
+	        <ons-col class="col ons-col-inner">Col</ons-col>
+	        <ons-col class="col ons-col-inner">Col</ons-col>
+	      </ons-row>
+	      <ons-row class="row ons-row-inner" style="height: 49%;">
+	        <ons-col class="col ons-col-inner" style="height: 100%;">
+		        <button class="button" style="height: 300px; width: 100%;">
+			      <i class="tab-bar__icon ion-star"></i>
+			      <div class="tab-bar__label">Three</div>
+			    </button>
+    		</ons-col>
+	      </ons-row>
+	      <ons-row class="row ons-row-inner" style="height: 17%;">
+	        <ons-col class="col ons-col-inner">Col</ons-col>
+	        <ons-col class="col ons-col-inner">Col</ons-col>
+	      </ons-row>
+	      <ons-row class="row ons-row-inner" style="height: 17%;">
+	        <ons-col class="col ons-col-inner">Col</ons-col>
+	        <ons-col class="col ons-col-inner">Col</ons-col>
+	      </ons-row>
       </div>
-    </ons-gesture-detector>
+    
+    
     </ons-page>
   </ons-navigator>
  
