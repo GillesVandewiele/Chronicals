@@ -16,13 +16,16 @@
   <script> var Chronic = angular.module('Chronic', ['onsen.directives']); </script>
 
   <script>
+	  $(document).onload(function(){
+	  	window.alert("hallo kiani");
+	  });
+  
     var eventName = 
       'drag dragleft dragright dragup dragdown hold release swipe swipeleft swiperight ' +
       'swipeup swipedown tap doubletap touch transform pinch pinchin pinchout rotate';
 
     $(document).on(eventName, '#hoge', function(event) {
       	console.log(event.type);
-      	window.alert(event.type);
       if (event.type !== 'release') {
         $(this).text(event.type);
       }
