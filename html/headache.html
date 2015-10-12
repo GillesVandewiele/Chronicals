@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" ng-app="Chronic">
+<head>
+  <meta charset="utf-8">
+  <title>Geen naam</title>  
+  <!--<link rel="stylesheet" href="../styles/app.css"/>-->
+  <link rel="stylesheet" href="../css/onsenui.css">
+  <link rel="stylesheet" href="../css/onsen-css-components-dark-theme.css">  
+
+  <script src="../js/angular/angular.js"></script>
+  <script src="../js/onsenui.js"></script>    
+  <!--<script src="../app.js"></script>-->  
+  
+  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>  
+  
+  <script> var Chronic = angular.module('Chronic', ['onsen.directives']); </script>
+
+  <script>
+    var eventName = 
+      'drag dragleft dragright dragup dragdown hold release swipe swipeleft swiperight ' +
+      'swipeup swipedown tap doubletap touch transform pinch pinchin pinchout rotate';
+
+    $(document).on(eventName, '#hoge', function(event) {
+      	console.log(event.type)
+      if (event.type !== 'release') {
+        $(this).text(event.type);
+      }
+    });
+  </script>
+  
+</head>
+
+<body>    
+  
+  <ons-navigator>
+    <ons-page>
+      <ons-gesture-detector style="height: 300px; margin: 50px 50px;">
+      <div id="hoge" style="border: 1px solid #ccc; background-color: #f9f9f9; width: 100%; height: 300px; line-height: 300px; text-align: center; color: #999;">
+        ...
+      </div>
+    </ons-gesture-detector>
+    </ons-page>
+  </ons-navigator>
+ 
+</body>
+</html>
