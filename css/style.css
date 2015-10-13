@@ -18,7 +18,9 @@
 @import "onsen-css-components-dark-theme.css";
 
 
-
+html, body{
+	height: 100%;
+}
 .navigatorTab {
 	text-align: center; 
 	width: 100%;
@@ -73,29 +75,69 @@
 	width: 100%;
 	margin: 0;
 	text-align: center;
+	align-content: center;
+	border-color: #3071a9;
+
+}
+
+.dashboard{
+	border-color: #3071a9;
 }
 
 .row.stretch{
 	height: 40%;
 }
-.tile.tileIcon{
-	margin: auto;
+.tile .tileContent{
+	margin: 0 auto;
+
 }
+
 .tile{
+	border-color: #3071a9;
+
 	
 }
+
 .tile.half{
 	width: 50%;
 	margin:0;
 	padding:0px;
 	align-content: center;
 	text-align: center;
+
 }
 
+.row > div:nth-child(1).tile.half{
+	border-right: 1px solid;
+	border-color: #3071a9;
+}
+
+.tile.large{
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	align-content: center;
+	text-align: center;
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+	border-color: #3071a9;
+}
 .row.footer.dashboardFooter{
 	background-color: midnightblue;
 
 }
+
+.tileContent{
+	height: 100%;
+	color: #3071a9;
+}
+
+i.icon{
+	font-size: 45px;
+
+
+}
+
 
 
 .row.footer.dashboardFooter p{
