@@ -22,8 +22,8 @@
 
 </head>
 
-<body>    
-  
+<body>
+
   <ons-navigator var="myNavigator">
 
     <ons-page>
@@ -33,16 +33,16 @@
       </ons-toolbar>
 
       <div class="navigatorTab">
-      	<h1> Intensiteit </h1> 
-      	<h3> Geef de intensiteit van de hoofdpijn aan op schaal van 0 tot 10 </h3>    
+      	<h1> Intensiteit </h1>
+      	<h3> Geef de intensiteit van de hoofdpijn aan op schaal van 0 tot 10 </h3>
       	<input type="range" class="range" style="width: 75%;"> <br>
       	<h3> {aangewezen waarde} / 10 </h3>
         <button class="button button--large cancelButton"><ons-icon icon="ion-close" style="font-size: 32px"></ons-icon> Annuleer</button>
       </div>
     </ons-page>
-  
-  </ons-navigator> 
-  
+
+  </ons-navigator>
+
   <script type="text/ons-template" id="times.html">
     <ons-page ng-controller="PageController">
       <ons-toolbar>
@@ -53,12 +53,12 @@
 
       <div style="text-align: center">
         <h1>Page 2</h1>
-        <ons-button 
+        <ons-button
           ng-click="myNavigator.pushPage('times.html', {title: 'Page'})">
           Push Page
           </ons-button>
 
-        <ons-button 
+        <ons-button
           ng-click="myNavigator.popPage()">
           Pop Page
         </ons-button>

@@ -15,10 +15,31 @@
 .navigatorTab{
 	text-align: center; 
 	height: 100%;
-};
+}
 
 .cancelButton{
 	background: red; 
 	position: absolute; 
 	bottom: 0;
-};
+}
+
+.containerFill{
+	width: 100%;
+	height: 100%;
+	display: table;
+}
+
+.elFill{
+	display: table-row;
+}
+
+.dashboardFooter{
+	position: fixed;
+	bottom: 0;
+	display: table;
+	width: 100%;
+}
+
+.dashboardFooter button{
+	display: table-cell;
+}
