@@ -1,24 +1,32 @@
+<!--
+ 	NAAM VAN ONS PROJECT, v1.0
+ 	Created by Kiani Lannoye & Gilles Vandewiele, commissioned by UZ Ghent
+    https://github.com/kianilannoye/Chronicals
+    
+    This html file is the view for viewing or modifying a headache.	
+-->
+
 <!doctype html>
 <html lang="en" ng-app="Chronic">
 <head>
-  <meta charset="utf-8">
-  <title>Geen naam</title>  
+  <meta charset="utf-8"> 
+  
+  <title>Geen naam</title>    
+  
+  <!-- Our style sheet -->
   <link rel="stylesheet" href="../css/style.css"> 
 
+  <!-- AngularJS | MIT License | https://angularjs.org/ -->
   <script src="../js/angular/angular.js"></script>
+  
+  <!-- onsenui v1.3.11 | Apache License | http://onsen.io/ -->
   <script src="../js/onsenui.js"></script>    
-  <!--<script src="../app.js"></script>-->  
+
+  <!-- jQuery | MIT License | https://jquery.org/ -->
+  <script src="js/jquery-2.1.4.js"></script>  
   
-  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>  
-  
-  <script> 
-  	var app = angular.module('Chronic', ['onsen.directives']); 
-  	app.controller('PageController', function($scope) {
-      var options = $scope.myNavigator.getCurrentPage().options;
-      console.log(myNavigator.getPages().length);
-      console.log(options);
-    });
-  </script>
+  <!-- Headache controller -->
+  <script src="../js/controllers/headacheController.js"> </script>
 
 </head>
 
@@ -28,16 +36,22 @@
 
     <ons-page>
       <ons-toolbar>
-        <div class="center">Titel??</div>
+        <div class="center">Nieuwe hoofdpijn</div>
         <div class="right"><ons-toolbar-button ng-click="myNavigator.pushPage('times.html', {title: 'Page'})">Volgende <ons-icon icon="ion-ios-arrow-forward" style="font-size: 32px"></ons-icon></ons-toolbar-button></div>
       </ons-toolbar>
 
       <div class="navigatorTab">
-      	<h1> Intensiteit </h1> 
-      	<h3> Geef de intensiteit van de hoofdpijn aan op schaal van 0 tot 10 </h3>    
-      	<input type="range" class="range" style="width: 75%;"> <br>
-      	<h3> {aangewezen waarde} / 10 </h3>
-        <button class="button button--large cancelButton"><ons-icon icon="ion-close" style="font-size: 32px"></ons-icon> Annuleer</button>
+      	<div class="navigatorTabHead">
+      		<h1> Intensiteit </h1> 
+	      	<h3> Geef de intensiteit van de hoofdpijn aan op schaal van 0 tot 10. </h3> 
+      	</div>
+      	<div class="navigatorTabBody">   
+	      	<p class="intensityRange">0</p> <input type="range" class="range intensitySlider"> <p class="intensityRange">10</p><br>
+	      	<p class="intensityRange"> {aangewezen waarde}  /  10 </p>
+      	</div>
+      	<div class="navigatorTabFoot">
+        	<button class="button button--large cancelButton"><ons-icon icon="ion-close buttonIcon"></ons-icon> Annuleer</button>
+        </div>
       </div>
     </ons-page>
   
@@ -48,7 +62,7 @@
       <ons-toolbar>
         <div class="left"><ons-back-button>Terug</ons-back-button></div>
         <div class="center">Page 2</div>
-        <div class="right"><ons-toolbar-button>Volgende <ons-icon icon="ion-ios-arrow-forward" style="font-size: 32px"></ons-icon></ons-toolbar-button></div>
+        <div class="right"><ons-toolbar-button>Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></ons-toolbar-button></div>
       </ons-toolbar>
 
       <div style="text-align: center">
