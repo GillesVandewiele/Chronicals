@@ -57,3 +57,37 @@
 .buttonIcon {
 	font-size: 32px;
 }
+
+
+.dashboard{
+	width:100%;
+	height:100%;
+}
+
+.row{
+	height: 20%;
+
+}
+
+.row.stretch{
+	width: 100%;
+	height: 40%;
+}
+.tile.tileIcon{
+	margin-left: auto;
+	margin-right: auto;
+}
+.tile{
+	
+}
+.tile.half{
+	width: 50%;
+	margin:0;
+	padding:0px;
+	align-content: center;
+	text-align: center;
+}
+
+.row.footer.dashboardFooter{
+	background-color: midnightblue;
+}
