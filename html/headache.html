@@ -3,9 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Geen naam</title>  
-  <!--<link rel="stylesheet" href="../styles/app.css"/>-->
-  <link rel="stylesheet" href="../css/onsenui.css">
-  <link rel="stylesheet" href="../css/onsen-css-components-dark-theme.css">  
+  <link rel="stylesheet" href="../css/style.css"> 
 
   <script src="../js/angular/angular.js"></script>
   <script src="../js/onsenui.js"></script>    
@@ -13,34 +11,60 @@
   
   <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>  
   
-  <script> var Chronic = angular.module('Chronic', ['onsen.directives']); </script>
-
-  <script>
-    var eventName = 
-      'drag dragleft dragright dragup dragdown hold release swipe swipeleft swiperight ' +
-      'swipeup swipedown tap doubletap touch transform pinch pinchin pinchout rotate';
-
-    $(document).on(eventName, '#hoge', function(event) {
-      	console.log(event.type)
-      if (event.type !== 'release') {
-        $(this).text(event.type);
-      }
+  <script> 
+  	var app = angular.module('Chronic', ['onsen.directives']); 
+  	app.controller('PageController', function($scope) {
+      var options = $scope.myNavigator.getCurrentPage().options;
+      console.log(myNavigator.getPages().length);
+      console.log(options);
     });
   </script>
-  
+
 </head>
 
 <body>    
   
-  <ons-navigator>
+  <ons-navigator var="myNavigator">
+
     <ons-page>
-      <ons-gesture-detector style="height: 300px; margin: 50px 50px;">
-      <div id="hoge" style="border: 1px solid #ccc; background-color: #f9f9f9; width: 100%; height: 300px; line-height: 300px; text-align: center; color: #999;">
-        ...
+      <ons-toolbar>
+        <div class="center">Titel??</div>
+        <div class="right"><ons-toolbar-button ng-click="myNavigator.pushPage('times.html', {title: 'Page'})">Volgende <ons-icon icon="ion-ios-arrow-forward" style="font-size: 32px"></ons-icon></ons-toolbar-button></div>
+      </ons-toolbar>
+
+      <div class="navigatorTab">
+      	<h1> Intensiteit </h1> 
+      	<h3> Geef de intensiteit van de hoofdpijn aan op schaal van 0 tot 10 </h3>    
+      	<input type="range" class="range" style="width: 75%;"> <br>
+      	<h3> {aangewezen waarde} / 10 </h3>
+        <button class="button button--large cancelButton"><ons-icon icon="ion-close" style="font-size: 32px"></ons-icon> Annuleer</button>
       </div>
-    </ons-gesture-detector>
     </ons-page>
-  </ons-navigator>
- 
+  
+  </ons-navigator> 
+  
+  <script type="text/ons-template" id="times.html">
+    <ons-page ng-controller="PageController">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Terug</ons-back-button></div>
+        <div class="center">Page 2</div>
+        <div class="right"><ons-toolbar-button>Volgende <ons-icon icon="ion-ios-arrow-forward" style="font-size: 32px"></ons-icon></ons-toolbar-button></div>
+      </ons-toolbar>
+
+      <div style="text-align: center">
+        <h1>Page 2</h1>
+        <ons-button 
+          ng-click="myNavigator.pushPage('times.html', {title: 'Page'})">
+          Push Page
+          </ons-button>
+
+        <ons-button 
+          ng-click="myNavigator.popPage()">
+          Pop Page
+        </ons-button>
+      </div>
+    </ons-page>
+  </script>
+  
 </body>
 </html>

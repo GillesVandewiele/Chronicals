@@ -1,0 +1,24 @@
+/*!
+ 	NAAM VAN ONS PROJECT, v1.0
+ 	Created by Kiani Lannoye & Gilles Vandewiele, commissioned by UZ Ghent
+    https://github.com/kianilannoye/Chronicals
+ */
+
+/* HTML5 Boilerplate v5.2.0 | MIT License | https://html5boilerplate.com/  */
+@import "main.css"; 
+@import "normalize.css";
+
+/* onsenui v1.3.11 | Apache License | http://onsen.io/ */
+@import "onsenui.css";
+@import "onsen-css-components-dark-theme.css";
+
+.navigatorTab{
+	text-align: center; 
+	height: 100%;
+};
+
+.cancelButton{
+	background: red; 
+	position: absolute; 
+	bottom: 0;
+};
