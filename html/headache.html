@@ -64,7 +64,7 @@
     <ons-page>
       <ons-toolbar>
         <div class="left"><ons-back-button>Terug </ons-back-button></div>
-        <div class="center">Nieuwe hoofdpijn</div>
+        <div class="center" text-align="center">Nieuwe hoofdpijn</div>
         <div class="right"><ons-toolbar-button ng-click="myNavigator.pushPage('location.html', {title: 'Page'})">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></ons-toolbar-button></div>
       </ons-toolbar>
       
@@ -76,13 +76,13 @@
       	<div class="navigatorTabBody">    
       		<ons-row>
       			<ons-col class="col ons-col-inner" width="30%"><p class="label timeLabel">Starttijd: </p></ons-col> 
-      			<ons-col class="col ons-col-inner"><input type="date" min="2013-10-01" max="2050-10-20" class="datePicker"></ons-col> 
-      			<ons-col class="col ons-col-inner" width="25%"><input type="time" class="timePicker"></ons-col>
+      			<input type="date" min="2013-01-01" max="2050-01-01" class="datePicker">
+      			<input type="time" class="timePicker">
       		</ons-row>
 			<ons-row>
       			<ons-col class="col ons-col-inner" width="30%"><p class="label timeLabel">Eindtijd: (optioneel)</p></ons-col> 
-      			<ons-col class="col ons-col-inner"><input type="date" class="datePicker"></ons-col>
-      			<ons-col class="col ons-col-inner" width="25%"><input type="time" class="timePicker"></ons-col>
+      			<input type="date" min="2013-01-01" max="2050-01-01" class="datePicker">
+      			<input type="time" class="timePicker">
        		</ons-row>
        </div>
 
