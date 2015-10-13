@@ -30,7 +30,7 @@
 
 </head>
 
-<body>    
+<body ng-controller="headacheController">    
   
   <ons-navigator var="myNavigator">
 
@@ -46,10 +46,8 @@
 	      	<h3> Geef de intensiteit van de hoofdpijn aan op schaal van 0 tot 10. </h3> 
       	</div>
       	<div class="navigatorTabBody">   
-      		<div class="headacheIntensity" ng-controller="headacheController">
-		      	<p class="intensityRange">0</p> <input type="range" min="0" max="10" class="range intensitySlider" ng-model="intensityValue"> <p class="intensityRange">10</p><br>
-		      	<p class="intensityRange"> {{ intensityValue }}  /  10 </p>
-	      	</div>
+	      	<p class="intensityRange">0</p> <input type="range" min="0" max="10" class="range intensitySlider" ng-model="intensityValue"> <p class="intensityRange">10</p><br>
+	      	<p class="intensityRange"> {{ intensityValue }}  /  10 </p>
       	</div>
       	<div class="navigatorTabFoot">
         	<button class="button button--large cancelButton"><ons-icon icon="ion-close buttonIcon"></ons-icon> Annuleer</button>
