@@ -6,6 +6,9 @@
     This file includes all own-made styling.
  */
 
+/* Bootstrap | MIT License | http://getbootstrap.com/ */
+@import "bootstrap.css";
+
 /* HTML5 Boilerplate v5.2.0 | MIT License | https://html5boilerplate.com/  */
 @import "main.css"; 
 @import "normalize.css";
@@ -13,6 +16,7 @@
 /* onsenui v1.3.11 | Apache License | http://onsen.io/ */
 @import "onsenui.css";
 @import "onsen-css-components-dark-theme.css";
+
 
 
 .navigatorTab {

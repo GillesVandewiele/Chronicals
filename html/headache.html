@@ -13,29 +13,37 @@
   
   <title>Geen naam</title>    
   
+  
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  
   <!-- Our style sheet -->
   <link rel="stylesheet" href="../css/style.css"> 
 
   <!-- AngularJS | MIT License | https://angularjs.org/ -->
   <script src="../js/angular/angular.js"></script>
   
+  <!-- Angular Bootstrap Date- and Timepicker -->
+  <script src="../js/vendor/ui-bootstrap-custom-0.14.1.min.js"></script>
+  <script src="../js/vendor/ui-bootstrap-custom-tpls-0.14.1.min.js"></script>
+  
   <!-- onsenui v1.3.11 | Apache License | http://onsen.io/ -->
-  <script src="../js/onsenui.js"></script>    
+  <script src="../js/vendor/onsenui.min.js"></script>    
 
   <!-- jQuery | MIT License | https://jquery.org/ -->
-  <script src="../js/jquery-2.1.4.js"></script>  
+  <script src="../js/vendor/jquery-2.1.4.js"></script>  
   
   <!-- Headache controller -->
   <script src="../js/controllers/headacheController.js"> </script>
 
 </head>
 
-<body>    
+<body ng-controller="headacheController">    
   
   <ons-navigator var="myNavigator">
 
     <ons-page>
       <ons-toolbar>
+      	<div class="left"></div>
         <div class="center">Nieuwe hoofdpijn</div>
         <div class="right"><ons-toolbar-button ng-click="myNavigator.pushPage('times.html', {title: 'Page'})">Volgende <ons-icon icon="ion-ios-arrow-forward" style="font-size: 32px"></ons-icon></ons-toolbar-button></div>
       </ons-toolbar>
@@ -45,12 +53,12 @@
       		<h1> Intensiteit </h1> 
 	      	<h3> Geef de intensiteit van de hoofdpijn aan op schaal van 0 tot 10. </h3> 
       	</div>
+      	
       	<div class="navigatorTabBody">   
-      		<div class="headacheIntensity" ng-controller="headacheController">
-		      	<p class="intensityRange">0</p> <input type="range" min="0" max="10" class="range intensitySlider" ng-model="intensityValue"> <p class="intensityRange">10</p><br>
-		      	<p class="intensityRange"> {{ intensityValue }}  /  10 </p>
-	      	</div>
+	      	<p class="intensityRange">0</p> <input type="range" min="0" max="10" class="range intensitySlider" ng-model="intensityValue"> <p class="intensityRange">10</p><br>
+	      	<p class="intensityRange"> {{ intensityValue }}  /  10 </p>
       	</div>
+      	
       	<div class="navigatorTabFoot">
         	<button class="button button--large cancelButton"><ons-icon icon="ion-close buttonIcon"></ons-icon> Annuleer</button>
         </div>
@@ -60,24 +68,54 @@
   </ons-navigator> 
   
   <script type="text/ons-template" id="times.html">
-    <ons-page ng-controller="PageController">
+    <ons-page>
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Terug </ons-back-button></div>
+        <div class="center">Nieuwe hoofdpijn</div>
+        <div class="right"><ons-toolbar-button ng-click="myNavigator.pushPage('location.html', {title: 'Page'})">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></ons-toolbar-button></div>
+      </ons-toolbar>
+      
+      <div class="navigatorTab">
+      	<div class="navigatorTabHead">
+	      	<h3> Geef de start- (en indien mogelijk eindtijd) op. </h3> 
+      	</div>
+      	
+      	<div class="navigatorTabBody">    
+            <p class="input-group">
+              <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>   
+       </div>
+
+      	<div class="navigatorTabFoot">
+        	
+    	</div>
+      </div>
+    </ons-page>
+  </script>
+  
+  <script type="text/ons-template" id="location.html">
+    <ons-page>
       <ons-toolbar>
         <div class="left"><ons-back-button>Terug</ons-back-button></div>
-        <div class="center">Page 2</div>
+        <div class="center">Nieuwe hoofdpijn</div>
         <div class="right"><ons-toolbar-button>Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></ons-toolbar-button></div>
       </ons-toolbar>
 
-      <div style="text-align: center">
-        <h1>Page 2</h1>
-        <ons-button 
-          ng-click="myNavigator.pushPage('times.html', {title: 'Page'})">
-          Push Page
-          </ons-button>
-
-        <ons-button 
-          ng-click="myNavigator.popPage()">
-          Pop Page
-        </ons-button>
+      <div class="navigatorTab">
+      	<div class="navigatorTabHead">
+      		<h1> Locatie </h1>
+	      	<h3> Toon op welke plaats(en) u pijn voelt. Tip: u kan het model draaien </h3> 
+      	</div>
+      	
+      	<div class="navigatorTabBody">        		
+      	</div>
+      	
+      	<div class="navigatorTabFoot">
+        	
+    	</div>
       </div>
     </ons-page>
   </script>
