@@ -6,9 +6,8 @@
     This file includes all own-made styling.
  */
 
-
 /* HTML5 Boilerplate v5.2.0 | MIT License | https://html5boilerplate.com/  */
-@import "main.css";
+@import "main.css"; 
 @import "normalize.css";
 
 /* onsenui v1.3.11 | Apache License | http://onsen.io/ */
@@ -20,7 +19,7 @@ html, body{
 	height: 100%;
 }
 .navigatorTab {
-	text-align: center;
+	text-align: center; 
 	width: 100%;
 	height: 100%;
 	display: table;
@@ -35,25 +34,57 @@ html, body{
 	display: table-row;
 }
 
-.intensitySlider{
-	width: 75%;
-	display: inline-block;
-	vertical-align: 50%;
-}
-
-.intensityRange{
-	display: inline-block;
-	font-weight: bold;
-	font-size: 125%;
-	vertical-align: 50%;
-}
-
 .navigatorTabFoot{
 	display: table-row;
 }
 
+.intensitySlider{
+	width: 75%; 
+	display: inline-block;
+	vertical-align: 50%;
+}
+
+.datePicker{
+	color: black;
+	float: right;
+	height: 25px;
+}
+
+.timePicker{
+	color: black;
+	float: left;
+	height: 25px;
+}
+
+input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
+
+input[type=date]::-webkit-clear-button {
+    -webkit-appearance: none;
+    display: none;
+}
+
+input[type=time]::-webkit-clear-button {
+    -webkit-appearance: none;
+    display: none;
+}
+
+.label{
+	font-weight: bold;
+	font-size: 125%;
+	vertical-align: 50%;
+	display: inline-block;
+}
+
+.timeLabel{
+	font-size:100%;
+	margin-top:0px;
+}
+
 .cancelButton {
-	background: red;
+	background: red; 
 	position: fixed;
 	bottom: 0px;
 }
@@ -84,7 +115,6 @@ html, body{
 
 .row.stretch{
 	height: 40%;
-	overflow: hidden;
 }
 .tile .tileContent{
 	margin: 0 auto;
@@ -94,7 +124,7 @@ html, body{
 .tile{
 	border-color: #3071a9;
 
-
+	
 }
 
 .tile.half{
@@ -106,8 +136,8 @@ html, body{
 
 }
 
-.row > div:nth-child(2).tile.half{
-	border-left: 1px solid;
+.row > div:nth-child(1).tile.half{
+	border-right: 1px solid;
 	border-color: #3071a9;
 }
 
@@ -135,9 +165,6 @@ i.icon{
 	font-size: 45px;
 
 
-}
-.tileContent > .ion-ios-calendar-outline{
-	font-size: 72px;
 }
 
 

@@ -6,39 +6,40 @@
 
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 
-
-
     <!-- Our style sheet -->
     <link rel="stylesheet" href="../css/style.css">
 
     <!-- AngularJS | MIT License | https://angularjs.org/ -->
     <script src="../js/angular/angular.js"></script>
-    <!-- jQuery | MIT License | https://jquery.org/ -->
-    <script src="../js/vendor/jquery-2.1.4.js"></script>
 
+    <!-- Angular Bootstrap Date- and Timepicker -->
+    <script src="../js/vendor/ui-bootstrap-custom-0.14.1.min.js"></script>
+    <script src="../js/vendor/ui-bootstrap-custom-tpls-0.14.1.min.js"></script>
 
     <!-- onsenui v1.3.11 | Apache License | http://onsen.io/ -->
     <script src="../js/vendor/onsenui.min.js"></script>
 
+    <!-- jQuery | MIT License | https://jquery.org/ -->
+    <script src="../js/vendor/jquery-2.1.4.js"></script>
 
     <!-- Headache controller -->
-    <script src="../js/controllers/dashboardController.js"> </script>
+    <script src="../js/controllers/headacheController.js"> </script>
 
 
 </head>
 
-<body ng-controller="dashboardController">
+<body>
 <ons-navigator>
     <ons-page>
        <div class="dashboard">
            <div class="row">
 
-               <a href="headache.html" class="tile half">
-                   <div  class="tileContent">
-                        <i class="icon ion-ios-personadd-outline"></i>
-                        <p>+ Hoofdpijn</p>
+               <div class="tile half">
+                   <div class="tileContent">
+                       <a href="headache.html"><i class="icon ion-ios-personadd-outline"></i></a>
+                       <a href="headache.html"><p>+ Hoofdpijn</p></a>
                    </div>
-               </a>
+               </div>
 
                <div class="tile half last" >
                    <div class="tileContent">
@@ -49,7 +50,7 @@
            </div>
            <div class="row stretch">
                <div class="tile large">
-                   <div id="midTile" class="tileContent" style="width: 100%;">
+                   <div class="tileContent" style="width: 100%;">
                        <i class="icon ion-ios-calendar-outline"></i>
                        <div>
                            <p style="width: 80%; float: left">13/10/2015 14:15</p><p style="float: left">8/10</p>
@@ -64,14 +65,14 @@
            <div class="row">
                <div class="tile half">
                    <div class="tileContent">
-                       <i class="icon ion-ios-information-outline"></i>
-                       <p>Advies</p>
+                       <i class="icon ion-ios-personadd-outline"></i>
+                       <p>+ Hoofdpijn</p>
                    </div>
                </div>
                <div class="tile half last" >
                    <div class="tileContent">
-                       <i class="icon ion-ios-gear-outline"></i>
-                       <p>Instellingen</p>
+                       <i class="icon ion-ios-medkit-outline"></i>
+                       <p>+ Medicijn</p>
                    </div>
                </div>
            </div>
@@ -81,6 +82,5 @@
        </div>
     </ons-page>
 </ons-navigator>
-
 </body>
 </html>
