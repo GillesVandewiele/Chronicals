@@ -84,6 +84,9 @@
       			<ons-col class="col ons-col-inner"><input type="date" class="datePicker"></ons-col>
       			<ons-col class="col ons-col-inner" width="25%"><input type="time" class="timePicker"></ons-col>
        		</ons-row>
+       		<input type="button" onclick="datePicker.show({mode: 'date' }, function(date){
+       			alert('date result ' + date); 
+       		});">
        </div>
 
       	<div class="navigatorTabFoot">
