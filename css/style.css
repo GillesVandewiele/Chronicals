@@ -2,8 +2,6 @@
  	NAAM VAN ONS PROJECT, v1.0
  	Created by Kiani Lannoye & Gilles Vandewiele, commissioned by UZ Ghent
     https://github.com/kianilannoye/Chronicals
-    
-    This file includes all own-made styling.
  */
 
 /* HTML5 Boilerplate v5.2.0 | MIT License | https://html5boilerplate.com/  */
@@ -14,46 +12,34 @@
 @import "onsenui.css";
 @import "onsen-css-components-dark-theme.css";
 
-
-.navigatorTab {
+.navigatorTab{
 	text-align: center; 
+	height: 100%;
+}
+
+.cancelButton{
+	background: red; 
+	position: absolute; 
+	bottom: 0;
+}
+
+.containerFill{
 	width: 100%;
 	height: 100%;
 	display: table;
-	table-layout: fixed;
 }
 
-.navigatorTabHead{
+.elFill{
 	display: table-row;
 }
 
-.navigatorTabBody{
-	display: table-row;
-}
-
-.intensitySlider{
-	width: 75%; 
-	display: inline-block;
-	vertical-align: 50%;
-}
-
-.intensityRange{
-	display: inline-block;
-	font-weight: bold;
-	font-size: 125%;
-	vertical-align: 50%;
-}
-
-.navigatorTabFoot{
-	display: table-row;
-}
-
-.cancelButton {
-	background: red; 
+.dashboardFooter{
 	position: fixed;
-	bottom: 0px;
+	bottom: 0;
+	display: table;
+	width: 100%;
 }
 
-.buttonIcon {
-	font-size: 32px;
+.dashboardFooter button{
+	display: table-cell;
 }
