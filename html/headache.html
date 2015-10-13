@@ -13,18 +13,11 @@
   
   <title>Geen naam</title>    
   
-  
-  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-  
   <!-- Our style sheet -->
   <link rel="stylesheet" href="../css/style.css"> 
 
   <!-- AngularJS | MIT License | https://angularjs.org/ -->
   <script src="../js/angular/angular.js"></script>
-  
-  <!-- Angular Bootstrap Date- and Timepicker -->
-  <script src="../js/vendor/ui-bootstrap-custom-0.14.1.min.js"></script>
-  <script src="../js/vendor/ui-bootstrap-custom-tpls-0.14.1.min.js"></script>
   
   <!-- onsenui v1.3.11 | Apache License | http://onsen.io/ -->
   <script src="../js/vendor/onsenui.min.js"></script>    
@@ -55,8 +48,8 @@
       	</div>
       	
       	<div class="navigatorTabBody">   
-	      	<p class="intensityRange">0</p> <input type="range" min="0" max="10" class="range intensitySlider" ng-model="intensityValue"> <p class="intensityRange">10</p><br>
-	      	<p class="intensityRange"> {{ intensityValue }}  /  10 </p>
+	      	<p class="label">0</p> <input type="range" min="0" max="10" class="range intensitySlider" ng-model="intensityValue"> <p class="label">10</p><br>
+	      	<p class="label"> {{ intensityValue }}  /  10 </p>
       	</div>
       	
       	<div class="navigatorTabFoot">
@@ -77,20 +70,27 @@
       
       <div class="navigatorTab">
       	<div class="navigatorTabHead">
-	      	<h3> Geef de start- (en indien mogelijk eindtijd) op. </h3> 
+	      	<h3> Geef de start- (en indien mogelijk eindtijd) op. </h3>
       	</div>
       	
       	<div class="navigatorTabBody">    
-            <p class="input-group">
-              <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-              </span>
-            </p>   
+      		<ons-row>
+      			<ons-col class="col ons-col-inner" width="30%"><p class="label timeLabel">Starttijd: </p></ons-col> 
+      			<ons-col class="col ons-col-inner"><input type="date" class="datePicker"></ons-col> 
+      			<ons-col class="col ons-col-inner" width="25%"><input type="time" class="timePicker"></ons-col>
+      		</ons-row>
+			<ons-row>
+      			<ons-col class="col ons-col-inner" width="30%"><p class="label timeLabel">Eindtijd: (optioneel)</p></ons-col> 
+      			<ons-col class="col ons-col-inner"><input type="date" class="datePicker"></ons-col>
+      			<ons-col class="col ons-col-inner" width="25%"><input type="time" class="timePicker"></ons-col>
+       		</ons-row>
+       		<input type="button" onclick="datePicker.show({mode: 'date' }, function(date){
+       			alert('date result ' + date); 
+       		});">
        </div>
 
       	<div class="navigatorTabFoot">
-        	
+        	<button class="button button--large cancelButton"><ons-icon icon="ion-close buttonIcon"></ons-icon> Annuleer</button>
     	</div>
       </div>
     </ons-page>

@@ -6,9 +6,6 @@
     This file includes all own-made styling.
  */
 
-/* Bootstrap | MIT License | http://getbootstrap.com/ */
-@import "bootstrap.css";
-
 /* HTML5 Boilerplate v5.2.0 | MIT License | https://html5boilerplate.com/  */
 @import "main.css"; 
 @import "normalize.css";
@@ -37,21 +34,53 @@ html, body{
 	display: table-row;
 }
 
+.navigatorTabFoot{
+	display: table-row;
+}
+
 .intensitySlider{
 	width: 75%; 
 	display: inline-block;
 	vertical-align: 50%;
 }
 
-.intensityRange{
-	display: inline-block;
+.datePicker{
+	color: black;
+	float: right;
+	height: 25px;
+}
+
+.timePicker{
+	color: black;
+	float: left;
+	height: 25px;
+}
+
+input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
+
+input[type=date]::-webkit-clear-button {
+    -webkit-appearance: none;
+    display: none;
+}
+
+input[type=time]::-webkit-clear-button {
+    -webkit-appearance: none;
+    display: none;
+}
+
+.label{
 	font-weight: bold;
 	font-size: 125%;
 	vertical-align: 50%;
+	display: inline-block;
 }
 
-.navigatorTabFoot{
-	display: table-row;
+.timeLabel{
+	font-size:100%;
+	margin-top:0px;
 }
 
 .cancelButton {
