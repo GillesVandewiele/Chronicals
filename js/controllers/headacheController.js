@@ -13,7 +13,6 @@ var app = angular.module('Chronic', ['onsen.directives']);
 	  console.log(options);
 });
 
-app.controller("TestCtrl", function($scope){
-  $scope.firstRanger=50;
-  $scope.secondRanger = 150;
+app.controller("headacheController", function($scope){
+  $scope.intensityValue=5; // The intensity of the headache
 });
