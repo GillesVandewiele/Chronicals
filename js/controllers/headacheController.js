@@ -9,6 +9,8 @@
 
 var app = angular.module('Chronic', ['onsen.directives']); 
 
-app.controller("headacheController", function($scope){
+app.controller("headacheController", function($scope, $filter){
   $scope.intensityValue=5; // The intensity of the headache
+  $scope.startDate = new Date();
+  $scope.startTime = new Date();
 });
