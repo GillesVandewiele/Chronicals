@@ -76,7 +76,7 @@
       	<div class="navigatorTabBody">    
       		<ons-row>
       			<ons-col class="col ons-col-inner" width="30%"><p class="label timeLabel">Starttijd: </p></ons-col> 
-      			<ons-col class="col ons-col-inner"><input type="date" class="datePicker"></ons-col> 
+      			<ons-col class="col ons-col-inner"><input type="date" min="2013-10-01" max="2050-10-20" class="datePicker"></ons-col> 
       			<ons-col class="col ons-col-inner" width="25%"><input type="time" class="timePicker"></ons-col>
       		</ons-row>
 			<ons-row>
@@ -84,9 +84,7 @@
       			<ons-col class="col ons-col-inner"><input type="date" class="datePicker"></ons-col>
       			<ons-col class="col ons-col-inner" width="25%"><input type="time" class="timePicker"></ons-col>
        		</ons-row>
-       		<input type="button" onclick="datePicker.show({mode: 'date' }, function(date){
-       			alert('date result ' + date); 
-       		});">
+       		<input type="button" id="test">
        </div>
 
       	<div class="navigatorTabFoot">
