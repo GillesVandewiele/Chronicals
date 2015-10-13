@@ -3,20 +3,28 @@
 <head>
     <meta charset="utf-8">
     <title>Geen naam</title>
+
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Our style sheet -->
     <link rel="stylesheet" href="../css/style.css">
 
+    <!-- AngularJS | MIT License | https://angularjs.org/ -->
     <script src="../js/angular/angular.js"></script>
-    <script src="../js/onsenui.js"></script>
-    <!--<script src="../app.js"></script>-->
 
-    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Angular Bootstrap Date- and Timepicker -->
+    <script src="../js/vendor/ui-bootstrap-custom-0.14.1.min.js"></script>
+    <script src="../js/vendor/ui-bootstrap-custom-tpls-0.14.1.min.js"></script>
 
-    <script>
-        var app = angular.module('Chronic', ['onsen.directives']);
-        app.controller('PageController', function($scope) {
-            var options = $scope.myNavigator.getCurrentPage().options;
-        });
-    </script>
+    <!-- onsenui v1.3.11 | Apache License | http://onsen.io/ -->
+    <script src="../js/vendor/onsenui.min.js"></script>
+
+    <!-- jQuery | MIT License | https://jquery.org/ -->
+    <script src="../js/vendor/jquery-2.1.4.js"></script>
+
+    <!-- Headache controller -->
+    <script src="../js/controllers/headacheController.js"> </script>
+
 
 </head>
 

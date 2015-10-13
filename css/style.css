@@ -70,16 +70,16 @@
 
 .row{
 	height: 20%;
-
+	width: 100%;
+	margin: 0;
+	text-align: center;
 }
 
 .row.stretch{
-	width: 100%;
 	height: 40%;
 }
 .tile.tileIcon{
-	margin-left: auto;
-	margin-right: auto;
+	margin: auto;
 }
 .tile{
 	
@@ -94,4 +94,11 @@
 
 .row.footer.dashboardFooter{
 	background-color: midnightblue;
+
+}
+
+
+.row.footer.dashboardFooter p{
+	text-align: center;
+	margin: auto;
 }
