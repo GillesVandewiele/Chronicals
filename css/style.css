@@ -90,3 +90,44 @@ input[type=time]::-webkit-clear-button {
 .buttonIcon {
 	font-size: 32px;
 }
+
+
+.dashboard{
+	width:100%;
+	height:100%;
+}
+
+.row{
+	height: 20%;
+	width: 100%;
+	margin: 0;
+	text-align: center;
+}
+
+.row.stretch{
+	height: 40%;
+}
+.tile.tileIcon{
+	margin: auto;
+}
+.tile{
+	
+}
+.tile.half{
+	width: 50%;
+	margin:0;
+	padding:0px;
+	align-content: center;
+	text-align: center;
+}
+
+.row.footer.dashboardFooter{
+	background-color: midnightblue;
+
+}
+
+
+.row.footer.dashboardFooter p{
+	text-align: center;
+	margin: auto;
+}
