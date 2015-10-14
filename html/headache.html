@@ -15,7 +15,7 @@
   
   <!-- Our style sheet -->
   <link rel="stylesheet" href="../css/style.css"> 
-
+  
   <!-- AngularJS | MIT License | https://angularjs.org/ -->
   <script src="../js/angular/angular.js"></script>
   
@@ -48,7 +48,7 @@
       	</div>
       	
       	<div class="navigatorTabBody">   
-	      	<p class="label">0</p> <input type="range" min="0" max="10" class="range intensitySlider" ng-model="intensityValue"> <p class="label">10</p><br>
+	      	<p class="label" style="vertical-align: 50%;">0</p> <input type="range" min="0" max="10" class="range intensitySlider" ng-model="intensityValue"> <p class="label" style="vertical-align: 50%;">10</p><br>
 	      	<p class="label"> {{ intensityValue }}  /  10 </p>
       	</div>
 		<div class="navigatorTabFoot">
@@ -137,7 +137,16 @@
 	      	<h3> Duid aan welke symptomen u ondervindt </h3> 
       	</div>
       	
-      	<div class="navigatorTabBody">        		
+      	<div class="navigatorTabBody">  
+      		<ons-list>
+		        <ons-list-item modifier="tappable" ng-repeat="symptom in symptoms track by symptom.name">
+		          <label class="checkbox checkbox--list-item">
+		            <input type="checkbox">
+		            <div class="checkbox__checkmark checkbox--list-item__checkmark"></div>
+		            {{symptom.name}}
+		          </label>
+		        </ons-list-item>		        
+		    </ons-list>   		
       	</div>
       	
       	<div class="navigatorTabFoot">
@@ -161,7 +170,17 @@
 	      	<h3> Vink de mogelijke triggers aan </h3> 
       	</div>
       	
-      	<div class="navigatorTabBody">        		
+      	<div class="navigatorTabBody">  
+      		<ons-list>
+		        <ons-list-item modifier="tappable" ng-repeat="trigger in triggers track by trigger.name">
+	          		<label class="checkbox checkbox--list-item">
+			            <input type="checkbox">
+			            <div class="checkbox__checkmark checkbox--list-item__checkmark"></div>
+						{{trigger.name}}
+						<ons-icon icon="ion-help" id="helpButton{{trigger.name}}" ng-click="show('#helpButton{{trigger.name}}')" style="float: right; margin-right: 5%;"></ons-icon>
+		          	</label>
+		        </ons-list-item>       
+		    </ons-list>       		
       	</div>
       	
       	<div class="navigatorTabFoot">

@@ -13,9 +13,20 @@ app.controller("headacheController", function($scope){
   $scope.intensityValue=5; // The intensity of the headache
   $scope.startDate = new Date(); // Start date of the headache
   $scope.startTime = $scope.startDate; // Start time of the headache
-  $scope.symptoms = ["symptom1", "symptom2", "symptom3", "symptom1", "symptom2", "symptom1", "symptom2", "symptom1", "symptom2",
-  "symptom1", "symptom2", "symptom1", "symptom2", "symptom1", "symptom2", "symptom1", "symptom2"]; // List of all symptoms
-  $scope.triggers = ["trigger1", "trigger2", "trigger3"]; // List of all triggers
+  $scope.symptoms = [{name:"symptom1", description:"this is a description"}, {name:"symptom2", description:"this is a description"},
+  {name:"symptom3", description:"this is a description"}, {name:"symptom4", description:"this is a description"}]; // List of all symptoms
+  $scope.triggers = [{name:"trigger1", description:"this is a description"}, {name:"trigger2", description:"this is a description"},
+  {name:"trigger3", description:"this is a description"}, {name:"trigger4", description:"this is a description"}]; // List of all triggers
+
+  ons.createPopover('popover.html').then(function(popover) {
+    $scope.popover = popover;
+  });
+  
+  $scope.show = function(e) {
+  	console.log(e);
+    $scope.popover.show(e);
+  };
+
 });
 
 app.directive('ngModel', function( $filter ) {

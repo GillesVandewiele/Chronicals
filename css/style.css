@@ -21,12 +21,9 @@ html, body{
 .navigatorTab {
 	text-align: center; 
 	width: 100%;
-	min-height: 100%;
-	height: auto !important;
 	height: 100%;
 	display: table;
 	table-layout: fixed;
-	margin: 0 auto -5em;
 }
 
 .navigatorTabHead{
@@ -89,7 +86,6 @@ input[type=time]::-webkit-clear-button {
 .label{
 	font-weight: bold;
 	font-size: 125%;
-	vertical-align: 50%;
 	display: inline-block;
 }
 
