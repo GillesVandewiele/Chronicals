@@ -93,6 +93,7 @@ input[type=time]::-webkit-clear-button {
 .timeLabel{
 	font-size:100%;
 	margin-top:0px;
+	margin-left: 5%;
 }
 
 .cancelButton {
