@@ -94,6 +94,7 @@ input[type=time]::-webkit-clear-button {
 	font-size:100%;
 	margin-top:0px;
 	margin-left: 5%;
+	float: left;
 }
 
 .cancelButton {
