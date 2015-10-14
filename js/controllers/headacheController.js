@@ -28,7 +28,7 @@ app.directive('ngModel', function( $filter ) {
                 return;
                     
             ngModel.$formatters.unshift(function(value) {
-                return value.replace(/(:\d\d:)(.*)$/, '\$1');
+                return value.replace(/(:\d\d)(:.*)$/, '\$1');
             });
         }
     };   
