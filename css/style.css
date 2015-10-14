@@ -7,7 +7,7 @@
  */
 
 /* HTML5 Boilerplate v5.2.0 | MIT License | https://html5boilerplate.com/  */
-@import "main.css"; 
+@import "main.css";
 @import "normalize.css";
 
 /* onsenui v1.3.11 | Apache License | http://onsen.io/ */
@@ -19,11 +19,14 @@ html, body{
 	height: 100%;
 }
 .navigatorTab {
-	text-align: center; 
+	text-align: center;
 	width: 100%;
+	min-height: 100%;
+	height: auto !important;
 	height: 100%;
 	display: table;
 	table-layout: fixed;
+	margin: 0 auto -5em;
 }
 
 .navigatorTabHead{
@@ -39,8 +42,20 @@ html, body{
 }
 
 .intensitySlider{
-	width: 75%; 
 	display: inline-block;
+	overflow: hidden;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-right: 2px;
+	padding-left: 1px;
+	width: auto;
+	min-height: 35px;
+	outline: none;
+	background-image:-webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #cccccc), color-stop(100%, #cccccc));
+	background-position: center;
+	background-size: 99% 4px;
+	background-repeat: no-repeat;
+	-webkit-appearance: none;
 	vertical-align: 50%;
 }
 
@@ -57,18 +72,18 @@ html, body{
 }
 
 input[type=date]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    display: none;
+	-webkit-appearance: none;
+	display: none;
 }
 
 input[type=date]::-webkit-clear-button {
-    -webkit-appearance: none;
-    display: none;
+	-webkit-appearance: none;
+	display: none;
 }
 
 input[type=time]::-webkit-clear-button {
-    -webkit-appearance: none;
-    display: none;
+	-webkit-appearance: none;
+	display: none;
 }
 
 .label{
@@ -81,36 +96,16 @@ input[type=time]::-webkit-clear-button {
 .timeLabel{
 	font-size:100%;
 	margin-top:0px;
+	margin-left: 5%;
+	float: left;
 }
 
 .cancelButton {
-	background: red; 
-	position: fixed;
-	bottom: 0px;
+	background: red;
 }
 
 .buttonIcon {
 	font-size: 32px;
-}
-
-
-
-
-/* Dashboard CSS */
-
-.dashboard{
-	width:100%;
-	height:100%;
-}
-
-.row{
-	height: 20%;
-	width: 100%;
-	margin: 0;
-	text-align: center;
-	align-content: center;
-	border-color: #0091EA;
-
 }
 
 .dashboard{
