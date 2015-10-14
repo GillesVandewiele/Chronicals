@@ -110,8 +110,19 @@ input[type=time]::-webkit-clear-button {
 
 .dashboard{
 	border-color: #0091EA;
+	width:100%;
+	height:100%;
 }
 
+.row{
+	height: 20%;
+	width: 100%;
+	margin: 0;
+	text-align: center;
+	align-content: center;
+	border-color: #0091EA;
+
+}
 .row.stretch{
 	height: 40%;
 	overflow: hidden;
@@ -152,8 +163,7 @@ input[type=time]::-webkit-clear-button {
 	border-color: #0091EA;
 }
 .row.footer.dashboardFooter{
-	background-color: midnightblue;
-
+	background-color: #01579B;
 }
 
 .tileContent{
