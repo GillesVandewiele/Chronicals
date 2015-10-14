@@ -13,17 +13,23 @@
   
   <title>Geen naam</title>    
   
-  <!-- Our style sheet -->
-  <link rel="stylesheet" href="../css/style.css"> 
-
+  <!-- Our style sheet (with all imports)-->
+  <link rel="stylesheet" href="../css/style.css">  
+  
   <!-- AngularJS | MIT License | https://angularjs.org/ -->
   <script src="../js/angular/angular.js"></script>
   
+  <!-- jQuery 1.8.3 (for compability with JQueryMobile) | MIT License | https://jquery.org/ -->
+  <script src="../js/vendor/jquery-1.8.3.min.js"></script>  
+  
+  <!-- The following script is used for debugging on Windows and should be done before including jQueryMobile -->
+  
+  
+  <!-- jQueryMobile 1.2.1 | MIT License | htpp://jquerymobile.com -->
+  <script src="../js/vendor/jQueryMobile-1.2.1.min.js"></script>   
+  
   <!-- onsenui v1.3.11 | Apache License | http://onsen.io/ -->
   <script src="../js/vendor/onsenui.min.js"></script>    
-
-  <!-- jQuery | MIT License | https://jquery.org/ -->
-  <script src="../js/vendor/jquery-2.1.4.js"></script>  
   
   <!-- Headache controller -->
   <script src="../js/controllers/headacheController.js"> </script>
@@ -77,12 +83,12 @@
       		<ons-row>
       			<ons-col class="col ons-col-inner" width="20%"><p class="label timeLabel">Starttijd: </p></ons-col> 
       			<ons-col class="col ons-col-inner"><input type="date" ng-model="startDate" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col> 
-      			<ons-col class="col ons-col-inner" width="25%"><input type="time" ng-model="startTime" class="timePicker"></ons-col>
+      			<ons-col class="col ons-col-inner" width="25%"><input type="time" placeholder="HH:mm" ng-model="startTime" class="timePicker" step="60"></ons-col>
       		</ons-row>
 			<ons-row>
       			<ons-col class="col ons-col-inner" width="20%"><p class="label timeLabel">Eindtijd: (optioneel)</p></ons-col> 
       			<ons-col class="col ons-col-inner"><input type="date" ng-model="endDate" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col>
-      			<ons-col class="col ons-col-inner" width="25%"><input type="time" ng-model="endTime" class="timePicker"></ons-col>
+      			<ons-col class="col ons-col-inner" width="25%"><input type="time" placeholder="HH:mm" ng-model="endTime" class="timePicker" step="60"></ons-col>
        		</ons-row>
        </div>
 
