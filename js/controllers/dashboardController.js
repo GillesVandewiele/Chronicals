@@ -19,10 +19,18 @@ window.onload = function(){
 }
 
 changeMitTile = function(){
-    startTimes.forEach(function(entry){
-        console.log(entry+"\n");
-    });
-    console.log(this.startTimes);
+    for (i = 0; i < 3; i++) {
+        $("#midTile").append("<div style='width: 70%; margin-right: 0; float: left'><p >"
+            + this.startTimes[i].getDate()+"/"
+            + (this.startTimes[i].getMonth()+1)+"/"
+            + this.startTimes[i].getFullYear()+"\t"
+            + (this.startTimes[i].getHours()+1)+":"
+            + (this.startTimes[i].getMinutes())
+            + "</p></div>");
+        $("#midTile").append("<div style=\"float: right; margin-right:5px;\"><p>8/10</p></div>");
+        console.log("Date:" + this.startTimes[i] + "\n")
+    }
+
 }
 
 

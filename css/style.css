@@ -162,12 +162,13 @@ input[type=time]::-webkit-clear-button {
 }
 
 i.icon{
-	font-size: 45px;
+	font-size: 300%;
+
 
 
 }
 .tileContent > .ion-ios-calendar-outline{
-	font-size: 72px;
+	font-size: 500%;
 }
 
 
