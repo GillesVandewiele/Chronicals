@@ -16,9 +16,23 @@ app.controller("headacheController", function($scope){
   $scope.symptoms = ["symptom1", "symptom2", "symptom3", "symptom1", "symptom2", "symptom1", "symptom2", "symptom1", "symptom2",
   "symptom1", "symptom2", "symptom1", "symptom2", "symptom1", "symptom2", "symptom1", "symptom2"]; // List of all symptoms
   $scope.triggers = ["trigger1", "trigger2", "trigger3"]; // List of all triggers
-  
-  $scope.startTime.setSeconds(0, 0); // We don't care about seconds and milliseconds
 });
+
+app.directive('ngModel', function( $filter ) {
+    return {
+        require: '?ngModel',
+        link: function(scope, elem, attr, ngModel) {
+            if( !ngModel )
+                return;
+            if( attr.type !== 'time' )
+                return;
+                    
+            ngModel.$formatters.unshift(function(value) {
+                return value.replace(/\d{2}[\.\,]\d{3}$/, '');
+            });
+        }
+    };   
+});  
 
 $(".timePicker").on("load",function(){
 	console.log("test");
