@@ -11,11 +11,13 @@ var app = angular.module('Chronic', ['onsen.directives']);
 
 app.controller("dashboardController", function($scope){
 
+    $scope.startTimes = [new Date(), new Date(), new Date()];
+    $scope.intensities = [8,8,8];
 
 });
 
 window.onload = function(){
-    callLater(changeMitTile());
+    //callLater(changeMitTile());
 }
 
 changeMitTile = function(){
