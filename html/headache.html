@@ -37,7 +37,7 @@
     <ons-page>
       <ons-toolbar>
       	<div class="left"></div>
-        <div class="center">Nieuwe hoofdpijn</div>
+        <div class="center" style="margin: 0 auto; text-align: center;">Nieuwe hoofdpijn</div>
         <div class="right"><ons-toolbar-button ng-click="myNavigator.pushPage('times.html', {title: 'Page'})">Volgende <ons-icon icon="ion-ios-arrow-forward" style="font-size: 32px"></ons-icon></ons-toolbar-button></div>
       </ons-toolbar>
 
@@ -64,7 +64,7 @@
     <ons-page>
       <ons-toolbar>
         <div class="left"><ons-back-button>Terug </ons-back-button></div>
-        <div class="center" text-align="center">Nieuwe hoofdpijn</div>
+        <div class="center" style="margin: 0 auto; text-align: center;">Nieuwe hoofdpijn</div>
         <div class="right"><ons-toolbar-button ng-click="myNavigator.pushPage('location.html', {title: 'Page'})">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></ons-toolbar-button></div>
       </ons-toolbar>
       
@@ -97,8 +97,8 @@
     <ons-page>
       <ons-toolbar>
         <div class="left"><ons-back-button>Terug</ons-back-button></div>
-        <div class="center">Nieuwe hoofdpijn</div>
-        <div class="right"><ons-toolbar-button>Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></ons-toolbar-button></div>
+        <div class="center" style="margin: 0 auto; text-align: center;">Nieuwe hoofdpijn</div>
+        <div class="right"><ons-toolbar-button ng-click="myNavigator.pushPage('symptoms.html', {title: 'Page'})">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></ons-toolbar-button></div>
       </ons-toolbar>
 
       <div class="navigatorTab">
@@ -111,7 +111,55 @@
       	</div>
       	
       	<div class="navigatorTabFoot">
-        	
+        	<button class="button button--large cancelButton"><ons-icon icon="ion-close buttonIcon"></ons-icon> Annuleer</button>
+    	</div>
+      </div>
+    </ons-page>
+  </script>
+  
+    <script type="text/ons-template" id="symptoms.html">
+    <ons-page>
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Terug</ons-back-button></div>
+        <div class="center" style="margin: 0 auto; text-align: center;">Nieuwe hoofdpijn</div>
+        <div class="right"><ons-toolbar-button ng-click="myNavigator.pushPage('triggers.html', {title: 'Page'})">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></ons-toolbar-button></div>
+      </ons-toolbar>
+
+      <div class="navigatorTab">
+      	<div class="navigatorTabHead">
+      		<h1> Symptomen </h1>
+	      	<h3> Duid aan welke symptomen u ondervindt </h3> 
+      	</div>
+      	
+      	<div class="navigatorTabBody">        		
+      	</div>
+      	
+      	<div class="navigatorTabFoot">
+        	<button class="button button--large cancelButton"><ons-icon icon="ion-close buttonIcon"></ons-icon> Annuleer</button>
+    	</div>
+      </div>
+    </ons-page>
+  </script>
+  
+    <script type="text/ons-template" id="triggers.html">
+    <ons-page>
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Terug</ons-back-button></div>
+        <div class="center" style="margin: 0 auto; text-align: center;">Nieuwe hoofdpijn</div>
+        <div class="right"><ons-toolbar-button>Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></ons-toolbar-button></div>
+      </ons-toolbar>
+
+      <div class="navigatorTab">
+      	<div class="navigatorTabHead">
+      		<h1> Triggers </h1>
+	      	<h3> Vink de mogelijke triggers aan </h3> 
+      	</div>
+      	
+      	<div class="navigatorTabBody">        		
+      	</div>
+      	
+      	<div class="navigatorTabFoot">
+        	<button class="button button--large cancelButton"><ons-icon icon="ion-close buttonIcon"></ons-icon> Annuleer</button>
     	</div>
       </div>
     </ons-page>
