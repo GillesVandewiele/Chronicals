@@ -39,8 +39,20 @@ html, body{
 }
 
 .intensitySlider{
-	width: 75%; 
 	display: inline-block;
+	overflow: hidden;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-right: 2px;
+	padding-left: 1px;
+	width: 75%;
+	min-height: 35px;
+	outline: none;
+	background-image:-webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #cccccc), color-stop(100%, #cccccc));
+	background-position: center;
+	background-size: 99% 4px;
+	background-repeat: no-repeat;
+	-webkit-appearance: none; 
 	vertical-align: 50%;
 }
 
