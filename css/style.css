@@ -36,6 +36,8 @@ html, body{
 
 .navigatorTabFoot{
 	display: table-row;
+	position:relative;
+	margin-top:100%;
 }
 
 .intensitySlider{
@@ -99,8 +101,6 @@ input[type=time]::-webkit-clear-button {
 
 .cancelButton {
 	background: red; 
-	position: fixed;
-	bottom: 0px;
 }
 
 .buttonIcon {
