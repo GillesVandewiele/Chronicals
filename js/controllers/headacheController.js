@@ -33,15 +33,3 @@ app.directive('ngModel', function( $filter ) {
         }
     };   
 });  
-
-$(".timePicker").on("load",function(){
-	console.log("test");
-  $(this).attr("type","text");
-});
-$(".timePicker").on("change",function(){
-	console.log("test");
-  $(this).attr("type","text");
-});
-$(".timePicker").on("touchstart",function(){
-  $(this).attr("type","time");
-});

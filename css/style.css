@@ -21,9 +21,12 @@ html, body{
 .navigatorTab {
 	text-align: center; 
 	width: 100%;
+	min-height: 100%;
+	height: auto !important;
 	height: 100%;
 	display: table;
 	table-layout: fixed;
+	margin: 0 auto -5em;
 }
 
 .navigatorTabHead{
@@ -36,8 +39,6 @@ html, body{
 
 .navigatorTabFoot{
 	display: table-row;
-	position:relative;
-	margin-top:100%;
 }
 
 .intensitySlider{
