@@ -100,8 +100,26 @@ input[type=time]::-webkit-clear-button {
 	background: red; 
 }
 
+.cancelButton:active {
+	background: maroon; 
+}
+
+.finishButton {
+	background: green; 
+}
+
+.finishButton:active {
+	background: olive; 
+}
+
 .buttonIcon {
 	font-size: 32px;
+}
+
+.helpIcon{
+	float: right; 
+	margin-right: 5%;
+	transform: translateY(50%);
 }
 
 .dashboard{
