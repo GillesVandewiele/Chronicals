@@ -32,7 +32,6 @@ app.controller("headacheController", function($scope){
   var searchIndexById = function(list, id){
   	// Search the index of an id in a list of objects with ids
   	for(object in list){
-  		console.log(list[object]);
   		if(list[object].id == id) return object;
   	}
   	return -1;
@@ -40,7 +39,6 @@ app.controller("headacheController", function($scope){
 
   for(trigger in $scope.triggers){
   	// Initialize function on each helpButton for each trigger
-  	console.log($("#helpButton"+$scope.triggers[trigger].name));
   	$(document).on("click", '#helpButton'+$scope.triggers[trigger].id, function(){
   		var id = ($(this)[0].id).split('helpButton');
   		var index = searchIndexById($scope.triggers, id[1]);
@@ -52,6 +50,7 @@ app.controller("headacheController", function($scope){
 });
 
 app.directive('ngModel', function( $filter ) {
+	// This is used to remove seconds and milliseconds in time pickers
     return {
         require: '?ngModel',
         link: function(scope, elem, attr, ngModel) {
