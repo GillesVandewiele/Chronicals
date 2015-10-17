@@ -3,7 +3,7 @@
  	Created by Kiani Lannoye & Gilles Vandewiele, commissioned by UZ Ghent
     https://github.com/kianilannoye/Chronicals
     
-    This html file is the view for viewing or modifying a headache.	
+    This html file is the view for adding or modifying a headache.	
 -->
 
 <!doctype html>
@@ -25,7 +25,8 @@
   <!-- jQuery | MIT License | https://jquery.org/ -->
   <script src="../js/vendor/jquery-2.1.4.js"></script>  
   
-  <!-- Headache controller -->
+  <!-- Main file & Headache controller -->
+  <script src="../js/controllers/chronic.js"> </script>
   <script src="../js/controllers/headacheController.js"> </script>
   
   <script type="text/ons-template" id="popover.html">
@@ -89,8 +90,8 @@
   				<ons-col></ons-col>
   			</ons-row>
       		<ons-row>
-      			<ons-col class="col ons-col-inner"><input type="date" ng-model="startDate" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col> 
-      			<ons-col class="col ons-col-inner"><input type="time" placeholder="HH:mm" ng-model="startTime" class="timePicker" step="60"></ons-col>
+      			<ons-col class="col ons-col-inner"><input type="date" ng-model="startDate" ng-change="updateStartTimeString()" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col> 
+      			<ons-col class="col ons-col-inner"><input type="time" placeholder="HH:mm" ng-change="updateStartTimeString()" ng-model="startTime" class="timePicker" step="60"></ons-col>
       		</ons-row>
       		<ons-row>
       			<ons-col><p class="label timeLabel">Eindtijd: (optioneel)</p></ons-col>
@@ -179,11 +180,12 @@
       	
       	<div class="navigatorTabBody">  
       		<ons-list>
-		        <ons-list-item modifier="tappable" ng-repeat="symptom in symptoms track by symptom.name">
+		        <ons-list-item modifier="tappable" ng-repeat="symptom in symptoms track by symptom.id">
 		          <label class="checkbox checkbox--list-item">
 		            <input type="checkbox">
 		            <div class="checkbox__checkmark checkbox--list-item__checkmark"></div>
 		            {{symptom.name}}
+		            <ons-icon icon="ion-help" id="helpButtonSymptom{{symptom.id}}" class="helpIcon"></ons-icon>
 		          </label>
 		        </ons-list-item>		        
 		    </ons-list>   		
@@ -215,12 +217,12 @@
       	
       	<div class="navigatorTabBody">  
       		<ons-list>
-		        <ons-list-item modifier="tappable" ng-repeat="trigger in triggers track by trigger.name">
+		        <ons-list-item modifier="tappable" ng-repeat="trigger in triggers track by trigger.id">
 	          		<label class="checkbox checkbox--list-item">
 			            <input type="checkbox">
 			            <div class="checkbox__checkmark checkbox--list-item__checkmark"></div>
 						{{trigger.name}}
-						<ons-icon icon="ion-help" id="helpButton{{trigger.id}}" class="helpIcon"></ons-icon>
+						<ons-icon icon="ion-help" id="helpButtonTrigger{{trigger.id}}" class="helpIcon"></ons-icon>
 		          	</label>
 		        </ons-list-item>       
 		    </ons-list>       		
