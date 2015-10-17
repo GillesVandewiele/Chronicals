@@ -1,0 +1,44 @@
+<!--
+ 	NAAM VAN ONS PROJECT, v1.0
+ 	Created by Kiani Lannoye & Gilles Vandewiele, commissioned by UZ Ghent
+    https://github.com/kianilannoye/Chronicals
+    
+    This html file is the view for adding or modifying a medicine.	
+-->
+
+<!doctype html>
+<html lang="en" ng-app="Chronic">
+<head>
+  <meta charset="utf-8"> 
+  
+  <title>Geen naam</title>    
+  
+  <!-- Our style sheet -->
+  <link rel="stylesheet" href="../css/style.css"> 
+  
+  <!-- AngularJS | MIT License | https://angularjs.org/ -->
+  <script src="../js/angular/angular.js"></script>
+  
+  <!-- onsenui v1.3.11 | Apache License | http://onsen.io/ -->
+  <script src="../js/vendor/onsenui.min.js"></script>    
+
+  <!-- jQuery | MIT License | https://jquery.org/ -->
+  <script src="../js/vendor/jquery-2.1.4.js"></script>  
+  
+  <!-- Main file & Medicine controller -->
+  <script src="../js/controllers/chronic.js"> </script>
+  <script src="../js/controllers/medicineController.js"> </script>
+  
+  <script type="text/ons-template" id="popover.html">
+	  <ons-popover direction="up down" cancelable>
+	    <div style="text-align: center; opacity: 0.5;">
+	      <p><small>{{message}}</small></p>
+	    </div>
+	  </ons-popover>
+  </script>
+
+</head>
+
+<body ng-controller="medicineController">   
+	
+</body>
