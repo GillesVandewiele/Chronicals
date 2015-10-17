@@ -135,13 +135,10 @@ input[type=time]::-webkit-clear-button {
 }
 .tile .tileContent{
 	margin: 0 auto;
-
 }
 
 .tile{
 	border-color: #0091EA;
-
-
 }
 
 .tile.half{
@@ -153,10 +150,10 @@ input[type=time]::-webkit-clear-button {
 
 }
 
-.row > div:nth-child(2).tile.half{
-	border-left: 1px solid;
-	border-color: #0091EA;
-}
+/*.row > div:nth-child(2).tile.half{*/
+	/*border-left: 1px solid;*/
+	/*border-color: #0091EA;*/
+/*}*/
 
 .tile.large{
 	width: 100%;
