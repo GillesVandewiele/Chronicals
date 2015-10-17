@@ -11,11 +11,13 @@ var app = angular.module('Chronic', ['onsen.directives']);
 
 app.controller("dashboardController", function($scope){
 
+    $scope.startTimes = [new Date(), new Date(), new Date()];
+    $scope.intensities = [8,8,8];
 
 });
 
 window.onload = function(){
-    callLater(changeMitTile());
+    //callLater(changeMitTile());
 }
 
 changeMitTile = function(){
@@ -24,8 +26,8 @@ changeMitTile = function(){
             + this.startTimes[i].getDate()+"/"
             + (this.startTimes[i].getMonth()+1)+"/"
             + this.startTimes[i].getFullYear()+"\t"
-            + (this.startTimes[i].getHours()+1)+":"
-            + (this.startTimes[i].getMinutes())
+            + (this.startTimes[i].getHours())+":"
+            + (("0" + this.startTimes[i].getMinutes()).substr(-2))
             + "</p></div>");
         $("#midTile").append("<div style=\"float: right; margin-right:5px;\"><p>8/10</p></div>");
         console.log("Date:" + this.startTimes[i] + "\n")

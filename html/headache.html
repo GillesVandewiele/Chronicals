@@ -9,119 +9,167 @@
 <!doctype html>
 <html lang="en" ng-app="Chronic">
 <head>
-  <meta charset="utf-8"> 
-  
-  <title>Geen naam</title>    
-  
-  <!-- Our style sheet (with all imports)-->
-  <link rel="stylesheet" href="../css/style.css">  
-  
+  <meta charset="utf-8">
+
+  <title>Geen naam</title>
+
+  <!-- Our style sheet -->
+  <link rel="stylesheet" href="../css/style.css">
+
   <!-- AngularJS | MIT License | https://angularjs.org/ -->
   <script src="../js/angular/angular.js"></script>
-  
-  <!-- jQuery 1.8.3 (for compability with JQueryMobile) | MIT License | https://jquery.org/ -->
-  <script src="../js/vendor/jquery-1.8.3.min.js"></script>  
-  
-  <!-- The following script is used for debugging on Windows and should be done before including jQueryMobile -->
-  
-  
-  <!-- jQueryMobile 1.2.1 | MIT License | htpp://jquerymobile.com -->
-  <script src="../js/vendor/jQueryMobile-1.2.1.min.js"></script>   
-  
+
   <!-- onsenui v1.3.11 | Apache License | http://onsen.io/ -->
-  <script src="../js/vendor/onsenui.min.js"></script>    
-  
+  <script src="../js/vendor/onsenui.min.js"></script>
+
+  <!-- jQuery | MIT License | https://jquery.org/ -->
+  <script src="../js/vendor/jquery-2.1.4.js"></script>
+
   <!-- Headache controller -->
   <script src="../js/controllers/headacheController.js"> </script>
 
 </head>
 
-<body ng-controller="headacheController">    
-  
-  <ons-navigator var="myNavigator">
+<body ng-controller="headacheController">
 
-    <ons-page>
-      <ons-toolbar>
-      	<div class="left"></div>
-        <div class="center">Nieuwe hoofdpijn</div>
-        <div class="right"><ons-toolbar-button ng-click="myNavigator.pushPage('times.html', {title: 'Page'})">Volgende <ons-icon icon="ion-ios-arrow-forward" style="font-size: 32px"></ons-icon></ons-toolbar-button></div>
-      </ons-toolbar>
+<ons-navigator var="myNavigator">
 
-      <div class="navigatorTab">
-      	<div class="navigatorTabHead">
-      		<h1> Intensiteit </h1> 
-	      	<h3> Geef de intensiteit van de hoofdpijn aan op schaal van 0 tot 10. </h3> 
-      	</div>
-      	
-      	<div class="navigatorTabBody">   
-	      	<p class="label">0</p> <input type="range" min="0" max="10" class="range intensitySlider" ng-model="intensityValue"> <p class="label">10</p><br>
-	      	<p class="label"> {{ intensityValue }}  /  10 </p>
-      	</div>
-      	
-      	<div class="navigatorTabFoot">
-        	<button class="button button--large cancelButton"><ons-icon icon="ion-close buttonIcon"></ons-icon> Annuleer</button>
-        </div>
+  <ons-page>
+    <ons-toolbar>
+      <div class="left"></div>
+      <div class="center" style="margin: 0 auto; text-align: center;">Nieuwe hoofdpijn</div>
+      <div class="right"><ons-toolbar-button ng-click="myNavigator.pushPage('times.html', {title: 'Page'})">Volgende <ons-icon icon="ion-ios-arrow-forward" style="font-size: 32px"></ons-icon></ons-toolbar-button></div>
+    </ons-toolbar>
+
+    <div class="navigatorTab">
+      <div class="navigatorTabHead">
+        <h1> Intensiteit </h1>
+        <h3> Geef de intensiteit van de hoofdpijn aan op schaal van 0 tot 10. </h3>
       </div>
-    </ons-page>
-  
-  </ons-navigator> 
-  
-  <script type="text/ons-template" id="times.html">
-    <ons-page>
-      <ons-toolbar>
-        <div class="left"><ons-back-button>Terug </ons-back-button></div>
-        <div class="center" text-align="center">Nieuwe hoofdpijn</div>
-        <div class="right"><ons-toolbar-button ng-click="myNavigator.pushPage('location.html', {title: 'Page'})">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></ons-toolbar-button></div>
-      </ons-toolbar>
-      
-      <div class="navigatorTab">
-      	<div class="navigatorTabHead">
-	      	<h3> Geef de start- (en indien mogelijk eindtijd) op. </h3>
-      	</div>
-      	
-      	<div class="navigatorTabBody">    
-      		<ons-row>
-      			<ons-col class="col ons-col-inner" width="20%"><p class="label timeLabel">Starttijd: </p></ons-col> 
-      			<ons-col class="col ons-col-inner"><input type="date" ng-model="startDate" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col> 
-      			<ons-col class="col ons-col-inner" width="25%"><input type="time" placeholder="HH:mm" ng-model="startTime" class="timePicker" step="60"></ons-col>
-      		</ons-row>
-			<ons-row>
-      			<ons-col class="col ons-col-inner" width="20%"><p class="label timeLabel">Eindtijd: (optioneel)</p></ons-col> 
-      			<ons-col class="col ons-col-inner"><input type="date" ng-model="endDate" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col>
-      			<ons-col class="col ons-col-inner" width="25%"><input type="time" placeholder="HH:mm" ng-model="endTime" class="timePicker" step="60"></ons-col>
-       		</ons-row>
-       </div>
 
-      	<div class="navigatorTabFoot">
-        	<button class="button button--large cancelButton"><ons-icon icon="ion-close buttonIcon"></ons-icon> Annuleer</button>
-    	</div>
+      <div class="navigatorTabBody">
+        <p class="label">0</p> <input type="range" min="0" max="10" class="range intensitySlider" ng-model="intensityValue"> <p class="label">10</p><br>
+        <p class="label"> {{ intensityValue }}  /  10 </p>
       </div>
-    </ons-page>
-  </script>
-  
-  <script type="text/ons-template" id="location.html">
-    <ons-page>
-      <ons-toolbar>
-        <div class="left"><ons-back-button>Terug</ons-back-button></div>
-        <div class="center">Nieuwe hoofdpijn</div>
-        <div class="right"><ons-toolbar-button>Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></ons-toolbar-button></div>
-      </ons-toolbar>
+      <div class="navigatorTabFoot">
+        <button class="button button--large cancelButton"><ons-icon icon="ion-close buttonIcon"></ons-icon> Annuleer</button>
+      </div>
+    </div>
+  </ons-page>
 
-      <div class="navigatorTab">
-      	<div class="navigatorTabHead">
-      		<h1> Locatie </h1>
-	      	<h3> Toon op welke plaats(en) u pijn voelt. Tip: u kan het model draaien </h3> 
-      	</div>
-      	
-      	<div class="navigatorTabBody">        		
-      	</div>
-      	
-      	<div class="navigatorTabFoot">
-        	
-    	</div>
+</ons-navigator>
+
+<script type="text/ons-template" id="times.html">
+  <ons-page>
+    <ons-toolbar>
+      <div class="left"><ons-back-button>Terug </ons-back-button></div>
+      <div class="center" style="margin: 0 auto; text-align: center;">Nieuwe hoofdpijn</div>
+      <div class="right"><ons-toolbar-button ng-click="myNavigator.pushPage('location.html', {title: 'Page'})">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></ons-toolbar-button></div>
+    </ons-toolbar>
+
+    <div class="navigatorTab">
+      <div class="navigatorTabHead">
+        <h3> Geef de start- (en indien mogelijk eindtijd) op. </h3>
       </div>
-    </ons-page>
-  </script>
-  
+
+      <div class="navigatorTabBody">
+        <ons-row>
+          <ons-col><p class="label timeLabel">Starttijd: </p> </ons-col>
+          <ons-col></ons-col>
+        </ons-row>
+        <ons-row>
+          <ons-col class="col ons-col-inner"><input type="date" ng-model="startDate" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col>
+          <ons-col class="col ons-col-inner"><input type="time" placeholder="HH:mm" ng-model="startTime" class="timePicker" step="60"></ons-col>
+        </ons-row>
+        <ons-row>
+          <ons-col><p class="label timeLabel">Eindtijd: (optioneel)</p></ons-col>
+          <ons-col></ons-col>
+        </ons-row>
+        <ons-row>
+          <ons-col class="col ons-col-inner"><input type="date" ng-model="endDate" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col>
+          <ons-col class="col ons-col-inner"><input type="time" placeholder="HH:mm" ng-model="endTime" class="timePicker" step="60"></ons-col>
+        </ons-row>
+      </div>
+
+      <div class="navigatorTabFoot">
+        <p></p>
+        <button class="button button--large cancelButton"><ons-icon icon="ion-close buttonIcon"></ons-icon> Annuleer</button>
+      </div>
+    </div>
+  </ons-page>
+</script>
+
+<script type="text/ons-template" id="location.html">
+  <ons-page>
+    <ons-toolbar>
+      <div class="left"><ons-back-button>Terug</ons-back-button></div>
+      <div class="center" style="margin: 0 auto; text-align: center;">Nieuwe hoofdpijn</div>
+      <div class="right"><ons-toolbar-button ng-click="myNavigator.pushPage('symptoms.html', {title: 'Page'})">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></ons-toolbar-button></div>
+    </ons-toolbar>
+
+    <div class="navigatorTab">
+      <div class="navigatorTabHead">
+        <h1> Locatie </h1>
+        <h3> Toon op welke plaats(en) u pijn voelt. Tip: u kan het model draaien </h3>
+      </div>
+
+      <div class="navigatorTabBody">
+      </div>
+
+      <div class="navigatorTabFoot">
+        <button class="button button--large cancelButton"><ons-icon icon="ion-close buttonIcon"></ons-icon> Annuleer</button>
+      </div>
+    </div>
+  </ons-page>
+</script>
+
+<script type="text/ons-template" id="symptoms.html">
+  <ons-page>
+    <ons-toolbar>
+      <div class="left"><ons-back-button>Terug</ons-back-button></div>
+      <div class="center" style="margin: 0 auto; text-align: center;">Nieuwe hoofdpijn</div>
+      <div class="right"><ons-toolbar-button ng-click="myNavigator.pushPage('triggers.html', {title: 'Page'})">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></ons-toolbar-button></div>
+    </ons-toolbar>
+
+    <div class="navigatorTab">
+      <div class="navigatorTabHead">
+        <h1> Symptomen </h1>
+        <h3> Duid aan welke symptomen u ondervindt </h3>
+      </div>
+
+      <div class="navigatorTabBody">
+      </div>
+
+      <div class="navigatorTabFoot">
+        <button class="button button--large cancelButton"><ons-icon icon="ion-close buttonIcon"></ons-icon> Annuleer</button>
+      </div>
+    </div>
+  </ons-page>
+</script>
+
+<script type="text/ons-template" id="triggers.html">
+  <ons-page>
+    <ons-toolbar>
+      <div class="left"><ons-back-button>Terug</ons-back-button></div>
+      <div class="center" style="margin: 0 auto; text-align: center;">Nieuwe hoofdpijn</div>
+      <div class="right"><ons-toolbar-button>Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></ons-toolbar-button></div>
+    </ons-toolbar>
+
+    <div class="navigatorTab">
+      <div class="navigatorTabHead">
+        <h1> Triggers </h1>
+        <h3> Vink de mogelijke triggers aan </h3>
+      </div>
+
+      <div class="navigatorTabBody">
+      </div>
+
+      <div class="navigatorTabFoot">
+        <button class="button button--large cancelButton"><ons-icon icon="ion-close buttonIcon"></ons-icon> Annuleer</button>
+      </div>
+    </div>
+  </ons-page>
+</script>
+
 </body>
 </html>

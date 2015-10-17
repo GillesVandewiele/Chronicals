@@ -35,25 +35,41 @@
 
                 <a href="headache.html" class="tile half">
                     <div  class="tileContent">
-                        <i class="icon ion-ios-personadd-outline"></i>
-                        <p>+ Hoofdpijn</p>
+                        <i class="icon fa fa-user-md"></i>
+                        <p>+Hoofdpijn</p>
                     </div>
                 </a>
 
                 <div class="tile half last" >
                     <div class="tileContent">
-                        <i class="icon ion-ios-medkit-outline"></i>
-                        <p>+ Medicijn</p>
+                        <i class="icon fa fa-medkit"></i>
+                        <p>+Medicijn</p>
                     </div>
                 </div>
             </div>
             <div class="row stretch">
-                <div class="tile large">
+
+                <a href="history.html" class="tile large">
                     <div class="tileContent" style="width: 100%;">
-                        <i class="icon ion-ios-calendar-outline"></i>
+                        <i class="icon fa fa-calendar-check-o"></i>
                         <div id="midTile" style="width:100%;">
+                            <div class="row">
+                                <div class="dates">
+                                    <p class="tileDate" ng-repeat="test in startTimes">
+                                            {{test.getDate()+"/"
+                                            + (test.getMonth()+1)+"/"
+                                            + test.getFullYear()+"\t"
+                                            + (test.getHours()+1)+":"
+                                            + (test.getMinutes())}}
+                                    </p>
+                                </div>
+                                <div class="intensities">
+                                    <p class="tileIntensity" ng-repeat="number in intensities track by $index">
+                                        {{number}}/10
+                                    </p>
 
-
+                                </div>
+                            </div>
                         </div>
                         <!--<div>-->
                             <!--&lt;!&ndash;<p style="width: 80%; float: left">13/10/2015 14:15</p><p style="float: left">8/10</p>&ndash;&gt;-->
@@ -63,26 +79,27 @@
                         <!--</div>-->
 
                     </div>
-                </div>
+                </a>
             </div>
             <div class="row">
                 <div class="tile half">
                     <div class="tileContent">
-                        <i class="icon ion-ios-information-outline"></i>
+                        <i class="icon fa fa-info-circle"></i>
                         <p>Advies</p>
                     </div>
                 </div>
                 <div class="tile half last" >
                     <div class="tileContent">
-                        <i class="icon ion-ios-gear-outline"></i>
+                        <i class="icon fa fa-cog"></i>
                         <p>Instellingen</p>
                     </div>
                 </div>
             </div>
             <div class="row footer dashboardFooter">
-                <p>Het is al 8u geleden dat u hoofdpijn had!</p>
+                        <p>Het is al 8u geleden dat u hoofdpijn had!</p>
             </div>
         </div>
+
     </ons-page>
 </ons-navigator>
 

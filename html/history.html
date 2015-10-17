@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" ng-app="Chronic">
+<head>
+    <meta charset="utf-8">
+    <title>Geschiedenis</title>
+
+
+
+    <!-- Our style sheet -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- AngularJS | MIT License | https://angularjs.org/ -->
+    <script src="../js/angular/angular.js"></script>
+    <!-- jQuery | MIT License | https://jquery.org/ -->
+    <script src="../js/vendor/jquery-2.1.4.js"></script>
+
+
+    <!-- onsenui v1.3.11 | Apache License | http://onsen.io/ -->
+    <script src="../js/vendor/onsenui.min.js"></script>
+
+
+    <!-- Headache controller -->
+    <script src="../js/controllers/historyController.js"> </script>
+
+
+</head>
+
+<body ng-controller="historyController">
+<ons-navigator>
+    <ons-page>
+        <div class="history">
+            <ul class="list">
+                <li class="list__item list__item--chevron">
+                    <div class="list-left">
+                        <i class="fa fa-user-md">     </i>
+                    </div>
+                    <div class="list-center">
+                        12 okt 15:45
+                    </div>
+                    <div class="list-right">
+                        8/10
+                    </div>
+
+
+                </li>
+                <li class="list__item list__item--chevron">
+                    <div class="list-left">
+                        <i class="fa fa-medkit">     </i>
+                    </div>
+                    <div class="list-center">
+                        Goed medicijn
+                    </div>
+
+
+                </li>
+            </ul>
+        </div>
+
+    </ons-page>
+</ons-navigator>
+
+</body>
+</html>
