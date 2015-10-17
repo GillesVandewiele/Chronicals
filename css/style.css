@@ -89,7 +89,6 @@ input[type=time]::-webkit-clear-button {
 .label{
 	font-weight: bold;
 	font-size: 125%;
-	vertical-align: 50%;
 	display: inline-block;
 }
 
@@ -101,11 +100,30 @@ input[type=time]::-webkit-clear-button {
 }
 
 .cancelButton {
-	background: red;
+	background: red; 
+	float: left;
+}
+
+.cancelButton:active {
+	background: maroon; 
+}
+
+.finishButton {
+	background: green; 
+}
+
+.finishButton:active {
+	background: olive; 
 }
 
 .buttonIcon {
 	font-size: 32px;
+}
+
+.helpIcon{
+	float: right; 
+	margin-right: 5%;
+	transform: translateY(50%);
 }
 
 .dashboard{

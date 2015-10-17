@@ -7,9 +7,7 @@
  */
 
 
-var app = angular.module('Chronic', ['onsen.directives']);
-
-app.controller("historyController", function($scope){
+angular.module('Chronic').controller("historyController", function($scope){
 
     $scope.listItems = [
         /*
