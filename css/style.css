@@ -2,7 +2,7 @@
  	NAAM VAN ONS PROJECT, v1.0
  	Created by Kiani Lannoye & Gilles Vandewiele, commissioned by UZ Ghent
     https://github.com/kianilannoye/Chronicals
-    
+
     This file includes all own-made styling.
  */
 
@@ -100,20 +100,20 @@ input[type=time]::-webkit-clear-button {
 }
 
 .cancelButton {
-	background: red; 
+	background: red;
 	float: left;
 }
 
 .cancelButton:active {
-	background: maroon; 
+	background: maroon;
 }
 
 .finishButton {
-	background: green; 
+	background: green;
 }
 
 .finishButton:active {
-	background: olive; 
+	background: olive;
 }
 
 .buttonIcon {
@@ -121,7 +121,7 @@ input[type=time]::-webkit-clear-button {
 }
 
 .helpIcon{
-	float: right; 
+	float: right;
 	margin-right: 5%;
 	transform: translateY(50%);
 }
@@ -256,12 +256,12 @@ div .last{
 }
 
 .list-center{
-	width: 50%;
+	width: 63%;
 	display: inline-block;
 }
 
 .list-right{
-	width: 25%;
+	width: 12%;
 	display: inline-block;
 }
 
