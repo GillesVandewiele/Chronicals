@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43c9da2d-e225-43f7-8236-b9dae08b7604" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/dashboard.html" afterPath="$PROJECT_DIR$/html/dashboard.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/dashboardController.js" afterPath="$PROJECT_DIR$/js/controllers/dashboardController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/history.html" afterPath="$PROJECT_DIR$/html/history.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
     </list>
     <ignored path="Code.iws" />
@@ -22,14 +25,14 @@
     <favorites_list name="Code" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5508318">
+    <splitter split-orientation="horizontal" split-proportion="0.42857143">
       <split-first>
         <leaf>
-          <file leaf-file-name="dashboard.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="dashboard.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/html/dashboard.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.49225473">
-                  <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
+                <state vertical-scroll-proportion="-9.923077">
+                  <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
                   <folding>
                     <element signature="n#div#1;n#div#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                     <element signature="n#style#0;n#div#0;n#a#0;n#div#1;n#div#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -63,11 +66,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="history.html" pinned="false" current-in-tab="false">
+          <file leaf-file-name="history.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/html/history.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-13.846154">
-                  <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
+                <state vertical-scroll-proportion="0.5025818">
+                  <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
                   <folding />
                 </state>
               </provider>
@@ -80,8 +83,8 @@
           <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/css/style.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.47058824">
-                  <caret line="141" column="26" selection-start-line="141" selection-start-column="26" selection-end-line="141" selection-end-column="26" />
+                <state vertical-scroll-proportion="0.6764706">
+                  <caret line="245" column="12" selection-start-line="245" selection-start-column="12" selection-end-line="245" selection-end-column="12" />
                   <folding />
                 </state>
               </provider>
@@ -106,16 +109,16 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/js/controllers/dashboardController.js" />
         <option value="$PROJECT_DIR$/css/font_awesome/css/font-awesome.min.css" />
         <option value="$PROJECT_DIR$/css/font_awesome/css/font-awesome.css" />
         <option value="$PROJECT_DIR$/html/headache.html" />
         <option value="$PROJECT_DIR$/js/controllers/headacheController.js" />
         <option value="$PROJECT_DIR$/js/controllers/historyController.js" />
-        <option value="$PROJECT_DIR$/html/history.html" />
-        <option value="$PROJECT_DIR$/html/dashboard.html" />
         <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/controllers/dashboardController.js" />
+        <option value="$PROJECT_DIR$/html/dashboard.html" />
+        <option value="$PROJECT_DIR$/html/history.html" />
         <option value="$PROJECT_DIR$/css/style.css" />
       </list>
     </option>
@@ -374,9 +377,8 @@
           <caret line="14" column="13" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="22" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <marker date="1444841418703" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1444841418703" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1444841418703" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1445084008989" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1445084008989" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -431,9 +433,8 @@
           <caret line="29" column="74" selection-start-line="29" selection-start-column="74" selection-end-line="29" selection-end-column="74" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <marker date="1444841418703" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1444841418703" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1444841418703" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1445084008989" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1445084008989" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -539,19 +540,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/dashboardController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="13" selection-start-line="0" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <marker date="1444841418703" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1444841418703" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1444841418703" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html/headache.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.9363167">
@@ -580,14 +568,6 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/history.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.846154">
-          <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -631,10 +611,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/controllers/dashboardController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="40" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1445084008989" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1445084008989" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/html/dashboard.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49225473">
-          <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
+        <state vertical-scroll-proportion="-9.923077">
+          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
           <folding>
             <element signature="n#div#1;n#div#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#0;n#a#0;n#div#1;n#div#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -647,10 +639,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/html/history.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5025818">
+          <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47058824">
-          <caret line="141" column="26" selection-start-line="141" selection-start-column="26" selection-end-line="141" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.6764706">
+          <caret line="245" column="12" selection-start-line="245" selection-start-column="12" selection-end-line="245" selection-end-column="12" />
           <folding />
         </state>
       </provider>
