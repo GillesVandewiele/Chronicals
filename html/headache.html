@@ -42,6 +42,7 @@
   
   <ons-navigator var="myNavigator">
 
+	<!-- Intensity page -->
     <ons-page>
       <ons-toolbar>
       	<div class="left"></div>
@@ -70,6 +71,7 @@
   
   </ons-navigator> 
   
+  <!-- Start & end time page -->
   <script type="text/ons-template" id="times.html">
     <ons-page>
       <ons-toolbar>
@@ -112,6 +114,7 @@
     </ons-page>
   </script>
   
+  <!-- Location page -->
   <script type="text/ons-template" id="location.html">
     <ons-page>
       <ons-toolbar>
@@ -124,7 +127,16 @@
       	<div class="navigatorTabHead">
       		<h1> Locatie </h1>
 	      	<h3> Toon op welke plaats(en) u pijn voelt. Tip: u kan het model draaien </h3> 
-	      	<ons-carousel overscrollable auto-scroll var="carousel" style="width: 100%; height: 50%;">
+	      	<ons-carousel>
+	      		<ons-carousel-item>
+	      		test
+	      		</ons-carousel-item>
+	      		
+	      		<ons-carousel-item>
+	      		test
+	      		</ons-carousel-item>
+	      	</ons-carousel>
+	      	<ons-carousel swipeable overscrollable auto-scroll var="carousel" style="width: 100%; height: 70%;">
 		      <ons-carousel-item>
 		        <ons-icon icon="ion-ios-arrow-back buttonIcon" ng-click="carousel.last()"></ons-icon>
 		        <img src="../img/1_location.png"></img>
@@ -146,8 +158,6 @@
 		        <ons-icon icon="ion-ios-arrow-forward buttonIcon" ng-click="carousel.first()"></ons-icon>
 		      </ons-carousel-item>
 		    </ons-carousel>
-	    	
-	    	
       	</div>
       	
       	<div class="navigatorTabBody">    		
@@ -163,6 +173,8 @@
     </ons-page>
   </script>
   
+  
+  	<!-- Symptoms page -->
     <script type="text/ons-template" id="symptoms.html">
     <ons-page>
       <ons-toolbar>
@@ -200,6 +212,7 @@
     </ons-page>
   </script>
   
+  	<!-- Triggers page -->
     <script type="text/ons-template" id="triggers.html">
     <ons-page>
       <ons-toolbar>

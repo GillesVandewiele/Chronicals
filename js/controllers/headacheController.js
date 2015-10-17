@@ -7,6 +7,7 @@
  */
 
 angular.module('Chronic').controller("headacheController", function($scope){
+	
   // Setting the dates
   $scope.intensityValue=5; // The intensity of the headache
   $scope.startDate = new Date(); // Start date of the headache
@@ -26,16 +27,13 @@ angular.module('Chronic').controller("headacheController", function($scope){
   
   $scope.startTimeString = $scope.updateStartTimeString();
     
+    
+  // Triggers & symptoms  
   $scope.symptoms = [{id: 0, name:"symptom1", description:"this is a description"}, {id: 1, name:"symptom2", description:"this is a description"},
   {id: 2, name:"symptom3", description:"this is a description"}, {id: 3, name:"symptom4", description:"this is a description"}]; // List of all symptoms
   $scope.triggers = [{id: 0, name:"trigger1", description:"this is a description 1"}, {id: 1, name:"trigger2", description:"this is a description 2"},
   {id: 2, name:"trigger3", description:"this is a description 3"}, {id: 3, name:"trigger4", description:"this is a description 4"}]; // List of all triggers
   $scope.message = "";
-
-  ons.createPopover('popover.html').then(function(popover) {
-  	// Create a popover for the help buttons
-    $scope.popover = popover;
-  });
   
   var searchIndexById = function(list, id){
   	// Search the index of an id in a list of objects with ids
@@ -64,6 +62,13 @@ angular.module('Chronic').controller("headacheController", function($scope){
   		$scope.popover.show("#"+$(this)[0].id);
   	});
   };
+
+  ons.createPopover('popover.html').then(function(popover) {
+  	// Create a popover for the help buttons
+    $scope.popover = popover;
+  });
+  
+  
 
 });
 
