@@ -36,33 +36,4 @@ angular.module('Chronic').controller("historyController", function($scope){
     ];
     });
 
-$('#calendar').fullCalendar({
 
-    eventSources: [
-
-        // your event source
-        {
-            events: [ // put the array in the `events` property
-                {
-                    title  : 'event1',
-                    start  : '2015-10-17'
-                },
-                {
-                    title  : 'event2',
-                    start  : '2015-10-18',
-                    end    : '2010-10-07'
-                },
-                {
-                    title  : 'event3',
-                    start  : '2010-01-09T12:30:00',
-                }
-            ],
-            color: 'black',     // an option!
-            textColor: 'yellow' // an option!
-        }
-
-        // any other event sources...
-
-    ]
-
-});
