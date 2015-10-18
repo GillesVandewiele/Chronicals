@@ -33,6 +33,8 @@ angular.module('Chronic').controller("historyController", function($scope){
     ];
 
     $scope.fillEvents = function(){
+        document.getElementById('history').style.display = 'none';
+        document.getElementById('calendar').style.display = 'block';
 
         for (i = 0; i < $scope.listItems.length; i++) {
 
