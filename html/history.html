@@ -30,41 +30,16 @@
     <script>
         $(document).ready(function() {
 
+
             // page is now ready, initialize the calendar...
 
             $('#calendar').fullCalendar({
+
                 header: {
                     left: '',
                     center: 'prev title next',
                     right: ''
                 },
-
-                eventSources: [
-
-                    // your event source
-                    {
-                        events: [ // put the array in the `events` property
-                            {
-                                title  : 'event1',
-                                start  : '2015-10-18'
-                            },
-                            {
-                                title  : 'event2',
-                                start  : '2015-10-19',
-                                end    : '2015-10-22'
-                            },
-                            {
-                                title  : 'event3',
-                                start  : '2015-10-25T12:30:00',
-                            }
-                        ],
-                        color: 'black',     // an option!
-                        textColor: 'yellow' // an option!
-                    }
-
-                    // any other event sources...
-
-                ],
 
                 eventRender: function (event, element) {
                     element.attr('href', 'javascript:void(0);');
@@ -74,7 +49,7 @@
                         $("#endTime").html(moment(event.end).format('MMM Do h:mm A'));
                         $("#eventInfo").html(event.description);
                         $("#eventLink").attr('href', event.url);
-                        alert("Start: "+moment(event.start).format('MMM Do h:mm A')+"\nEnd: "+moment(event.end).format('MMM Do h:mm A')+"\nTitel: "+event.title);
+                        alert("Start: "+moment(event.start).format('MMM Do h:mm A')+"\nEnd: "+moment(event.end).format('MMM Do h:mm A')+"\nTitel: "+event.title+"\nIntensity: "+event.intensity+"\nMedicijn: "+event.medicine);
                         $("#eventContent").show();
                     });
                 }
@@ -126,11 +101,7 @@
             <!--</ons-list>-->
         <!--</div>-->
         <div id='calendar'></div>
-        <div id="eventContent" title="Event Details" style="display:none;">
-            Start: <span id="startTime"></span><br>
-            End: <span id="endTime"></span><br><br>
-            <p id="eventInfo"></p>
-        </div>
+        <button onclick="angular.element(this).scope().fillEvents()">Events</button>
 
     </ons-page>
 </ons-navigator>

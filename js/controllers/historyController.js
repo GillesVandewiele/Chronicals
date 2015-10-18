@@ -22,18 +22,71 @@ angular.module('Chronic').controller("historyController", function($scope){
                                                     name of medicine
                                                     quantity
          */
-                        [new Date(), new Date().setHours(new Date().getHours()+3), Math.random(10)],
-        [new Date(), new Date().setHours(new Date().getHours()+3), Math.random(10)],
-        [new Date(), "Sumatriptan", Math.random(200)],
-        [new Date(), "Sumatriptan", Math.random(200)],
-        [new Date(), new Date().setHours(new Date().getHours()+3), Math.random(10)],
-        [new Date(), new Date().setHours(new Date().getHours()+3), Math.random(10)],
-        [new Date(), "Sumatriptan", Math.random(200)],
-        [new Date(), new Date().setHours(new Date().getHours()+3), Math.random(10)],
-        [new Date(), new Date().setHours(new Date().getHours()+3), Math.random(10)],
-        [new Date(), new Date().setHours(new Date().getHours()+3), Math.random(10)],
-        [new Date(), "Sumatriptan", Math.random(200)]
+        [new Date(2015,9,18, 14,30,00,0), new Date(2015,9,18,15,30,0,0), Math.random()*10],
+        [new Date(2015,9,18, 14,45,0,0), "Sumatriptan", Math.random(200)],
+        [new Date(2015,9,17, 14,30,00,0), new Date(2015,9,18,15,30,0,0), Math.random()*10],
+        [new Date(2015,9,17, 18,30,00,0), new Date(2015,9,17,20,30,0,0), Math.random()*10],
+        [new Date(2015,9,15, 22,45,00,0), new Date(2015,9,16,00,30,0,0), Math.random()*10],
+        [new Date(2015,9,15, 14,30,00,0), new Date(2015,9,15,15,30,0,0), Math.random()*10],
+        [new Date(2015,9,17, 00,15,0,0), "Sumatriptan", Math.random(200)]
+
     ];
+
+    $scope.fillEvents = function(){
+
+        for (i = 0; i < $scope.listItems.length; i++) {
+
+            if($scope.listItems[i][1] instanceof Date ){
+
+                $('#calendar').fullCalendar('renderEvent',
+                            {   title: "Hoofdpijn"
+                                , start: $scope.listItems[i][0]
+                                , end: $scope.listItems[i][1]
+                                , intensity: $scope.listItems[i][2]
+                                , color : 'red'
+                            });
+            }else{
+                $('#calendar').fullCalendar('renderEvent',
+                    {   title: "Medicijn"
+                        , start: $scope.listItems[i][0]
+                        , medicine: $scope.listItems[i][1]
+                        , quantity: $scope.listItems[i][2]
+                        ,color : 'green'
+                    });
+            }
+        }
+
+
+        //$('#calendar').fullCalendar('renderEvent',
+        //    eventSources= [
+        //
+        //        // your event source
+        //        {
+        //            events: [ // put the array in the `events` property
+        //                {
+        //                    title: 'Medicijn',
+        //                    start: '2015-10-18T12:30:00'
+        //                },
+        //                {
+        //                    title: 'Hoofdpijn',
+        //                    start: '2015-10-19T12:30:00',
+        //                    end: '2015-10-22T12:30:00'
+        //                },
+        //                {
+        //                    title: 'Medicijn',
+        //                    start: '2015-10-25T12:30:00'
+        //                }
+        //            ],
+        //            color: 'black',     // an option!
+        //            textColor: 'yellow' // an option!
+        //        }
+        //
+        //        // any other event sources...
+        //
+        //    ]
+        //, true);
+    };
+
     });
 
 
