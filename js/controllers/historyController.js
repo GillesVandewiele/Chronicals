@@ -9,6 +9,7 @@
 
 angular.module('Chronic').controller("historyController", function($scope){
 
+    /*Hard coded events for testing purposes*/
     $scope.listItems = [
         /*
                 parameters:
@@ -22,16 +23,17 @@ angular.module('Chronic').controller("historyController", function($scope){
                                                     name of medicine
                                                     quantity
          */
-        [new Date(2015,9,18, 14,30,00,0), new Date(2015,9,18,15,30,0,0), Math.random()*10],
+        [new Date(2015,9,18, 22,30,00,0), new Date(2015,9,19,1,30,0,0), Math.random()*10],
         [new Date(2015,9,18, 14,45,0,0), "Sumatriptan", Math.random(200)],
-        [new Date(2015,9,17, 14,30,00,0), new Date(2015,9,18,15,30,0,0), Math.random()*10],
-        [new Date(2015,9,17, 18,30,00,0), new Date(2015,9,17,20,30,0,0), Math.random()*10],
+        [new Date(2015,9,17, 14,30,00,0), new Date(2015,9,17,15,30,0,0), Math.random()*10],
+        [new Date(2015,9,17, 22,30,00,0), new Date(2015,9,17,23,30,0,0), Math.random()*10],
         [new Date(2015,9,15, 22,45,00,0), new Date(2015,9,16,00,30,0,0), Math.random()*10],
         [new Date(2015,9,15, 14,30,00,0), new Date(2015,9,15,15,30,0,0), Math.random()*10],
         [new Date(2015,9,17, 00,15,0,0), "Sumatriptan", Math.random(200)]
 
     ];
 
+    /* Onload fill event list of the calendar */
     $scope.fillEvents = function(){
         document.getElementById('history').style.display = 'none';
         document.getElementById('calendar').style.display = 'block';
@@ -46,7 +48,7 @@ angular.module('Chronic').controller("historyController", function($scope){
                                 , end: $scope.listItems[i][1]
                                 , intensity: $scope.listItems[i][2]
                                 , color : 'red'
-                            });
+                            }, true);
             }else{
                 $('#calendar').fullCalendar('renderEvent',
                     {   title: "Medicijn"
@@ -54,7 +56,7 @@ angular.module('Chronic').controller("historyController", function($scope){
                         , medicine: $scope.listItems[i][1]
                         , quantity: $scope.listItems[i][2]
                         ,color : 'green'
-                    });
+                    }, true);
             }
         }
 

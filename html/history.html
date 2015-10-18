@@ -30,16 +30,19 @@
     <script>
         $(document).ready(function() {
 
-            
+
             // page is now ready, initialize the calendar...
 
             $('#calendar').fullCalendar({
 
+                /* Identify the structure for the header*/
                 header: {
-                    left: '',
-                    center: 'prev title next',
-                    right: ''
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,basicWeek,basicDay'
                 },
+
+                nextDayThreshold: "00:00:01",
 
                 eventRender: function (event, element) {
                     element.attr('href', 'javascript:void(0);');
