@@ -36,13 +36,33 @@ angular.module('Chronic').controller("historyController", function($scope){
     ];
     });
 
-window.onload = function(){
-    //callLater(changeMitTile());
-}
+$('#calendar').fullCalendar({
 
+    eventSources: [
 
+        // your event source
+        {
+            events: [ // put the array in the `events` property
+                {
+                    title  : 'event1',
+                    start  : '2015-10-17'
+                },
+                {
+                    title  : 'event2',
+                    start  : '2015-10-18',
+                    end    : '2010-10-07'
+                },
+                {
+                    title  : 'event3',
+                    start  : '2010-01-09T12:30:00',
+                }
+            ],
+            color: 'black',     // an option!
+            textColor: 'yellow' // an option!
+        }
 
-// Used to simulate async calls. This is done to provide a consistent interface with stores (like WebSqlStore)
-// that use async data access APIs
+        // any other event sources...
 
+    ]
 
+});

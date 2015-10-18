@@ -253,6 +253,7 @@ div .last{
 .list-left{
 	width: 15%;
 	display: inline-block;
+    font-size: 180%;
 }
 
 .list-center{
