@@ -35,7 +35,7 @@ angular.module('Chronic').controller("historyController", function($scope){
 
     /* Onload fill event list of the calendar */
     $scope.fillEvents = function(){
-        document.getElementById('history').style.display = 'none';
+        //document.getElementById('history').style.display = 'none';
         document.getElementById('calendar').style.display = 'block';
 
         for (i = 0; i < $scope.listItems.length; i++) {
@@ -91,6 +91,7 @@ angular.module('Chronic').controller("historyController", function($scope){
         //, true);
     };
 
+    window.onload = $scope.fillEvents;
     });
 
 

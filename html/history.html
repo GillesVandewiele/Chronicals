@@ -70,14 +70,15 @@
     </script>
 
 
+
 </head>
 
-<body ng-controller="historyController">
+<body ng-controller="historyController"">
 <ons-navigator>
     <ons-page>
         <div id="history">
             <ons-list class="list">
-                <ons-list-item class="list__item list__item--chevron">
+                <ons-list-item class="list__item list__item--chevron headache">
                     <span class="list__item__line-height">
                         <div class="list-left">
                             <i class="fa fa-user-md">     </i>
@@ -90,7 +91,7 @@
                         </div>
                     </span>
                 </ons-list-item>
-                <ons-list-item class="list__item list__item--chevron">
+                <ons-list-item class="list__item list__item--chevron mecicine">
                     <span class="list__item__line-height">
                         <div class="list-left">
                             <i class="fa fa-medkit">     </i>
@@ -104,10 +105,12 @@
             </ons-list>
         </div>
         <div id='calendar'></div>
+
         <button onclick="angular.element(this).scope().fillEvents()">Events</button>
 
     </ons-page>
 </ons-navigator>
 
 </body>
+
 </html>

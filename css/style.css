@@ -266,6 +266,13 @@ div .last{
 	display: inline-block;
 }
 
+.headache{
+    color: red;
+}
+
+.mecicine{
+    color: green;
+}
 /* Calendar style */
 .fc-today{
     background-color: #888888 !important;
