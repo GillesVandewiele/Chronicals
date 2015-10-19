@@ -27,54 +27,13 @@
   	<script src="../js/controllers/chronic.js"> </script>
     <script src="../js/controllers/historyController.js"> </script>
 
-    <script>
-        $(document).ready(function() {
-
-
-            // page is now ready, initialize the calendar...
-
-            $('#calendar').fullCalendar({
-
-                /* Identify the structure for the header*/
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'month,basicWeek,basicDay'
-                },
-
-                nextDayThreshold: "00:00:01",
-
-                eventRender: function (event, element) {
-                    element.attr('href', 'javascript:void(0);');
-                    element.click(function() {
-
-                        $("#startTime").html(moment(event.start).format('MMM Do h:mm A'));
-                        $("#endTime").html(moment(event.end).format('MMM Do h:mm A'));
-                        $("#eventInfo").html(event.description);
-                        $("#eventLink").attr('href', event.url);
-                        alert("Start: "+moment(event.start).format('MMM Do h:mm A')+"\nEnd: "+moment(event.end).format('MMM Do h:mm A')+"\nTitel: "+event.title+"\nIntensity: "+event.intensity+"\nMedicijn: "+event.medicine);
-                        $("#eventContent").show();
-                    });
-                }
-            });
-
-
-
-
-
-
-
-        });
-
-
-    </script>
 
 
 
 </head>
 
-<body ng-controller="historyController"">
-<ons-navigator>
+<body ng-controller="historyController">
+<ons-navigator var="historyNavigator">
     <ons-page>
         <div id="history">
             <ons-list class="list">
@@ -104,12 +63,19 @@
                 </ons-list-item>
             </ons-list>
         </div>
-        <div id='calendar'></div>
 
-        <button onclick="angular.element(this).scope().fillEvents()">Events</button>
+
+        <button onclick="angular.element(this).scope().goNextPage()">Events</button>
 
     </ons-page>
 </ons-navigator>
+
+<script type="text/ons-template" id="calendarView.html">
+
+    <ons-page>
+        <div id='calendar'></div>
+    </ons-page>
+</script>
 
 </body>
 
