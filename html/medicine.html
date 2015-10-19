@@ -28,17 +28,44 @@
   <!-- Main file & Medicine controller -->
   <script src="../js/controllers/chronic.js"> </script>
   <script src="../js/controllers/medicineController.js"> </script>
-  
-  <script type="text/ons-template" id="popover.html">
-	  <ons-popover direction="up down" cancelable>
-	    <div style="text-align: center; opacity: 0.5;">
-	      <p><small>{{message}}</small></p>
-	    </div>
-	  </ons-popover>
-  </script>
 
 </head>
 
 <body ng-controller="medicineController">   
+	
+	<ons-page>
+      <ons-toolbar>
+      	<div class="left"></div>
+        <div class="center" style="margin: 0 auto; text-align: center;">Nieuwe hoofdpijn</div>
+        <div class="right"></div>
+      </ons-toolbar>
+
+      <div class="navigatorTab">
+      	<div class="navigatorTabHead">
+      		<ons-icon icon="fa-info-circle" style="font-size: 250%;"></ons-icon> <br>
+      		<p class="label">{{advice}}</p>
+      	</div>
+      	
+      	<div class="navigatorTabBody">  
+      		<ons-row>
+		    <div class="selectDiv">
+		        <span class="selectDefault"></span>
+			      <select>
+			        <option ng-repeat="drug in drugs track by drug.id" style="background-color: #222">{{ drug.name }}</option>
+			      </select>
+		     </div>	    
+		     <input type="text" style="width: 35%">
+		     <label>mg</label>
+		     </ons-row>
+      	</div>
+      	
+		<div class="navigatorTabFoot">
+		    <ons-bottom-toolbar>
+        		<button class="button cancelButton"  onclick="location.href='dashboard.html'"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
+        		<button class="button finishButton" style="float: right;">Sla op <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
+        	</ons-bottom-toolbar>
+		</div>
+      </div>	
+    </ons-page>
 	
 </body>

@@ -46,7 +46,7 @@
     <ons-page>
       <ons-toolbar>
       	<div class="left"></div>
-        <div class="center" style="margin: 0 auto; text-align: center;">Nieuwe hoofdpijn</div>
+        <div class="center" style="margin: 0 auto; text-align: center;"></div>
         <div class="right"><ons-toolbar-button ng-click="myNavigator.pushPage('times.html', {title: 'Page'})">Volgende <ons-icon icon="ion-ios-arrow-forward" style="font-size: 32px"></ons-icon></ons-toolbar-button></div>
       </ons-toolbar>
 
@@ -62,8 +62,8 @@
       	</div>
 		<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
-        		<button class="button cancelButton"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
-        		<button class="button" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
+        		<button class="button cancelButton"  onclick="location.href='dashboard.html'"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
+        		<button class="button"  ng-click="myNavigator.pushPage('times.html', {title: 'Page'})" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
 		</div>
       </div>	
@@ -76,7 +76,7 @@
     <ons-page>
       <ons-toolbar>
         <div class="left"><ons-back-button>Terug </ons-back-button></div>
-        <div class="center" style="margin: 0 auto; text-align: center;">Nieuwe hoofdpijn</div>
+        <div class="center" style="margin: 0 auto; text-align: center;"></div>
         <div class="right"><ons-toolbar-button ng-click="myNavigator.pushPage('location.html', {title: 'Page'})">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></ons-toolbar-button></div>
       </ons-toolbar>
       
@@ -106,8 +106,8 @@
 
       	<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
-        		<button class="button cancelButton"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
-        		<button class="button" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
+        		<button class="button cancelButton"  onclick="location.href='dashboard.html'"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
+        		<button class="button" ng-click="myNavigator.pushPage('location.html', {title: 'Page'})" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
     	</div>
       </div>
@@ -130,7 +130,7 @@
       	</div>
       	
       	<div class="navigatorTabBody">  
-		    <ons-carousel overscrollable auto-scroll swipeable var="carousel" style="height: 200px;">
+		    <ons-carousel overscrollable auto-scroll swipeable var="carousel" style="height: 200px; width: 75%; margin-left: 12.5%;">
 		      <ons-carousel-item style="position: absolute; bottom: 0;">
 		        <ons-icon icon="ion-ios-arrow-back buttonIcon" ng-click="carousel.last()"></ons-icon>
 		        <img src="../img/1_location.png"></img>
@@ -156,8 +156,8 @@
       	
       	<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
-        		<button class="button cancelButton"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
-        		<button class="button" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
+        		<button class="button cancelButton"  onclick="location.href='dashboard.html'"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
+        		<button class="button" ng-click="myNavigator.pushPage('symptoms.html', {title: 'Page'})" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
     	</div>
       </div>
@@ -195,8 +195,8 @@
       	
       	<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
-        		<button class="button cancelButton"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
-        		<button class="button" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
+        		<button class="button cancelButton"  onclick="location.href='dashboard.html'"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
+        		<button class="button" ng-click="myNavigator.pushPage('triggers.html', {title: 'Page'})" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
     	</div>
       </div>
@@ -233,8 +233,8 @@
       	
       	<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
-        		<button class="button cancelButton"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
-        		<button class="button" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
+        		<button class="button cancelButton"><ons-icon icon="ion-close-round buttonIcon"><a href="dashboard.html" style="text-decoration: none;"></ons-icon> Annuleer</a></button>
+        		<button class="button finishButton" style="float: right;">Sla op <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
     	</div>
       </div>

@@ -117,7 +117,50 @@ input[type=time]::-webkit-clear-button {
 }
 
 .buttonIcon {
-	font-size: 32px;
+	font-size: 175%;
+}
+
+.selectDiv {
+   
+    margin-left: 5%;
+    width: 50%;
+    overflow: hidden;
+    background: url('../img/dropdown.png') no-repeat right #FEFEFE;
+    background-color: #222;
+    border: #ccc 1px solid;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+    padding:0px;
+    position: relative;
+    z-index:100;
+}
+   
+.selectDefault {
+    padding-left:8px;
+}
+
+.selectDiv select {
+
+   margin:0px;
+   padding:0px;
+    opacity:0;
+    filter:alpha(opacity=0);
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    display:block;
+    z-index:101;
+}
+
+.selectDiv select:focus {
+    outline: none;
+}
+
+.selectDefault, .selectDiv option {
+    font-family:arial;
+    font-size:12px;
 }
 
 .helpIcon{
