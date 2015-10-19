@@ -124,13 +124,13 @@ angular.module('Chronic').controller("historyController", function($scope) {
 
     ons.ready(function() {
         historyNavigator.on('postpush', function(event) {
-            var page = event.currentPage; // Get current page object
+
             // page is now ready, initialize the calendar...
             $('#calendar').fullCalendar({
                 /* Identify the structure for the header*/
                 header: {
-                    left: 'prev,next today',
-                    center: 'title',
+                    left: 'today',
+                    center: 'prev, title, next',
                     right: 'month,basicWeek,basicDay'
                 },
 

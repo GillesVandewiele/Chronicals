@@ -118,6 +118,7 @@ input[type=time]::-webkit-clear-button {
 
 .buttonIcon {
 	font-size: 32px;
+    margin:0 !important;
 }
 
 .helpIcon{
