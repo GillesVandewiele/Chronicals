@@ -49,12 +49,12 @@
       	<div class="navigatorTabBody">  
       		<ons-row>
 		    <div class="selectDiv">
-		        <span class="selectDefault"></span>
-			      <select>
-			        <option ng-repeat="drug in drugs track by drug.id" style="background-color: #222">{{ drug.name }}</option>
+		        <span class="selectDefault">{{selectedDrug}}</span>
+			      <select ng-model="selectedDrug">
+			        <option ng-repeat="drug in drugs track by drug.id" style="background-color: #222; color: #FFFFFF" value="{{drug.name}}">{{ drug.name }}</option>
 			      </select>
 		     </div>	    
-		     <input type="text" style="width: 35%">
+		     <input type="text" style="width: 35%; background-color: #222; color: #FFFFFF">
 		     <label>mg</label>
 		     </ons-row>
       	</div>
