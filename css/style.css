@@ -141,8 +141,8 @@ input[type=time]::-webkit-clear-button {
 
 .selectDiv select {
 
-   margin:0px;
-   padding:0px;
+    margin:0px;
+    padding:0px;
     opacity:0;
     filter:alpha(opacity=0);
     position:absolute;
@@ -167,6 +167,17 @@ input[type=time]::-webkit-clear-button {
 	float: right;
 	margin-right: 5%;
 	transform: translateY(50%);
+}
+
+option{
+	background-color: #222; 
+	color: #FFFFFF
+}
+
+.medicineQuantity{
+	width: 35%; 
+	background-color: #222; 
+	color: #FFFFFF
 }
 
 .dashboard{
