@@ -13,7 +13,7 @@ angular.module('Chronic').controller("historyController", function($scope){
     $scope.listItems = [
         /*
                 parameters:
-                            headache/mecicine 0/1
+
                                     headache
                                                     startDate+time
                                                     endDate+time
