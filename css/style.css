@@ -278,3 +278,15 @@ div .last{
 .fc-today{
     background-color: #888888 !important;
 }
+
+.left{
+    width: 30%;
+}
+
+.center{
+    width: 40%;
+}
+
+.right{
+    width: 30%;
+}
