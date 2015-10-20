@@ -62,7 +62,8 @@ angular.module('Chronic').controller("historyController", function($scope) {
                     alert("Start: "+moment(event.start).format('MMM Do h:mm A')+"\nEnd: "+moment(event.end).format('MMM Do h:mm A')+"\nTitel: "+event.title+"\nIntensity: "+event.intensity+"\nMedicijn: "+event.medicine);
                     $("#eventContent").show();
                 });
-            }
+            },
+
         });
 
         document.getElementById('calendar').style.display = 'block';
@@ -90,6 +91,10 @@ angular.module('Chronic').controller("historyController", function($scope) {
                     }, true);
             }
         }
+
+        console.log("Loading changed");
+        $('#loadingImg').hide();
+
 
 
         //$('#calendar').fullCalendar('renderEvent',
