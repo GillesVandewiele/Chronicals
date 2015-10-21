@@ -6,12 +6,14 @@
  This file contains the controller to add and modify headaches.
  */
 
-angular.module('Chronic').controller("headacheController", function($scope){
+angular.module('Chronic').controller('headacheController', function($scope, dataService){
 	
   // Setting the dates
   $scope.intensityValue=5; // The intensity of the headache
   $scope.startDate = new Date(); // Start date of the headache
   $scope.startTime = $scope.startDate; // Start time of the headache
+  
+  $scope.test = dataService.getHeadache();
   
   $scope.updateStartTimeString = function(){
   	console.log($scope.startTime);

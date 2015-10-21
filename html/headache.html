@@ -27,6 +27,7 @@
   
   <!-- Main file & Headache controller -->
   <script src="../js/controllers/chronic.js"> </script>
+  <script src="../js/services/dataservice.js"> </script>
   <script src="../js/controllers/headacheController.js"> </script>
   
   <script type="text/ons-template" id="popover.html">
@@ -233,7 +234,7 @@
       	
       	<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
-        		<button class="button cancelButton"><ons-icon icon="ion-close-round buttonIcon"><a href="dashboard.html" style="text-decoration: none;"></ons-icon> Annuleer</a></button>
+        		<button class="button cancelButton" onclick="location.href='dashboard.html'"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
         		<button class="button finishButton" style="float: right;">Sla op <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
     	</div>

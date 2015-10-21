@@ -27,6 +27,7 @@
   
   <!-- Main file & Medicine controller -->
   <script src="../js/controllers/chronic.js"> </script>
+  <script src="../js/services/dataservice.js"> </script>
   <script src="../js/controllers/medicineController.js"> </script>
 
 </head>
@@ -48,6 +49,7 @@
       	
       	<div class="navigatorTabBody">  
       		<ons-row>
+      		<p class="label" style="margin-left: 5%;">Medicijn + hoeveelheid:</p>
 		    <div class="selectDiv">
 		        <span class="selectDefault">{{selectedDrug.name}}</span>
 			      <select ng-options="drug as drug.name for drug in drugs" ng-model="selectedDrug">
@@ -58,6 +60,7 @@
 		     <label>mg</label>
 		     </ons-row>
 		     <ons-row style="margin-top: 5%;">
+      			<p class="label" style="margin-left: 5%">Tijdstip van inname:</p>
 		     	<input type="date" ng-model="endDate" style="width: 50%; margin-left: 5%; background-color: #222; color: #FFFFFF" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col>
       			<input type="time" placeholder="HH:mm" ng-model="endTime" style="width: 34%; background-color: #222; color: #FFFFFF" class="timePicker" step="60"></ons-col>
 		     </ons-row>
