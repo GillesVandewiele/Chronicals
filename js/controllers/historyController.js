@@ -78,7 +78,7 @@ angular.module('Chronic').controller("historyController", function($scope) {
                         , start: $scope.listItems[i][0]
                         , end: $scope.listItems[i][1]
                         , intensity: $scope.listItems[i][2]
-                        , color: 'red'
+                        , color: '#f9332f'
                     }, true);
             } else {
                 $('#calendar').fullCalendar('renderEvent',
@@ -87,13 +87,14 @@ angular.module('Chronic').controller("historyController", function($scope) {
                         , start: $scope.listItems[i][0]
                         , medicine: $scope.listItems[i][1]
                         , quantity: $scope.listItems[i][2]
-                        , color: 'green'
+                        , color: '#0cc80c'
                     }, true);
             }
         }
 
         console.log("Loading changed");
         $('#loadingImg').hide();
+
 
 
 
