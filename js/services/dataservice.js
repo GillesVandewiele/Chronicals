@@ -58,6 +58,7 @@ angular.module('Chronic').service('dataService', function() {
     var getHeadacheList = function(){
       return headacheList;
     };
+
     return {
     addHeadache: addHeadache,
     addMedicine: addMedicine,
