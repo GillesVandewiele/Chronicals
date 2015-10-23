@@ -11,10 +11,11 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   $scope.headache = dataService.getCurrentHeadache();
   
   if($scope.headache == null){
-  	$scope.headache = { intensityValues: [{key: new Date(), value: 5}], startDate: new Date(), startTime: null, endDate: null, endTime: null, 
+  	$scope.headache = { intensityValues: [{key: new Date(), value: 5}], start: new Date(), endDate: null, endTime: null, 
   						location: null, triggers: [], symptoms: []};
-  	$scope.headache.startTime = $scope.headache.startDate;
   }
+  $scope.headache.startDate = $scope.headache.start;
+  $scope.headache.startTime = $scope.headache.startDate;
   
   $scope.updateStartTimeString = function(){
   	var months = ["jan.", "feb.", "mrt.", "apr.", "mei", "jun.", "jul.", "aug.", "sept.", "okt.", "nov.", "dec."];
