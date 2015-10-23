@@ -1,6 +1,8 @@
 angular.module('Chronic').service('dataService', function() {
   var headache;
+  //{ intensityValue: 5, start: null, end: null, location: null, triggers: null, symptoms: null };
   var medicine;
+
   var medicineList = [
           {date:new Date(2015, 9, 18, 14, 45, 0, 0), name:"Sumatriptan", quantity:Math.random(200)},
       {date: new Date(2015, 9, 17, 00, 15, 0, 0), name: "Paddo's", quantity: Math.random(200)}
@@ -21,20 +23,21 @@ angular.module('Chronic').service('dataService', function() {
       medicineList.push(newObj);
   };
 
+  //{ name: "Sumatripan", date: new Date(), quantity: 5}
 
-  var setHeadache = function(newObj){
+  var setCurrentHeadache = function(newObj){
   	headache = newObj;
   };
 
-  var setMedicine = function(newObj){
+  var setCurrentMedicine = function(newObj){
   	medicine = newObj;
   };
 
-  var getHeadache = function(){
+  var getCurrentHeadache = function(){
   	return headache;
   };
 
-  var getMedicine = function(){
+  var getCurrentMedicine = function(){
   	return medicine;
   };
 
@@ -46,15 +49,14 @@ angular.module('Chronic').service('dataService', function() {
       return headacheList;
   };
   return {
-    setHeadache: setHeadache,
-    setMedicine: setMedicine,
-    getHeadache: getHeadache,
-    getMedicine: getMedicine,
     addHeadache: addHeadache,
     addMedicine: addMedicine,
     getHeadacheList: getHeadacheList,
-    getMedicineList: getMedicineList
-
+    getMedicineList: getMedicineList,
+    setCurrentHeadache: setCurrentHeadache,
+    setCurrentMedicine: setCurrentMedicine,
+    getCurrentHeadache: getCurrentHeadache,
+    getCurrentMedicine: getCurrentMedicine
   };
 
 

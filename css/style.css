@@ -63,12 +63,16 @@ html, body{
 	color: black;
 	float: right;
 	height: 25px;
+	background-color: #1a252f;
+	color: #FFFFFF;
 }
 
 .timePicker{
 	color: black;
 	float: left;
 	height: 25px;
+	background-color: #1a252f;
+	color: #FFFFFF;
 }
 
 input[type=date]::-webkit-inner-spin-button {
@@ -126,7 +130,8 @@ input[type=time]::-webkit-clear-button {
     width: 50%;
     overflow: hidden;
     background: url('../img/dropdown.png') no-repeat right #FEFEFE;
-    background-color: #222;
+    background-color: #1a252f;
+    color: #FFFFFF;
     border: #ccc 1px solid;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
@@ -137,6 +142,8 @@ input[type=time]::-webkit-clear-button {
 
 .selectDefault {
     padding-left:8px;
+    background-color: #1a252f;
+    color: #FFFFFF;
 }
 
 .selectDiv select {
@@ -152,6 +159,8 @@ input[type=time]::-webkit-clear-button {
     height:100%;
     display:block;
     z-index:101;
+    background-color: #1a252f;
+    color: #FFFFFF;
 }
 
 .selectDiv select:focus {
@@ -161,6 +170,8 @@ input[type=time]::-webkit-clear-button {
 .selectDefault, .selectDiv option {
     font-family:arial;
     font-size:12px;
+    background-color: #1a252f;
+    color: #FFFFFF;
 }
 
 .helpIcon{
@@ -176,8 +187,8 @@ option{
 
 .medicineQuantity{
 	width: 35%;
-	background-color: #222;
-	color: #FFFFFF
+	background-color: #1a252f;
+	color: #FFFFFF;
 }
 
 
