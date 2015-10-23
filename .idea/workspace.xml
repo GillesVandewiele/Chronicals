@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43c9da2d-e225-43f7-8236-b9dae08b7604" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html/detailedHeadache.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/controllers/detailedHeadacheController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/chronic.js" afterPath="$PROJECT_DIR$/js/controllers/chronic.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/services/dataservice.js" afterPath="$PROJECT_DIR$/js/services/dataservice.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/headache.html" afterPath="$PROJECT_DIR$/html/headache.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/headacheController.js" afterPath="$PROJECT_DIR$/js/controllers/headacheController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/medicine.html" afterPath="$PROJECT_DIR$/html/medicine.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/onsen-css-components-dark-theme.css" afterPath="$PROJECT_DIR$/css/onsen-css-components-dark-theme.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Code.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,7 +28,7 @@
     <favorites_list name="Code" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.682992">
       <split-first>
         <leaf>
           <file leaf-file-name="dashboard.html" pinned="false" current-in-tab="false">
@@ -42,11 +43,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="headache.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="headache.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/html/headache.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-1.0405186">
-                  <caret line="96" column="140" selection-start-line="96" selection-start-column="136" selection-end-line="96" selection-end-column="140" />
+                <state vertical-scroll-proportion="-29.423077">
+                  <caret line="113" column="14" selection-start-line="113" selection-start-column="14" selection-end-line="113" selection-end-column="14" />
                   <folding>
                     <element signature="n#style#0;n#div#1;n#ons-toolbar#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#ons-icon#0;n#ons-toolbar-button#0;n#div#2;n#ons-toolbar#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -61,8 +62,8 @@
           <file leaf-file-name="history.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/html/history.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="10.269231">
-                  <caret line="40" column="58" selection-start-line="40" selection-start-column="58" selection-end-line="40" selection-end-column="58" />
+                <state vertical-scroll-proportion="-4.1153846">
+                  <caret line="87" column="16" selection-start-line="0" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
                   <folding>
                     <element signature="n#ons-list#0;n#div#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                   </folding>
@@ -70,22 +71,44 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="historyController.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/js/controllers/historyController.js">
+          <file leaf-file-name="detailedHeadache.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/html/detailedHeadache.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.39612487">
+                  <caret line="35" column="164" selection-start-line="35" selection-start-column="164" selection-end-line="35" selection-end-column="164" />
+                  <folding>
+                    <element signature="n#style#0;n#div#0;n#ons-row#0;n#div#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#1;n#ons-row#0;n#div#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#ons-row#1;n#div#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#1;n#ons-row#1;n#div#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#p#0;n#ons-row#2;n#div#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="dataservice.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/js/services/dataservice.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="93" column="9" selection-start-line="93" selection-start-column="9" selection-end-line="93" selection-end-column="9" />
+                  <caret line="8" column="64" selection-start-line="8" selection-start-column="64" selection-end-line="8" selection-end-column="64" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="headacheController.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/js/controllers/headacheController.js">
+          <file leaf-file-name="detailedHeadacheController.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/js/controllers/detailedHeadacheController.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
-                  <folding />
+                  <caret line="54" column="14" selection-start-line="54" selection-start-column="14" selection-end-line="54" selection-end-column="14" />
+                  <folding>
+                    <element signature="e#41#251#0" expanded="false" />
+                    <element signature="e#384#1160#0" expanded="false" />
+                    <element signature="e#449#498#0" expanded="false" />
+                    <element signature="e#541#718#0" expanded="false" />
+                    <element signature="e#796#1128#0" expanded="false" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -97,8 +120,8 @@
           <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/css/style.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.3623639">
-                  <caret line="361" column="5" selection-start-line="361" selection-start-column="1" selection-end-line="361" selection-end-column="5" />
+                <state vertical-scroll-proportion="0.8714903">
+                  <caret line="489" column="21" selection-start-line="489" selection-start-column="21" selection-end-line="489" selection-end-column="21" />
                   <folding>
                     <element signature="e#5685#6747#0" expanded="false" />
                     <element signature="e#6765#7372#0" expanded="false" />
@@ -106,19 +129,8 @@
                     <element signature="e#7544#7618#0" expanded="false" />
                     <element signature="e#7773#8046#0" expanded="false" />
                     <element signature="e#8064#8131#0" expanded="false" />
-                    <element signature="e#8133#8254#0" expanded="false" />
                     <element signature="e#8256#8459#0" expanded="false" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="dataservice.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/js/services/dataservice.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="58" column="42" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
-                  <folding />
                 </state>
               </provider>
             </entry>
@@ -130,8 +142,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="Html5" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -149,13 +161,15 @@
         <option value="$PROJECT_DIR$/js/controllers/dashboardController.js" />
         <option value="$PROJECT_DIR$/html/testPage.html" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/js/controllers/chronic.js" />
         <option value="$PROJECT_DIR$/html/dashboard.html" />
         <option value="$PROJECT_DIR$/html/history.html" />
         <option value="$PROJECT_DIR$/js/controllers/historyController.js" />
-        <option value="$PROJECT_DIR$/js/services/dataservice.js" />
-        <option value="$PROJECT_DIR$/css/style.css" />
         <option value="$PROJECT_DIR$/html/headache.html" />
+        <option value="$PROJECT_DIR$/js/controllers/chronic.js" />
+        <option value="$PROJECT_DIR$/js/services/dataservice.js" />
+        <option value="$PROJECT_DIR$/js/controllers/detailedHeadacheController.js" />
+        <option value="$PROJECT_DIR$/css/style.css" />
+        <option value="$PROJECT_DIR$/html/detailedHeadache.html" />
       </list>
     </option>
   </component>
@@ -169,8 +183,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1378" />
-    <option name="height" value="780" />
+    <option name="width" value="1932" />
+    <option name="height" value="1092" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -306,13 +320,20 @@
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="editor.config.accepted" value="true" />
     <property name="FullScreen" value="false" />
+    <property name="recentsLimit" value="5" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Kiani\Dropbox\Thesis_private\Code\css" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JavaScript Debug.detailedHeadache.html">
+    <configuration default="false" name="detailedHeadacheController.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="detailedHeadacheController.js" working-dir="$PROJECT_DIR$/js/controllers">
+      <method />
+    </configuration>
+    <configuration default="false" name="detailedHeadache.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Code/html/detailedHeadache.html">
+      <method />
+    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <method />
     </configuration>
@@ -351,6 +372,16 @@
       <envs />
       <method />
     </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Node.js.detailedHeadacheController.js" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.detailedHeadache.html" />
+    </list>
+    <recent_temporary>
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Node.js.detailedHeadacheController.js" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.detailedHeadache.html" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration">
@@ -379,15 +410,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1378" height="780" extended-state="0" />
+    <frame x="-8" y="-8" width="1932" height="1092" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17547724" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.124739036" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32913387" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935917" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -438,25 +469,12 @@
     <option name="LAST_COMMIT_MESSAGE" value="dashboard baby steps" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/controllers/historyController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/angular/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html/headache.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -485,7 +503,6 @@
             <element signature="e#7544#7618#0" expanded="false" />
             <element signature="e#7773#8046#0" expanded="false" />
             <element signature="e#8064#8131#0" expanded="false" />
-            <element signature="e#8133#8254#0" expanded="false" />
             <element signature="e#8256#8459#0" expanded="false" />
           </folding>
         </state>
@@ -520,7 +537,6 @@
             <element signature="e#7544#7618#0" expanded="false" />
             <element signature="e#7773#8046#0" expanded="false" />
             <element signature="e#8064#8131#0" expanded="false" />
-            <element signature="e#8133#8254#0" expanded="false" />
             <element signature="e#8256#8459#0" expanded="false" />
           </folding>
         </state>
@@ -569,7 +585,6 @@
             <element signature="e#7544#7618#0" expanded="false" />
             <element signature="e#7773#8046#0" expanded="false" />
             <element signature="e#8064#8131#0" expanded="false" />
-            <element signature="e#8133#8254#0" expanded="false" />
             <element signature="e#8256#8459#0" expanded="false" />
           </folding>
         </state>
@@ -618,7 +633,6 @@
             <element signature="e#7544#7618#0" expanded="false" />
             <element signature="e#7773#8046#0" expanded="false" />
             <element signature="e#8064#8131#0" expanded="false" />
-            <element signature="e#8133#8254#0" expanded="false" />
             <element signature="e#8256#8459#0" expanded="false" />
           </folding>
         </state>
@@ -663,7 +677,6 @@
             <element signature="e#7544#7618#0" expanded="false" />
             <element signature="e#7773#8046#0" expanded="false" />
             <element signature="e#8064#8131#0" expanded="false" />
-            <element signature="e#8133#8254#0" expanded="false" />
             <element signature="e#8256#8459#0" expanded="false" />
           </folding>
         </state>
@@ -694,7 +707,6 @@
             <element signature="e#7544#7618#0" expanded="false" />
             <element signature="e#7773#8046#0" expanded="false" />
             <element signature="e#8064#8131#0" expanded="false" />
-            <element signature="e#8133#8254#0" expanded="false" />
             <element signature="e#8256#8459#0" expanded="false" />
           </folding>
         </state>
@@ -718,7 +730,6 @@
             <element signature="e#7544#7618#0" expanded="false" />
             <element signature="e#7773#8046#0" expanded="false" />
             <element signature="e#8064#8131#0" expanded="false" />
-            <element signature="e#8133#8254#0" expanded="false" />
             <element signature="e#8256#8459#0" expanded="false" />
           </folding>
         </state>
@@ -742,7 +753,6 @@
             <element signature="e#7544#7618#0" expanded="false" />
             <element signature="e#7773#8046#0" expanded="false" />
             <element signature="e#8064#8131#0" expanded="false" />
-            <element signature="e#8133#8254#0" expanded="false" />
             <element signature="e#8256#8459#0" expanded="false" />
           </folding>
         </state>
@@ -766,7 +776,6 @@
             <element signature="e#7544#7618#0" expanded="false" />
             <element signature="e#7773#8046#0" expanded="false" />
             <element signature="e#8064#8131#0" expanded="false" />
-            <element signature="e#8133#8254#0" expanded="false" />
             <element signature="e#8256#8459#0" expanded="false" />
           </folding>
         </state>
@@ -854,16 +863,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/chronic.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16648531">
-          <caret line="9" column="55" selection-start-line="9" selection-start-column="55" selection-end-line="9" selection-end-column="55" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html/dashboard.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.346154">
@@ -874,44 +873,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/headacheController.js">
+    <entry file="file://$PROJECT_DIR$/html/headache.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
-          <folding />
+        <state vertical-scroll-proportion="-29.423077">
+          <caret line="113" column="14" selection-start-line="113" selection-start-column="14" selection-end-line="113" selection-end-column="14" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#ons-toolbar#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ons-icon#0;n#ons-toolbar-button#0;n#div#2;n#ons-toolbar#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#div#1;n#div#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#ons-bottom-toolbar#0;n#div#2;n#div#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/history.html">
+    <entry file="file://$PROJECT_DIR$/js/controllers/headacheController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="10.269231">
-          <caret line="40" column="58" selection-start-line="40" selection-start-column="58" selection-end-line="40" selection-end-column="58" />
-          <folding>
-            <element signature="n#ons-list#0;n#div#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="114" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="114" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/controllers/historyController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="93" column="9" selection-start-line="93" selection-start-column="9" selection-end-line="93" selection-end-column="9" />
+          <caret line="136" column="57" selection-start-line="136" selection-start-column="57" selection-end-line="136" selection-end-column="57" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controllers/chronic.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="67" selection-start-line="9" selection-start-column="67" selection-end-line="9" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/history.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.1153846">
+          <caret line="87" column="16" selection-start-line="0" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+          <folding>
+            <element signature="n#ons-list#0;n#div#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/services/dataservice.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="58" column="42" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
+          <caret line="8" column="64" selection-start-line="8" selection-start-column="64" selection-end-line="8" selection-end-column="64" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controllers/detailedHeadacheController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="54" column="14" selection-start-line="54" selection-start-column="14" selection-end-line="54" selection-end-column="14" />
+          <folding>
+            <element signature="e#41#251#0" expanded="false" />
+            <element signature="e#384#1160#0" expanded="false" />
+            <element signature="e#449#498#0" expanded="false" />
+            <element signature="e#541#718#0" expanded="false" />
+            <element signature="e#796#1128#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3623639">
-          <caret line="361" column="5" selection-start-line="361" selection-start-column="1" selection-end-line="361" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.8714903">
+          <caret line="489" column="21" selection-start-line="489" selection-start-column="21" selection-end-line="489" selection-end-column="21" />
           <folding>
             <element signature="e#5685#6747#0" expanded="false" />
             <element signature="e#6765#7372#0" expanded="false" />
@@ -919,22 +954,21 @@
             <element signature="e#7544#7618#0" expanded="false" />
             <element signature="e#7773#8046#0" expanded="false" />
             <element signature="e#8064#8131#0" expanded="false" />
-            <element signature="e#8133#8254#0" expanded="false" />
             <element signature="e#8256#8459#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/headache.html">
+    <entry file="file://$PROJECT_DIR$/html/detailedHeadache.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.0405186">
-          <caret line="96" column="140" selection-start-line="96" selection-start-column="136" selection-end-line="96" selection-end-column="140" />
+        <state vertical-scroll-proportion="0.39612487">
+          <caret line="35" column="164" selection-start-line="35" selection-start-column="164" selection-end-line="35" selection-end-column="164" />
           <folding>
-            <element signature="n#style#0;n#div#1;n#ons-toolbar#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#ons-icon#0;n#ons-toolbar-button#0;n#div#2;n#ons-toolbar#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#1;n#div#1;n#div#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#1;n#ons-bottom-toolbar#0;n#div#2;n#div#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#ons-row#0;n#div#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#ons-row#0;n#div#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#ons-row#1;n#div#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#ons-row#1;n#div#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#ons-row#2;n#div#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

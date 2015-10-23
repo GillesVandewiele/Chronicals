@@ -7,5 +7,5 @@
  */
 
 
-var app = angular.module('Chronic', ['onsen.directives']);
+var app = angular.module('Chronic', ['onsen.directives', "chart.js"]);
 
