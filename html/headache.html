@@ -31,7 +31,7 @@
   <script src="../js/controllers/headacheController.js"> </script>
   
   <script type="text/ons-template" id="popover.html">
-	  <ons-popover direction="up down" cancelable>
+	  <ons-popover direction="up down">
 	    <div style="text-align: center; opacity: 0.5;">
 	      <p><small>{{message}}</small></p>
 	    </div>
@@ -59,7 +59,7 @@
       	
       	<div class="navigatorTabBody">   
 	      	<p class="label" style="vertical-align: 50%;">0</p> <input type="range" min="0" max="10" class="range intensitySlider" ng-model="intensityValue"> <p class="label" style="vertical-align: 50%;">10</p><br>
-	      	<p class="label"> {{ intensityValue }}  /  10 </p>
+	      	<p class="label"> {{ headache.intensityValue }}  /  10 </p>
       	</div>
 		<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
@@ -92,16 +92,16 @@
   				<ons-col></ons-col>
   			</ons-row>
       		<ons-row>
-      			<ons-col class="col ons-col-inner"><input type="date" ng-model="startDate" ng-change="updateStartTimeString()" style="background-color: #222; color: #FFFFFF" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col> 
-      			<ons-col class="col ons-col-inner"><input type="time" placeholder="HH:mm" ng-change="updateStartTimeString()" style="background-color: #222; color: #FFFFFF" ng-model="startTime" class="timePicker" step="60"></ons-col>
+      			<ons-col class="col ons-col-inner"><input type="date" ng-model="headache.startDate" ng-change="updateStartTimeString()" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col> 
+      			<ons-col class="col ons-col-inner"><input type="time" placeholder="HH:mm" ng-change="updateStartTimeString()" ng-model="headache.startTime" class="timePicker" step="60"></ons-col>
       		</ons-row>
       		<ons-row>
       			<ons-col><p class="label timeLabel">Eindtijd: (optioneel)</p></ons-col>
       			<ons-col></ons-col>
 			</ons-row>
 			<ons-row>
-      			<ons-col class="col ons-col-inner"><input type="date" ng-model="endDate" style="background-color: #222; color: #FFFFFF" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col>
-      			<ons-col class="col ons-col-inner"><input type="time" placeholder="HH:mm" ng-model="endTime" style="background-color: #222; color: #FFFFFF" class="timePicker" step="60"></ons-col>
+      			<ons-col class="col ons-col-inner"><input type="date" ng-model="headache.endDate" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col>
+      			<ons-col class="col ons-col-inner"><input type="time" placeholder="HH:mm" ng-model="headache.endTime" class="timePicker" step="60"></ons-col>
        		</ons-row>
        </div>
 
@@ -235,7 +235,7 @@
       	<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
         		<button class="button cancelButton" onclick="location.href='dashboard.html'"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
-        		<button class="button finishButton" style="float: right;">Sla op <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
+        		<button class="button finishButton" ng-click="closeAndSave()" style="float: right;">Sla op <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
     	</div>
       </div>

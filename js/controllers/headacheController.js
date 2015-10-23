@@ -8,23 +8,41 @@
 
 angular.module('Chronic').controller('headacheController', function($scope, dataService){
 	
-  // Setting the dates
-  $scope.intensityValue=5; // The intensity of the headache
-  $scope.startDate = new Date(); // Start date of the headache
-  $scope.startTime = $scope.startDate; // Start time of the headache
+  // First try to get the headache from the dataService, if it's null we initialize some default values
+  $scope.headache = dataService.getCurrentHeadache();
   
-  $scope.test = dataService.getHeadache();
+  if($scope.headache == null){
+  	$scope.headache = { intensityValue: 5, startDate: new Date(), startTime: null, endDate: null, endTime: null, 
+  						location: null, triggers: null, symptoms: null};
+  	$scope.headache.startTime = $scope.headache.startDate;
+  }
   
   $scope.updateStartTimeString = function(){
-  	console.log($scope.startTime);
   	var months = ["jan.", "feb.", "mrt.", "apr.", "mei", "jun.", "jul.", "aug.", "sept.", "okt.", "nov.", "dec."];
-  	var month = months[$scope.startTime.getMonth()];
-  	var day = $scope.startTime.getDate().toString();
-  	var hour = $scope.startTime.getHours().toString();
+  	var month = months[$scope.headache.startDate.getMonth()];
+  	var day = $scope.headache.startDate.getDate().toString();
+  	var hour = $scope.headache.startDate.getHours().toString();
   	if(hour < 10) hour = "0"+hour;
-  	var minute = $scope.startTime.getMinutes().toString();
+  	var minute = $scope.headache.startTime.getMinutes().toString();
   	if(minute < 10) minute = "0"+minute;
   	$scope.startTimeString = day + " " + month + " " + hour + ":" + minute;
+  };
+  
+  $scope.$watch('startDate', $scope.updateStartTimeString);
+  $scope.$watch('startTime', $scope.updateStartTimeString);
+  
+  $scope.closeAndSave = function(){
+  	// This is executed when the user finishes
+  	console.log($scope.headache);
+  	
+  	// Convert end/startDate & end/startTime to two Dates
+  	if($scope.headache.endDate != null && $scope.headache.endTime != null)
+  		var end = new Date($scope.headache.endDate.getYear(), $scope.headache.endDate.getMonth(), $scope.headache.endDate.getDay(), $scope.headache.endTime.getHours(), $scope.headache.endTime.getMinutes());
+  	
+  	if($scope.headache.startDate != null && $scope.headache.startTime != null)
+  		var start = new Date($scope.headache.startDate.getYear(), $scope.headache.startDate.getMonth(), $scope.headache.startDate.getDay(), $scope.headache.startTime.getHours(), $scope.headache.startTime.getMinutes());
+  	
+  	dataService.setCurrentHeadache(null);
   };
   
   $scope.startTimeString = $scope.updateStartTimeString();
