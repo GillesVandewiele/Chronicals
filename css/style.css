@@ -203,6 +203,7 @@ a{
     margin-bottom: auto;
 
     border-bottom: 4px solid #1e1f3f;
+    /*border-left: 4px solid #1e1f3f;*/
     height: 100% !important;
 
 }
