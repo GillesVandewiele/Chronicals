@@ -12,8 +12,7 @@ angular.module('Chronic').service('dataService', function($localStorage) {
       if($localStorage.medicineList) $localStorage.medicineList.push(newObj);
       else $localStorage.medicineList = [newObj];
   };
-
-  //{ name: "Sumatripan", date: new Date(), quantity: 5}
+    //{ name: "Sumatripan", date: new Date(), quantity: 5}
 
   var setCurrentHeadache = function(newObj){
   	  $localStorage.currentHeadache = newObj;
@@ -61,10 +60,8 @@ angular.module('Chronic').service('dataService', function($localStorage) {
     setCurrentHeadache: setCurrentHeadache,
     setCurrentMedicine: setCurrentMedicine,
     getCurrentHeadache: getCurrentHeadache,
-    getCurrentMedicine: getCurrentMedicine,
-    getSymptoms: getSymptoms,
-    getTriggers: getTriggers
-  };
+    getCurrentMedicine: getCurrentMedicine
+    };
 
 
 });

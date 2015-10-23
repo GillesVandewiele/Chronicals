@@ -7,5 +7,5 @@
  */
 
 
-var app = angular.module('Chronic', ['onsen.directives', 'ngStorage']);
+var app = angular.module('Chronic', ['onsen.directives', 'ngStorage', "chart.js"]);
 
