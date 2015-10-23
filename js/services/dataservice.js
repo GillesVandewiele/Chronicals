@@ -12,7 +12,7 @@ angular.module('Chronic').service('dataService', function() {
     var medicine;
 
     var medicineList = [
-          {start:new Date(2015, 9, 18, 14, 45, 0, 0), name:"Sumatriptan", quantity:Math.random(200)},
+          {start:new Date(2015, 9, 18, 14, 45, 0, 0), name:"Sumatriptan", quantity: Math.random(200)},
       {start: new Date(2015, 9, 17, 00, 15, 0, 0), name: "Paddo's", quantity: Math.random(200)}
     ];
     var headacheList = [

@@ -174,12 +174,23 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
 
 
         });
-        
+
     });
 
     $scope.goNextPage = function(){
         historyNavigator.pushPage('calendarView.html', {onTransitionEnd: '$scope.fillEvents()'});
     };
+
+    $scope.listClick = function(obj){
+        if(obj.hasOwnProperty('end')){
+            dataService.setCurrentHeadache(obj);
+            location.href='detailedHeadache.html'
+        }else{
+            dataService.setCurrentMedicine(obj);
+            console.log(obj)
+        }
+
+    }
 
 });
 
