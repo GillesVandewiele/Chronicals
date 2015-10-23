@@ -1,6 +1,3 @@
-/**
- * Created by Kiani on 23/10/15.
- */
 /*!
  NAAM VAN ONS PROJECT, v1.0
  Created by Kiani Lannoye & Gilles Vandewiele, commissioned by UZ Ghent
@@ -44,6 +41,8 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
     var current = dataService.getCurrentHeadache();
     var months = ["jan.", "feb.", "mrt.", "apr.", "mei", "jun.", "jul.", "aug.", "sept.", "okt.", "nov.", "dec."];
 
+	console.log(current); 
+	
     $scope.startTime = current.start.getDate()+" "+months[current.start.getMonth()]+"    "+current.start.getHours() + ":" + current.start.getMinutes() ;
     $scope.endTime = current.end.getDate()+" "+months[current.end.getMonth()]+"    "+current.end.getHours() + ":" + current.end.getMinutes() ;
 

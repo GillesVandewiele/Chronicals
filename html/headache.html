@@ -16,8 +16,9 @@
   <!-- Our style sheet -->
   <link rel="stylesheet" href="../css/style.css">
 
-  <!-- AngularJS | MIT License | https://angularjs.org/ -->
+  <!-- AngularJS + ngStorage | MIT License | https://angularjs.org/ -->
   <script src="../js/angular/angular.js"></script>
+  <script src="../js/angular/ngStorage.min.js"></script>
 
   <!-- onsenui v1.3.11 | Apache License | http://onsen.io/ -->
   <script src="../js/vendor/onsenui.min.js"></script>
@@ -33,21 +34,54 @@
     <script src="../js/vendor/Chart.min.js"></script>
     <script src="../js/vendor/angular-chart.js"></script>
 
-  <script type="text/ons-template" id="popover.html">
-	  <ons-popover direction="up down">
-	    <div style="text-align: center; opacity: 0.5;">
-	      <p><small>{{message}}</small></p>
-	    </div>
-	  </ons-popover>
-  </script>
+  
 
 </head>
 <body ng-controller="headacheController">
-
+	<ons-template id="popover.html">
+		  <ons-popover direction="up down" cancelable>
+		    <div style="text-align: center; opacity: 0.5;">
+		      <p><small>{{message}}</small></p>
+		    </div>
+		  </ons-popover>
+	 </ons-template>
   <ons-navigator var="myNavigator">
 
 	<!-- Intensity page -->
     <ons-page>
+      <ons-toolbar>
+      	<div class="left"></div>
+        <div class="center" style="margin: 0 auto; text-align: center;"></div>
+        <div class="right"><ons-toolbar-button ng-click="myNavigator.pushPage('intensity.html', {title: 'Page'})">Volgende <ons-icon icon="ion-ios-arrow-forward" style="font-size: 32px"></ons-icon></ons-toolbar-button></div>
+      </ons-toolbar>
+
+      <div class="navigatorTab">
+      	<div class="navigatorTabHead">
+      		<h1>Intensiteiten</h1>
+      	</div>
+
+      	<div class="navigatorTabBody">
+      	  <ons-list>
+      		<ons-list-item ng-repeat="value in headache.intensityValues track by value.key">
+      		
+      		
+      		</ons-list-item>
+      	  </ons-list>
+      		
+      		
+      	</div>
+		<div class="navigatorTabFoot">
+		    <ons-bottom-toolbar>
+        		<button class="button cancelButton"  onclick="location.href='dashboard.html'"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
+        		<button class="button"  ng-click="myNavigator.pushPage('times.html', {title: 'Page'})" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
+        	</ons-bottom-toolbar>
+		</div>
+      </div>
+    </ons-page>
+
+  </ons-navigator>
+  <script type="text/ons-template" id="intensity.html">
+   <ons-page>
       <ons-toolbar>
       	<div class="left"></div>
         <div class="center" style="margin: 0 auto; text-align: center;"></div>
@@ -61,7 +95,7 @@
       	</div>
 
       	<div class="navigatorTabBody">
-	      	<p class="label" style="vertical-align: 50%;">0</p> <input type="range" min="0" max="10" class="range intensitySlider" ng-model="intensityValue"> <p class="label" style="vertical-align: 50%;">10</p><br>
+	      	<p class="label" style="vertical-align: 50%;">0</p> <input type="range" min="0" max="10" class="range intensitySlider" ng-model="headache.intensityValue"> <p class="label" style="vertical-align: 50%;">10</p><br>
 	      	<p class="label"> {{ headache.intensityValue }}  /  10 </p>
       	</div>
 		<div class="navigatorTabFoot">
@@ -72,8 +106,7 @@
 		</div>
       </div>
     </ons-page>
-
-  </ons-navigator>
+  </script>
 
   <!-- Start & end time page -->
   <script type="text/ons-template" id="times.html">
@@ -91,16 +124,14 @@
 
       	<div class="navigatorTabBody">
       		<ons-row>
-  				<ons-col><p class="label timeLabel">Starttijd: </p> </ons-col>
-  				<ons-col></ons-col>
+  				<p class="label timeLabel">Starttijd: </p>
   			</ons-row>
       		<ons-row>
       			<ons-col class="col ons-col-inner"><input type="date" ng-model="headache.startDate" ng-change="updateStartTimeString()" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col>
       			<ons-col class="col ons-col-inner"><input type="time" placeholder="HH:mm" ng-change="updateStartTimeString()" ng-model="headache.startTime" class="timePicker" step="60"></ons-col>
       		</ons-row>
       		<ons-row>
-      			<ons-col><p class="label timeLabel">Eindtijd: (optioneel)</p></ons-col>
-      			<ons-col></ons-col>
+      			<p class="label timeLabel" style="margin-top: 5%;">Eindtijd: (optioneel)</p>
 			</ons-row>
 			<ons-row>
       			<ons-col class="col ons-col-inner"><input type="date" ng-model="headache.endDate" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col>
@@ -186,13 +217,19 @@
 
       	<div class="navigatorTabBody">
       		<ons-list>
-		        <ons-list-item modifier="tappable" ng-repeat="symptom in symptoms track by symptom.id">
-		          <label class="checkbox checkbox--list-item">
-		            <input type="checkbox">
-		            <div class="checkbox__checkmark checkbox--list-item__checkmark"></div>
-		            {{symptom.name}}
-		            <ons-icon icon="ion-help" id="helpButtonSymptom{{symptom.id}}" class="helpIcon"></ons-icon>
-		          </label>
+		        <ons-list-item ng-repeat="symptom in headache.symptoms track by symptom.id">
+		          <ons-row>
+		          	<ons-col width="15%">
+				          <label class="checkbox checkbox--list-item">
+				            <input type="checkbox" ng-model="symptom.val">
+				            <div class="checkbox__checkmark checkbox--list-item__checkmark"></div>
+				          </label>
+			        </ons-col>
+			        <ons-col>
+				          {{symptom.name}}
+				          <ons-icon icon="ion-help" id="helpButtonSymptom{{symptom.id}}" class="helpIcon"></ons-icon>
+		            </ons-col>
+		          </ons-row>
 		        </ons-list-item>
 		    </ons-list>
       	</div>
@@ -224,13 +261,18 @@
 
       	<div class="navigatorTabBody">
       		<ons-list>
-		        <ons-list-item modifier="tappable" ng-repeat="trigger in triggers track by trigger.id">
-	          		<label class="checkbox checkbox--list-item">
-			            <input type="checkbox">
-			            <div class="checkbox__checkmark checkbox--list-item__checkmark"></div>
+		        <ons-list-item ng-repeat="trigger in headache.triggers track by trigger.id">
+		        <ons-row>
+		          	<ons-col width="15%">
+		          		<label class="checkbox checkbox--list-item">
+				            <input type="checkbox" ng-model="trigger.val">
+				            <div class="checkbox__checkmark checkbox--list-item__checkmark"></div>
+			          	</label>
+			        </ons-col>
+			        <ons-col>
 						{{trigger.name}}
 						<ons-icon icon="ion-help" id="helpButtonTrigger{{trigger.id}}" class="helpIcon"></ons-icon>
-		          	</label>
+			        </ons-col>
 		        </ons-list-item>
 		    </ons-list>
       	</div>

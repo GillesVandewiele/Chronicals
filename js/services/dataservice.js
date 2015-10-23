@@ -1,4 +1,7 @@
-angular.module('Chronic').service('dataService', function() {
+angular.module('Chronic').service('dataService', function($localStorage) {
+ 
+  // Reset the local storage; always comment this out!
+  //  $localStorage.$reset();
 
 
     var headache = {start: new Date(2015, 9, 18, 22, 30, 00, 0), end: new Date(2015, 9, 19, 1, 30, 0, 0),
@@ -23,42 +26,71 @@ angular.module('Chronic').service('dataService', function() {
       {start: new Date(2015, 9, 15, 14, 30, 00, 0), end: new Date(2015, 9, 15, 15, 30, 0, 0), intensityValue: Math.random() * 10, triggers:[], location: null, symptoms: []},
     ];
 
+  var addHeadache = function(newObj){
+      if($localStorage.headacheList) $localStorage.headacheList.push(newObj);
+      else $localStorage.headacheList = [newObj];
+  };
 
-    var addHeadache = function(newObj){
-      headacheList.push(newObj);
-    };
+  var addMedicine = function(newObj){
+      if($localStorage.medicineList) $localStorage.medicineList.push(newObj);
+      else $localStorage.medicineList = [newObj];
+  };
 
-    var addMedicine = function(newObj){
-      medicineList.push(newObj);
-    };
+  var setCurrentHeadache = function(newObj){
+  	  $localStorage.currentHeadache = newObj;
+  };
+   
+    setCurrentHeadache(headache);
 
-    //{ name: "Sumatripan", date: new Date(), quantity: 5}
+  var setCurrentMedicine = function(newObj){
+  	  $localStorage.currentMedicine = newObj;
+  };
+  
+  var getSymptoms = function(){
+  	//TODO: replace this by a DB call
+  	return [{id: 0, name:"symptom1", description:"this is a description", val: false}, {id: 1, name:"symptom2", description:"this is a description", val: false},
+  			{id: 2, name:"symptom3", description:"this is a description", val: false}, {id: 3, name:"symptom4", description:"this is a description", val: false}]; // List of all symptoms
+  
+  };
+  
+  var getTriggers = function(){
+  	//TODO: replace this by a DB call
+  	return [{id: 0, name:"trigger1", description:"this is a description 1", val: false}, {id: 1, name:"trigger2", description:"this is a description 2", val: false},
+  			{id: 2, name:"trigger3", description:"this is a description 3", val: false}, {id: 3, name:"trigger4", description:"this is a description 4", val: false}]; // List of all triggers
+  
+  };
 
-    var setCurrentHeadache = function(newObj){
-    headache = newObj;
-    };
+  var getCurrentHeadache = function(){
+  	  return $localStorage.currentHeadache;
+  };
 
-    var setCurrentMedicine = function(newObj){
-    medicine = newObj;
-    };
+  var getCurrentMedicine = function(){
+  	  return $localStorage.currentMedicine;
+  };
 
-    var getCurrentHeadache = function(){
-    return headache;
-    };
+  var getMedicineList = function(){
+      return $localStorage.medicineList;
+  };
 
-    var getCurrentMedicine = function(){
-    return medicine;
-    };
-
-    var getMedicineList = function(){
-      return medicineList;
-    };
-
-    var getHeadacheList = function(){
-      return headacheList;
-    };
-
-    return {
+  var getHeadacheList = function(){
+      return $localStorage.headacheList;
+  };
+  
+  var getSymptoms = function(){
+  	//TODO: replace this by a DB call
+  	return [{id: 0, name:"symptom1", description:"this is a description", val: false}, {id: 1, name:"symptom2", description:"this is a description", val: false},
+  			{id: 2, name:"symptom3", description:"this is a description", val: false}, {id: 3, name:"symptom4", description:"this is a description", val: false}]; // List of all symptoms
+  
+  };
+  
+  var getTriggers = function(){
+  	//TODO: replace this by a DB call
+  	return [{id: 0, name:"trigger1", description:"this is a description 1", val: false}, {id: 1, name:"trigger2", description:"this is a description 2", val: false},
+  			{id: 2, name:"trigger3", description:"this is a description 3", val: false}, {id: 3, name:"trigger4", description:"this is a description 4", val: false}]; // List of all triggers
+  
+  };
+  
+  return {
     addHeadache: addHeadache,
     addMedicine: addMedicine,
     getHeadacheList: getHeadacheList,
@@ -66,7 +98,9 @@ angular.module('Chronic').service('dataService', function() {
     setCurrentHeadache: setCurrentHeadache,
     setCurrentMedicine: setCurrentMedicine,
     getCurrentHeadache: getCurrentHeadache,
-    getCurrentMedicine: getCurrentMedicine
+    getCurrentMedicine: getCurrentMedicine,
+    getSymptoms: getSymptoms,
+    getTriggers: getTriggers
     };
 
 

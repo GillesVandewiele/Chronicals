@@ -7,10 +7,9 @@
  */
 
 
-angular.module('Chronic').controller("dashboardController", function($scope){
-
-    $scope.startTimes = [new Date(), new Date(), new Date()];
-    $scope.intensities = [8,8,8];
+angular.module('Chronic').controller("dashboardController", function($scope, dataService){
+	
+	console.log(dataService.getHeadacheList());
 
 });
 

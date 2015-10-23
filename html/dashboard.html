@@ -11,8 +11,10 @@
     <!-- Our style sheet -->
     <link rel="stylesheet" href="../css/style.css">
 
-    <!-- AngularJS | MIT License | https://angularjs.org/ -->
+    <!-- AngularJS + ngStorage | MIT License | https://angularjs.org/ -->
     <script src="../js/angular/angular.js"></script>
+    <script src="../js/angular/ngStorage.min.js"></script>
+  
     <!-- jQuery | MIT License | https://jquery.org/ -->
     <script src="../js/vendor/jquery-2.1.4.js"></script>
 
@@ -22,6 +24,7 @@
 
     <!-- Main file & Dashboard controller -->
     <script src="../js/controllers/chronic.js"> </script>
+    <script src="../js/services/dataservice.js"> </script>
     <script src="../js/controllers/dashboardController.js"> </script>
     <script src="../js/vendor/Chart.min.js"></script>
     <script src="../js/vendor/angular-chart.js"></script>
@@ -35,81 +38,75 @@
         <div class="dashboard">
             <div class="row">
 
-                <a href="headache.html" class="tile half">
-                    <div  class="tileContent">
-                        <i class="icon fa fa-user-md"></i>
-                        <p>+Hoofdpijn</p>
-                    </div>
-                </a>
+                <div  class="tileContent tile half" onclick="location.href='headache.html'">
+                    <i class="icon fa fa-user-md"></i>
+                    <p>+Hoofdpijn</p>
+                </div>
 
-
-					<a href="medicine.html" class="tile half last">
-	                    <div class="tileContent">
-	                        <i class="icon fa fa-medkit"></i>
-	                        <p>+Medicijn</p>
-	                    </div>
-	              	 </a>
+                <div class="tileContent tile half last" onclick="location.href='medicine.html'">
+                    <i class="icon fa fa-medkit"></i>
+                    <p>+Medicijn</p>
+                </div>
 
             </div>
             <div class="row stretch">
 
-                <a href="history.html" class="tile large">
-                    <div class="tileContent" style="width: 100%;">
-                        <i class="icon fa fa-calendar-check-o"></i>
-                        <div id="midTile" style="width:100%;">
-                            <ons-list class="list">
-                                <ons-list-item class="list__item list__item--chevron headache">
-                    <span class="list__item__line-height">
-                        <div class="list-left">
-                            <i class="fa fa-user-md">     </i>
-                        </div>
-                        <div class="list-center">
-                            12 okt 15:45
-                        </div>
-                        <div class="list-right">
-                            8/10
-                        </div>
-                    </span>
-                                </ons-list-item>
-                                <ons-list-item class="list__item list__item--chevron mecicine">
-                    <span class="list__item__line-height">
-                        <div class="list-left">
-                            <i class="fa fa-medkit">     </i>
-                        </div>
-                        <div class="list-center">
-                            Goed medicijn
-                        </div>
-                    </span>
-
-                                </ons-list-item>
-                            </ons-list>
-                            <!--<div class="row">-->
-                                <!--<div class="dates">-->
-                                    <!--<p class="tileDate" ng-repeat="test in startTimes">-->
-                                            <!--{{test.getDate()+"/"-->
-                                            <!--+ (test.getMonth()+1)+"/"-->
-                                            <!--+ test.getFullYear()+"\t"-->
-                                            <!--+ (test.getHours()+1)+":"-->
-                                            <!--+ (test.getMinutes())}}-->
-                                    <!--</p>-->
-                                <!--</div>-->
-                                <!--<div class="intensities">-->
-                                    <!--<p class="tileIntensity" ng-repeat="number in intensities track by $index">-->
-                                        <!--{{number}}/10-->
-                                    <!--</p>-->
-
-                                <!--</div>-->
-                            <!--</div>-->
-                        </div>
-                        <!--<div>-->
-                            <!--&lt;!&ndash;<p style="width: 80%; float: left">13/10/2015 14:15</p><p style="float: left">8/10</p>&ndash;&gt;-->
-
-
-
-                        <!--</div>-->
-
+                <div class="tileContent tile large" style="width: 100%;" onclick="location.href='history.html'">
+                    <i class="icon fa fa-calendar-check-o"></i>
+                    <div id="midTile" style="width:100%;">
+                        <ons-list class="list">
+                            <ons-list-item class="list__item list__item--chevron headache">
+                <span class="list__item__line-height">
+                    <div class="list-left">
+                        <i class="fa fa-user-md">     </i>
                     </div>
-                </a>
+                    <div class="list-center">
+                        12 okt 15:45
+                    </div>
+                    <div class="list-right">
+                        8/10
+                    </div>
+                </span>
+                            </ons-list-item>
+                            <ons-list-item class="list__item list__item--chevron mecicine">
+                <span class="list__item__line-height">
+                    <div class="list-left">
+                        <i class="fa fa-medkit">     </i>
+                    </div>
+                    <div class="list-center">
+                        Goed medicijn
+                    </div>
+                </span>
+
+                            </ons-list-item>
+                        </ons-list>
+                        <!--<div class="row">-->
+                            <!--<div class="dates">-->
+                                <!--<p class="tileDate" ng-repeat="test in startTimes">-->
+                                        <!--{{test.getDate()+"/"-->
+                                        <!--+ (test.getMonth()+1)+"/"-->
+                                        <!--+ test.getFullYear()+"\t"-->
+                                        <!--+ (test.getHours()+1)+":"-->
+                                        <!--+ (test.getMinutes())}}-->
+                                <!--</p>-->
+                            <!--</div>-->
+                            <!--<div class="intensities">-->
+                                <!--<p class="tileIntensity" ng-repeat="number in intensities track by $index">-->
+                                    <!--{{number}}/10-->
+                                <!--</p>-->
+
+                            <!--</div>-->
+                        <!--</div>-->
+                    </div>
+                    <!--<div>-->
+                        <!--&lt;!&ndash;<p style="width: 80%; float: left">13/10/2015 14:15</p><p style="float: left">8/10</p>&ndash;&gt;-->
+
+
+
+                    <!--</div>-->
+
+                </div>
+                    
             </div>
             <div class="row">
                 <div class="tile half">
