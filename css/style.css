@@ -489,3 +489,13 @@ div .last{
     margin-right: 2%;
     overflow: scroll;
 }
+
+.detailsList{
+    width: 100%;
+}
+
+.list_header{
+    width: 100%;
+    background-color: #1a252f;
+    text-align: center;
+}

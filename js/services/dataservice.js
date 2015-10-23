@@ -8,7 +8,7 @@ angular.module('Chronic').service('dataService', function() {
       ,{key: new Date(2015, 9, 19, 00, 15, 00, 0), value: 2}
           ,{key: new Date(2015, 9, 18, 23, 15, 00, 0),value : 9}
       ,{key: new Date(2015, 9, 19, 1,0, 00, 0), value:9}
-      ,{key: new Date(2015, 9, 19, 1, 30, 00, 0), value: 1}], triggers:[], location: null, symptoms: []};
+      ,{key: new Date(2015, 9, 19, 1, 30, 00, 0), value: 1}], triggers:["Smwoaren", "An me piet getrokken"], location: null, symptoms: ["Kleine oogsjes", "Zwoare kop", "Dikke neuze"]};
     //{ intensityValue: 5, start: null, end: null, location: null, triggers: null, symptoms: null };
     var medicine;
 

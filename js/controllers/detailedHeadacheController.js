@@ -59,13 +59,14 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
 
     $scope.data = [$scope.data];
 
-    console.log($scope.data);
-    console.log($scope.labels);
 
     $scope.series;
     $scope.onClick = function (points, evt) {
         console.log(points, evt);
     };
+
+    $scope.triggers = current.triggers;
+    $scope.symptoms = current.symptoms;
 
 
 });
