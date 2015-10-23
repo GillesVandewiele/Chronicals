@@ -117,7 +117,6 @@ input[type=time]::-webkit-clear-button {
 }
 
 .buttonIcon {
-<<<<<<< HEAD
 	font-size: 175%;
 }
 
@@ -162,10 +161,6 @@ input[type=time]::-webkit-clear-button {
 .selectDefault, .selectDiv option {
     font-family:arial;
     font-size:12px;
-=======
-	font-size: 32px;
-    margin:0 !important;
->>>>>>> db87445ada4ad3a9bfb938bc534116bcfc7a595a
 }
 
 .helpIcon{
@@ -174,7 +169,6 @@ input[type=time]::-webkit-clear-button {
 	transform: translateY(50%);
 }
 
-<<<<<<< HEAD
 option{
 	background-color: #222; 
 	color: #FFFFFF
@@ -186,13 +180,13 @@ option{
 	color: #FFFFFF
 }
 
-=======
+
 /*Dashboard*/
 
 .dashboardPage .page__background {
     background-color: #2c3e50 !important;
 }
->>>>>>> db87445ada4ad3a9bfb938bc534116bcfc7a595a
+
 .dashboard{
 	border-color: #01579B;
 	width:100%;
