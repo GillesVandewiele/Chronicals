@@ -6,8 +6,10 @@
  This file contains the controller for the history views.
  */
 
-angular.module('Chronic').controller("historyController", function($scope, dataService) {	
+angular.module('Chronic').controller("historyController", function($scope, dataService) {
 
+
+    $scope.listItems = dataService.getHeadacheList();
 
     /* Onload fill event list of the calendar */
     $scope.fillEvents = function () {

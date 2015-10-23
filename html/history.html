@@ -13,7 +13,7 @@
     <!-- AngularJS + ngStorage | MIT License | https://angularjs.org/ -->
     <script src="../js/angular/angular.js"></script>
     <script src="../js/angular/ngStorage.min.js"></script>
-    
+
     <!-- jQuery | MIT License | https://jquery.org/ -->
     <script src="../js/vendor/jquery-2.1.4.js"></script>
 
@@ -51,6 +51,7 @@
             <ons-list class="list">
                 <ons-list-item ng-repeat="obj in listItems" class="list__item list__item--chevron headache" ng-click="listClick(obj)">
                     <span class="list__item__line-height">
+
                         <div class="list-left">
                             <i ng-class="{'fa fa-user-md': obj.hasOwnProperty('end'), 'fa fa-medkit medicine': !obj.hasOwnProperty('end')}">     </i>
                         </div>

@@ -1,5 +1,5 @@
 angular.module('Chronic').service('dataService', function($localStorage) {
- 
+
   // Reset the local storage; always comment this out!
   //  $localStorage.$reset();
 
@@ -39,25 +39,23 @@ angular.module('Chronic').service('dataService', function($localStorage) {
   var setCurrentHeadache = function(newObj){
   	  $localStorage.currentHeadache = newObj;
   };
-   
-    setCurrentHeadache(headache);
 
   var setCurrentMedicine = function(newObj){
   	  $localStorage.currentMedicine = newObj;
   };
-  
+
   var getSymptoms = function(){
   	//TODO: replace this by a DB call
   	return [{id: 0, name:"symptom1", description:"this is a description", val: false}, {id: 1, name:"symptom2", description:"this is a description", val: false},
   			{id: 2, name:"symptom3", description:"this is a description", val: false}, {id: 3, name:"symptom4", description:"this is a description", val: false}]; // List of all symptoms
-  
+
   };
-  
+
   var getTriggers = function(){
   	//TODO: replace this by a DB call
   	return [{id: 0, name:"trigger1", description:"this is a description 1", val: false}, {id: 1, name:"trigger2", description:"this is a description 2", val: false},
   			{id: 2, name:"trigger3", description:"this is a description 3", val: false}, {id: 3, name:"trigger4", description:"this is a description 4", val: false}]; // List of all triggers
-  
+
   };
 
   var getCurrentHeadache = function(){
@@ -75,21 +73,21 @@ angular.module('Chronic').service('dataService', function($localStorage) {
   var getHeadacheList = function(){
       return $localStorage.headacheList;
   };
-  
+
   var getSymptoms = function(){
   	//TODO: replace this by a DB call
   	return [{id: 0, name:"symptom1", description:"this is a description", val: false}, {id: 1, name:"symptom2", description:"this is a description", val: false},
   			{id: 2, name:"symptom3", description:"this is a description", val: false}, {id: 3, name:"symptom4", description:"this is a description", val: false}]; // List of all symptoms
-  
+
   };
-  
+
   var getTriggers = function(){
   	//TODO: replace this by a DB call
   	return [{id: 0, name:"trigger1", description:"this is a description 1", val: false}, {id: 1, name:"trigger2", description:"this is a description 2", val: false},
   			{id: 2, name:"trigger3", description:"this is a description 3", val: false}, {id: 3, name:"trigger4", description:"this is a description 4", val: false}]; // List of all triggers
-  
+
   };
-  
+
   return {
     addHeadache: addHeadache,
     addMedicine: addMedicine,

@@ -9,7 +9,8 @@
 
 angular.module('Chronic').controller("detailedHeadacheController", function($scope, dataService) {
     function sortOnKeys(array) {
-
+        if(array == null)
+            return;
         var sorted = [];
         for(i=0;i<array.length; i++) {
             sorted[i] = array[i].key;
@@ -41,22 +42,36 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
     var current = dataService.getCurrentHeadache();
     var months = ["jan.", "feb.", "mrt.", "apr.", "mei", "jun.", "jul.", "aug.", "sept.", "okt.", "nov.", "dec."];
 
-	console.log(current); 
-	
-    $scope.startTime = current.start.getDate()+" "+months[current.start.getMonth()]+"    "+current.start.getHours() + ":" + current.start.getMinutes() ;
-    $scope.endTime = current.end.getDate()+" "+months[current.end.getMonth()]+"    "+current.end.getHours() + ":" + current.end.getMinutes() ;
 
+    if(current.start != null){
+        current.start = new Date(current.start);
+    }
+    if (current.end != null){
+        current.end = new Date(current.end);
+    }
+    $scope.startTime = current.start.getDate()+" "+months[current.start.getMonth()]+"    "+current.start.getHours() + ":" + current.start.getMinutes() ;
+    if(current.end == null){
+        current.end = new Date();
+
+    }
+    $scope.endTime = current.end.getDate()+" "+months[current.end.getMonth()]+"    "+current.end.getHours() + ":" + current.end.getMinutes() ;
     $scope.labels = [];
     $scope.data = [];
     var sorted = sortOnKeys(current.intensityValues);
 
-    for(i=0; i< sorted.length; i++){
-        obj = sorted[i];
-        $scope.labels.push(""+obj["key"].getHours()+":"+obj["key"].getMinutes());
-        $scope.data.push(obj["value"]);
+    if(sorted != null){
+        for(i=0; i< sorted.length; i++){
+            obj = sorted[i];
+            $scope.labels.push(""+obj["key"].getHours()+":"+obj["key"].getMinutes());
+            $scope.data.push(obj["value"]);
+        }
+        $scope.data = [$scope.data];
+        $scope.triggers = current.triggers;
+        $scope.symptoms = current.symptoms;
+
     }
 
-    $scope.data = [$scope.data];
+
 
 
     $scope.series;
@@ -64,8 +79,7 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
         console.log(points, evt);
     };
 
-    $scope.triggers = current.triggers;
-    $scope.symptoms = current.symptoms;
+
 
 
 });
