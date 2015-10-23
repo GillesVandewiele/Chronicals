@@ -27,18 +27,55 @@
   
   <!-- Main file & Medicine controller -->
   <script src="../js/controllers/chronic.js"> </script>
+  <script src="../js/services/dataservice.js"> </script>
   <script src="../js/controllers/medicineController.js"> </script>
-  
-  <script type="text/ons-template" id="popover.html">
-	  <ons-popover direction="up down" cancelable>
-	    <div style="text-align: center; opacity: 0.5;">
-	      <p><small>{{message}}</small></p>
-	    </div>
-	  </ons-popover>
-  </script>
 
 </head>
 
 <body ng-controller="medicineController">   
+	
+	<ons-page>
+      <ons-toolbar>
+      	<div class="left"></div>
+        <div class="center" style="margin: 0 auto; text-align: center;"></div>
+        <div class="right"></div>
+      </ons-toolbar>
+
+      <div class="navigatorTab">
+      	<div class="navigatorTabHead">
+      		<ons-icon icon="fa-info-circle" style="font-size: 250%;"></ons-icon> <br>
+      		<p class="label">{{advice}}</p>
+      	</div>
+      	
+      	<div class="navigatorTabBody">  
+      		<ons-row>
+      		<p class="label" style="margin-left: 5%;">Medicijn + hoeveelheid:</p>
+		    <div class="selectDiv">
+		        <span class="selectDefault">{{selectedDrug.name}}</span>
+			      <select ng-options="drug as drug.name for drug in drugs" ng-model="selectedDrug">
+			      	<option style="display:none" style="background-color: #222; color: #FFFFFF" value="">select a drug</option>
+			      </select>
+		     </div>	    
+		     <input type="number" min="1" class="medicineQuantity">
+		     <label>mg</label>
+		     </ons-row>
+		     <ons-row style="margin-top: 5%;">
+      			<p class="label" style="margin-left: 5%">Tijdstip van inname:</p>
+		     	<input type="date" ng-model="endDate" style="width: 50%; margin-left: 5%; background-color: #222; color: #FFFFFF" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col>
+      			<input type="time" placeholder="HH:mm" ng-model="endTime" style="width: 34%; background-color: #222; color: #FFFFFF" class="timePicker" step="60"></ons-col>
+		     </ons-row>
+		     <ons-row style="margin-top: 5%;">
+		     	<p style="margin-left: 5%;">{{selectedDrug.description}}</p>
+		     </ons-row>
+      	</div>
+      	
+		<div class="navigatorTabFoot">
+		    <ons-bottom-toolbar>
+        		<button class="button cancelButton"  onclick="location.href='dashboard.html'"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
+        		<button class="button finishButton" style="float: right;">Sla op <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
+        	</ons-bottom-toolbar>
+		</div>
+      </div>	
+    </ons-page>
 	
 </body>
