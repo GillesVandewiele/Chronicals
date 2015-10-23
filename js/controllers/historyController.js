@@ -7,41 +7,16 @@
  */
 
 
-angular.module('Chronic').controller("historyController", function($scope, dataService) {
-
-    /*Hard coded events for testing purposes*/
-
-    $scope.listItems = [
-        /*
-         parameters:
-
-         headache
-         startDate+time
-         endDate+time
-         Intensity
-         medicine
-         date+time
-         name of medicine
-         quantity
-         */
-        //[new Date(2015, 9, 18, 22, 30, 00, 0), new Date(2015, 9, 19, 1, 30, 0, 0), Math.random() * 10],
-        //[new Date(2015, 9, 18, 14, 45, 0, 0), "Sumatriptan", Math.random(200)],
-        //[new Date(2015, 9, 17, 14, 30, 00, 0), new Date(2015, 9, 17, 15, 30, 0, 0), Math.random() * 10],
-        //[new Date(2015, 9, 17, 22, 30, 00, 0), new Date(2015, 9, 17, 23, 30, 0, 0), Math.random() * 10],
-        //[new Date(2015, 9, 15, 22, 45, 00, 0), new Date(2015, 9, 16, 00, 30, 0, 0), Math.random() * 10],
-        //[new Date(2015, 9, 15, 14, 30, 00, 0), new Date(2015, 9, 15, 15, 30, 0, 0), Math.random() * 10],
-        //[new Date(2015, 9, 17, 00, 15, 0, 0), "Sumatriptan", Math.random(200)]
-
-    ];
-
-    $scope.listItems = dataService.getHeadacheList();
-    Array.prototype.push.apply($scope.listItems, dataService.getMedicineList());
+angular.module('Chronic').controller("historyController", function($scope, dataService) {	
 
     /* Onload fill event list of the calendar */
     $scope.fillEvents = function () {
+    	$scope.listItems = dataService.getHeadacheList();
+    	if($scope.listItems) Array.prototype.push.apply($scope.listItems, dataService.getMedicineList());
+    	else $scope.listItems = dataService.getMedicineList();
         //document.getElementById('history').style.display = 'none';
 
-        console.log("opgeroepen");
+        console.log("opgeroepen", $scope.listItems);
 
         // page is now ready, initialize the calendar...
 
@@ -71,8 +46,10 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
         });
 
         document.getElementById('calendar').style.display = 'block';
+        if(!$scope.listItems) { $('#loadingImg').hide(); return; }
         for(i =0; i<$scope.listItems.length; i++){
             if($scope.listItems[i].hasOwnProperty("end")){
+            	console.log($scope.listItems[i]);
                 $('#calendar').fullCalendar('renderEvent',
                     {
                         title: "Hoofdpijn"
