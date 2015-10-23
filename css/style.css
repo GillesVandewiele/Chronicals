@@ -360,11 +360,11 @@ div .last{
 }
 
 .headache{
-    color: red;
+    color: #f9332f;
 }
 
-.mecicine{
-    color: green;
+.medicine{
+    color: #0cc80c;
 }
 /* Calendar style */
 .fc-today{

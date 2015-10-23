@@ -6,8 +6,12 @@
  This file contains the controller for the history views.
  */
 
-
 angular.module('Chronic').controller("historyController", function($scope, dataService) {	
+
+    $scope.listItems.sort(function(a,b){
+        return b.start - a.start;
+    });
+
 
     /* Onload fill event list of the calendar */
     $scope.fillEvents = function () {
@@ -62,13 +66,15 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
                 $('#calendar').fullCalendar('renderEvent',
                     {
                         title: "Medicijn"
-                        , start: $scope.listItems[i].date
+                        , start: $scope.listItems[i].start
                         , medicine: $scope.listItems[i].name
                         , quantity: $scope.listItems[i].quantity
                         , color: '#0cc80c'
                     }, true);
             }
         }
+
+
 
         console.log("Loading changed");
         $('#loadingImg').hide();
@@ -107,6 +113,8 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
     };
 
     ons.ready(function() {
+
+
         historyNavigator.on('postpush', function(event) {
 
             // page is now ready, initialize the calendar...
@@ -141,6 +149,7 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
 
 
         });
+        
     });
 
     $scope.goNextPage = function(){
