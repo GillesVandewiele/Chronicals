@@ -2,34 +2,35 @@
  	NAAM VAN ONS PROJECT, v1.0
  	Created by Kiani Lannoye & Gilles Vandewiele, commissioned by UZ Ghent
     https://github.com/kianilannoye/Chronicals
-    
-    This html file is the view for adding or modifying a headache.	
+
+    This html file is the view for adding or modifying a headache.
 -->
 
 <!doctype html>
 <html lang="en" ng-app="Chronic">
 <head>
-  <meta charset="utf-8"> 
-  
-  <title>Geen naam</title>    
-  
+  <meta charset="utf-8">
+
+  <title>Geen naam</title>
+
   <!-- Our style sheet -->
-  <link rel="stylesheet" href="../css/style.css"> 
-  
+  <link rel="stylesheet" href="../css/style.css">
+
   <!-- AngularJS | MIT License | https://angularjs.org/ -->
   <script src="../js/angular/angular.js"></script>
-  
+
   <!-- onsenui v1.3.11 | Apache License | http://onsen.io/ -->
-  <script src="../js/vendor/onsenui.min.js"></script>    
+  <script src="../js/vendor/onsenui.min.js"></script>
 
   <!-- jQuery | MIT License | https://jquery.org/ -->
-  <script src="../js/vendor/jquery-2.1.4.js"></script>  
-  
+  <script src="../js/vendor/jquery-2.1.4.js"></script>
+
   <!-- Main file & Headache controller -->
   <script src="../js/controllers/chronic.js"> </script>
+  <!--/*Dataservice VOOR de controller-->
   <script src="../js/services/dataservice.js"> </script>
   <script src="../js/controllers/headacheController.js"> </script>
-  
+
   <script type="text/ons-template" id="popover.html">
 	  <ons-popover direction="up down" cancelable>
 	    <div style="text-align: center; opacity: 0.5;">
@@ -39,8 +40,8 @@
   </script>
 
 </head>
-<body ng-controller="headacheController">    
-  
+<body ng-controller="headacheController">
+
   <ons-navigator var="myNavigator">
 
 	<!-- Intensity page -->
@@ -53,11 +54,11 @@
 
       <div class="navigatorTab">
       	<div class="navigatorTabHead">
-      		<h1> Intensiteit </h1> 
-	      	<h3> Geef de intensiteit van de hoofdpijn aan op schaal van 0 tot 10. </h3> 
+      		<h1> Intensiteit </h1>
+	      	<h3> Geef de intensiteit van de hoofdpijn aan op schaal van 0 tot 10. </h3>
       	</div>
-      	
-      	<div class="navigatorTabBody">   
+
+      	<div class="navigatorTabBody">
 	      	<p class="label" style="vertical-align: 50%;">0</p> <input type="range" min="0" max="10" class="range intensitySlider" ng-model="intensityValue"> <p class="label" style="vertical-align: 50%;">10</p><br>
 	      	<p class="label"> {{ intensityValue }}  /  10 </p>
       	</div>
@@ -67,11 +68,11 @@
         		<button class="button"  ng-click="myNavigator.pushPage('times.html', {title: 'Page'})" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
 		</div>
-      </div>	
+      </div>
     </ons-page>
-  
-  </ons-navigator> 
-  
+
+  </ons-navigator>
+
   <!-- Start & end time page -->
   <script type="text/ons-template" id="times.html">
     <ons-page>
@@ -80,19 +81,19 @@
         <div class="center" style="margin: 0 auto; text-align: center;"></div>
         <div class="right"><ons-toolbar-button ng-click="myNavigator.pushPage('location.html', {title: 'Page'})">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></ons-toolbar-button></div>
       </ons-toolbar>
-      
+
       <div class="navigatorTab">
       	<div class="navigatorTabHead">
 	      	<h3> Geef de start- (en indien mogelijk eindtijd) op. </h3>
       	</div>
-      	
-      	<div class="navigatorTabBody">   
+
+      	<div class="navigatorTabBody">
       		<ons-row>
   				<ons-col><p class="label timeLabel">Starttijd: </p> </ons-col>
   				<ons-col></ons-col>
   			</ons-row>
       		<ons-row>
-      			<ons-col class="col ons-col-inner"><input type="date" ng-model="startDate" ng-change="updateStartTimeString()" style="background-color: #222; color: #FFFFFF" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col> 
+      			<ons-col class="col ons-col-inner"><input type="date" ng-model="startDate" ng-change="updateStartTimeString()" style="background-color: #222; color: #FFFFFF" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col>
       			<ons-col class="col ons-col-inner"><input type="time" placeholder="HH:mm" ng-change="updateStartTimeString()" style="background-color: #222; color: #FFFFFF" ng-model="startTime" class="timePicker" step="60"></ons-col>
       		</ons-row>
       		<ons-row>
@@ -114,7 +115,7 @@
       </div>
     </ons-page>
   </script>
-  
+
   <!-- Location page -->
   <script type="text/ons-template" id="location.html">
     <ons-page>
@@ -127,10 +128,10 @@
       <div class="navigatorTab">
       	<div class="navigatorTabHead">
       		<h1> Locatie </h1>
-	      	<h3> Toon op welke plaats(en) u pijn voelt. Tip: u kan het model draaien </h3> 
+	      	<h3> Toon op welke plaats(en) u pijn voelt. Tip: u kan het model draaien </h3>
       	</div>
-      	
-      	<div class="navigatorTabBody">  
+
+      	<div class="navigatorTabBody">
 		    <ons-carousel overscrollable auto-scroll swipeable var="carousel" style="height: 200px; width: 75%; margin-left: 12.5%;">
 		      <ons-carousel-item style="position: absolute; bottom: 0;">
 		        <ons-icon icon="ion-ios-arrow-back buttonIcon" ng-click="carousel.last()"></ons-icon>
@@ -152,9 +153,9 @@
 		        <img src="../img/4_location.png"></img>
 		        <ons-icon icon="ion-ios-arrow-forward buttonIcon" ng-click="carousel.first()"></ons-icon>
 		      </ons-carousel-item>
-		    </ons-carousel>  		
+		    </ons-carousel>
       	</div>
-      	
+
       	<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
         		<button class="button cancelButton"  onclick="location.href='dashboard.html'"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
@@ -164,8 +165,8 @@
       </div>
     </ons-page>
   </script>
-  
-  
+
+
   	<!-- Symptoms page -->
     <script type="text/ons-template" id="symptoms.html">
     <ons-page>
@@ -178,10 +179,10 @@
       <div class="navigatorTab">
       	<div class="navigatorTabHead">
       		<h1> Symptomen </h1>
-	      	<h3> Duid aan welke symptomen u ondervindt </h3> 
+	      	<h3> Duid aan welke symptomen u ondervindt </h3>
       	</div>
-      	
-      	<div class="navigatorTabBody">  
+
+      	<div class="navigatorTabBody">
       		<ons-list>
 		        <ons-list-item modifier="tappable" ng-repeat="symptom in symptoms track by symptom.id">
 		          <label class="checkbox checkbox--list-item">
@@ -190,10 +191,10 @@
 		            {{symptom.name}}
 		            <ons-icon icon="ion-help" id="helpButtonSymptom{{symptom.id}}" class="helpIcon"></ons-icon>
 		          </label>
-		        </ons-list-item>		        
-		    </ons-list>   		
+		        </ons-list-item>
+		    </ons-list>
       	</div>
-      	
+
       	<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
         		<button class="button cancelButton"  onclick="location.href='dashboard.html'"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
@@ -203,7 +204,7 @@
       </div>
     </ons-page>
   </script>
-  
+
   	<!-- Triggers page -->
     <script type="text/ons-template" id="triggers.html">
     <ons-page>
@@ -216,10 +217,10 @@
       <div class="navigatorTab">
       	<div class="navigatorTabHead">
       		<h1> Triggers </h1>
-	      	<h3> Vink de mogelijke triggers aan </h3> 
+	      	<h3> Vink de mogelijke triggers aan </h3>
       	</div>
-      	
-      	<div class="navigatorTabBody">  
+
+      	<div class="navigatorTabBody">
       		<ons-list>
 		        <ons-list-item modifier="tappable" ng-repeat="trigger in triggers track by trigger.id">
 	          		<label class="checkbox checkbox--list-item">
@@ -228,10 +229,10 @@
 						{{trigger.name}}
 						<ons-icon icon="ion-help" id="helpButtonTrigger{{trigger.id}}" class="helpIcon"></ons-icon>
 		          	</label>
-		        </ons-list-item>       
-		    </ons-list>       		
+		        </ons-list-item>
+		    </ons-list>
       	</div>
-      	
+
       	<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
         		<button class="button cancelButton" onclick="location.href='dashboard.html'"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>

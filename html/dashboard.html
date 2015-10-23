@@ -39,15 +39,15 @@
                         <p>+Hoofdpijn</p>
                     </div>
                 </a>
-				
-                <div class="tile half last" >
-					<a href="medicine.html">
+
+
+					<a href="medicine.html" class="tile half last">
 	                    <div class="tileContent">
 	                        <i class="icon fa fa-medkit"></i>
 	                        <p>+Medicijn</p>
 	                    </div>
 	              	 </a>
-                </div>
+
             </div>
             <div class="row stretch">
 
@@ -81,23 +81,23 @@
 
                                 </ons-list-item>
                             </ons-list>
-                            <div class="row">
-                                <div class="dates">
-                                    <p class="tileDate" ng-repeat="test in startTimes">
-                                            {{test.getDate()+"/"
-                                            + (test.getMonth()+1)+"/"
-                                            + test.getFullYear()+"\t"
-                                            + (test.getHours()+1)+":"
-                                            + (test.getMinutes())}}
-                                    </p>
-                                </div>
-                                <div class="intensities">
-                                    <p class="tileIntensity" ng-repeat="number in intensities track by $index">
-                                        {{number}}/10
-                                    </p>
+                            <!--<div class="row">-->
+                                <!--<div class="dates">-->
+                                    <!--<p class="tileDate" ng-repeat="test in startTimes">-->
+                                            <!--{{test.getDate()+"/"-->
+                                            <!--+ (test.getMonth()+1)+"/"-->
+                                            <!--+ test.getFullYear()+"\t"-->
+                                            <!--+ (test.getHours()+1)+":"-->
+                                            <!--+ (test.getMinutes())}}-->
+                                    <!--</p>-->
+                                <!--</div>-->
+                                <!--<div class="intensities">-->
+                                    <!--<p class="tileIntensity" ng-repeat="number in intensities track by $index">-->
+                                        <!--{{number}}/10-->
+                                    <!--</p>-->
 
-                                </div>
-                            </div>
+                                <!--</div>-->
+                            <!--</div>-->
                         </div>
                         <!--<div>-->
                             <!--&lt;!&ndash;<p style="width: 80%; float: left">13/10/2015 14:15</p><p style="float: left">8/10</p>&ndash;&gt;-->

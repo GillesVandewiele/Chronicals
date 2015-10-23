@@ -121,7 +121,7 @@ input[type=time]::-webkit-clear-button {
 }
 
 .selectDiv {
-   
+
     margin-left: 5%;
     width: 50%;
     overflow: hidden;
@@ -134,7 +134,7 @@ input[type=time]::-webkit-clear-button {
     position: relative;
     z-index:100;
 }
-   
+
 .selectDefault {
     padding-left:8px;
 }
@@ -170,13 +170,13 @@ input[type=time]::-webkit-clear-button {
 }
 
 option{
-	background-color: #222; 
+	background-color: #222;
 	color: #FFFFFF
 }
 
 .medicineQuantity{
-	width: 35%; 
-	background-color: #222; 
+	width: 35%;
+	background-color: #222;
 	color: #FFFFFF
 }
 
@@ -219,6 +219,8 @@ a{
     margin-top: 12px;
 	padding-right: 2%;
 	padding-left: 2%;
+    margin-bottom: 2% !important;
+
 }
 
 .tileContent{
@@ -276,10 +278,9 @@ div .last{
 	align-content: center;
 	text-align: center;
 	display: inline-block;
-
-	margin-right: 0.01% !important;
-	margin-bottom: 2% !important;
     border-bottom: 4px solid #1e1f3f;
+	margin-right: 0.01% !important;
+
 }
 .row.footer.dashboardFooter{
 	background-color: #01579B;

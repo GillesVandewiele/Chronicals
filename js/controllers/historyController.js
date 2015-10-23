@@ -7,9 +7,10 @@
  */
 
 
-angular.module('Chronic').controller("historyController", function($scope) {
+angular.module('Chronic').controller("historyController", function($scope, dataService) {
 
     /*Hard coded events for testing purposes*/
+
     $scope.listItems = [
         /*
          parameters:
@@ -23,15 +24,18 @@ angular.module('Chronic').controller("historyController", function($scope) {
          name of medicine
          quantity
          */
-        [new Date(2015, 9, 18, 22, 30, 00, 0), new Date(2015, 9, 19, 1, 30, 0, 0), Math.random() * 10],
-        [new Date(2015, 9, 18, 14, 45, 0, 0), "Sumatriptan", Math.random(200)],
-        [new Date(2015, 9, 17, 14, 30, 00, 0), new Date(2015, 9, 17, 15, 30, 0, 0), Math.random() * 10],
-        [new Date(2015, 9, 17, 22, 30, 00, 0), new Date(2015, 9, 17, 23, 30, 0, 0), Math.random() * 10],
-        [new Date(2015, 9, 15, 22, 45, 00, 0), new Date(2015, 9, 16, 00, 30, 0, 0), Math.random() * 10],
-        [new Date(2015, 9, 15, 14, 30, 00, 0), new Date(2015, 9, 15, 15, 30, 0, 0), Math.random() * 10],
-        [new Date(2015, 9, 17, 00, 15, 0, 0), "Sumatriptan", Math.random(200)]
+        //[new Date(2015, 9, 18, 22, 30, 00, 0), new Date(2015, 9, 19, 1, 30, 0, 0), Math.random() * 10],
+        //[new Date(2015, 9, 18, 14, 45, 0, 0), "Sumatriptan", Math.random(200)],
+        //[new Date(2015, 9, 17, 14, 30, 00, 0), new Date(2015, 9, 17, 15, 30, 0, 0), Math.random() * 10],
+        //[new Date(2015, 9, 17, 22, 30, 00, 0), new Date(2015, 9, 17, 23, 30, 0, 0), Math.random() * 10],
+        //[new Date(2015, 9, 15, 22, 45, 00, 0), new Date(2015, 9, 16, 00, 30, 0, 0), Math.random() * 10],
+        //[new Date(2015, 9, 15, 14, 30, 00, 0), new Date(2015, 9, 15, 15, 30, 0, 0), Math.random() * 10],
+        //[new Date(2015, 9, 17, 00, 15, 0, 0), "Sumatriptan", Math.random(200)]
 
     ];
+
+    $scope.listItems = dataService.getHeadacheList();
+    Array.prototype.push.apply($scope.listItems, dataService.getMedicineList());
 
     /* Onload fill event list of the calendar */
     $scope.fillEvents = function () {
@@ -54,7 +58,7 @@ angular.module('Chronic').controller("historyController", function($scope) {
             eventRender: function (event, element) {
                 element.attr('href', 'javascript:void(0);');
                 element.click(function() {
-
+                    //onclick functie van de events in de kalender
                     $("#startTime").html(moment(event.start).format('MMM Do h:mm A'));
                     $("#endTime").html(moment(event.end).format('MMM Do h:mm A'));
                     $("#eventInfo").html(event.description);
@@ -67,26 +71,23 @@ angular.module('Chronic').controller("historyController", function($scope) {
         });
 
         document.getElementById('calendar').style.display = 'block';
-
-        for (i = 0; i < $scope.listItems.length; i++) {
-
-            if ($scope.listItems[i][1] instanceof Date) {
-
+        for(i =0; i<$scope.listItems.length; i++){
+            if($scope.listItems[i].hasOwnProperty("end")){
                 $('#calendar').fullCalendar('renderEvent',
                     {
                         title: "Hoofdpijn"
-                        , start: $scope.listItems[i][0]
-                        , end: $scope.listItems[i][1]
-                        , intensity: $scope.listItems[i][2]
+                        , start: $scope.listItems[i].start
+                        , end: $scope.listItems[i].end
+                        , intensity: $scope.listItems[i].intensityValue
                         , color: '#f9332f'
                     }, true);
-            } else {
+            }else{
                 $('#calendar').fullCalendar('renderEvent',
                     {
                         title: "Medicijn"
-                        , start: $scope.listItems[i][0]
-                        , medicine: $scope.listItems[i][1]
-                        , quantity: $scope.listItems[i][2]
+                        , start: $scope.listItems[i].date
+                        , medicine: $scope.listItems[i].name
+                        , quantity: $scope.listItems[i].quantity
                         , color: '#0cc80c'
                     }, true);
             }
