@@ -2,10 +2,10 @@ angular.module('Chronic').service('dataService', function($localStorage) {
 
   // Reset the local storage; always comment this out!
   //  $localStorage.$reset();
-
+    //
 
     var headache;
-    //{ intensityValue: 5, start: null, end: null, location: null, triggers: null, symptoms: null };
+
     var medicine;
 
     var medicineList = [];
@@ -73,6 +73,26 @@ angular.module('Chronic').service('dataService', function($localStorage) {
 
   };
 
+  var removeHeadache = function(){
+
+      if(headacheList == null){
+          list = $localStorage.headacheList;
+      }else{
+          list = headacheList;
+      }
+
+      list = list.filter(function (el) {
+              return el.intensityValues !== $localStorage.currentHeadache.intensityValues;
+          });
+
+      $localStorage.headacheList = list;
+      headacheList = list;
+
+      headache = null;
+      $localStorage.currentHeadache = null;
+
+  }
+
   return {
     addHeadache: addHeadache,
     addMedicine: addMedicine,
@@ -83,7 +103,8 @@ angular.module('Chronic').service('dataService', function($localStorage) {
     getCurrentHeadache: getCurrentHeadache,
     getCurrentMedicine: getCurrentMedicine,
     getSymptoms: getSymptoms,
-    getTriggers: getTriggers
+    getTriggers: getTriggers,
+    removeHeadache: removeHeadache
     };
 
 

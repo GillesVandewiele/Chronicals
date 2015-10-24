@@ -138,7 +138,8 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
                         $("#endTime").html(moment(event.end).format('MMM Do h:mm A'));
                         $("#eventInfo").html(event.description);
                         $("#eventLink").attr('href', event.url);
-                        alert("Start: "+moment(event.start).format('MMM Do h:mm A')+"\nEnd: "+moment(event.end).format('MMM Do h:mm A')+"\nTitel: "+event.title+"\nIntensity: "+event.intensity+"\nMedicijn: "+event.medicine);
+                        $scope.listClick(event);
+                        //alert("Start: "+moment(event.start).format('MMM Do h:mm A')+"\nEnd: "+moment(event.end).format('MMM Do h:mm A')+"\nTitel: "+event.title+"\nIntensity: "+event.intensity+"\nMedicijn: "+event.medicine);
                         $("#eventContent").show();
                     });
                 }

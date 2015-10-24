@@ -8,6 +8,15 @@
 
 
 angular.module('Chronic').controller("detailedHeadacheController", function($scope, dataService) {
+
+
+    $scope.deleteEntry = function(){
+        console.log("Removed: ", dataService.getCurrentHeadache());
+        dataService.removeHeadache();
+
+    }
+
+
     function sortOnKeys(array) {
         if(array == null)
             return;
@@ -49,12 +58,12 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
     if (current.end != null){
         current.end = new Date(current.end);
     }
-    $scope.startTime = current.start.getDate()+" "+months[current.start.getMonth()]+"    "+current.start.getHours() + ":" + current.start.getMinutes() ;
+    $scope.startTime = current.start.getDate()+" "+months[current.start.getMonth()]+"    "+current.start.getHours() + ":" + ((current.start.getMinutes()<10?'0':'')+current.start.getMinutes()) ;
     if(current.end == null){
         current.end = new Date();
 
     }
-    $scope.endTime = current.end.getDate()+" "+months[current.end.getMonth()]+"    "+current.end.getHours() + ":" + current.end.getMinutes() ;
+    $scope.endTime = current.end.getDate()+" "+months[current.end.getMonth()]+"    "+current.end.getHours() + ":" + ((current.end.getMinutes()<10?'0':'')+current.end.getMinutes()) ;
     $scope.labels = [];
     $scope.data = [];
     $scope.symptoms = [];
@@ -64,7 +73,7 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
     if(sorted != null){
         for( var i=0; i< sorted.length; i++){
             var obj = sorted[i];
-            $scope.labels.push(""+(new Date(obj["key"])).getHours()+":"+(new Date(obj["key"])).getMinutes());
+            $scope.labels.push(""+(new Date(obj["key"])).getHours()+":"+((new Date(obj["key"])).getMinutes() <10?'0':'')+(new Date(obj["key"])).getMinutes());
             $scope.data.push(obj["value"]);
         }
         $scope.data = [$scope.data];
@@ -89,7 +98,6 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
     $scope.onClick = function (points, evt) {
         console.log(points, evt);
     };
-
 
 
 

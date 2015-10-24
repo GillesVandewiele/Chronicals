@@ -15,9 +15,9 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   if($scope.headache == null){
   	$scope.headache = { intensityValues: [{key: new Date(), value: 5}], end: null, location: null, triggers: [], symptoms: []};
   }
-  
+
   $scope.end;
-  
+
   $scope.setEnd = function(endDate, endTime){
   	$scope.headache.end = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), endTime.getHours(), endTime.getMinutes());
   };
@@ -26,11 +26,11 @@ angular.module('Chronic').controller('headacheController', function($scope, data
 
   $scope.updateStartTimeString = function(){
   	var months = ["jan.", "feb.", "mrt.", "apr.", "mei", "jun.", "jul.", "aug.", "sept.", "okt.", "nov.", "dec."];
-  	var month = months[$scope.headache.intensityValues[0].key.getMonth()];
-  	var day = $scope.headache.intensityValues[0].key.getDate().toString();
-  	var hour = $scope.headache.intensityValues[0].key.getHours().toString();
+  	var month = months[(new Date($scope.headache.intensityValues[0].key).getMonth())];
+  	var day = (new Date($scope.headache.intensityValues[0].key).getDate().toString());
+  	var hour =(new Date($scope.headache.intensityValues[0].key).getHours().toString());
   	if(hour < 10) hour = "0"+hour;
-  	var minute = $scope.headache.intensityValues[0].key.getMinutes().toString();
+  	var minute = new Date($scope.headache.intensityValues[0].key).getMinutes().toString();
   	if(minute < 10) minute = "0"+minute;
   	$scope.startTimeString = day + " " + month + " " + hour + ":" + minute;
   };
@@ -41,11 +41,11 @@ angular.module('Chronic').controller('headacheController', function($scope, data
 
   $scope.closeAndSave = function(){
   	console.log($scope.headache);
-  	var start = null; 	
+  	var start = null;
 
 	// Convert the start date & time of the earliest intensity to one Date object
   	if($scope.headache.intensityValues[0].key != null)
-  		var start = new Date($scope.headache.intensityValues[0].key.getFullYear(), $scope.headache.intensityValues[0].key.getMonth(), $scope.headache.intensityValues[0].key.getDate(), $scope.headache.intensityValues[0].key.getHours(), $scope.headache.intensityValues[0].key.getMinutes());
+  		var start = new Date(new Date($scope.headache.intensityValues[0].key).getFullYear(), new Date($scope.headache.intensityValues[0].key).getMonth(), new Date($scope.headache.intensityValues[0].key).getDate(), new Date($scope.headache.intensityValues[0].key).getHours(), new Date($scope.headache.intensityValues[0].key).getMinutes());
 
   	console.log(start);
   	console.log($scope.headache.end);

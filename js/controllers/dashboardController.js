@@ -8,8 +8,21 @@
 
 
 angular.module('Chronic').controller("dashboardController", function($scope, dataService){
-	
+
 	console.log(dataService.getHeadacheList());
+    $scope.listItems = dataService.getHeadacheList();
+    if($scope.listItems) Array.prototype.push.apply($scope.listItems, dataService.getMedicineList());
+    else $scope.listItems = dataService.getMedicineList();
+    if($scope.listItems != null && $scope.listItems.length>0)
+        $scope.listItems.sort(function(a,b){
+            return b.intensityValues[0].key - a.intensityValues[0].key;
+        });
+
+    $scope.getTimeDateString = function(tijdstip){
+        var datum = new Date(tijdstip.intensityValues[0].key);
+        return ""+(datum.getDate())+"/"+(datum.getMonth()+1)+" "+datum.getHours()+":"+datum.getMinutes();
+    }
+
 
 });
 
