@@ -57,17 +57,28 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
     $scope.endTime = current.end.getDate()+" "+months[current.end.getMonth()]+"    "+current.end.getHours() + ":" + current.end.getMinutes() ;
     $scope.labels = [];
     $scope.data = [];
+    $scope.symptoms = [];
+    $scope.triggers = [];
     var sorted = sortOnKeys(current.intensityValues);
-
+    console.log("sorted: ", sorted);
     if(sorted != null){
-        for(i=0; i< sorted.length; i++){
-            obj = sorted[i];
-            $scope.labels.push(""+obj["key"].getHours()+":"+obj["key"].getMinutes());
+        for( var i=0; i< sorted.length; i++){
+            var obj = sorted[i];
+            $scope.labels.push(""+(new Date(obj["key"])).getHours()+":"+(new Date(obj["key"])).getMinutes());
             $scope.data.push(obj["value"]);
         }
         $scope.data = [$scope.data];
-        $scope.triggers = current.triggers;
-        $scope.symptoms = current.symptoms;
+        for(var i =0; i<current.triggers.length; i++){
+            if(current.triggers[i].val==true){
+                $scope.triggers.push(current.triggers[i].name);
+            }
+        }
+        for(var i =0; i<current.symptoms.length; i++){
+            if(current.symptoms[i].val==true){
+                $scope.symptoms.push(current.symptoms[i].name);
+            }
+        }
+
 
     }
 
