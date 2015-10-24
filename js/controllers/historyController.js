@@ -18,7 +18,7 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
     	else $scope.listItems = dataService.getMedicineList();
         if($scope.listItems != null && $scope.listItems.length>0)
             $scope.listItems.sort(function(a,b){
-                return b.start - a.start;
+                return b.intensityValues[0].key - a.intensityValues[0].key;
             });
         //document.getElementById('history').style.display = 'none';
 
@@ -59,7 +59,7 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
                 $('#calendar').fullCalendar('renderEvent',
                     {
                         title: "Hoofdpijn"
-                        , start: $scope.listItems[i].start
+                        , start: $scope.listItems[i].intensityValues[0].key
                         , end: $scope.listItems[i].end
                         , intensity: $scope.listItems[i].intensityValue
                         , color: '#f9332f'
@@ -167,6 +167,11 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
             console.log(obj)
         }
 
+    }
+
+    $scope.getTimeDateString = function(tijdstip){
+        var datum = new Date(tijdstip.intensityValues[0].key);
+        return ""+(datum.getDate())+"/"+(datum.getMonth()+1)+" "+datum.getHours()+":"+datum.getMinutes();
     }
 
 });

@@ -43,8 +43,8 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
     var months = ["jan.", "feb.", "mrt.", "apr.", "mei", "jun.", "jul.", "aug.", "sept.", "okt.", "nov.", "dec."];
 
 
-    if(current.start != null){
-        current.start = new Date(current.start);
+    if(current.intensityValues[0].key != null){
+        current.start = new Date(current.intensityValues[0].key);
     }
     if (current.end != null){
         current.end = new Date(current.end);
