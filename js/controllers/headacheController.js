@@ -13,51 +13,44 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   $scope.headache = dataService.getCurrentHeadache();
 
   if($scope.headache == null){
-  	$scope.headache = { intensityValues: [{key: new Date(), value: 5}], start: new Date(), endDate: null, endTime: null,
-  						location: null, triggers: [], symptoms: []};
+  	$scope.headache = { intensityValues: [{key: new Date(), value: 5}], end: null, location: null, triggers: [], symptoms: []};
   }
-
-  $scope.headache.startDate = new Date($scope.headache.start);
-  $scope.headache.startTime = new Date($scope.headache.startDate);
-
-  //console.log($scope.headache.startDate instanceof Date);
+  
+  $scope.end;
+  
+  $scope.setEnd = function(endDate, endTime){
+  	$scope.headache.end = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), endTime.getHours(), endTime.getMinutes());
+  };
 
   /* Create a nice short time string from the start date and time */
 
   $scope.updateStartTimeString = function(){
   	var months = ["jan.", "feb.", "mrt.", "apr.", "mei", "jun.", "jul.", "aug.", "sept.", "okt.", "nov.", "dec."];
-  	var month = months[$scope.headache.startDate.getMonth()];
-  	var day = $scope.headache.startDate.getDate().toString();
-  	var hour = $scope.headache.startDate.getHours().toString();
+  	var month = months[$scope.headache.intensityValues[0].key.getMonth()];
+  	var day = $scope.headache.intensityValues[0].key.getDate().toString();
+  	var hour = $scope.headache.intensityValues[0].key.getHours().toString();
   	if(hour < 10) hour = "0"+hour;
-  	var minute = $scope.headache.startTime.getMinutes().toString();
+  	var minute = $scope.headache.intensityValues[0].key.getMinutes().toString();
   	if(minute < 10) minute = "0"+minute;
   	$scope.startTimeString = day + " " + month + " " + hour + ":" + minute;
   };
 
-  $scope.$watch('startDate', $scope.updateStartTimeString);
-  $scope.$watch('startTime', $scope.updateStartTimeString);
+  $scope.$watch('headache.intensityValues[0]', $scope.updateStartTimeString);
 
   /* closeAndSave is called when the user pressed the "Sla op" button */
 
   $scope.closeAndSave = function(){
-  	// This is executed when the user finishes
   	console.log($scope.headache);
+  	var start = null; 	
 
-  	var end = null;
-  	var start = null;
-
-  	// Convert end/startDate & end/startTime to two Dates
-  	if($scope.headache.endDate != null && $scope.headache.endTime != null)
-  		var end = new Date($scope.headache.endDate.getFullYear(), $scope.headache.endDate.getMonth(), $scope.headache.endDate.getDate(), $scope.headache.endTime.getHours(), $scope.headache.endTime.getMinutes());
-
-  	if($scope.headache.startDate != null && $scope.headache.startTime != null)
-  		var start = new Date($scope.headache.startDate.getFullYear(), $scope.headache.startDate.getMonth(), $scope.headache.startDate.getDate(), $scope.headache.startTime.getHours(), $scope.headache.startTime.getMinutes());
+	// Convert the start date & time of the earliest intensity to one Date object
+  	if($scope.headache.intensityValues[0].key != null)
+  		var start = new Date($scope.headache.intensityValues[0].key.getFullYear(), $scope.headache.intensityValues[0].key.getMonth(), $scope.headache.intensityValues[0].key.getDate(), $scope.headache.intensityValues[0].key.getHours(), $scope.headache.intensityValues[0].key.getMinutes());
 
   	console.log(start);
+  	console.log($scope.headache.end);
 
-  	dataService.addHeadache({ intensityValue: $scope.headache.intensityValue, start: start, end: end, location: $scope.headache.location,
-  					 		  triggers: $scope.headache.triggers, symptoms: $scope.headache.symptoms});
+  	dataService.addHeadache($scope.headache);
   	dataService.setCurrentHeadache(null);
   	location.href="dashboard.html";
   };
@@ -117,7 +110,7 @@ angular.module('Chronic').controller('headacheController', function($scope, data
 
     $scope.setNewHeadacheValue = function(newValue){
         $scope.newHeadacheValue = newValue;
-    }
+    };
 
   $scope.addIntensityValue = function(){
   	console.log("Adding default values");
@@ -127,6 +120,13 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   };
 
   $scope.saveIntensityValue = function(){
+  	var start = new Date($scope.newHeadacheDate.getFullYear(), $scope.newHeadacheDate.getMonth(), $scope.newHeadacheDate.getDate(), $scope.newHeadacheTime.getHours(), $scope.newHeadacheTime.getMinutes());
+	$scope.headache.intensityValues.push({key: start, value: $scope.newHeadacheValue});
+	$scope.headache.intensityValues.sort(function(a, b){
+		if(a.key < b.key) return -1;
+		if(a.key > b.key) return 1;
+		else return 0;
+	});
   	console.log("Saving the value"+$scope.newHeadacheValue+$scope.newHeadacheDate+$scope.newHeadacheTime+"!!");
   };
 
@@ -134,7 +134,7 @@ angular.module('Chronic').controller('headacheController', function($scope, data
         $scope.newHeadacheValue = v;
         $scope.newHeadacheDate = d;
         $scope.newHeadacheTime = t;
-    }
+    };
 
 
 });

@@ -88,15 +88,15 @@
 	  			<p class="label timeLabel" style="margin-top: 5%;">Eindtijd: (optioneel)</p>
 		  </ons-row>
 		  <ons-row style="margin-bottom: 25%;">
-	  			<ons-col class="col ons-col-inner"><input type="date" ng-model="headache.endDate" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col>
-	  			<ons-col class="col ons-col-inner"><input type="time" placeholder="HH:mm" ng-model="headache.endTime" class="timePicker" step="60"></ons-col>
+	  			<ons-col class="col ons-col-inner"><input type="date" ng-model="endDate" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col>
+	  			<ons-col class="col ons-col-inner"><input type="time" placeholder="HH:mm" ng-model="endTime" class="timePicker" step="60"></ons-col>
 	   	  </ons-row>
       	</div>
 
 		<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
         		<button class="button cancelButton"  onclick="location.href='dashboard.html'"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
-        		<button class="button"  ng-click="myNavigator.pushPage('location.html')" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
+        		<button class="button"  ng-click="setEnd(endDate, endTime); myNavigator.pushPage('location.html')" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
 		</div>
       </div>
@@ -158,7 +158,7 @@
       	<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
         		<button class="button cancelButton" onclick="myNavigator.popPage();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
-        		<button class="button finishButton" ng-click="setValues(newHeadacheValue, newHeadacheDate, newHeadacheTime);saveIntensityValue(); myNavigator.popPage();" style="float: right;">Sla op <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
+        		<button class="button finishButton" ng-click="setValues(newHeadacheValue, newHeadacheDate, newHeadacheTime);saveIntensityValue(); myNavigator.popPage();" style="float: right;">Voeg toe <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
     	</div>
       </div>
@@ -266,7 +266,6 @@
       <ons-toolbar>
         <div class="left"><ons-back-button>Terug</ons-back-button></div>
         <div class="center" style="margin: 0 auto; text-align: center;">{{startTimeString}}</div>
-        <div class="right"><ons-toolbar-button>Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></ons-toolbar-button></div>
       </ons-toolbar>
 
       <div class="navigatorTab">
