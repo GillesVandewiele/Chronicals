@@ -95,6 +95,10 @@ angular.module('Chronic').controller('headacheController', function($scope, data
     $scope.popover = popover;
   });
   
+  $scope.deleteEntry = function(item){
+  	console.log(item);
+  	$scope.headache.intensityValues.splice($scope.headache.intensityValues.indexOf(item), 1);
+  };
   
 
 });

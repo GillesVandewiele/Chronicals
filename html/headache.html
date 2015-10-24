@@ -45,14 +45,15 @@
 		    </div>
 		  </ons-popover>
 	 </ons-template>
+	 
+ 
   <ons-navigator var="myNavigator">
-
 	<!-- Intensity page -->
-    <ons-page>
+    <ons-page id="intensityList.html">
       <ons-toolbar>
       	<div class="left"></div>
         <div class="center" style="margin: 0 auto; text-align: center;"></div>
-        <div class="right"><ons-toolbar-button ng-click="myNavigator.pushPage('intensity.html', {title: 'Page'})">Volgende <ons-icon icon="ion-ios-arrow-forward" style="font-size: 32px"></ons-icon></ons-toolbar-button></div>
+        <div class="right"><ons-toolbar-button ng-click="myNavigator.pushPage('location.html', {title: 'Page'})">Volgende <ons-icon icon="ion-ios-arrow-forward" style="font-size: 32px"></ons-icon></ons-toolbar-button></div>
       </ons-toolbar>
 
       <div class="navigatorTab">
@@ -61,10 +62,24 @@
       	</div>
 
       	<div class="navigatorTabBody">
-      	  <ons-list>
-      		<ons-list-item ng-repeat="value in headache.intensityValues track by value.key">
-      		
-      		
+      	  <ons-list style="height: 100%;">
+      	    <ons-row>
+      			<ons-col width="50%"><ons-list-header><p>Datum</p></ons-list-header></ons-col>
+      			<ons-col width="25%"><ons-list-header><p>Waarde</p></ons-list-header></ons-col>
+      			<ons-col><ons-list-header><p style="background: 100%;"></p></ons-list-header></ons-col>
+      	    </ons-row>
+      		<ons-list-item height="10%" ng-repeat="value in headache.intensityValues track by value.key">
+  				<div>
+  					<div style="width: 55%; display: inline-block;"><p>{{value.key | date:'dd-MM HH:mm'}}</p></div>
+  					<div style="width: 25%; display: inline-block;"><p>{{value.value}}</p></div>
+  					<div style="display: inline-block;"><p><ons-icon ng-click="deleteEntry(value);" icon="ion-trash-b buttonIcon"></ons-icon></p></div>
+  				</div>
+      		</ons-list-item>
+      		<ons-list-item>
+      			<ons-row>
+      				<ons-col width="84%"><p>Voeg een nieuwe intensiteit toe...</p></ons-col>
+      				<ons-col><p><ons-icon icon="ion-plus-round buttonIcon" ng-click="myNavigator.pushPage('intensity.html', {title: 'Page'})"></ons-icon></p></ons-col>
+      			</ons-row>
       		</ons-list-item>
       	  </ons-list>
       		
@@ -78,8 +93,9 @@
 		</div>
       </div>
     </ons-page>
-
   </ons-navigator>
+
+  
   <script type="text/ons-template" id="intensity.html">
    <ons-page>
       <ons-toolbar>
@@ -100,8 +116,8 @@
       	</div>
 		<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
-        		<button class="button cancelButton"  onclick="location.href='dashboard.html'"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
-        		<button class="button"  ng-click="myNavigator.pushPage('times.html', {title: 'Page'})" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
+        		<button class="button cancelButton"  onclick="myNavigator.popPage();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
+        		<button class="button"  ng-click="myNavigator.replacePage('times.html', {title: 'Page'})" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
 		</div>
       </div>
@@ -141,7 +157,7 @@
 
       	<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
-        		<button class="button cancelButton" onclick="location.href='dashboard.html'"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
+        		<button class="button cancelButton" onclick="myNavigator.popPage();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
         		<button class="button" ng-click="myNavigator.pushPage('location.html', {title: 'Page'})" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
     	</div>
