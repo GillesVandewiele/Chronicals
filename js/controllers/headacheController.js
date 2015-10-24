@@ -8,14 +8,21 @@
 
 angular.module('Chronic').controller('headacheController', function($scope, dataService){
   
+  /* Initialize the current headache (this is not null when we are modifying) */
+  
   $scope.headache = dataService.getCurrentHeadache();
   
   if($scope.headache == null){
   	$scope.headache = { intensityValues: [{key: new Date(), value: 5}], start: new Date(), endDate: null, endTime: null, 
   						location: null, triggers: [], symptoms: []};
   }
-  $scope.headache.startDate = $scope.headache.start;
-  $scope.headache.startTime = $scope.headache.startDate;
+  
+  $scope.headache.startDate = new Date($scope.headache.start);
+  $scope.headache.startTime = new Date($scope.headache.startDate);
+  
+  console.log($scope.headache.startDate instanceof Date);
+  
+  /* Create a nice short time string from the start date and time */ 
   
   $scope.updateStartTimeString = function(){
   	var months = ["jan.", "feb.", "mrt.", "apr.", "mei", "jun.", "jul.", "aug.", "sept.", "okt.", "nov.", "dec."];
@@ -30,6 +37,8 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   
   $scope.$watch('startDate', $scope.updateStartTimeString);
   $scope.$watch('startTime', $scope.updateStartTimeString);
+  
+  /* closeAndSave is called when the user pressed the "Sla op" button */
   
   $scope.closeAndSave = function(){
   	// This is executed when the user finishes
@@ -53,7 +62,7 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   	location.href="dashboard.html";			 
   };  
 
-  // Triggers & symptoms  
+  /* Loading the triggers and symptoms, also some ugly hack with jQuery to link a popover the the corresponding help buttons */ 
   $scope.headache.symptoms = dataService.getSymptoms();
   $scope.headache.triggers = dataService.getTriggers();
   $scope.message = "";
@@ -66,7 +75,7 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   	return -1;
   };
 
-  for(trigger in $scope.headache.triggers){
+  for(trigger in $scope.headache.triggers){ // Close your eyes and pretend this is not here ;)
   	// Initialize function on each helpButton for each trigger
   	$(document).on("click", '#helpButtonTrigger'+$scope.headache.triggers[trigger].id, function(){
   		var id = ($(this)[0].id).split('helpButtonTrigger');
@@ -76,7 +85,7 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   	});
   };
   
-  for(symptom in $scope.headache.symptoms){
+  for(symptom in $scope.headache.symptoms){ // Close your eyes and pretend this is not here ;)
   	// Initialize function on each helpButton for each trigger
   	$(document).on("click", '#helpButtonSymptom'+$scope.headache.symptoms[symptom].id, function(){
   		var id = ($(this)[0].id).split('helpButtonSymptom');
@@ -95,9 +104,26 @@ angular.module('Chronic').controller('headacheController', function($scope, data
     $scope.popover = popover;
   });
   
+  /* All variables and functions used to add intensity values and delete them */
+  
+  $scope.newHeadacheValue;
+  $scope.newHeadacheDate;
+  $scope.newHeadacheTime;
+  
   $scope.deleteEntry = function(item){
   	console.log(item);
   	$scope.headache.intensityValues.splice($scope.headache.intensityValues.indexOf(item), 1);
+  };
+  
+  $scope.addIntensityValue = function(){
+  	console.log("Adding value!");
+  	$scope.newHeadacheValue = 5;
+  	$scope.newHeadacheDate = new Date();
+  	$scope.newHeadacheTime = $scope.newHeadacheDate;
+  };
+  
+  $scope.saveIntensityValue = function(){
+  	console.log("Saving the value"+$scope.newHeadacheValue+$scope.newHeadacheDate+$scope.newHeadacheTime+"!!");
   };
   
 
