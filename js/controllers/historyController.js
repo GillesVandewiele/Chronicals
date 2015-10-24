@@ -6,8 +6,10 @@
  This file contains the controller for the history views.
  */
 
-angular.module('Chronic').controller("historyController", function($scope, dataService) {	
+angular.module('Chronic').controller("historyController", function($scope, dataService) {
 
+
+    $scope.listItems = dataService.getHeadacheList();
 
     /* Onload fill event list of the calendar */
     $scope.fillEvents = function () {
@@ -148,12 +150,23 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
 
 
         });
-        
+
     });
 
     $scope.goNextPage = function(){
         historyNavigator.pushPage('calendarView.html', {onTransitionEnd: '$scope.fillEvents()'});
     };
+
+    $scope.listClick = function(obj){
+        if(obj.hasOwnProperty('end')){
+            dataService.setCurrentHeadache(obj);
+            location.href='detailedHeadache.html'
+        }else{
+            dataService.setCurrentMedicine(obj);
+            console.log(obj)
+        }
+
+    }
 
 });
 
