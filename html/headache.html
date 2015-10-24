@@ -34,7 +34,7 @@
     <script src="../js/vendor/Chart.min.js"></script>
     <script src="../js/vendor/angular-chart.js"></script>
 
-  
+
 
 </head>
 <body ng-controller="headacheController">
@@ -45,8 +45,8 @@
 		    </div>
 		  </ons-popover>
 	 </ons-template>
-	 
- 
+
+
   <ons-navigator var="myNavigator">
 	<!-- Intensity page -->
     <ons-page id="intensityList.html">
@@ -82,7 +82,7 @@
       				<ons-col><p><ons-icon icon="ion-plus-round buttonIcon"></ons-icon></p></ons-col>
       			</ons-row>
       		</ons-list-item>
-      	  </ons-list>  
+      	  </ons-list>
       	  <hr>
       	  <ons-row>
 	  			<p class="label timeLabel" style="margin-top: 5%;">Eindtijd: (optioneel)</p>
@@ -90,9 +90,9 @@
 		  <ons-row style="margin-bottom: 25%;">
 	  			<ons-col class="col ons-col-inner"><input type="date" ng-model="headache.endDate" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col>
 	  			<ons-col class="col ons-col-inner"><input type="time" placeholder="HH:mm" ng-model="headache.endTime" class="timePicker" step="60"></ons-col>
-	   	  </ons-row> 		     		
+	   	  </ons-row>
       	</div>
-      	
+
 		<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
         		<button class="button cancelButton"  onclick="location.href='dashboard.html'"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
@@ -103,13 +103,13 @@
     </ons-page>
   </ons-navigator>
 
-  
+
   <script type="text/ons-template" id="intensity.html">
    <ons-page>
       <ons-toolbar>
       	<div class="left"></div>
         <div class="center" style="margin: 0 auto; text-align: center;"></div>
-        <div class="right"><ons-toolbar-button ng-click="myNavigator.replacePage('times.html')">Volgende <ons-icon icon="ion-ios-arrow-forward" style="font-size: 32px"></ons-icon></ons-toolbar-button></div>
+        <div class="right"><ons-toolbar-button ng-click="myNavigator.replacePage('times.html');setNewHeadacheValue(newHeadacheValue); console.log(newHeadacheValue)">Volgende <ons-icon icon="ion-ios-arrow-forward" style="font-size: 32px"></ons-icon></ons-toolbar-button></div>
       </ons-toolbar>
 
       <div class="navigatorTab">
@@ -135,14 +135,14 @@
   <script type="text/ons-template" id="times.html">
     <ons-page>
       <ons-toolbar>
-        <div class="left"><ons-icon icon="ion-ios-arrow-back" style="font-size: 32px"></ons-icon><ons-toolbar-button ng-click="myNavigator.replacePage('intensity.html');"> Terug</ons-toolbar-button></div>
+        <div class="left"><ons-icon icon="ion-ios-arrow-back" style="font-size: 32px"></ons-icon><ons-toolbar-button ng-click="myNavigator.replacePage('intensity.html'); "> Terug</ons-toolbar-button></div>
         <div class="center" style="margin: 0 auto; text-align: center;"></div>
         <div class="right"></div>
       </ons-toolbar>
 
       <div class="navigatorTab">
       	<div class="navigatorTabHead">
-	      	<h3> Geef de start- (en indien mogelijk eindtijd) op. </h3>
+	      	<h3> Geef de start- (en indien mogelijk eindtijd) op.</h3>
       	</div>
 
       	<div class="navigatorTabBody">
@@ -158,7 +158,7 @@
       	<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
         		<button class="button cancelButton" onclick="myNavigator.popPage();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
-        		<button class="button finishButton" ng-click="saveIntensityValue(); myNavigator.popPage();" style="float: right;">Sla op <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
+        		<button class="button finishButton" ng-click="setValues(newHeadacheValue, newHeadacheDate, newHeadacheTime);saveIntensityValue(); myNavigator.popPage();" style="float: right;">Sla op <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
     	</div>
       </div>

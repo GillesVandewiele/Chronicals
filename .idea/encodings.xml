@@ -5,6 +5,7 @@
     <file url="file://$PROJECT_DIR$/html/detailedHeadache.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/js/controllers/chronic.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/js/controllers/detailedHeadacheController.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/js/controllers/headacheController.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/js/controllers/historyController.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/js/services/dataservice.js" charset="UTF-8" />
   </component>

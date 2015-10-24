@@ -16,9 +16,10 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
     	$scope.listItems = dataService.getHeadacheList();
     	if($scope.listItems) Array.prototype.push.apply($scope.listItems, dataService.getMedicineList());
     	else $scope.listItems = dataService.getMedicineList();
-        $scope.listItems.sort(function(a,b){
-	        return b.start - a.start;
-	    });
+        if($scope.listItems != null && $scope.listItems.length>0)
+            $scope.listItems.sort(function(a,b){
+                return b.start - a.start;
+            });
         //document.getElementById('history').style.display = 'none';
 
         console.log("opgeroepen", $scope.listItems);
