@@ -9,6 +9,21 @@
 
 angular.module('Chronic').controller("dashboardController", function($scope, dataService){
 
+    document.addEventListener("backbutton", function(e){
+        if($.mobile.activePage.is('#login_page')){
+            e.preventDefault();
+        }
+        else {
+            if (confirm("Are you sure you want to logout?")) {
+                /* Here is where my AJAX code for logging off goes */
+            }
+            else {
+                return false;
+            }
+        }
+    }, false);
+
+
 	console.log(dataService.getHeadacheList());
     $scope.listItems = dataService.getHeadacheList();
     if($scope.listItems) Array.prototype.push.apply($scope.listItems, dataService.getMedicineList());
@@ -20,7 +35,7 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
 
     $scope.getTimeDateString = function(tijdstip){
         var datum = new Date(tijdstip.intensityValues[0].key);
-        return ""+(datum.getDate())+"/"+(datum.getMonth()+1)+" "+datum.getHours()+":"+datum.getMinutes();
+        return ""+(datum.getDate())+"/"+(datum.getMonth()+1)+" "+(datum.getHours()<10?'0':'')+datum.getHours()+":"+(datum.getMinutes()<10?'0':'')+datum.getMinutes();
     }
 
 

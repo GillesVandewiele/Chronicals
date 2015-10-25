@@ -82,16 +82,20 @@ angular.module('Chronic').service('dataService', function($localStorage) {
   };
 
   var removeHeadache = function(){
+      var list = $localStorage.headacheList;
+      var current = $localStorage.currentHeadache;
 
-      if(headacheList == null){
-          list = $localStorage.headacheList;
-      }else{
-          list = headacheList;
+      var index = -1;
+      for(var i=0; i<list.length; i++){
+          if(list[i].intensityValues[0].key == current.intensityValues[0].key){
+              index = i;
+              break;
+          }
       }
 
-      list = list.filter(function (el) {
-              return el.intensityValues !== $localStorage.currentHeadache.intensityValues;
-          });
+      if (index > -1) {
+          console.log("Removed:",list.splice(index, 1));
+      }
 
       $localStorage.headacheList = list;
       headacheList = list;
@@ -100,6 +104,17 @@ angular.module('Chronic').service('dataService', function($localStorage) {
       $localStorage.currentHeadache = null;
 
   };
+
+    var clearCache = function(){
+        $localStorage.headacheList = null;
+        $localStorage.currentHeadache = null;
+        $localStorage.medicineList = null;
+        $localStorage.currentMedicine = null;
+        headache = null;
+        headacheList = null;
+        medicine = null;
+        medicineList = null;
+    }
 
   return {
     addHeadache: addHeadache,
@@ -114,7 +129,8 @@ angular.module('Chronic').service('dataService', function($localStorage) {
     getCurrentMedicine: getCurrentMedicine,
     getSymptoms: getSymptoms,
     getTriggers: getTriggers,
-    removeHeadache: removeHeadache
+    removeHeadache: removeHeadache,
+    clearCache: clearCache
     };
 
 

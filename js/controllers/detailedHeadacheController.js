@@ -8,7 +8,19 @@
 
 
 angular.module('Chronic').controller("detailedHeadacheController", function($scope, dataService) {
-
+    document.addEventListener("backbutton", function(e){
+        if($.mobile.activePage.is('#login_page')){
+            e.preventDefault();
+        }
+        else {
+            if (confirm("Are you sure you want to logout?")) {
+                /* Here is where my AJAX code for logging off goes */
+            }
+            else {
+                return false;
+            }
+        }
+    }, false);
 
     $scope.deleteEntry = function(){
         console.log("Removed: ", dataService.getCurrentHeadache());
@@ -51,7 +63,15 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
     var months = ["jan.", "feb.", "mrt.", "apr.", "mei", "jun.", "jul.", "aug.", "sept.", "okt.", "nov.", "dec."];
 
 
-    if(current.intensityValues[0].key != null){
+    if(current == null){
+        current = dataService.getCurrentHeadache();
+        if(current==null){
+            dataService.setCurrentHeadache(dataService.getHeadacheList()[0]);
+            current = dataService.getCurrentHeadache();
+        }
+    }
+
+    if(current.intensityValues != null && current.intensityValues[0].key != null){
         current.start = new Date(current.intensityValues[0].key);
     }
     if (current.end != null){

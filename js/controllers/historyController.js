@@ -8,7 +8,19 @@
 
 angular.module('Chronic').controller("historyController", function($scope, dataService) {
 
-
+    document.addEventListener("backbutton", function(e){
+        if($.mobile.activePage.is('#login_page')){
+            e.preventDefault();
+        }
+        else {
+            if (confirm("Are you sure you want to logout?")) {
+                /* Here is where my AJAX code for logging off goes */
+            }
+            else {
+                return false;
+            }
+        }
+    }, false);
     $scope.listItems = dataService.getHeadacheList();
 
     /* Onload fill event list of the calendar */
@@ -33,21 +45,23 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
                 center: 'title',
                 right: 'month,basicWeek,basicDay'
             },
-
+            height: $('#calendar').height() - 2,
+            ignoreTimezone: false,
+            timeZone: "UTC",
             nextDayThreshold: "00:00:01",
 
-            eventRender: function (event, element) {
-                element.attr('href', 'javascript:void(0);');
-                element.click(function() {
-                    //onclick functie van de events in de kalender
-                    $("#startTime").html(moment(event.start).format('MMM Do h:mm A'));
-                    $("#endTime").html(moment(event.end).format('MMM Do h:mm A'));
-                    $("#eventInfo").html(event.description);
-                    $("#eventLink").attr('href', event.url);
-                    alert("Start: "+moment(event.start).format('MMM Do h:mm A')+"\nEnd: "+moment(event.end).format('MMM Do h:mm A')+"\nTitel: "+event.title+"\nIntensity: "+event.intensity+"\nMedicijn: "+event.medicine);
-                    $("#eventContent").show();
-                });
-            },
+            //eventRender: function (event, element) {
+            //    element.attr('href', 'javascript:void(0);');
+            //    element.click(function() {
+            //        //onclick functie van de events in de kalender
+            //        $("#startTime").html(moment(event.start).format('MMM Do h:mm A'));
+            //        $("#endTime").html(moment(event.end).format('MMM Do h:mm A'));
+            //        $("#eventInfo").html(event.description);
+            //        $("#eventLink").attr('href', event.url);
+            //        alert("Start: "+moment(event.start).format('MMM Do h:mm A')+"\nEnd: "+moment(event.end).format('MMM Do h:mm A')+"\nTitel: "+event.title+"\nIntensity: "+event.intensity+"\nMedicijn: "+event.medicine);
+            //        $("#eventContent").show();
+            //    });
+            //},
 
         });
 
@@ -62,7 +76,9 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
                         , start: $scope.listItems[i].intensityValues[0].key
                         , end: $scope.listItems[i].end
                         , intensity: $scope.listItems[i].intensityValue
-                        , color: '#f9332f'
+                        , color: '#f9332f',
+                        ignoreTimezone: false,
+                        timeZone: "UTC",
                     }, true);
             }else{
                 $('#calendar').fullCalendar('renderEvent',
@@ -71,7 +87,9 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
                         , start: $scope.listItems[i].start
                         , medicine: $scope.listItems[i].name
                         , quantity: $scope.listItems[i].quantity
-                        , color: '#0cc80c'
+                        , color: '#0cc80c',
+                        ignoreTimezone: false,
+                        timeZone: "UTC",
                     }, true);
             }
         }
@@ -127,20 +145,14 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
                     center: 'prev, title, next',
                     right: 'month,basicWeek,basicDay'
                 },
-
+                ignoreTimezone: false,
+                height: $('#calendar').height() - 2,
                 nextDayThreshold: "00:00:01",
 
                 eventRender: function (event, element) {
                     element.attr('href', 'javascript:void(0);');
                     element.click(function() {
-
-                        $("#startTime").html(moment(event.start).format('MMM Do h:mm A'));
-                        $("#endTime").html(moment(event.end).format('MMM Do h:mm A'));
-                        $("#eventInfo").html(event.description);
-                        $("#eventLink").attr('href', event.url);
                         $scope.listClick(event);
-                        //alert("Start: "+moment(event.start).format('MMM Do h:mm A')+"\nEnd: "+moment(event.end).format('MMM Do h:mm A')+"\nTitel: "+event.title+"\nIntensity: "+event.intensity+"\nMedicijn: "+event.medicine);
-                        $("#eventContent").show();
                     });
                 }
             });
@@ -172,7 +184,7 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
 
     $scope.getTimeDateString = function(tijdstip){
         var datum = new Date(tijdstip.intensityValues[0].key);
-        return ""+(datum.getDate())+"/"+(datum.getMonth()+1)+" "+datum.getHours()+":"+datum.getMinutes();
+        return ""+(datum.getDate())+"/"+(datum.getMonth()+1)+" "+(datum.getHours()<10?'0':'')+datum.getHours()+":"+(datum.getMinutes()<10?'0':'')+datum.getMinutes();
     }
 
 });
