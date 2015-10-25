@@ -20,7 +20,7 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
 
     $scope.getTimeDateString = function(tijdstip){
         var datum = new Date(tijdstip.intensityValues[0].key);
-        return ""+(datum.getDate())+"/"+(datum.getMonth()+1)+" "+datum.getHours()+":"+datum.getMinutes();
+        return ""+(datum.getDate())+"/"+(datum.getMonth()+1)+" "+(datum.getHours()<10?'0':'')+datum.getHours()+":"+(datum.getMinutes()<10?'0':'')+datum.getMinutes();
     }
 
 

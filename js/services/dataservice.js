@@ -93,6 +93,17 @@ angular.module('Chronic').service('dataService', function($localStorage) {
 
   }
 
+    var clearCache = function(){
+        $localStorage.headacheList = null;
+        $localStorage.currentHeadache = null;
+        $localStorage.medicineList = null;
+        $localStorage.currentMedicine = null;
+        headache = null;
+        headacheList = null;
+        medicine = null;
+        medicineList = null;
+    }
+
   return {
     addHeadache: addHeadache,
     addMedicine: addMedicine,
@@ -104,7 +115,8 @@ angular.module('Chronic').service('dataService', function($localStorage) {
     getCurrentMedicine: getCurrentMedicine,
     getSymptoms: getSymptoms,
     getTriggers: getTriggers,
-    removeHeadache: removeHeadache
+    removeHeadache: removeHeadache,
+    clearCache: clearCache
     };
 
 
