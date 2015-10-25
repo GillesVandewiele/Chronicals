@@ -9,6 +9,19 @@
 angular.module('Chronic').controller('headacheController', function($scope, dataService){
 
   /* Initialize the current headache (this is not null when we are modifying) */
+    document.addEventListener("backbutton", function(e){
+        if($.mobile.activePage.is('#login_page')){
+            e.preventDefault();
+        }
+        else {
+            if (confirm("Are you sure you want to logout?")) {
+                /* Here is where my AJAX code for logging off goes */
+            }
+            else {
+                return false;
+            }
+        }
+    }, false);
 
   $scope.headache = dataService.getCurrentHeadache();
 
@@ -21,13 +34,13 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   		$scope.headache.end = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), endTime.getHours(), endTime.getMinutes());
   	}
   };
-  
+
   $scope.end = new Date($scope.headache.end);
   if($scope.end != null){
   	$scope.endDate = $scope.end;
   	$scope.endTime = $scope.end;
   }
-  
+
   $scope.setEndDate = function(endDate){
   	if(endDate != null){
   		if($scope.end == null) $scope.end = new Date();
@@ -36,7 +49,7 @@ angular.module('Chronic').controller('headacheController', function($scope, data
 	  	$scope.end.setDate(endDate.getDate());
   	}
   };
-  
+
   $scope.setEndTime = function(endTime){
   	if(endTime != null){
   		if($scope.end == null) $scope.end = new Date();
@@ -81,7 +94,7 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   	dataService.setCurrentHeadache(null);
   	location.href="dashboard.html";
   };
-  
+
   $scope.cancel = function(){
   	dataService.setCurrentHeadache(null);
   	location.href="dashboard.html";
@@ -208,7 +221,7 @@ angular.module('Chronic').directive('validenddate', function() {
         	}
         	return false;
     	};
-    	
+
     }
   };
 });
@@ -232,7 +245,7 @@ angular.module('Chronic').directive('validendtime', function() {
         	}
         	return false;
     	};
-    	
+
     }
   };
 });

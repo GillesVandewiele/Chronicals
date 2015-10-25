@@ -8,7 +8,19 @@
 
 angular.module('Chronic').controller("historyController", function($scope, dataService) {
 
-
+    document.addEventListener("backbutton", function(e){
+        if($.mobile.activePage.is('#login_page')){
+            e.preventDefault();
+        }
+        else {
+            if (confirm("Are you sure you want to logout?")) {
+                /* Here is where my AJAX code for logging off goes */
+            }
+            else {
+                return false;
+            }
+        }
+    }, false);
     $scope.listItems = dataService.getHeadacheList();
 
     /* Onload fill event list of the calendar */
