@@ -51,24 +51,26 @@
       	</div>
       	
       	<div class="navigatorTabBody">  
+	      	<ons-row>
+      			<p class="label" style="margin-left: 5%;">Medicijn + hoeveelheid:</p>
+	      	</ons-row>
       		<ons-row>
-      		<p class="label" style="margin-left: 5%;">Medicijn + hoeveelheid:</p>
-		    <div class="selectDiv">
-		        <span class="selectDefault">{{selectedDrug.name}}</span>
-			      <select ng-options="drug as drug.name for drug in drugs" ng-model="selectedDrug">
-			      	<option style="display:none" value="">select a drug</option>
-			      </select>
-		     </div>	    
-		     <input type="number" min="1" class="medicineQuantity">
-		     <label>mg</label>
-		     </ons-row>
-		     <ons-row style="margin-top: 5%;">
-      			<p class="label" style="margin-left: 5%">Tijdstip van inname:</p>
-		     	<input type="date" ng-model="endDate" style="width: 50%; margin-left: 5%;" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col>
-      			<input type="time" placeholder="HH:mm" ng-model="endTime" style="width: 34%;" class="timePicker" step="60"></ons-col>
+			    <div class="selectDiv" style="width: 40%;">
+			        <span class="selectDefault">{{selectedDrug.name}}</span>
+				      <select ng-options="drug as drug.name for drug in drugs" ng-model="selectedDrug">
+				      	<option style="display:none" value="">select a drug</option>
+				      </select>
+			     </div>	 
+			     <input type="number" style="width: 20%;" min="1" class="medicineQuantity">
+			     <label>mg</label>
 		     </ons-row>
 		     <ons-row style="margin-top: 5%;">
 		     	<p style="margin-left: 5%;">{{selectedDrug.description}}</p>
+		     </ons-row>
+		     <ons-row style="margin-top: 5%;">
+      			<p class="label" style="margin-left: 5%">Tijdstip van inname:</p>
+		     	<input type="date" ng-model="endDate" style="margin-left: 5%;" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col>
+      			<input type="time" placeholder="HH:mm" ng-model="endTime" class="timePicker" step="60"></ons-col>
 		     </ons-row>
       	</div>
       	

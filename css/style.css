@@ -67,6 +67,10 @@ html, body{
 	color: #FFFFFF;
 }
 
+.error{
+	color: red;
+}
+
 .timePicker{
 	color: black;
 	float: left;
@@ -92,7 +96,7 @@ input[type=time]::-webkit-clear-button {
 
 .label{
 	font-weight: bold;
-	font-size: 125%;
+	font-size: 110%;
 	display: inline-block;
 }
 
@@ -125,9 +129,7 @@ input[type=time]::-webkit-clear-button {
 }
 
 .selectDiv {
-
     margin-left: 5%;
-    width: 50%;
     overflow: hidden;
     background: url('../img/dropdown.png') no-repeat right #FEFEFE;
     background-color: #1a252f;

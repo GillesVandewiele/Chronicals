@@ -19,6 +19,7 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   $scope.end;
 
   $scope.setEnd = function(endDate, endTime){
+  	console.log(endDate, endTime);
   	$scope.headache.end = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), endTime.getHours(), endTime.getMinutes());
   };
 
@@ -119,7 +120,7 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   	$scope.newHeadacheTime = $scope.newHeadacheDate;
   };
 
-  $scope.saveIntensityValue = function(){
+  $scope.saveIntensityValue = function(navigator, page){
   	var start = new Date($scope.newHeadacheDate.getFullYear(), $scope.newHeadacheDate.getMonth(), $scope.newHeadacheDate.getDate(), $scope.newHeadacheTime.getHours(), $scope.newHeadacheTime.getMinutes());
 	$scope.headache.intensityValues.push({key: start, value: $scope.newHeadacheValue});
 	$scope.headache.intensityValues.sort(function(a, b){
@@ -128,6 +129,7 @@ angular.module('Chronic').controller('headacheController', function($scope, data
 		else return 0;
 	});
   	console.log("Saving the value"+$scope.newHeadacheValue+$scope.newHeadacheDate+$scope.newHeadacheTime+"!!");
+  	navigator.popPage(page); // We're in the add intensity form. Popping a page will return to the list intensity form
   };
 
     $scope.setValues = function (v, d, t) {
