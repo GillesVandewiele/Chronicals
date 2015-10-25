@@ -13,19 +13,45 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   $scope.headache = dataService.getCurrentHeadache();
 
   if($scope.headache == null){
-  	$scope.headache = { intensityValues: [{key: new Date(), value: 5}], end: null, location: null, triggers: [], symptoms: []};
+  	$scope.headache = { intensityValues: [], end: null, location: null, triggers: dataService.getTriggers(), symptoms: dataService.getSymptoms()};
   }
 
-  $scope.end;
-
   $scope.setEnd = function(endDate, endTime){
-  	console.log(endDate, endTime);
-  	$scope.headache.end = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), endTime.getHours(), endTime.getMinutes());
+  	if(endDate != null && endTime != null){
+  		$scope.headache.end = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), endTime.getHours(), endTime.getMinutes());
+  	}
+  };
+  
+  $scope.end = new Date($scope.headache.end);
+  if($scope.end != null){
+  	$scope.endDate = $scope.end;
+  	$scope.endTime = $scope.end;
+  }
+  
+  $scope.setEndDate = function(endDate){
+  	if(endDate != null){
+  		if($scope.end == null) $scope.end = new Date();
+	  	$scope.end.setFullYear(endDate.getFullYear());
+	  	$scope.end.setMonth(endDate.getMonth());
+	  	$scope.end.setDate(endDate.getDate());
+  	}
+  };
+  
+  $scope.setEndTime = function(endTime){
+  	if(endTime != null){
+  		if($scope.end == null) $scope.end = new Date();
+	  	$scope.end.setHours(endTime.getHours());
+	  	$scope.end.setMinutes(endTime.getMinutes());
+	}
   };
 
   /* Create a nice short time string from the start date and time */
 
   $scope.updateStartTimeString = function(){
+  	if($scope.headache.intensityValues[0] == null) {
+  		$scope.startTimeString = "";
+  		return;
+  	}
   	var months = ["jan.", "feb.", "mrt.", "apr.", "mei", "jun.", "jul.", "aug.", "sept.", "okt.", "nov.", "dec."];
   	var month = months[(new Date($scope.headache.intensityValues[0].key).getMonth())];
   	var day = (new Date($scope.headache.intensityValues[0].key).getDate().toString());
@@ -55,10 +81,13 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   	dataService.setCurrentHeadache(null);
   	location.href="dashboard.html";
   };
+  
+  $scope.cancel = function(){
+  	dataService.setCurrentHeadache(null);
+  	location.href="dashboard.html";
+  };
 
-  /* Loading the triggers and symptoms, also some ugly hack with jQuery to link a popover the the corresponding help buttons */
-  $scope.headache.symptoms = dataService.getSymptoms();
-  $scope.headache.triggers = dataService.getTriggers();
+  /* Some ugly hack with jQuery to link a popover the the corresponding help buttons */
   $scope.message = "";
 
   var searchIndexById = function(list, id){
@@ -107,6 +136,7 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   $scope.deleteEntry = function(item){
   	console.log(item);
   	$scope.headache.intensityValues.splice($scope.headache.intensityValues.indexOf(item), 1);
+  	if($scope.headache.intensityValues.length == 0) $("#endDateForm").hide();
   };
 
     $scope.setNewHeadacheValue = function(newValue){
@@ -114,6 +144,7 @@ angular.module('Chronic').controller('headacheController', function($scope, data
     };
 
   $scope.addIntensityValue = function(){
+  	/* This function is called when we want to add an Intensity Value (it doesn't add it to the list yet...) */
   	console.log("Adding default values");
   	$scope.newHeadacheValue = 5;
   	$scope.newHeadacheDate = new Date();
@@ -128,6 +159,7 @@ angular.module('Chronic').controller('headacheController', function($scope, data
 		if(a.key > b.key) return 1;
 		else return 0;
 	});
+  	if($scope.headache.intensityValues.length == 1) $("#endDateForm").show();
   	console.log("Saving the value"+$scope.newHeadacheValue+$scope.newHeadacheDate+$scope.newHeadacheTime+"!!");
   	navigator.popPage(page); // We're in the add intensity form. Popping a page will return to the list intensity form
   };
@@ -141,7 +173,7 @@ angular.module('Chronic').controller('headacheController', function($scope, data
 
 });
 
-app.directive('ngModel', function( $filter ) {
+angular.module('Chronic').directive('ngModel', function( $filter ) {
 	// This is used to remove seconds and milliseconds in time pickers
     return {
         require: '?ngModel',
@@ -156,4 +188,51 @@ app.directive('ngModel', function( $filter ) {
             });
         }
     };
+});
+
+angular.module('Chronic').directive('validenddate', function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, ele, attrs, c) {
+    	c.$validators.validEndDate = function(modelValue, viewValue){
+        	scope.setEndDate(modelValue);
+        	console.log(scope.headache.intensityValues[scope.headache.intensityValues.length-1].key);
+        	console.log(scope.end);
+        	console.log(scope.end >= new Date(scope.headache.intensityValues[scope.headache.intensityValues.length-1].key));
+	    	if(c.$isEmpty(modelValue)) {
+		        // consider empty models to be valid
+		        return true;
+        	}
+        	if(scope.headache.intensityValues.length != 0 && scope.end >= scope.headache.intensityValues[scope.headache.intensityValues.length-1].key){
+        		return true;
+        	}
+        	return false;
+    	};
+    	
+    }
+  };
+});
+
+angular.module('Chronic').directive('validendtime', function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, ele, attrs, c) {
+    	c.$validators.validEndTime = function(modelValue, viewValue){
+    		console.log(modelValue);
+        	scope.setEndTime(modelValue);
+        	console.log(scope.headache.intensityValues[scope.headache.intensityValues.length-1].key);
+        	console.log(scope.end);
+        	console.log(scope.end >= new Date(scope.headache.intensityValues[scope.headache.intensityValues.length-1].key));
+	    	if(c.$isEmpty(modelValue)) {
+		        // consider empty models to be valid
+		        return true;
+        	}
+        	if(scope.headache.intensityValues.length != 0 && scope.end >= new Date(scope.headache.intensityValues[scope.headache.intensityValues.length-1].key)){
+        		return true;
+        	}
+        	return false;
+    	};
+    	
+    }
+  };
 });

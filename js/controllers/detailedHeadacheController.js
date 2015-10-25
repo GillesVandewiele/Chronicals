@@ -13,8 +13,7 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
     $scope.deleteEntry = function(){
         console.log("Removed: ", dataService.getCurrentHeadache());
         dataService.removeHeadache();
-
-    }
+    };
 
 
     function sortOnKeys(array) {

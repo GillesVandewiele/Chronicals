@@ -53,7 +53,7 @@
       <ons-toolbar>
       	<div class="left"></div>
         <div class="center" style="margin: 0 auto; text-align: center;"></div>
-        <div class="right"><ons-toolbar-button ng-click="myNavigator.pushPage('location.html')">Volgende <ons-icon icon="ion-ios-arrow-forward" style="font-size: 32px"></ons-icon></ons-toolbar-button></div>
+        <div class="right"><ons-toolbar-button ng-click="setEnd(endDate, endTime); myNavigator.pushPage('location.html')">Volgende <ons-icon icon="ion-ios-arrow-forward" style="font-size: 32px"></ons-icon></ons-toolbar-button></div>
       </ons-toolbar>
 
       <div class="navigatorTab">
@@ -84,18 +84,23 @@
       		</ons-list-item>
       	  </ons-list>
       	  <hr>
-      	  <ons-row>
-	  			<p class="label timeLabel" style="margin-top: 5%;">Eindtijd: (optioneel)</p>
-		  </ons-row>
-		  <ons-row style="margin-bottom: 25%;">
-	  			<ons-col class="col ons-col-inner"><input type="date" ng-model="endDate" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col>
-	  			<ons-col class="col ons-col-inner"><input type="time" placeholder="HH:mm" ng-model="endTime" class="timePicker" step="60"></ons-col>
-	   	  </ons-row>
+      	  <form name="intensityEndDate" id="endDateForm" ng-show="headache.intensityValues.length">
+	      	  <ons-row>
+		  			<p class="label timeLabel" style="margin-top: 5%;">Eindtijd: (optioneel)</p>
+			  </ons-row>
+			  <ons-row>
+		  			<ons-col class="col ons-col-inner"><input name="endDate" type="date" ng-model="endDate" min="2013-01-01" max="2050-01-01" class="datePicker" validenddate /></ons-col>
+		  			<ons-col class="col ons-col-inner"><input name="endTime" type="time" placeholder="HH:mm" ng-model="endTime" class="timePicker" step="60" validendtime/></ons-col>
+		   	  </ons-row>
+	   	  		<small class="error" ng-show="intensityEndDate.endDate.$error.validEndDate && intensityEndDate.endTime.$error.validEndTime">
+			        Uw einddatum moet groter zijn dan de startdatum van uw laatste intensiteit! <br>
+			    </small>
+	   	 </form>
       	</div>
 
 		<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
-        		<button class="button cancelButton"  onclick="location.href='dashboard.html'"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
+        		<button class="button cancelButton"  ng-click="cancel();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
         		<button class="button"  ng-click="setEnd(endDate, endTime); myNavigator.pushPage('location.html')" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
 		</div>
@@ -224,7 +229,7 @@
 
       	<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
-        		<button class="button cancelButton"  onclick="location.href='dashboard.html'"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
+        		<button class="button cancelButton"  ng-click="cancel();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
         		<button class="button" ng-click="myNavigator.pushPage('symptoms.html')" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
     	</div>
@@ -269,7 +274,7 @@
 
       	<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
-        		<button class="button cancelButton"  onclick="location.href='dashboard.html'"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
+        		<button class="button cancelButton"  ng-click="cancel();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
         		<button class="button" ng-click="myNavigator.pushPage('triggers.html')" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
     	</div>
@@ -311,7 +316,7 @@
 
       	<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
-        		<button class="button cancelButton" onclick="location.href='dashboard.html'"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
+        		<button class="button cancelButton" ng-click="cancel();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
         		<button class="button finishButton" ng-click="closeAndSave()" style="float: right;">Sla op <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
     	</div>
