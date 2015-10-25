@@ -36,8 +36,8 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   };
 
   if($scope.headache != null){
-	  $scope.end = new Date($scope.headache.end);
 	  if($scope.end != null){
+	  	$scope.end = new Date($scope.headache.end);
 	  	$scope.endDate = $scope.end;
 	  	$scope.endTime = $scope.end;
 	  }
