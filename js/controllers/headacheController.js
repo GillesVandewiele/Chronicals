@@ -16,16 +16,37 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   	$scope.headache = { intensityValues: [{key: new Date(), value: 5}], end: null, location: null, triggers: [], symptoms: []};
   }
 
-  $scope.end;
-
   $scope.setEnd = function(endDate, endTime){
   	console.log(endDate, endTime);
   	$scope.headache.end = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), endTime.getHours(), endTime.getMinutes());
+  };
+  
+  $scope.end;
+  
+  $scope.setEndDate = function(endDate){
+  	if(endDate != null){
+  		if($scope.end == null) $scope.end = new Date();
+	  	$scope.end.setFullYear(endDate.getFullYear());
+	  	$scope.end.setMonth(endDate.getMonth());
+	  	$scope.end.setDate(endDate.getDate());
+  	}
+  };
+  
+  $scope.setEndTime = function(endTime){
+  	if(endTime != null){
+  		if($scope.end == null) $scope.end = new Date();
+	  	$scope.end.setHours(endTime.getHours());
+	  	$scope.end.setMinutes(endTime.getMinutes());
+	}
   };
 
   /* Create a nice short time string from the start date and time */
 
   $scope.updateStartTimeString = function(){
+  	if($scope.headache.intensityValues[0] == null) {
+  		$scope.startTimeString = "";
+  		return;
+  	}
   	var months = ["jan.", "feb.", "mrt.", "apr.", "mei", "jun.", "jul.", "aug.", "sept.", "okt.", "nov.", "dec."];
   	var month = months[(new Date($scope.headache.intensityValues[0].key).getMonth())];
   	var day = (new Date($scope.headache.intensityValues[0].key).getDate().toString());
@@ -141,7 +162,7 @@ angular.module('Chronic').controller('headacheController', function($scope, data
 
 });
 
-app.directive('ngModel', function( $filter ) {
+angular.module('Chronic').directive('ngModel', function( $filter ) {
 	// This is used to remove seconds and milliseconds in time pickers
     return {
         require: '?ngModel',
@@ -156,4 +177,47 @@ app.directive('ngModel', function( $filter ) {
             });
         }
     };
+});
+
+angular.module('Chronic').directive('validenddate', function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, ele, attrs, c) {
+    	c.$validators.validEndDate = function(modelValue, viewValue){
+        	scope.setEndDate(modelValue);
+	    	if(c.$isEmpty(modelValue)) {
+		        // consider empty models to be valid
+		        return true;
+        	}
+        	if(scope.end >= scope.headache.intensityValues[scope.headache.intensityValues.length-1].key){
+        		return true;
+        	}
+        	return false;
+    	};
+    	
+    }
+  };
+});
+
+angular.module('Chronic').directive('validendtime', function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, ele, attrs, c) {
+    	c.$validators.validEndTime = function(modelValue, viewValue){
+        	scope.setEndTime(modelValue);
+    		console.log(scope.end);
+    		console.log(scope.headache.intensityValues[scope.headache.intensityValues.length-1].key);
+    		console.log(scope.end < scope.headache.intensityValues[scope.headache.intensityValues.length-1].key);
+	    	if(c.$isEmpty(modelValue)) {
+		        // consider empty models to be valid
+		        return true;
+        	}
+        	if(scope.end >= scope.headache.intensityValues[scope.headache.intensityValues.length-1].key){
+        		return true;
+        	}
+        	return false;
+    	};
+    	
+    }
+  };
 });
