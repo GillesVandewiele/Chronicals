@@ -10,12 +10,21 @@
 angular.module('Chronic').controller("settingsController", function($scope, dataService) {
 
 
+    $scope.alert = function() {
+        ons.notification.alert({
+            title: 'Succes!',
+            message: 'Cache en data zijn gewist!'
+        });
+    }
+
     $scope.clearCache = function(){
         console.log("Clearing cache: ");
 
         dataService.clearCache();
+        $scope.alert();
 
-    }
+    };
+
 
 
 
