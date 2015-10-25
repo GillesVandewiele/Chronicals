@@ -44,6 +44,23 @@ angular.module('Chronic').controller('headacheController', function($scope, data
 	  	$scope.end.setMinutes(endTime.getMinutes());
 	}
   };
+  
+  $scope.getIndexOfHeadache = function(){
+  	headaches = dataService.getHeadacheList();
+  	if(headaches == null || headaches.length == 0) return -1;
+  	for(headache in headaches){
+  		equalIntensityValues = true;
+  		for(value in headache.intensityValues){
+  			if(headache.intensityValues[value] != $scope.headache.intensityValues[value]) equalIntensityValues = false;
+  		}
+  		equalEnd = $scope.headache.end == headaches[headache].end;
+  		equalLocation = $scope.headache.location == headaches[headache].location;
+  		if(equalIntensityValues && equalEnd && equalLocation) return headache;
+  		return -1; 		
+  	}
+  };
+  
+  $scope.headacheIndex = $scope.getIndexOfHeadache();
 
   /* Create a nice short time string from the start date and time */
 
@@ -67,17 +84,14 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   /* closeAndSave is called when the user pressed the "Sla op" button */
 
   $scope.closeAndSave = function(){
-  	console.log($scope.headache);
-  	var start = null;
-
-	// Convert the start date & time of the earliest intensity to one Date object
-  	if($scope.headache.intensityValues[0].key != null)
-  		var start = new Date(new Date($scope.headache.intensityValues[0].key).getFullYear(), new Date($scope.headache.intensityValues[0].key).getMonth(), new Date($scope.headache.intensityValues[0].key).getDate(), new Date($scope.headache.intensityValues[0].key).getHours(), new Date($scope.headache.intensityValues[0].key).getMinutes());
-
-  	console.log(start);
-  	console.log($scope.headache.end);
-
-  	dataService.addHeadache($scope.headache);
+  	console.log($scope.headacheIndex);
+  	
+  	if($scope.headacheIndex != -1){
+  	list = dataService.getHeadacheList();
+  	list[$scope.headacheIndex] = $scope.headache;
+  	dataService.setHeadacheList(list);
+  	} else dataService.addHeadache($scope.headache);
+  	
   	dataService.setCurrentHeadache(null);
   	location.href="dashboard.html";
   };
@@ -134,7 +148,6 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   $scope.newHeadacheTime;
 
   $scope.deleteEntry = function(item){
-  	console.log(item);
   	$scope.headache.intensityValues.splice($scope.headache.intensityValues.indexOf(item), 1);
   	if($scope.headache.intensityValues.length == 0) $("#endDateForm").hide();
   };
@@ -145,7 +158,6 @@ angular.module('Chronic').controller('headacheController', function($scope, data
 
   $scope.addIntensityValue = function(){
   	/* This function is called when we want to add an Intensity Value (it doesn't add it to the list yet...) */
-  	console.log("Adding default values");
   	$scope.newHeadacheValue = 5;
   	$scope.newHeadacheDate = new Date();
   	$scope.newHeadacheTime = $scope.newHeadacheDate;
@@ -196,9 +208,6 @@ angular.module('Chronic').directive('validenddate', function() {
     link: function(scope, ele, attrs, c) {
     	c.$validators.validEndDate = function(modelValue, viewValue){
         	scope.setEndDate(modelValue);
-        	console.log(scope.headache.intensityValues[scope.headache.intensityValues.length-1].key);
-        	console.log(scope.end);
-        	console.log(scope.end >= new Date(scope.headache.intensityValues[scope.headache.intensityValues.length-1].key));
 	    	if(c.$isEmpty(modelValue)) {
 		        // consider empty models to be valid
 		        return true;
@@ -218,11 +227,7 @@ angular.module('Chronic').directive('validendtime', function() {
     require: 'ngModel',
     link: function(scope, ele, attrs, c) {
     	c.$validators.validEndTime = function(modelValue, viewValue){
-    		console.log(modelValue);
         	scope.setEndTime(modelValue);
-        	console.log(scope.headache.intensityValues[scope.headache.intensityValues.length-1].key);
-        	console.log(scope.end);
-        	console.log(scope.end >= new Date(scope.headache.intensityValues[scope.headache.intensityValues.length-1].key));
 	    	if(c.$isEmpty(modelValue)) {
 		        // consider empty models to be valid
 		        return true;

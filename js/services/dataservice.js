@@ -58,6 +58,14 @@ angular.module('Chronic').service('dataService', function($localStorage) {
   var getHeadacheList = function(){
       return $localStorage.headacheList;
   };
+  
+  var setMedicineList = function(list){
+      $localStorage.medicineList = list;
+  };
+
+  var setHeadacheList = function(list){
+      $localStorage.headacheList = list;
+  };
 
   var getSymptoms = function(){
   	//TODO: replace this by a DB call
@@ -91,13 +99,15 @@ angular.module('Chronic').service('dataService', function($localStorage) {
       headache = null;
       $localStorage.currentHeadache = null;
 
-  }
+  };
 
   return {
     addHeadache: addHeadache,
     addMedicine: addMedicine,
     getHeadacheList: getHeadacheList,
     getMedicineList: getMedicineList,
+    setMedicineList: setMedicineList,
+    setHeadacheList: setHeadacheList,
     setCurrentHeadache: setCurrentHeadache,
     setCurrentMedicine: setCurrentMedicine,
     getCurrentHeadache: getCurrentHeadache,
