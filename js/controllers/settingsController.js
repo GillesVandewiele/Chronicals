@@ -37,7 +37,31 @@ angular.module('Chronic').controller("settingsController", function($scope, data
 
     };
 
+    $scope.fillEvents = function(){
+        dataService.addHeadache({intensityValues: [{key: new Date(2015, 10, 25, 10, 00, 00,00)        , value:8},
+            {key: new Date(2015, 10, 25, 10, 30, 00,00)        , value:6},
+            {key: new Date(2015, 10, 25, 11, 30, 00,00)        , value:4},
+            {key: new Date(2015, 10, 25, 11, 00, 00,00)        , value:8},
+            {key: new Date(2015, 10, 25, 12, 30, 00,00)        , value:2}
+        ],
+            end: new Date(2015, 10, 25, 13, 00, 00,00), location: null, triggers: [], symptoms: []});
+        dataService.addHeadache({intensityValues: [{key: new Date(2015, 10, 24, 10, 00, 00,00)        , value:8},
+            {key: new Date(2015, 10, 24, 10, 30, 00,00)        , value:6},
+            {key: new Date(2015, 10, 24, 11, 30, 00,00)        , value:4},
+            {key: new Date(2015, 10, 24, 11, 00, 00,00)        , value:8},
+            {key: new Date(2015, 10, 24, 12, 30, 00,00)        , value:2}
+        ],
+            end: new Date(2015, 10, 24, 13, 00, 00,00), location: null, triggers: [], symptoms: []});
+        dataService.addHeadache({intensityValues: [{key: new Date(2015, 10, 23, 10, 00, 00,00)        , value:8},
+            {key: new Date(2015, 10, 23, 10, 30, 00,00)        , value:6},
+            {key: new Date(2015, 10, 23, 11, 30, 00,00)        , value:4},
+            {key: new Date(2015, 10, 23, 11, 00, 00,00)        , value:8},
+            {key: new Date(2015, 10, 23, 12, 30, 00,00)        , value:2}
+        ],
+            end: new Date(2015, 10, 23, 13, 00, 00,00), location: null, triggers: [], symptoms: []});
 
+
+    }
 
 
 

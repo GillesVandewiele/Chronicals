@@ -63,7 +63,15 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
     var months = ["jan.", "feb.", "mrt.", "apr.", "mei", "jun.", "jul.", "aug.", "sept.", "okt.", "nov.", "dec."];
 
 
-    if(current.intensityValues[0].key != null){
+    if(current == null){
+        current = dataService.getCurrentHeadache();
+        if(current==null){
+            dataService.setCurrentHeadache(dataService.getHeadacheList()[0]);
+            current = dataService.getCurrentHeadache();
+        }
+    }
+
+    if(current.intensityValues != null && current.intensityValues[0].key != null){
         current.start = new Date(current.intensityValues[0].key);
     }
     if (current.end != null){
