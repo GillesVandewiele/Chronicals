@@ -142,23 +142,40 @@
 
       <div class="navigatorTab">
       	<div class="navigatorTabHead">
-	      	<h3> Geef de start- (en indien mogelijk eindtijd) op.</h3>
+	      	<h3> Geef de starttijd op.</h3>
       	</div>
 
       	<div class="navigatorTabBody">
-      		<ons-row>
-  				<p class="label timeLabel">Starttijd: </p>
-  			</ons-row>
-      		<ons-row>
-      			<ons-col class="col ons-col-inner"><input type="date" ng-model="newHeadacheDate" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col>
-      			<ons-col class="col ons-col-inner"><input type="time" placeholder="HH:mm" ng-model="newHeadacheTime" class="timePicker" step="60"></ons-col>
-      		</ons-row>
+      		<form name="addIntensityDate">
+	      		<ons-row>
+	  				<p class="label timeLabel">Starttijd: </p>
+	  			</ons-row>
+	      		<ons-row>
+	      			<ons-col class="col ons-col-inner"><input type="date" name="intensityDate" ng-model="newHeadacheDate" min="2013-01-01" max="2050-12-31" class="datePicker" required></ons-col>
+	      			<ons-col class="col ons-col-inner"><input type="time" name="intensityTime" placeholder="HH:mm" ng-model="newHeadacheTime" class="timePicker" step="60" required></ons-col>
+	      		</ons-row>
+	      		<div class="error" ng-show="(addIntensityDate.intensityDate.$dirty && addIntensityDate.intensityDate.$invalid) 
+	      									|| (addIntensityDate.intensityTime.$dirty && addIntensityDate.intensityTime.$invalid)"> 									
+			    <small class="error" ng-show="addIntensityDate.intensityDate.$error.date">
+			        U moet een geldige startdatum ingeven! <br>
+			    </small>
+			    <small class="error" ng-show="addIntensityDate.intensityDate.$error.min">
+			        De startdatum moet later dan 01 januari 2013 zijn! <br>
+			    </small>
+			    <small class="error" ng-show="addIntensityDate.intensityDate.$error.max">
+			        De startdatum moet voor 31 december 2050 zijn! <br>
+			    </small>
+			    <small class="error" ng-show="addIntensityDate.intensityTime.$error.time">
+			        U moet een geldige starttijd ingeven! <br>
+			    </small>
+			  </div>
+      		</form>
        </div>
 
       	<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
         		<button class="button cancelButton" onclick="myNavigator.popPage();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
-        		<button class="button finishButton" ng-click="setValues(newHeadacheValue, newHeadacheDate, newHeadacheTime);saveIntensityValue(); myNavigator.popPage();" style="float: right;">Voeg toe <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
+        		<button class="button finishButton" ng-click="setValues(newHeadacheValue, newHeadacheDate, newHeadacheTime);saveIntensityValue(myNavigator);" style="float: right;">Voeg toe <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
     	</div>
       </div>
