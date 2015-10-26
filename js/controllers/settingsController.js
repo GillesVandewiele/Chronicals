@@ -9,19 +9,10 @@
 
 angular.module('Chronic').controller("settingsController", function($scope, dataService) {
 
-    document.addEventListener("backbutton", function(e){
-        if($.mobile.activePage.is('#login_page')){
-            e.preventDefault();
-        }
-        else {
-            if (confirm("Are you sure you want to logout?")) {
-                /* Here is where my AJAX code for logging off goes */
-            }
-            else {
-                return false;
-            }
-        }
-    }, false);
+    ons.ready(function() {
+        $('.hidden').removeClass("hidden");
+    });
+
     $scope.alert = function() {
         ons.notification.alert({
             title: 'Succes!',

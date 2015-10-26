@@ -8,6 +8,11 @@
 
 
 angular.module('Chronic').controller("dashboardController", function($scope, dataService){
+
+    ons.ready(function() {
+        $('.hidden').removeClass("hidden");
+    });
+
     var dateA = null;
     var dateB = null;
     $scope.listItems =[];

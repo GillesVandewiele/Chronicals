@@ -124,6 +124,10 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
         console.log(points, evt);
     };
 
+    ons.ready(function() {
+        $('.hidden').removeClass("hidden");
+    });
+
 
 
 });

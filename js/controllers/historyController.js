@@ -96,6 +96,7 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
                         , intensity: $scope.listItems[i].intensityValue
                         , color: '#f9332f'
                         , timeZone: "Europe/Brussels"
+                        , object: $scope.listItems[i]
                     }, true);
             }else{
                 $('#calendar').fullCalendar('renderEvent',
@@ -107,6 +108,7 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
                         , quantity: $scope.listItems[i].quantity
                         , color: '#0cc80c'
                         , timeZone: "Europe/Brussels"
+                        , object: $scope.listItems[i]
                     }, true);
             }
         }
@@ -147,7 +149,7 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
     };
 
     ons.ready(function() {
-
+        $('.hidden').removeClass("hidden");
 
         historyNavigator.on('postpush', function(event) {
 
@@ -181,11 +183,20 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
 
     $scope.listClick = function(obj){
         console.log("listClick event:", obj);
-        if(obj.hasOwnProperty('intensityValues')){
-            dataService.setCurrentHeadache(obj);
+        if(obj.title == "Hoofdpijn" || obj.hasOwnProperty('intensityValues')){
+            if(obj.hasOwnProperty('title')){
+                dataService.setCurrentHeadache(obj.object);
+            }else{
+                dataService.setCurrentHeadache(obj);
+            }
             location.href='detailedHeadache.html';
         }else{
-            dataService.setCurrentMedicine(obj);
+            if(obj.hasOwnProperty('title')){
+                dataService.setCurrentMedicine(obj.object);
+            }else{
+                dataService.setCurrentMedicine(obj);
+            }
+
             location.href = 'detailedMedicine.html';
         }
 

@@ -38,7 +38,13 @@
 
 </head>
 <body ng-controller="headacheController">
-	<ons-template id="popover.html">
+    <div id="loadingImg" style="display: block;">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+	<ons-template id="popover.html" class="hidden">
 		  <ons-popover direction="up down" cancelable>
 		    <div style="text-align: center; opacity: 0.5;">
 		      <p><small>{{message}}</small></p>
@@ -47,7 +53,7 @@
 	 </ons-template>
 
 
-  <ons-navigator var="myNavigator">
+  <ons-navigator var="myNavigator" class="hidden">
 	<!-- Intensity page -->
     <ons-page id="intensityList.html">
       <ons-toolbar>
@@ -159,8 +165,8 @@
 	      			<ons-col class="col ons-col-inner"><input type="date" name="intensityDate" ng-model="newHeadacheDate" min="2013-01-01" max="2050-12-31" class="datePicker" required></ons-col>
 	      			<ons-col class="col ons-col-inner"><input type="time" name="intensityTime" placeholder="HH:mm" ng-model="newHeadacheTime" class="timePicker" step="60" required></ons-col>
 	      		</ons-row>
-	      		<div class="error" ng-show="(addIntensityDate.intensityDate.$dirty && addIntensityDate.intensityDate.$invalid) 
-	      									|| (addIntensityDate.intensityTime.$dirty && addIntensityDate.intensityTime.$invalid)"> 									
+	      		<div class="error" ng-show="(addIntensityDate.intensityDate.$dirty && addIntensityDate.intensityDate.$invalid)
+	      									|| (addIntensityDate.intensityTime.$dirty && addIntensityDate.intensityTime.$invalid)">
 			    <small class="error" ng-show="addIntensityDate.intensityDate.$error.date">
 			        U moet een geldige startdatum ingeven! <br>
 			    </small>

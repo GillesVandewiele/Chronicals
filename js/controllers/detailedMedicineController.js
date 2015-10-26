@@ -10,6 +10,10 @@
 angular.module('Chronic').controller("detailedMedicineController", function($scope, dataService) {
 
 
+    ons.ready(function() {
+        $('.hidden').removeClass("hidden");
+    });
+
     $scope.deleteEntry = function(){
         console.log("Removed: ", dataService.getCurrentMedicine());
         dataService.removeMedicine();
