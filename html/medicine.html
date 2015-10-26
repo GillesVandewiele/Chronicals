@@ -61,7 +61,7 @@
 				      	<option style="display:none" value="">select a drug</option>
 				      </select>
 			     </div>
-			     <input type="number" style="width: 20%;" min="1" class="medicineQuantity">
+			     <input type="number" style="width: 20%;" min="1" class="medicineQuantity" ng-model="drugQuantity">
 			     <label>mg</label>
 
 		     </ons-row>
@@ -70,15 +70,15 @@
 		     </ons-row>
 		     <ons-row style="margin-top: 5%;">
       			<p class="label" style="margin-left: 5%">Tijdstip van inname:</p>
-		     	<input type="date" ng-model="endDate" style="margin-left: 5%;" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col>
-      			<input type="time" placeholder="HH:mm" ng-model="endTime" class="timePicker" step="60"></ons-col>
+		     	<input type="date" ng-model="drugDate" style="margin-left: 5%;" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col>
+      			<input type="time" placeholder="HH:mm" ng-model="drugTime" class="timePicker" step="60"></ons-col>
 		     </ons-row>
       	</div>
 
 		<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
-        		<button class="button cancelButton"  onclick="location.href='dashboard.html'"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
-        		<button class="button finishButton" style="float: right;">Sla op <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
+        		<button class="button cancelButton"  ng-click="location.href='dashboard.html';"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
+        		<button class="button finishButton" ng-click="addMedicine();" style="float: right;">Sla op <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
 		</div>
       </div>
