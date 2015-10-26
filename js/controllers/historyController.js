@@ -95,8 +95,8 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
                         , end: $scope.listItems[i].end
                         , intensity: $scope.listItems[i].intensityValue
                         , color: '#f9332f'
-                        , timeZone: "Europe/Brussels"
                         , object: $scope.listItems[i]
+                        ,ignoreTimezone: false
                     }, true);
             }else{
                 $('#calendar').fullCalendar('renderEvent',
@@ -107,8 +107,8 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
                         , medicine: $scope.listItems[i].drug.name
                         , quantity: $scope.listItems[i].quantity
                         , color: '#0cc80c'
-                        , timeZone: "Europe/Brussels"
                         , object: $scope.listItems[i]
+                        ,ignoreTimezone: false
                     }, true);
             }
         }
