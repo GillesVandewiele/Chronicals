@@ -57,25 +57,24 @@
                     <i class="icon fa fa-calendar-check-o"></i>
 
                     <div id="midTile" style="width:100%;">
-                        <ons-list class="list">
+                        <ons-list class="list" style="height: 100%;overflow: scroll;">
                             <ons-list-item ng-repeat="obj in listItems" class="list__item headache">
-                    <span class="list__item__line-height">
-                        <div class="list-left">
-                            <i ng-class="{'fa fa-user-md': obj.hasOwnProperty('end'), 'fa fa-medkit medicine': !obj.hasOwnProperty('end')}">     </i>
-                        </div>
-                        <div class="list-center" ng-class="{'medicine': !obj.hasOwnProperty('end')}">
-                            {{getTimeDateString(obj)}}
-                            <!--{{""+((new Date(obj.intensityValues[0].key)).getDate())+"/"+(obj.intensityValues[0].key.getMonth()+1)+"         "+obj.intensityValues[0].key.getHours()+":"+obj.intensityValues[0].key.getMinutes()}}-->
-                            <!--12 okt 15:45-->
-                        </div>
-                        <div class="list-right">
-                            {{obj.hasOwnProperty('end') ? obj.intensityValues[0].value+"/10" : (Math.floor(obj.quantity * 100) / 100) +" mg"}}
+                                <span class="list__item__line-height">
+                                    <div class="list-left">
+                                        <i ng-class="{'fa fa-user-md': obj.hasOwnProperty('end'), 'fa fa-medkit medicine': !obj.hasOwnProperty('end')}">     </i>
+                                    </div>
+                                    <div class="list-center" ng-class="{'medicine': !obj.hasOwnProperty('end')}">
+                                        {{obj.hasOwnProperty('end')? getTimeDateString(obj.intensityValues[0].key) : getTimeDateString(obj.date)}}
+                                        <!--{{""+((new Date(obj.intensityValues[0].key)).getDate())+"/"+(obj.intensityValues[0].key.getMonth()+1)+"         "+obj.intensityValues[0].key.getHours()+":"+obj.intensityValues[0].key.getMinutes()}}-->
+                                        <!--12 okt 15:45-->
+                                    </div>
+                                    <div class="list-right"  ng-class="{'medicine': !obj.hasOwnProperty('end')}">
+                                        {{obj.hasOwnProperty('end') ? obj.intensityValues[0].value+"/10" : obj.quantity +" mg"}}
 
-                            <!--8/10-->
-                        </div>
-                    </span>
+                                        <!--8/10-->
+                                    </div>
+                                </span>
                             </ons-list-item>
-
                         </ons-list>
                         <!--<ons-list class="list">-->
                             <!--<ons-list-item class="list__item list__item&#45;&#45;chevron headache">-->
@@ -114,19 +113,13 @@
 
             </div>
             <div class="row">
-                <div class="tile half">
-                    <div class="tileContent">
+                <div class="tileContent tile half">
                         <i class="icon fa fa-info-circle"></i>
-
                         <p>Advies</p>
-                    </div>
                 </div>
-                <div class="tile half last" onclick="location.href='settings.html'">
-                    <div class="tileContent">
-                        <i class="icon fa fa-cog"></i>
-
-                        <p>Instellingen</p>
-                    </div>
+                <div class="tileContent tile half last" onclick="location.href='settings.html'">
+                    <i class="icon fa fa-cog"></i>
+                    <p>Instellingen</p>
                 </div>
             </div>
             <div class="row footer dashboardFooter">

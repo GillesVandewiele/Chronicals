@@ -16,7 +16,7 @@
 
 
 html, body{
-	height: 100%;
+	height: 100% !important;
 }
 .navigatorTab {
 	text-align: center;
@@ -209,7 +209,7 @@ option{
 }
 
 .dashboard .row{
-	height: 20%;
+	height: 20% !important;
 	width: 100%;
 	margin: 0;
 	text-align: center;
@@ -226,42 +226,37 @@ a{
 	float: left;
 }
 .row.stretch{
-	height: 40%;
+	height: 40% !important;
 	overflow: hidden;
 	margin:0;
-    margin-top: 12px;
+    margin-top: 3%;
 	padding-right: 2%;
 	padding-left: 2%;
-    margin-bottom: 2% !important;
+
+
+
 
 }
-
+.tileContent.tile.half{
+    height: 95%;
+    margin-bottom: 2% !important;
+}
 .tileContent{
     color: #bdc3c7;
     margin: 0 auto;
     align-items: center;
-
-}
-
-.half .tileContent{
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
 }
 
 .tileContent > p {
     margin: 0;
 }
 
-
-
 .tile{
 
 	margin-top: 2% !important;
 	/*background-color: #2e2f33;*/
     background-color: #34495e;
-
-
+    border-bottom: 4px solid #1e1f3f;
 }
 
 .tile.half{
@@ -271,28 +266,26 @@ a{
     margin-right: auto;
     margin-left: 2%;
     margin-bottom: auto;
-
-    border-bottom: 4px solid #1e1f3f;
     /*border-left: 4px solid #1e1f3f;*/
-    height: 100% !important;
-
+    /*height: 100% !important;*/
 }
+
 div .last{
 	margin-right: 2% !important;
-
 }
 
 
 .tile.large{
 	width: 100%;
-	height: 100%;
-	margin: 0;
+	height: 98%;
+	margin: 0 !important;
 	padding: 0;
 	align-content: center;
 	text-align: center;
 	display: inline-block;
     border-bottom: 4px solid #1e1f3f;
-	margin-right: 0.01% !important;
+
+    margin-right: 0 !important;
 
 }
 .row.footer.dashboardFooter{
@@ -300,17 +293,20 @@ div .last{
     width: 96%;
     margin-left: 2%;
     margin-right: auto;
-    margin-top: 4%;
+    margin-top: 3%;
     height: 15% !important;
 }
 
+#midTile{
+    height: 100%;
+}
 
 .dashboard i.icon{
-	font-size: 300%;
+	font-size: 220%;
 }
 
 .tileContent > .fa-calendar-check-o{
-	font-size: 400%;
+
 	margin-top: 3%;
 }
 
@@ -342,24 +338,35 @@ div .last{
 	font-size: 120%;
 }
 
+
+
 /* -------------History CSS
 */
+
+.list_item{
+    height: 44px;
+}
 
 .list-left{
 	width: 15%;
 	display: inline-block;
     font-size: 180%;
+    height: 40px;
 }
 
 .list-center{
-	width: 63%;
+	width: 53%;
 	display: inline-block;
     text-align: center;
+    height: 40px;
 }
 
 .list-right{
-	width: 12%;
+	width: 25%;
+    text-align: center;
+    margin-right: 10px;
 	display: inline-block;
+    height: 40px;
 }
 
 .headache{

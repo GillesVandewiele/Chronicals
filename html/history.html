@@ -57,12 +57,12 @@
                             <i ng-class="{'fa fa-user-md': obj.hasOwnProperty('end'), 'fa fa-medkit medicine': !obj.hasOwnProperty('end')}">     </i>
                         </div>
                         <div class="list-center" ng-class="{'medicine': !obj.hasOwnProperty('end')}">
-                            {{getTimeDateString(obj)}}
+                            {{obj.hasOwnProperty('end')? getTimeDateString(obj.intensityValues[0].key) : getTimeDateString(obj.date)}}
                             <!--{{""+((new Date(obj.intensityValues[0].key)).getDate())+"/"+(obj.intensityValues[0].key.getMonth()+1)+"         "+obj.intensityValues[0].key.getHours()+":"+obj.intensityValues[0].key.getMinutes()}}-->
                             <!--12 okt 15:45-->
                         </div>
-                        <div class="list-right">
-                            {{obj.hasOwnProperty('end') ? obj.intensityValues[0].value+"/10" : (Math.floor(obj.quantity * 100) / 100) +" mg"}}
+                        <div class="list-right" ng-class="{'medicine': !obj.hasOwnProperty('end')}">
+                            {{obj.hasOwnProperty('end') ? obj.intensityValues[0].value+"/10" : (obj.quantity  +" mg")}}
 
                             <!--8/10-->
                         </div>
