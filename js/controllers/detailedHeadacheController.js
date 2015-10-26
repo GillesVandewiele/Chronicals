@@ -89,12 +89,18 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
     $scope.triggers = [];
     var sorted = sortOnKeys(current.intensityValues);
     console.log("sorted: ", sorted);
+
     if(sorted != null){
+        if(sorted[sorted.length-1].key.toString() != current.end.toString()){
+            sorted.push({key: current.end.toString(), value: 0});
+        }
         for( var i=0; i< sorted.length; i++){
             var obj = sorted[i];
             $scope.labels.push(""+(new Date(obj["key"])).getHours()+":"+((new Date(obj["key"])).getMinutes() <10?'0':'')+(new Date(obj["key"])).getMinutes());
             $scope.data.push(obj["value"]);
         }
+
+
         $scope.data = [$scope.data];
         for(var i =0; i<current.triggers.length; i++){
             if(current.triggers[i].val==true){

@@ -181,7 +181,7 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
 
     $scope.listClick = function(obj){
         console.log("listClick event:", obj);
-        if(obj.title == "Hoofdpijn"){
+        if(obj.hasOwnProperty('intensityValues')){
             dataService.setCurrentHeadache(obj);
             location.href='detailedHeadache.html';
         }else{
