@@ -113,7 +113,7 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
             }
         }
 
-        $('#loadingImg').hide();
+        $('.loadingImg').hide();
 
 
 

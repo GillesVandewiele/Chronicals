@@ -535,3 +535,10 @@ div .last{
     text-align: center;
 }
 
+.detailMedicine > .tekstLijn{
+    margin-left: 3%;
+    margin-right: 3%;
+    width: 94%;
+
+}
+
