@@ -542,3 +542,6 @@ div .last{
 
 }
 
+.toolbar-button > ons-icon{
+    margin: 0;
+}
