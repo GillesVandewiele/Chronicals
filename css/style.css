@@ -46,6 +46,13 @@ html, body{
     display: none;
 }
 
+#ownDrug{
+	display: none;
+	margin-left: 5%;
+	background-color: #1a252f;
+	color: #FFFFFF;
+}
+
 .intensitySlider{
 	display: inline-block;
 	overflow: hidden;
