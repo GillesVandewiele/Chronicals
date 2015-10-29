@@ -233,6 +233,7 @@ a{
 .row {
 	margin: 0;
 	float: left;
+    width: 100%;
 }
 .row.stretch{
 	height: 40% !important;
