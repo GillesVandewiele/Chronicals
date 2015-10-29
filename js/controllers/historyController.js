@@ -8,6 +8,10 @@
 
 angular.module('Chronic').controller("historyController", function($scope, dataService) {
 
+	ons.ready(function() {
+        $('.hidden').removeClass("hidden");
+    });
+
     $scope.getTimeDateString = function(tijdstip){
         var datum = new Date(tijdstip);
         return ""+(datum.getDate())+"/"+(datum.getMonth()+1)+" "+(datum.getHours()<10?'0':'')+datum.getHours()+":"+(datum.getMinutes()<10?'0':'')+datum.getMinutes();
