@@ -8,36 +8,69 @@
 
 angular.module('Chronic').controller("historyController", function($scope, dataService) {
 
-    document.addEventListener("backbutton", function(e){
-        if($.mobile.activePage.is('#login_page')){
-            e.preventDefault();
-        }
-        else {
-            if (confirm("Are you sure you want to logout?")) {
-                /* Here is where my AJAX code for logging off goes */
+    $scope.getTimeDateString = function(tijdstip){
+        var datum = new Date(tijdstip);
+        return ""+(datum.getDate())+"/"+(datum.getMonth()+1)+" "+(datum.getHours()<10?'0':'')+datum.getHours()+":"+(datum.getMinutes()<10?'0':'')+datum.getMinutes();
+    };
+
+    $scope.listItems =[];
+    if($scope.listItems.length>0){
+        $scope.listItems = [];
+    }
+
+    $scope.listItems = [];
+    Array.prototype.push.apply($scope.listItems,dataService.getHeadacheList());
+    Array.prototype.push.apply($scope.listItems, dataService.getMedicineList());
+
+    if($scope.listItems != null && $scope.listItems.length>0)
+        $scope.listItems.sort(function(a,b){ //sort the list on their start dates // date of consumption
+
+            if(a.hasOwnProperty('end')){//if it is a headache it has property end
+                dateA = a.intensityValues[0].key;
+            }else{
+                dateA = a.date;
             }
-            else {
-                return false;
+
+            if(b.hasOwnProperty('end')){//if it is a headache it has property end
+                dateB = b.intensityValues[0].key;
+            }else{
+                dateB = b.date;
             }
-        }
-    }, false);
-    $scope.listItems = dataService.getHeadacheList();
+            return (new Date(dateB.toString())) - (new Date(dateA.toString()));
+        });
 
     /* Onload fill event list of the calendar */
     $scope.fillEvents = function () {
-    	$scope.listItems = dataService.getHeadacheList();
-    	if($scope.listItems) Array.prototype.push.apply($scope.listItems, dataService.getMedicineList());
-    	else $scope.listItems = dataService.getMedicineList();
-        if($scope.listItems != null && $scope.listItems.length>0)
-            $scope.listItems.sort(function(a,b){
-                return b.intensityValues[0].key - a.intensityValues[0].key;
-            });
-        //document.getElementById('history').style.display = 'none';
 
-        console.log("opgeroepen", $scope.listItems);
+        var dateA = null;
+        var dateB = null;
+        $scope.listItems =[];
+        if($scope.listItems.length>0){
+            $scope.listItems = [];
+        }
+
+        Array.prototype.push.apply($scope.listItems,dataService.getHeadacheList());
+        Array.prototype.push.apply($scope.listItems, dataService.getMedicineList());
+
+        if($scope.listItems != null && $scope.listItems.length>0)
+            $scope.listItems.sort(function(a,b){ //sort the list on their start dates // date of consumption
+
+                if(a.hasOwnProperty('end')){//if it is a headache it has property end
+                    dateA = a.intensityValues[0].key;
+                }else{
+                    dateA = a.date;
+                }
+
+                if(b.hasOwnProperty('end')){//if it is a headache it has property end
+                    dateB = b.intensityValues[0].key;
+                }else{
+                    dateB = b.date;
+                }
+                return (new Date(dateB.toString())) - (new Date(dateA.toString()));
+            });
+
 
         // page is now ready, initialize the calendar...
-
         $('#calendar').fullCalendar({
             /* Identify the structure for the header*/
             header: {
@@ -45,59 +78,42 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
                 center: 'title',
                 right: 'month,basicWeek,basicDay'
             },
-            height: $('#calendar').height() - 2,
             ignoreTimezone: false,
-            timeZone: "UTC",
-            nextDayThreshold: "00:00:01",
+            height: $('#calendar').height() - 2,
 
-            //eventRender: function (event, element) {
-            //    element.attr('href', 'javascript:void(0);');
-            //    element.click(function() {
-            //        //onclick functie van de events in de kalender
-            //        $("#startTime").html(moment(event.start).format('MMM Do h:mm A'));
-            //        $("#endTime").html(moment(event.end).format('MMM Do h:mm A'));
-            //        $("#eventInfo").html(event.description);
-            //        $("#eventLink").attr('href', event.url);
-            //        alert("Start: "+moment(event.start).format('MMM Do h:mm A')+"\nEnd: "+moment(event.end).format('MMM Do h:mm A')+"\nTitel: "+event.title+"\nIntensity: "+event.intensity+"\nMedicijn: "+event.medicine);
-            //        $("#eventContent").show();
-            //    });
-            //},
-
+            nextDayThreshold: "00:00:01"
         });
 
         document.getElementById('calendar').style.display = 'block';
         if(!$scope.listItems) { $('#loadingImg').hide(); return; }
         for(i =0; i<$scope.listItems.length; i++){
             if($scope.listItems[i].hasOwnProperty("end")){
-            	console.log($scope.listItems[i]);
                 $('#calendar').fullCalendar('renderEvent',
                     {
                         title: "Hoofdpijn"
                         , start: $scope.listItems[i].intensityValues[0].key
                         , end: $scope.listItems[i].end
                         , intensity: $scope.listItems[i].intensityValue
-                        , color: '#f9332f',
-                        ignoreTimezone: false,
-                        timeZone: "UTC",
+                        , color: '#f9332f'
+                        , object: $scope.listItems[i]
+                        ,ignoreTimezone: false
                     }, true);
             }else{
                 $('#calendar').fullCalendar('renderEvent',
                     {
                         title: "Medicijn"
-                        , start: $scope.listItems[i].start
-                        , medicine: $scope.listItems[i].name
+                        , start: $scope.listItems[i].date
+                        , end: $scope.listItems[i].date
+                        , medicine: $scope.listItems[i].drug.name
                         , quantity: $scope.listItems[i].quantity
-                        , color: '#0cc80c',
-                        ignoreTimezone: false,
-                        timeZone: "UTC",
+                        , color: '#0cc80c'
+                        , object: $scope.listItems[i]
+                        ,ignoreTimezone: false
                     }, true);
             }
         }
 
-
-
-        console.log("Loading changed");
-        $('#loadingImg').hide();
+        $('.loadingImg').hide();
 
 
 
@@ -133,7 +149,7 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
     };
 
     ons.ready(function() {
-
+        $('.hidden').removeClass("hidden");
 
         historyNavigator.on('postpush', function(event) {
 
@@ -157,12 +173,6 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
                 }
             });
             $scope.fillEvents();
-
-
-
-
-
-
         });
 
     });
@@ -172,20 +182,27 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
     };
 
     $scope.listClick = function(obj){
-        if(obj.hasOwnProperty('end')){
-            dataService.setCurrentHeadache(obj);
-            location.href='detailedHeadache.html'
+        console.log("listClick event:", obj);
+        if(obj.title == "Hoofdpijn" || obj.hasOwnProperty('intensityValues')){
+            if(obj.hasOwnProperty('title')){
+                dataService.setCurrentHeadache(obj.object);
+            }else{
+                dataService.setCurrentHeadache(obj);
+            }
+            location.href='detailedHeadache.html';
         }else{
-            dataService.setCurrentMedicine(obj);
-            console.log(obj)
+            if(obj.hasOwnProperty('title')){
+                dataService.setCurrentMedicine(obj.object);
+            }else{
+                dataService.setCurrentMedicine(obj);
+            }
+
+            location.href = 'detailedMedicine.html';
         }
 
-    }
+    };
 
-    $scope.getTimeDateString = function(tijdstip){
-        var datum = new Date(tijdstip.intensityValues[0].key);
-        return ""+(datum.getDate())+"/"+(datum.getMonth()+1)+" "+(datum.getHours()<10?'0':'')+datum.getHours()+":"+(datum.getMinutes()<10?'0':'')+datum.getMinutes();
-    }
+
 
 });
 

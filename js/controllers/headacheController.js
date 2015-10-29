@@ -8,20 +8,9 @@
 
 angular.module('Chronic').controller('headacheController', function($scope, dataService){
 
-  /* Initialize the current headache (this is not null when we are modifying) */
-    document.addEventListener("backbutton", function(e){
-        if($.mobile.activePage.is('#login_page')){
-            e.preventDefault();
-        }
-        else {
-            if (confirm("Are you sure you want to logout?")) {
-                /* Here is where my AJAX code for logging off goes */
-            }
-            else {
-                return false;
-            }
-        }
-    }, false);
+    ons.ready(function() {
+        $('.hidden').removeClass("hidden");
+    });
 
   $scope.headache = dataService.getCurrentHeadache();
 
@@ -59,7 +48,7 @@ angular.module('Chronic').controller('headacheController', function($scope, data
 	  	$scope.end.setMinutes(endTime.getMinutes());
 	}
   };
-  
+
   $scope.getIndexOfHeadache = function(){
   	headaches = dataService.getHeadacheList();
   	if(headaches == null || headaches.length == 0) return -1;
@@ -71,10 +60,10 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   		equalEnd = $scope.headache.end == headaches[headache].end;
   		equalLocation = $scope.headache.location == headaches[headache].location;
   		if(equalIntensityValues && equalEnd && equalLocation) return headache;
-  		return -1; 		
+  		return -1;
   	}
   };
-  
+
   $scope.headacheIndex = $scope.getIndexOfHeadache();
 
   /* Create a nice short time string from the start date and time */
@@ -100,13 +89,13 @@ angular.module('Chronic').controller('headacheController', function($scope, data
 
   $scope.closeAndSave = function(){
   	console.log($scope.headacheIndex);
-  	
+
   	if($scope.headacheIndex != -1){
   	list = dataService.getHeadacheList();
   	list[$scope.headacheIndex] = $scope.headache;
   	dataService.setHeadacheList(list);
   	} else dataService.addHeadache($scope.headache);
-  	
+
   	dataService.setCurrentHeadache(null);
   	location.href="dashboard.html";
   };
@@ -233,7 +222,7 @@ angular.module('Chronic').directive('validenddate', function() {
 	    		return true;
 	    	}
 	    	return false;
-		};	
+		};
     }
   };
 });

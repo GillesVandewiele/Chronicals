@@ -38,93 +38,62 @@
         <div class="dashboard">
             <div class="row">
 
-                <div class="tileContent tile half" onclick="location.href='headache.html'">
-                    <i class="icon fa fa-user-md"></i>
+                <div class="tileContent tile half" ng-click="clearVariables();" onclick="location.href='headache.html'">
+                    <div class="tileContentInner">
+                        <i class="icon fa fa-user-md"></i>
 
-                    <p>+Hoofdpijn</p>
+                        <p>+Hoofdpijn</p>
+                    </div>
                 </div>
 
-                <div class="tileContent tile half last" onclick="location.href='medicine.html'">
-                    <i class="icon fa fa-medkit"></i>
+                <div class="tileContent tile half last" ng-click="clearVariables();" onclick="location.href='medicine.html'">
+                    <div class="tileContentInner">
+                        <i class="icon fa fa-medkit"></i>
 
-                    <p>+Medicijn</p>
+                        <p>+Medicijn</p>
+                    </div>
                 </div>
 
             </div>
             <div class="row stretch">
 
                 <div class="tileContent tile large" style="width: 100%;" onclick="location.href='history.html'">
-                    <i class="icon fa fa-calendar-check-o"></i>
+                    <i class="icon fa fa-calendar-check-o dashboardMidIcon"></i>
 
                     <div id="midTile" style="width:100%;">
-                        <ons-list class="list">
+                        <ons-list class="list" style="height: 100%;overflow: scroll;">
                             <ons-list-item ng-repeat="obj in listItems" class="list__item headache">
-                    <span class="list__item__line-height">
-                        <div class="list-left">
-                            <i ng-class="{'fa fa-user-md': obj.hasOwnProperty('end'), 'fa fa-medkit medicine': !obj.hasOwnProperty('end')}">     </i>
-                        </div>
-                        <div class="list-center" ng-class="{'medicine': !obj.hasOwnProperty('end')}">
-                            {{getTimeDateString(obj)}}
-                            <!--{{""+((new Date(obj.intensityValues[0].key)).getDate())+"/"+(obj.intensityValues[0].key.getMonth()+1)+"         "+obj.intensityValues[0].key.getHours()+":"+obj.intensityValues[0].key.getMinutes()}}-->
-                            <!--12 okt 15:45-->
-                        </div>
-                        <div class="list-right">
-                            {{obj.hasOwnProperty('end') ? obj.intensityValues[0].value+"/10" : (Math.floor(obj.quantity * 100) / 100) +" mg"}}
-
-                            <!--8/10-->
-                        </div>
-                    </span>
-                            </ons-list-item>
-
-                        </ons-list>
-                        <!--<ons-list class="list">-->
-                            <!--<ons-list-item class="list__item list__item&#45;&#45;chevron headache">-->
-                                <!--<span class="list__item__line-height">-->
-                                    <!--<div class="list-left">-->
-                                        <!--<i class="fa fa-user-md"> </i>-->
-                                    <!--</div>-->
-                                    <!--<div class="list-center">-->
+                                <span class="list__item__line-height">
+                                    <div class="list-left">
+                                        <i ng-class="{'fa fa-user-md': obj.hasOwnProperty('end'), 'fa fa-medkit medicine': !obj.hasOwnProperty('end')}">     </i>
+                                    </div>
+                                    <div class="list-center" ng-class="{'medicine': !obj.hasOwnProperty('end')}">
+                                        {{obj.hasOwnProperty('end')? getTimeDateString(obj.intensityValues[0].key) : getTimeDateString(obj.date)}}
+                                        <!--{{""+((new Date(obj.intensityValues[0].key)).getDate())+"/"+(obj.intensityValues[0].key.getMonth()+1)+"         "+obj.intensityValues[0].key.getHours()+":"+obj.intensityValues[0].key.getMinutes()}}-->
                                         <!--12 okt 15:45-->
-                                    <!--</div>-->
-                                    <!--<div class="list-right">-->
+                                    </div>
+                                    <div class="list-right"  ng-class="{'medicine': !obj.hasOwnProperty('end')}">
+                                        {{obj.hasOwnProperty('end') ? obj.intensityValues[0].value+"/10" : obj.quantity +" mg"}}
+
                                         <!--8/10-->
-                                    <!--</div>-->
-                                <!--</span>-->
-                            <!--</ons-list-item>-->
-                            <!--<ons-list-item class="list__item list__item&#45;&#45;chevron mecicine">-->
-                                <!--<span class="list__item__line-height">-->
-                                    <!--<div class="list-left">-->
-                                        <!--<i class="fa fa-medkit"> </i>-->
-                                    <!--</div>-->
-                                    <!--<div class="list-center">-->
-                                        <!--Goed medicijn-->
-                                    <!--</div>-->
-                                <!--</span>-->
-                            <!--</ons-list-item>-->
-                        <!--</ons-list>-->
-
+                                    </div>
+                                </span>
+                            </ons-list-item>
+                        </ons-list>
                     </div>
-                    <!--<div>-->
-                    <!--&lt;!&ndash;<p style="width: 80%; float: left">13/10/2015 14:15</p><p style="float: left">8/10</p>&ndash;&gt;-->
-
-
-                    <!--</div>-->
-
                 </div>
 
             </div>
             <div class="row">
-                <div class="tile half">
-                    <div class="tileContent">
+                <div class="tileContent tile half">
+                    <div class="tileContentInner">
                         <i class="icon fa fa-info-circle"></i>
-
                         <p>Advies</p>
                     </div>
                 </div>
-                <div class="tile half last" onclick="location.href='settings.html'">
-                    <div class="tileContent">
+                <div class="tileContent tile half last" onclick="location.href='settings.html'">
+                    <div class="tileContentInner">
                         <i class="icon fa fa-cog"></i>
-
                         <p>Instellingen</p>
                     </div>
                 </div>

@@ -58,7 +58,7 @@ angular.module('Chronic').service('dataService', function($localStorage) {
   var getHeadacheList = function(){
       return $localStorage.headacheList;
   };
-  
+
   var setMedicineList = function(list){
       $localStorage.medicineList = list;
   };
@@ -105,6 +105,29 @@ angular.module('Chronic').service('dataService', function($localStorage) {
 
   };
 
+    var removeMedicine = function(){
+        var list = $localStorage.medicineList;
+        var current = $localStorage.currentMedicine;
+
+        var index = -1;
+        for(var i=0; i<list.length; i++){
+            if(list[i].drug.name == current.drug.name && list[i].quantity == current.quantity && list[i].date == current.date){
+                index = i;
+                break;
+            }
+        }
+
+        if(index > -1){
+            console.log("Removed:", list.splice(index, 1));
+        }
+
+        $localStorage.medicineList = list;
+        medicineList = list;
+
+        medicine = null;
+        $localStorage.currentMedicine = null;
+    }
+
     var clearCache = function(){
         $localStorage.headacheList = null;
         $localStorage.currentHeadache = null;
@@ -130,7 +153,8 @@ angular.module('Chronic').service('dataService', function($localStorage) {
     getSymptoms: getSymptoms,
     getTriggers: getTriggers,
     removeHeadache: removeHeadache,
-    clearCache: clearCache
+    clearCache: clearCache,
+    removeMedicine: removeMedicine
     };
 
 

@@ -20,7 +20,7 @@
 
     <script src="../js/controllers/chronic.js"></script>
     <script src="../js/services/dataservice.js"></script>
-    <script src="../js/controllers/detailedHeadacheController.js"></script>
+    <script src="../js/controllers/detailedMedicineController.js"></script>
     <script src="../js/vendor/Chart.min.js"></script>
     <script src="../js/vendor/angular-chart.js"></script>
 
@@ -28,9 +28,9 @@
 
 </head>
 
-<body ng-controller="detailedHeadacheController">
+<body ng-controller="detailedMedicineController">
 
-<ons-navigator var="historyNavigator">
+<ons-navigator var="detailedMedicineNavigator">
     <ons-page>
         <ons-toolbar>
             <div class="left">
@@ -40,7 +40,7 @@
             <!--<div class="center" style="margin: 0 auto; text-align: center;">Nieuwe hoofdpijn</div>-->
             <div class="right">
                 <ons-toolbar-button>
-                    <ons-icon icon="fa fa-pencil" onclick="location.href='headache.html'"></ons-icon>
+                    <ons-icon icon="fa fa-pencil"></ons-icon>
                 </ons-toolbar-button>
                 <ons-toolbar-button>
                     <ons-icon icon="fa  fa-trash-o buttonIcon" ng-click="deleteEntry();" onclick="location.href='history.html'"></ons-icon>
@@ -48,42 +48,21 @@
             </div>
         </ons-toolbar>
 
-        <div class="detailHeadache">
-            <ons-row style="margin-top: 6%;">
-                <div class="label" style="width: 35%;">Starttijd:</div>
-                <div class="label" style="width: 65%;text-align: right">{{startTime}}</div>
+        <div class="detailMedicine">
+            <ons-row class="tekstLijn" style="margin-top: 6%;">
+                <div class="label" style="width: 35%;">Tijdstip:</div>
+                <div class="label" style="width: 65%;text-align: right">{{getTimeDateString(current.date)}}</div>
+            </ons-row>
+
+            <ons-row>
+                <p class="label list_header" style="width: 100%; text-align: center;">Naam medicijn</p>
+                <div class="label" style="width: 100%;text-align: center">{{current.drug.name}}</div>
             </ons-row>
             <ons-row>
-                <div class="label" style="width: 35%;">Eindtijd:</div>
-                <div class="label" style="width: 65%;text-align: right">{{endTime}}</div>
+                <p class="label list_header" style="width: 100%; text-align: center;">Hoeveelheid ingenomen</p>
+                <div class="label" style="width: 100%;text-align: center">{{current.quantity}} mg</div>
             </ons-row>
-            <ons-row>
-                <p class="label list_header" style="width: 100%; text-align: center;">Intensiteitscurve</p>
-                <canvas id="line" class="chart chart-line" chart-data="data"
-                        chart-labels="labels" chart-options="" chart-series="series"
-                        chart-click="onClick">
-                </canvas>
-            </ons-row>
-            <ons-row>
-                <div class="detailsList">
-                    <div class="list_header">
-                        Symptomen
-                    </div>
-                    <div ng-repeat="symptom in symptoms">
-                        <p>{{symptom}}</p>
-                    </div>
-                    <div class="list_header">
-                        Triggers
-                    </div>
-                    <div ng-repeat="symptom in triggers">
-                        <p>{{symptom}}</p>
-                    </div>
-                </div>
 
-
-
-                </div>
-            </ons-row>
         </div>
 
     </ons-page>

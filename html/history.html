@@ -40,6 +40,13 @@
 </head>
 
 <body ng-controller="historyController">
+<div style="display: block;" class="loadingImg">
+    <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+    </div>
+</div>
+
 <ons-navigator var="historyNavigator">
     <ons-page>
         <ons-toolbar>
@@ -57,12 +64,12 @@
                             <i ng-class="{'fa fa-user-md': obj.hasOwnProperty('end'), 'fa fa-medkit medicine': !obj.hasOwnProperty('end')}">     </i>
                         </div>
                         <div class="list-center" ng-class="{'medicine': !obj.hasOwnProperty('end')}">
-                            {{getTimeDateString(obj)}}
+                            {{obj.hasOwnProperty('end')? getTimeDateString(obj.intensityValues[0].key) : getTimeDateString(obj.date)}}
                             <!--{{""+((new Date(obj.intensityValues[0].key)).getDate())+"/"+(obj.intensityValues[0].key.getMonth()+1)+"         "+obj.intensityValues[0].key.getHours()+":"+obj.intensityValues[0].key.getMinutes()}}-->
                             <!--12 okt 15:45-->
                         </div>
-                        <div class="list-right">
-                            {{obj.hasOwnProperty('end') ? obj.intensityValues[0].value+"/10" : (Math.floor(obj.quantity * 100) / 100) +" mg"}}
+                        <div class="list-right" ng-class="{'medicine': !obj.hasOwnProperty('end')}">
+                            {{obj.hasOwnProperty('end') ? obj.intensityValues[0].value+"/10" : (obj.quantity  +" mg")}}
 
                             <!--8/10-->
                         </div>
@@ -83,12 +90,11 @@
             <!--<div class="center" style="margin: 0 auto; text-align: center;">Nieuwe hoofdpijn</div>-->
             <div class="center"><ons-toolbar-button ng-click="historyNavigator.popPage()"><ons-icon icon="fa fa-list"></ons-icon> </ons-toolbar-button><ons-toolbar-button ng><ons-icon icon="fa fa-calendar buttonIcon"></ons-icon></ons-toolbar-button></div>
         </ons-toolbar>
-        <div id="loadingImg" style="display: block;">
+        <div class="loadingImg" style="display: block;">
             <div class="spinner">
                 <div class="double-bounce1"></div>
                 <div class="double-bounce2"></div>
             </div>
-            <div style="text-align: center;">loading...</div>
         </div>
         <div id='calendar' style="height: 100%;"></div>
     </ons-page>
