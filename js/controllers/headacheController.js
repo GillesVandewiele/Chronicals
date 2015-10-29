@@ -142,6 +142,7 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   
   document.addEventListener("backbutton", onBackKeyDown, false);
 	function onBackKeyDown(e) {
+		alert("dit is een test");
 	  e.preventDefault();
 	}
 
