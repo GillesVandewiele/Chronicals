@@ -218,8 +218,6 @@ angular.module('Chronic').directive('validenddate', function() {
     link: function($scope, ele, attrs, c) {
     	c.$validators.validEndDate = function(modelValue, viewValue){
 	    	$scope.setEndDate(modelValue);
-	    	console.log($scope.end);
-	    	console.log($scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key);
 	    	if(c.$isEmpty(modelValue)) {
 		        // consider empty models to be valid
 		        return true;

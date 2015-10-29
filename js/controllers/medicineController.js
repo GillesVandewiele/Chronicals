@@ -13,15 +13,27 @@ angular.module('Chronic').controller('medicineController', function($scope, data
 
 	$scope.advice = "Dit is een voorbeeldadvies.";
 	$scope.drugs = [{id: 0, name:"drug1", description:"this is a description of drug1"}, {id: 1, name:"drug2", description:"this is a description of drug2"},
-                    {id: 2, name:"drug3", description:"this is a description of drug3"}];
+                    {id: 2, name:"drug3", description:"this is a description of drug3"}, {id: 3, name: "...", description: "this is a description"}];
+
+	$(document).on("click", '#drugDropdown', function(e){
+  		if($scope.selectedDrug != null && $scope.selectedDrug.name=="..."){
+  			$(".selectDiv").hide();
+  			$("#ownDrug").show();
+  		}
+  	});
 
     $scope.drugDate = new Date();
     $scope.drugTime = $scope.drugDate;
 
 	$scope.addMedicine = function(){
-		console.log($scope.selectedDrug, $scope.drugQuantity, $scope.drugDate, $scope.drugTime);
+		console.log($scope.selectedDrug, $scope.drugQuantity, $scope.drugDate, $scope.drugTime, $scope.ownDrug);
 		var dateObj = new Date($scope.drugDate.getFullYear(), $scope.drugDate.getMonth(), $scope.drugDate.getDate(), $scope.drugTime.getHours(), $scope.drugTime.getMinutes());
-		var medicine = {drug: $scope.selectedDrug, quantity: $scope.drugQuantity, date: dateObj};
+		if($scope.ownDrug != null){
+			var drug = {id: 0, name:$scope.ownDrug, description:"dit is een zelf ingegeven drugs"};
+			var medicine = {drug: drug, quantity: $scope.drugQuantity, date: dateObj};
+		} else {
+			var medicine = {drug: $scope.selectedDrug, quantity: $scope.drugQuantity, date: dateObj};
+		}
 		dataService.addMedicine(medicine);
 		location.href='dashboard.html';
 	};
