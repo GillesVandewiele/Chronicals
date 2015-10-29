@@ -139,6 +139,11 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   $(document).on("click", '.popover', function(){
   	$scope.popover.hide();
   });
+  
+  document.addEventListener("backbutton", onBackKeyDown, false);
+	function onBackKeyDown(e) {
+	  e.preventDefault();
+	}
 
   ons.createPopover('popover.html').then(function(popover) {
   	// Create a popover for the help buttons
