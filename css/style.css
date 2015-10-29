@@ -243,6 +243,7 @@ a{
 }
 .row.stretch{
 	height: 40% !important;
+    width: 100%;
 	overflow: hidden;
 	margin:0;
     margin-top: 3%;
