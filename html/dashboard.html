@@ -10,6 +10,13 @@
 
     <!-- Our style sheet -->
     <link rel="stylesheet" href="../css/style.css">
+    <!-- Add this script to your header -->
+    <script type="text/javascript">
+        var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+        if(is_chrome){
+            document.write('<link rel="stylesheet" href="/css/chrome.css" type="text/css" />');
+        }
+    </script>
 
     <!-- AngularJS + ngStorage | MIT License | https://angularjs.org/ -->
     <script src="../js/angular/angular.js"></script>
