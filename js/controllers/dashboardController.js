@@ -96,7 +96,7 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
 $(document).ready(function()
 {
     document.addEventListener("deviceready", setOverrideBackbutton, false);
-    alert("Ready");
+
 });
 
 /**
@@ -107,6 +107,7 @@ function setOverrideBackbutton()
     if (typeof device != "undefined" && device.platform == "Android")
     {
         navigator.app.overrideBackbutton(true);
+        alert("Ready");
     }
     document.addEventListener("backbutton", backButtonTap, true);
 }
@@ -118,5 +119,6 @@ function setOverrideBackbutton()
 function backButtonTap()
 {
 //Do not remove
+    alert("Backbutton lel");
 }
 
