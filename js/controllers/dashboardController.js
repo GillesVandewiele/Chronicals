@@ -92,3 +92,31 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
 
 });
 
+//Android back button handler methods
+$(document).ready(function()
+{
+    document.addEventListener("deviceready", setOverrideBackbutton, false);
+    alert("Ready");
+});
+
+/**
+ * Allow override of the back button on Android platforms
+ */
+function setOverrideBackbutton()
+{
+    if (typeof device != "undefined" && device.platform == "Android")
+    {
+        navigator.app.overrideBackbutton(true);
+    }
+    document.addEventListener("backbutton", backButtonTap, true);
+}
+
+/**
+ * Callback after a backbutton tap on Android and windows platforms.
+ * Do nothing.
+ */
+function backButtonTap()
+{
+//Do not remove
+}
+
