@@ -105,13 +105,35 @@
                     </div>
                 </div>
             </ons-row>
-            <ons-row class="row footer dashboardFooter">
-                <p>Het is al 8u geleden dat u hoofdpijn had!</p>
+            <ons-row class="row footer dashboardFooter" ng-click="show('options.html')">
+                <p id="">Het is al 8u geleden dat u hoofdpijn had!</p>
             </ons-row>
         </div>
 
     </ons-page>
 </ons-navigator>
+
+<ons-template id="options.html">
+    <ons-dialog style="height: 160px;" var="naviDialog" cancelable>
+        <ons-toolbar inline>
+            <div class="center">
+                Navigator
+            </div>
+        </ons-toolbar>
+
+        <div style="text-align: center">
+            <p>
+                This is a dialog with a navigator.
+            </p>
+
+            <p>
+                <ons-button onclick="naviDialog.hide()">Close</ons-button>
+                <ons-button onclick="myNav.pushPage('next.html')">Next</ons-button>
+            </p>
+        </div>
+
+    </ons-dialog>
+</ons-template>
 
 </body>
 </html>

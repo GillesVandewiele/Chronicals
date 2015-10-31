@@ -18,7 +18,7 @@ angular.module('Chronic').controller("settingsController", function($scope, data
             title: 'Succes!',
             message: 'Cache en data zijn gewist!'
         });
-    }
+    };
 
     $scope.clearCache = function(){
         console.log("Clearing cache: ");
@@ -51,7 +51,10 @@ angular.module('Chronic').controller("settingsController", function($scope, data
         ],
             end: new Date(2015, 9, 23, 13, 00, 00,00), location: null, triggers: [], symptoms: []});
 
-
+        ons.notification.alert({
+            title: 'Succes!',
+            message: 'Mockup data is toegevoegd!'
+        });
     }
 
 

@@ -9,8 +9,45 @@
 
 angular.module('Chronic').controller("dashboardController", function($scope, dataService){
 
+    $scope.dialogs = {};
+
+    $scope.show = function(dlg) {
+        if(dataService.getHeadachesNoEnd().length == 0){
+            return;
+        }
+        if (!$scope.dialogs[dlg]) {
+            ons.createDialog(dlg).then(function(dialog) {
+                $scope.dialogs[dlg] = dialog;
+                dialog.show();
+            });
+        } else {
+            $scope.dialogs[dlg].show();
+        }
+    }
+
     ons.ready(function() {
         $('.hidden').removeClass("hidden");
+
+        if(dataService.getHeadachesNoEnd().length >0){
+            $('.dashboardFooter').css("background-color", "#f9332f");
+            $('.dashboardFooter').empty();
+            $('.dashboardFooter').attr("ng-click","show('navigator.html')");
+            console.log("lel", dataService.getHeadachesNoEnd()[dataService.getHeadachesNoEnd().length-1].intensityValues[0].key);
+            var hours = parseInt(Math.abs(new Date() - new Date(dataService.getHeadachesNoEnd()[dataService.getHeadachesNoEnd().length-1].intensityValues[0].key)) / 36e5);
+            console.log("duratie: ", hours);
+            $('.dashboardFooter').append('<p>Uw hoofdpijn duurt al '+hours+' uur</p><p>Druk hier om meer info toe te voegen</p>');
+
+
+       }else{
+            $('.dashboardFooter').empty();
+            var hours = parseInt(Math.abs(new Date() - new Date(dataService.getHeadacheList()[dataService.getHeadacheList().length-1].end)) / 36e5);
+            $('.dashboardFooter').append('<p ng-click="show(navigator.html)">U heeft al '+hours+' uur geen hoofdpijn meer gehad!</p>');
+
+        }
+
+
+
+
     });
 
     var dateA = null;
