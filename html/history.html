@@ -35,6 +35,28 @@
     <script src="../js/vendor/angular-chart.js"></script>
 
 
+    <script type="text/javascript" charset="utf-8">
+
+
+        // Wait for device API libraries to load
+        //
+        function onLoad() {
+            document.addEventListener("deviceready", onDeviceReady, false);
+        }
+
+        // device APIs are available
+        //
+        function onDeviceReady() {
+            // Register the event listener
+            document.addEventListener("backbutton", onBackKeyDown, false);
+        }
+
+        // Handle the back button
+        //
+        function onBackKeyDown() {
+        }
+
+    </script>
 
 
 </head>
