@@ -28,7 +28,32 @@
 
   <!-- Headache controller -->
   <script src="js/controllers/headacheController.js"> </script>
-    <script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova-3.6.3.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+
+        // Wait for device API libraries to load
+        //
+        function onLoad() {
+            document.addEventListener("deviceready", onDeviceReady, false);
+        }
+
+        // device APIs are available
+        //
+        function onDeviceReady() {
+            ons.notification.alert("Lel");
+            // Register the event listener
+            document.addEventListener("backbutton", onBackKeyDown, false);
+        }
+
+        // Handle the back button
+        //
+        function onBackKeyDown() {
+            ons.notification.alert("Lel");
+            alert("Lel");
+        }
+
+    </script>
 
 </head>
 
