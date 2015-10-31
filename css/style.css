@@ -547,3 +547,8 @@ div .last{
 .toolbar-button > ons-icon{
     margin: 0;
 }
+
+ons-list-item:active{
+    -webkit-tap-highlight-color: #FFFFFF;
+    -webkit-tap-highlight-color: #FFFFFF; /* For some Androids */
+}

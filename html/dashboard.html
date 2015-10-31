@@ -139,27 +139,25 @@
     </ons-page>
 </ons-navigator>
 
-<ons-template id="options.html">
-    <ons-dialog style="height: 160px;" var="naviDialog" cancelable>
-        <ons-toolbar inline>
-            <div class="center">
-                Navigator
-            </div>
-        </ons-toolbar>
+<ons-template id="options.html" style="background-color: #1a252f;">
+    <ons-dialog var="dialog" cancelable style="background-color: #1a252f;">
 
-        <div style="text-align: center">
-            <p>
-                This is a dialog with a navigator.
-            </p>
-
-            <p>
-                <ons-button onclick="naviDialog.hide()">Close</ons-button>
-                <ons-button onclick="myNav.pushPage('next.html')">Next</ons-button>
-            </p>
-        </div>
+        <ons-list style="background-color: #1a252f;" >
+            <ons-list-item modifier="tappable" style="border-bottom: 1px solid #FFFFFF;">
+                Sluit hoofdpijn af (eind = nu)
+            </ons-list-item>
+            <ons-list-item modifier="tappable" style="border-bottom: 1px solid #FFFFFF;">
+                Sluit hoofdpijn af (eind = keuze)
+            </ons-list-item>
+            <ons-list-item modifier="tappable" style="border-bottom: 1px solid #FFFFFF;">
+                Intensiteit hoofdpijn toevoegen
+            </ons-list-item>
+            <ons-list-item modifier="tappable">
+                Hoofdpijn verwijderen
+            </ons-list-item>
+        </ons-list>
 
     </ons-dialog>
 </ons-template>
-
 </body>
 </html>
