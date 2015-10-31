@@ -4,29 +4,24 @@
         id          = "be.ugent.chronicals"
         versionCode = "10"
         version     = "1.0.0">
- 
+
     <name>Chronicals</name>
- 
+
     <description>
         A headache diary app
     </description>
- 
+
     <author>
         Kiani Lannoye and Gilles Vandewiele
     </author>
- 
+
 	<preference name="orientation" value="portrait" />
-	
-	<feature name="http://api.phonegap.com/1.0/camera"/>
-	
-    <feature name="http://api.phonegap.com/1.0/contacts"/>
-    <feature name="http://api.phonegap.com/1.0/file"/>
-    <feature name="http://api.phonegap.com/1.0/geolocation"/>
-    <feature name="http://api.phonegap.com/1.0/media"/>
-    <feature name="http://api.phonegap.com/1.0/network"/>
+
+	<feature name="http://api.phonegap.com/1.0/file"/>
     <feature name="http://api.phonegap.com/1.0/notification"/>
-	<gap:plugin name="org.apache.cordova.contacts" />
-	<gap:plugin name="org.apache.cordova.camera" />
-	
- 
+    <feature name="App">
+        <param name="android-package" value="org.apache.cordova.App" />
+    </feature>
+
+
 </widget>
