@@ -143,16 +143,13 @@
     <ons-dialog var="dialog" cancelable style="background-color: #1a252f;">
 
         <ons-list style="background-color: #1a252f;" >
-            <ons-list-item modifier="tappable" style="border-bottom: 1px solid #FFFFFF;">
+            <ons-list-item class="listitem"  ng-click="closeListItem()"  onclick="location.reload()" modifier="tappable" style="border-bottom: 1px solid #FFFFFF;">
                 Sluit hoofdpijn af (eind = nu)
             </ons-list-item>
-            <ons-list-item modifier="tappable" style="border-bottom: 1px solid #FFFFFF;">
-                Sluit hoofdpijn af (eind = keuze)
-            </ons-list-item>
-            <ons-list-item modifier="tappable" style="border-bottom: 1px solid #FFFFFF;">
+            <ons-list-item ng-click="addDetailsListItem()" onclick="location.href='headache.html'" class="listitem" modifier="tappable" style="border-bottom: 1px solid #FFFFFF;">
                 Intensiteit hoofdpijn toevoegen
             </ons-list-item>
-            <ons-list-item modifier="tappable">
+            <ons-list-item ng-click="deleteListItem()" onclick="location.reload()" class="listitem" modifier="tappable">
                 Hoofdpijn verwijderen
             </ons-list-item>
         </ons-list>

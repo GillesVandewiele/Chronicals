@@ -56,7 +56,14 @@ angular.module('Chronic').service('dataService', function($localStorage) {
   };
 
   var getHeadacheList = function(){
-      return $localStorage.headacheList;
+      var list = $localStorage.headacheList;
+      list.sort(function(a,b){ //sort the list on their start dates // date of consumption
+
+          dateA = a.intensityValues[0].key;
+          dateB = b.intensityValues[0].key;
+          return (new Date(dateA.toString()))-(new Date(dateB.toString()));
+      });
+      return list;
   };
 
   var setMedicineList = function(list){
@@ -126,7 +133,7 @@ angular.module('Chronic').service('dataService', function($localStorage) {
 
         medicine = null;
         $localStorage.currentMedicine = null;
-    }
+    };
 
     var clearCache = function(){
         $localStorage.headacheList = null;
@@ -137,7 +144,7 @@ angular.module('Chronic').service('dataService', function($localStorage) {
         headacheList = null;
         medicine = null;
         medicineList = null;
-    }
+    };
 
     var getHeadachesNoEnd = function(){
         listItems = getHeadacheList();
@@ -146,7 +153,7 @@ angular.module('Chronic').service('dataService', function($localStorage) {
 
             dateA = a.intensityValues[0].key;
             dateB = b.intensityValues[0].key;
-            return (new Date(dateB.toString())) - (new Date(dateA.toString()));
+            return (new Date(dateA.toString()))-(new Date(dateB.toString()));
         });
 
 
@@ -158,7 +165,7 @@ angular.module('Chronic').service('dataService', function($localStorage) {
 
         return listNoEnd;
 
-    }
+    };
 
   return {
     addHeadache: addHeadache,

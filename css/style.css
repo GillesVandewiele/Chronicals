@@ -548,7 +548,8 @@ div .last{
     margin: 0;
 }
 
-ons-list-item:active{
+.listitem:active{
+    background-color: white;
     -webkit-tap-highlight-color: #FFFFFF;
     -webkit-tap-highlight-color: #FFFFFF; /* For some Androids */
 }
