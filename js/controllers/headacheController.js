@@ -20,7 +20,7 @@ angular.module('Chronic').controller('headacheController', function($scope, data
 
   $scope.setEnd = function(endDate, endTime){
   	if(endDate != null && endTime != null){
-  		$scope.headache.end = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), endTime.getHours(), endTime.getMinutes());
+  		$scope.headache.end = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), endTime.getHours(), endTime.getMinutes(), endTime.getSeconds());
   	}
   };
 
@@ -46,6 +46,7 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   		if($scope.end == null) $scope.end = new Date();
 	  	$scope.end.setHours(endTime.getHours());
 	  	$scope.end.setMinutes(endTime.getMinutes());
+	  	$scope.end.setSeconds(endTime.getSeconds());
 	}
   };
 
@@ -181,7 +182,7 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   };
 
   $scope.saveIntensityValue = function(navigator, page){
-  	var start = new Date($scope.newHeadacheDate.getFullYear(), $scope.newHeadacheDate.getMonth(), $scope.newHeadacheDate.getDate(), $scope.newHeadacheTime.getHours(), $scope.newHeadacheTime.getMinutes());
+  	var start = new Date($scope.newHeadacheDate.getFullYear(), $scope.newHeadacheDate.getMonth(), $scope.newHeadacheDate.getDate(), $scope.newHeadacheTime.getHours(), $scope.newHeadacheTime.getMinutes(), $scope.newHeadacheTime.getSeconds());
 	$scope.headache.intensityValues.push({key: start, value: $scope.newHeadacheValue});
 	$scope.headache.intensityValues.sort(function(a, b){
 		if(a.key < b.key) return -1;
