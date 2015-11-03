@@ -59,7 +59,15 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   		}
   		equalEnd = $scope.headache.end == headaches[headache].end;
   		equalLocation = $scope.headache.location == headaches[headache].location;
-  		if(equalIntensityValues && equalEnd && equalLocation) return headache;
+  		equalSymptoms = true;
+  		for(symptom in headache.symptoms){
+  			if(headache.symptoms[symptom] != $scope.headache.symptoms[symptom]) equalSymptoms = false;
+  		}
+  		equalTriggers = true;
+  		for(trigger in headache.triggers){
+  			if(headache.triggers[trigger] != $scope.headache.triggers[trigger]) equalTriggers = false;
+  		}
+  		if(equalIntensityValues && equalEnd && equalLocation && equalSymptoms && equalTriggers) return headache;
   		return -1;
   	}
   };
@@ -88,12 +96,11 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   /* closeAndSave is called when the user pressed the "Sla op" button */
 
   $scope.closeAndSave = function(){
-  	console.log($scope.headacheIndex);
 
   	if($scope.headacheIndex != -1){
-  	list = dataService.getHeadacheList();
-  	list[$scope.headacheIndex] = $scope.headache;
-  	dataService.setHeadacheList(list);
+	  	list = dataService.getHeadacheList();
+	  	list[$scope.headacheIndex] = $scope.headache;
+	  	dataService.setHeadacheList(list);
   	} else dataService.addHeadache($scope.headache);
 
   	dataService.setCurrentHeadache(null);
@@ -182,7 +189,6 @@ angular.module('Chronic').controller('headacheController', function($scope, data
 		else return 0;
 	});
   	if($scope.headache.intensityValues.length == 1) $("#endDateForm").show();
-  	console.log("Saving the value"+$scope.newHeadacheValue+$scope.newHeadacheDate+$scope.newHeadacheTime+"!!");
   	navigator.popPage(page); // We're in the add intensity form. Popping a page will return to the list intensity form
   };
 

@@ -57,12 +57,14 @@ angular.module('Chronic').service('dataService', function($localStorage) {
 
   var getHeadacheList = function(){
       var list = $localStorage.headacheList;
-      list.sort(function(a,b){ //sort the list on their start dates // date of consumption
-
-          dateA = a.intensityValues[0].key;
-          dateB = b.intensityValues[0].key;
-          return (new Date(dateA.toString()))-(new Date(dateB.toString()));
-      });
+      if(list != null){
+	      list.sort(function(a,b){ //sort the list on their start dates // date of consumption
+	
+	          dateA = a.intensityValues[0].key;
+	          dateB = b.intensityValues[0].key;
+	          return (new Date(dateA.toString()))-(new Date(dateB.toString()));
+	      });
+      }
       return list;
   };
 
@@ -149,18 +151,20 @@ angular.module('Chronic').service('dataService', function($localStorage) {
     var getHeadachesNoEnd = function(){
         listItems = getHeadacheList();
         listNoEnd = [];
-        listItems.sort(function(a,b){ //sort the list on their start dates // date of consumption
-
-            dateA = a.intensityValues[0].key;
-            dateB = b.intensityValues[0].key;
-            return (new Date(dateA.toString()))-(new Date(dateB.toString()));
-        });
-
-
-        for (var i=0; i<listItems.length; i++){
-            if(listItems[i].end == null){
-                listNoEnd.push(listItems[i]);
-            }
+        if(listItems != null){
+	        listItems.sort(function(a,b){ //sort the list on their start dates // date of consumption
+	
+	            dateA = a.intensityValues[0].key;
+	            dateB = b.intensityValues[0].key;
+	            return (new Date(dateA.toString()))-(new Date(dateB.toString()));
+	        });
+	
+	
+	        for (var i=0; i<listItems.length; i++){
+	            if(listItems[i].end == null){
+	                listNoEnd.push(listItems[i]);
+	            }
+	        }
         }
 
         return listNoEnd;

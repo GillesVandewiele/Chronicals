@@ -200,7 +200,6 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
             }else{
                 dataService.setCurrentMedicine(obj);
             }
-
             location.href = 'detailedMedicine.html';
         }
 

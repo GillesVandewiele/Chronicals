@@ -57,15 +57,16 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
         return newArray;
     }
 
-
-
-    var current = dataService.getCurrentHeadache();
+    var current = JSON.parse(JSON.stringify(dataService.getCurrentHeadache()));
+    console.log("testing testing...");
+    console.log(current);
     var months = ["jan.", "feb.", "mrt.", "apr.", "mei", "jun.", "jul.", "aug.", "sept.", "okt.", "nov.", "dec."];
 
 
     if(current == null){
         current = dataService.getCurrentHeadache();
         if(current==null){
+        	console.log(current);
             dataService.setCurrentHeadache(dataService.getHeadacheList()[0]);
             current = dataService.getCurrentHeadache();
         }
@@ -76,6 +77,8 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
     }
     if (current.end != null){
         current.end = new Date(current.end);
+        console.log("Set the end");
+        console.log(dataService.getCurrentHeadache());
     }
     $scope.startTime = current.start.getDate()+" "+months[current.start.getMonth()]+"    "+current.start.getHours() + ":" + ((current.start.getMinutes()<10?'0':'')+current.start.getMinutes()) ;
     if(current.end == null){
@@ -116,6 +119,7 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
 
     }
 
+	console.log()
 
 
 

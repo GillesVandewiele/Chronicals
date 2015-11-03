@@ -40,10 +40,14 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
 
 
             } else {
-                $('.dashboardFooter').empty();
-                var hours = parseInt(Math.abs(new Date() - new Date(dataService.getHeadacheList()[dataService.getHeadacheList().length - 1].end)) / 36e5);
-                $('.dashboardFooter').append('<p ng-click="show(navigator.html)">U heeft al ' + hours + ' uur geen hoofdpijn meer gehad!</p>');
-
+            	if(dataService.getHeadacheList() != null && dataService.getHeadacheList().length > 0){
+	                $('.dashboardFooter').empty();
+	                var hours = parseInt(Math.abs(new Date() - new Date(dataService.getHeadacheList()[dataService.getHeadacheList().length - 1].end)) / 36e5);
+	                $('.dashboardFooter').append('<p ng-click="show(navigator.html)">U heeft al ' + hours + ' uur geen hoofdpijn meer gehad!</p>');
+				} else {
+	                $('.dashboardFooter').empty();
+					$('.dashboardFooter').append('<p ng-click="">Welkom! Klik hier voor een korte handleiding</p>');
+				}
             }
 
 
