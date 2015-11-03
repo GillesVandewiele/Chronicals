@@ -98,7 +98,7 @@
 		  			<ons-col class="col ons-col-inner"><input name="endDate" type="date" ng-model="endDate" min="2013-01-01" max="2050-01-01" class="datePicker" validenddate button="nextButton" /></ons-col>
 		  			<ons-col class="col ons-col-inner"><input name="endTime" type="time" placeholder="HH:mm" ng-model="endTime" class="timePicker" step="60" validendtime button="nextButton"/></ons-col>
 		   	  </ons-row>
-	   	  		<small class="error" ng-show="intensityEndDate.endDate.$error.validEndDate && intensityEndDate.endTime.$error.validEndTime">
+	   	  		<small class="error" ng-show="intensityEndDate.endDate.$error.validEndDate || intensityEndDate.endTime.$error.validEndTime">
 			        Uw einddatum moet groter zijn dan de startdatum van uw laatste intensiteit! <br>
 			    </small>
 	   	 </form>
@@ -106,8 +106,8 @@
 
 		<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
-        		<button class="button cancelButton"  ng-click="cancel();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
-        		<button class="button nextButton"  ng-click="setEnd(endDate, endTime); myNavigator.pushPage('location.html')" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
+        		<button class="button cancelButton" ng-click="cancel();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
+        		<button class="button nextButton" ng-disabled="!headache.intensityValues.length" ng-click="setEnd(endDate, endTime); myNavigator.pushPage('location.html')" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
 		</div>
       </div>
@@ -186,7 +186,7 @@
       	<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
         		<button class="button cancelButton" onclick="myNavigator.popPage();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
-        		<button class="button finishButton" ng-click="setValues(newHeadacheValue, newHeadacheDate, newHeadacheTime);saveIntensityValue(myNavigator);" style="float: right;">Voeg toe <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
+        		<button class="button finishButton" ng-disabled="addIntensityDate.$invalid" ng-click="setValues(newHeadacheValue, newHeadacheDate, newHeadacheTime);saveIntensityValue(myNavigator);" style="float: right;">Voeg toe <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
     	</div>
       </div>
