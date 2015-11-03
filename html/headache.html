@@ -59,7 +59,7 @@
       <ons-toolbar>
       	<div class="left"></div>
         <div class="center" style="margin: 0 auto; text-align: center;"></div>
-        <div class="right"><ons-toolbar-button ng-click="setEnd(endDate, endTime); myNavigator.pushPage('location.html')">Volgende <ons-icon icon="ion-ios-arrow-forward" style="font-size: 32px"></ons-icon></ons-toolbar-button></div>
+        <div class="right"><ons-toolbar-button ng-click=""><ons-icon icon="ion-help" style="font-size: 100%;"></ons-icon></ons-toolbar-button></div>
       </ons-toolbar>
 
       <div class="navigatorTab">
@@ -95,8 +95,8 @@
 		  			<p class="label timeLabel" style="margin-top: 5%;">Eindtijd: (optioneel)</p>
 			  </ons-row>
 			  <ons-row>
-		  			<ons-col class="col ons-col-inner"><input name="endDate" type="date" ng-model="endDate" min="2013-01-01" max="2050-01-01" class="datePicker" validenddate /></ons-col>
-		  			<ons-col class="col ons-col-inner"><input name="endTime" type="time" placeholder="HH:mm" ng-model="endTime" class="timePicker" step="60" validendtime/></ons-col>
+		  			<ons-col class="col ons-col-inner"><input name="endDate" type="date" ng-model="endDate" min="2013-01-01" max="2050-01-01" class="datePicker" validenddate button="nextButton" /></ons-col>
+		  			<ons-col class="col ons-col-inner"><input name="endTime" type="time" placeholder="HH:mm" ng-model="endTime" class="timePicker" step="60" validendtime button="nextButton"/></ons-col>
 		   	  </ons-row>
 	   	  		<small class="error" ng-show="intensityEndDate.endDate.$error.validEndDate && intensityEndDate.endTime.$error.validEndTime">
 			        Uw einddatum moet groter zijn dan de startdatum van uw laatste intensiteit! <br>
@@ -107,7 +107,7 @@
 		<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
         		<button class="button cancelButton"  ng-click="cancel();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
-        		<button class="button"  ng-click="setEnd(endDate, endTime); myNavigator.pushPage('location.html')" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
+        		<button class="button nextButton"  ng-click="setEnd(endDate, endTime); myNavigator.pushPage('location.html')" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
 		</div>
       </div>
@@ -120,7 +120,7 @@
       <ons-toolbar>
       	<div class="left"></div>
         <div class="center" style="margin: 0 auto; text-align: center;"></div>
-        <div class="right"><ons-toolbar-button ng-click="myNavigator.replacePage('times.html');setNewHeadacheValue(newHeadacheValue); console.log(newHeadacheValue)">Volgende <ons-icon icon="ion-ios-arrow-forward" style="font-size: 32px"></ons-icon></ons-toolbar-button></div>
+        <div class="right"><ons-toolbar-button ng-click=""><ons-icon icon="ion-help" style="font-size: 100%;"></ons-icon></ons-toolbar-button></div>
       </ons-toolbar>
 
       <div class="navigatorTab">
@@ -135,7 +135,7 @@
 		<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
         		<button class="button cancelButton"  onclick="myNavigator.popPage();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
-        		<button class="button" ng-click="setNewHeadacheValue(newHeadacheValue);myNavigator.replacePage('times.html')" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
+        		<button class="button nextButton" ng-click="setNewHeadacheValue(newHeadacheValue);myNavigator.replacePage('times.html')" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
 		</div>
       </div>
@@ -148,7 +148,7 @@
       <ons-toolbar>
         <div class="left"><ons-icon icon="ion-ios-arrow-back" style="font-size: 32px"></ons-icon><ons-toolbar-button ng-click="myNavigator.replacePage('intensity.html'); "> Terug</ons-toolbar-button></div>
         <div class="center" style="margin: 0 auto; text-align: center;"></div>
-        <div class="right"></div>
+        <div class="right"><ons-toolbar-button ng-click=""><ons-icon icon="ion-help" style="font-size: 100%;"></ons-icon></ons-toolbar-button></div>
       </ons-toolbar>
 
       <div class="navigatorTab">
@@ -199,7 +199,7 @@
       <ons-toolbar>
         <div class="left"><ons-back-button>Terug</ons-back-button></div>
         <div class="center" style="margin: 0 auto; text-align: center;">{{startTimeString}}</div>
-        <div class="right"><ons-toolbar-button ng-click="myNavigator.pushPage('symptoms.html')">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></ons-toolbar-button></div>
+        <div class="right"><ons-toolbar-button ng-click=""><ons-icon icon="ion-help" style="font-size: 100%;"></ons-icon></ons-toolbar-button></div>
       </ons-toolbar>
 
       <div class="navigatorTab">
@@ -236,7 +236,7 @@
       	<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
         		<button class="button cancelButton"  ng-click="cancel();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
-        		<button class="button" ng-click="myNavigator.pushPage('symptoms.html')" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
+        		<button class="button nextButton" ng-click="myNavigator.pushPage('symptoms.html')" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
     	</div>
       </div>
@@ -250,7 +250,7 @@
       <ons-toolbar>
         <div class="left"><ons-back-button>Terug</ons-back-button></div>
         <div class="center" style="margin: 0 auto; text-align: center;">{{startTimeString}}</div>
-        <div class="right"><ons-toolbar-button ng-click="myNavigator.pushPage('triggers.html')">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></ons-toolbar-button></div>
+        <div class="right"><ons-toolbar-button ng-click=""><ons-icon icon="ion-help" style="font-size: 100%;"></ons-icon></ons-toolbar-button></div>
       </ons-toolbar>
 
       <div class="navigatorTab">
@@ -281,7 +281,7 @@
       	<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
         		<button class="button cancelButton"  ng-click="cancel();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
-        		<button class="button" ng-click="myNavigator.pushPage('triggers.html')" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
+        		<button class="button nextButton" ng-click="myNavigator.pushPage('triggers.html')" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
     	</div>
       </div>
@@ -294,6 +294,7 @@
       <ons-toolbar>
         <div class="left"><ons-back-button>Terug</ons-back-button></div>
         <div class="center" style="margin: 0 auto; text-align: center;">{{startTimeString}}</div>
+        <div class="right"><ons-toolbar-button ng-click=""><ons-icon icon="ion-help" style="font-size: 100%;"></ons-icon></ons-toolbar-button></div>
       </ons-toolbar>
 
       <div class="navigatorTab">

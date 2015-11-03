@@ -23,7 +23,6 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
     }, false);
 
     $scope.deleteEntry = function(){
-        console.log("Removed: ", dataService.getCurrentHeadache());
         dataService.removeHeadache();
     };
 
@@ -58,15 +57,12 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
     }
 
     var current = JSON.parse(JSON.stringify(dataService.getCurrentHeadache()));
-    console.log("testing testing...");
-    console.log(current);
     var months = ["jan.", "feb.", "mrt.", "apr.", "mei", "jun.", "jul.", "aug.", "sept.", "okt.", "nov.", "dec."];
 
 
     if(current == null){
         current = dataService.getCurrentHeadache();
         if(current==null){
-        	console.log(current);
             dataService.setCurrentHeadache(dataService.getHeadacheList()[0]);
             current = dataService.getCurrentHeadache();
         }
@@ -75,11 +71,7 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
     if(current.intensityValues != null && current.intensityValues[0].key != null){
         current.start = new Date(current.intensityValues[0].key);
     }
-    if (current.end != null){
-        current.end = new Date(current.end);
-        console.log("Set the end");
-        console.log(dataService.getCurrentHeadache());
-    }
+
     $scope.startTime = current.start.getDate()+" "+months[current.start.getMonth()]+"    "+current.start.getHours() + ":" + ((current.start.getMinutes()<10?'0':'')+current.start.getMinutes()) ;
     if(current.end == null){
         current.end = new Date();
@@ -91,7 +83,6 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
     $scope.symptoms = [];
     $scope.triggers = [];
     var sorted = sortOnKeys(current.intensityValues);
-    console.log("sorted: ", sorted);
 
     if(sorted != null){
         if(sorted[sorted.length-1].key.toString() != current.end.toString()){
@@ -118,9 +109,6 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
 
 
     }
-
-	console.log()
-
 
 
     $scope.series;

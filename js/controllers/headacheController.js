@@ -222,15 +222,19 @@ angular.module('Chronic').directive('validenddate', function() {
   return {
     require: 'ngModel',
     link: function($scope, ele, attrs, c) {
+  		console.log($("#"+attrs.button));
     	c.$validators.validEndDate = function(modelValue, viewValue){
 	    	$scope.setEndDate(modelValue);
 	    	if(c.$isEmpty(modelValue)) {
 		        // consider empty models to be valid
+		        $("."+attrs.button).prop('disabled', false);
 		        return true;
 	    	}
-	    	if($scope.headache.intensityValues.length != 0 && $scope.end >= $scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key){
+	    	if($scope.headache.intensityValues.length != 0 && $scope.end >= $scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key){	
+		        $("."+attrs.button).prop('disabled', false);
 	    		return true;
 	    	}
+		    $("."+attrs.button).prop('disabled', true);
 	    	return false;
 		};
     }
@@ -245,11 +249,14 @@ angular.module('Chronic').directive('validendtime', function() {
         	$scope.setEndTime(modelValue);
 	    	if(c.$isEmpty(modelValue)) {
 		        // consider empty models to be valid
+		        $("."+attrs.button).prop('disabled', false);
 		        return true;
         	}
-        	if($scope.headache.intensityValues.length != 0 && $scope.end >= new Date($scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key)){
+        	if($scope.headache.intensityValues.length != 0 && $scope.end >= new Date($scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key)){      		
+		        $("."+attrs.button).prop('disabled', false);
         		return true;
         	}
+		    $("."+attrs.button).prop('disabled', true);
         	return false;
     	};
     }
