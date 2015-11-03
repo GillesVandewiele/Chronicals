@@ -61,7 +61,7 @@ html, body{
 	background-size: 99% 4px;
 	background-repeat: no-repeat;
 	-webkit-appearance: none;
-	vertical-align: 50%;
+	vertical-align: 25%;
 }
 
 .datePicker{
@@ -72,8 +72,17 @@ html, body{
 	color: #FFFFFF;
 }
 
+#ownDrug{
+	display: none; 
+	margin-left: 5%;
+	background-color: #1a252f;
+    color: #FFFFFF;
+}
+
 .error{
 	color: red;
+	margin-left: 5%;
+	float: left;
 }
 
 .timePicker{

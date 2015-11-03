@@ -51,37 +51,54 @@
       	</div>
 
       	<div class="navigatorTabBody">
-	      	<ons-row>
-      			<p class="label" style="margin-left: 5%;">Medicijn + hoeveelheid:</p>
-	      	</ons-row>
-      		<ons-row>
-			    <div class="selectDiv" style="width: 40%;">
-			        <span class="selectDefault">{{selectedDrug.name}}</span>
-				      <select id="drugDropdown" ng-options="drug as drug.name for drug in drugs" ng-model="selectedDrug">
-				      	<option style="display:none" value="">select a drug</option>
-					  </select>
-			     </div>
-				  <input id="ownDrug" type="text" ng-model="ownDrug">
-			     <input type="number" style="width: 20%;" min="1" class="medicineQuantity" ng-model="drugQuantity">
-			     <label>mg</label>
-
-		     </ons-row>
-		     <ons-row style="margin-top: 5%;">
-		     	<p style="margin-left: 5%;">{{selectedDrug.description}}</p>
-		     </ons-row>
-		     <ons-row>
-      			<p class="label" style="margin-left: 5%">Tijdstip van inname:</p>
-      		 </ons-row>
-		     <ons-row>
-		     	<input type="date" ng-model="drugDate" style="margin-left: 5%;" min="2013-01-01" max="2050-01-01" class="datePicker"></ons-col>
-      			<input type="time" placeholder="HH:mm" ng-model="drugTime" class="timePicker" step="60"></ons-col>
-		     </ons-row>
+      		<form name="addMedicineForm">
+		      	<ons-row>
+	      			<p class="label" style="margin-left: 5%;">Medicijn + hoeveelheid:</p>
+		      	</ons-row>
+	      		<ons-row>
+				    <div class="selectDiv" style="width: 40%;">
+				        <span class="selectDefault">{{selectedDrug.name}}</span>
+					      <select id="drugDropdown" name="drug" ng-options="drug as drug.name for drug in drugs" ng-model="selectedDrug" required>
+					      	<option style="display:none" value="">select a drug</option>
+						  </select>
+				     </div>
+					  <input id="ownDrug" type="text" ng-model="ownDrug">
+				     <input type="number" name="quantity" style="width: 20%;" min="1" class="medicineQuantity" ng-model="drugQuantity" required>
+				     <label>mg</label>
+				     <small class="error" ng-show="addMedicineForm.quantity.$error.required">
+	      				- U moet een hoeveelheid ingeven!
+      				 </small>
+				     <small class="error" ng-show="addMedicineForm.quantity.$error.min">
+	      				- U moet een correcte hoeveelheid ingeven!
+      				 </small>
+				     <small class="error" ng-show="addMedicineForm.drug.$error.required">
+	      				- U moet een medicijn ingeven!
+      				 </small>
+	
+			     </ons-row>
+			     <ons-row style="margin-top: 5%;">
+			     	<p style="margin-left: 5%;">{{selectedDrug.description}}</p>
+			     </ons-row>
+			     <ons-row>
+	      			<p class="label" style="margin-left: 5%">Tijdstip van inname:</p>
+	      		 </ons-row>
+			     <ons-row>
+			     	<input type="date" name="medicineDate" ng-model="drugDate" style="margin-left: 5%;" min="2013-01-01" max="2050-01-01" class="datePicker" required></ons-col>
+	      			<input type="time" name="medicineTime" placeholder="HH:mm" ng-model="drugTime" class="timePicker" step="60" required></ons-col>
+	      			<small class="error" ng-show="addMedicineForm.medicineTime.$error.time">
+	      				- U moet een geldig tijdstip ingeven!
+      				 </small>
+				     <small class="error" ng-show="addMedicineForm.medicineDate.$error.date">
+	      				- U moet een geldig datum ingeven!
+      				 </small>
+			     </ons-row>
+		     </form>
       	</div>
 
 		<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
-        		<button class="button cancelButton"  onclick="location.href='dashboard.html';"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
-        		<button class="button finishButton" ng-click="addMedicine();" style="float: right;">Sla op <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
+        		<button class="button cancelButton"  ng-click="cancel();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
+        		<button class="button finishButton" ng-disabled="addMedicineForm.$invalid" ng-click="addMedicine();" style="float: right;">Sla op <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
 		</div>
       </div>

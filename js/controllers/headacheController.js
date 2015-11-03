@@ -232,7 +232,9 @@ angular.module('Chronic').directive('validenddate', function() {
 		        $("."+attrs.button).prop('disabled', false);
 		        return true;
 	    	}
-	    	if($scope.headache.intensityValues.length != 0 && $scope.end >= $scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key){	
+	    	var end1 = new Date(modelValue);
+	    	var end2 = new Date($scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key);
+	    	if($scope.headache.intensityValues.length != 0 && end1.getFullYear() >= end2.getFullYear() && end1.getMonth() >= end2.getMonth() && end1.getDate() >= end2.getDate()){	
 		        $("."+attrs.button).prop('disabled', false);
 	    		return true;
 	    	}
@@ -241,7 +243,10 @@ angular.module('Chronic').directive('validenddate', function() {
 		};
 		$scope.$on('endDateValidation', dovalidation);
     	function dovalidation(){
-	    	if($scope.end == null || $scope.end.getMinutes() == null || $scope.end.getHours() == null || ($scope.headache.intensityValues.length != 0 && $scope.end >= new Date($scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key))){      		
+	    	var end1 = new Date($scope.end);
+	    	var end2 = new Date($scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key);
+	    	if($scope.end == null || $scope.end.getMinutes() == null || $scope.end.getHours() == null || ($scope.headache.intensityValues.length != 0 && 
+	    		end1.getFullYear() >= end2.getFullYear() && end1.getMonth() >= end2.getMonth() && end1.getDate() >= end2.getDate())){      		
 		        $("."+attrs.button).prop('disabled', false);
 	    		$scope.intensityEndDate.endDate.$error.validEndDate = false;
 	    	} else {
@@ -259,12 +264,16 @@ angular.module('Chronic').directive('validendtime', function() {
     link: function($scope, ele, attrs, c) {
     	c.$validators.validEndTime = function(modelValue, viewValue){
 			$scope.setEndTime(modelValue);
+	    	console.log(modelValue);
+	    	console.log($scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key);
 	    	if(c.$isEmpty(modelValue)) {
 		        // consider empty models to be valid
 		        $("."+attrs.button).prop('disabled', false);
 		        return true;
         	}
-        	if($scope.headache.intensityValues.length != 0 && $scope.end >= $scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key){	
+        	var end1 = new Date(modelValue);
+        	var end2 = new Date($scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key);
+        	if($scope.headache.intensityValues.length != 0 && end1.getHours() >= end2.getHours() && end1.getMinutes() >= end2.getMinutes()){	
 		        $("."+attrs.button).prop('disabled', false);
 	    		return true;
 	    	}

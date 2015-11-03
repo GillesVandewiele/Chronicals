@@ -10,11 +10,45 @@ angular.module('Chronic').controller('medicineController', function($scope, data
     ons.ready(function() {
         $('.hidden').removeClass("hidden");
     });
+	
+	// Initialize all fields on default values or on the values of current medicine (when modifying)
+	$scope.medicine = dataService.getCurrentMedicine();
+	
+	if($scope.medicine != null && $scope.medicine.drug != null){
+		$scope.selectedDrug = $scope.medicine.drug;
+	}
+	if($scope.medicine != null && $scope.medicine.date != null){
+		$scope.drugDate = new Date($scope.medicine.date);
+	}else {
+    	$scope.drugDate = new Date();
+    }
+	$scope.drugTime = $scope.drugDate;
+    if($scope.medicine != null && $scope.medicine.quantity != null){
+    	$scope.drugQuantity = $scope.medicine.quantity;
+    }else {
+	    $scope.drugQuantity = 0;
+	}
+	
+	$scope.getIndexOfMedicine = function(){
+		medicines = dataService.getMedicineList();
+  		if(medicines == null || medicines.length == 0) return -1;
+  		if($scope.medicine == null) return -1;
+		for(medicine in medicines){
+			equalDrug = (medicines[medicine].drug.id == $scope.medicine.drug.id && medicines[medicine].drug.quantity == $scope.medicine.drug.quantity);
+			equalDate = medicines[medicine].date == $scope.medicine.date;
+			equalQuantity = medicines[medicine].quantity == $scope.medicine.quantity;
+			if(equalDrug && equalDate && equalQuantity) return medicine;
+		}
+		return -1;
+	};
+	
+	$scope.medicineIndex = $scope.getIndexOfMedicine();
 
+	// Populate the dropdown and the advice
 	$scope.advice = "Dit is een voorbeeldadvies.";
-	$scope.drugs = [{id: 0, name:"drug1", description:"this is a description of drug1"}, {id: 1, name:"drug2", description:"this is a description of drug2"},
-                    {id: 2, name:"drug3", description:"this is a description of drug3"}, {id: 3, name: "...", description: "this is a description"}];
-
+	$scope.drugs = dataService.getDrugs();
+	
+	// Create the possibility to add an own drug in the dropdown
 	$(document).on("click", '#drugDropdown', function(e){
   		if($scope.selectedDrug != null && $scope.selectedDrug.name=="..."){
   			$(".selectDiv").hide();
@@ -22,21 +56,34 @@ angular.module('Chronic').controller('medicineController', function($scope, data
   		}
   	});
 
-    $scope.drugDate = new Date();
-    $scope.drugTime = $scope.drugDate;
-
+	// Called when clicking "Sla Op"
 	$scope.addMedicine = function(){
-		console.log($scope.selectedDrug, $scope.drugQuantity, $scope.drugDate, $scope.drugTime, $scope.ownDrug);
 		var dateObj = new Date($scope.drugDate.getFullYear(), $scope.drugDate.getMonth(), $scope.drugDate.getDate(), $scope.drugTime.getHours(), $scope.drugTime.getMinutes());
 		if($scope.ownDrug != null){
-			var drug = {id: 0, name:$scope.ownDrug, description:"dit is een zelf ingegeven drugs"};
+			var drug = {id: 0, name:$scope.ownDrug, description:""};
 			var medicine = {drug: drug, quantity: $scope.drugQuantity, date: dateObj};
 		} else {
 			var medicine = {drug: $scope.selectedDrug, quantity: $scope.drugQuantity, date: dateObj};
 		}
-		dataService.addMedicine(medicine);
+		
+		if($scope.medicineIndex != -1){
+			list = dataService.getMedicineList();
+	  		list[$scope.medicineIndex] = medicine;
+	  		dataService.setMedicineList(list);
+		}
+		else {
+			dataService.addMedicine(medicine);
+		}
+		if($scope.ownDrug != null) dataService.addDrug($scope.ownDrug);
+  		dataService.setCurrentMedicine(null);
 		location.href='dashboard.html';
 	};
+	
+	// Called on canceling
+  $scope.cancel = function(){
+  	dataService.setCurrentMedicine(null);
+  	location.href="dashboard.html";
+  };
 
 });
 
