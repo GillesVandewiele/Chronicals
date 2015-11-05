@@ -264,8 +264,6 @@ angular.module('Chronic').directive('validendtime', function() {
     link: function($scope, ele, attrs, c) {
     	c.$validators.validEndTime = function(modelValue, viewValue){
 			$scope.setEndTime(modelValue);
-	    	console.log(modelValue);
-	    	console.log($scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key);
 	    	if(c.$isEmpty(modelValue)) {
 		        // consider empty models to be valid
 		        $("."+attrs.button).prop('disabled', false);
