@@ -29,20 +29,6 @@ angular.module('Chronic').service('dataService', function($localStorage) {
   	  $localStorage.currentMedicine = newObj;
   };
 
-  var getSymptoms = function(){
-  	//TODO: replace this by a DB call
-  	return [{id: 0, name:"symptom1", description:"this is a description", val: false}, {id: 1, name:"symptom2", description:"this is a description", val: false},
-  			{id: 2, name:"symptom3", description:"this is a description", val: false}, {id: 3, name:"symptom4", description:"this is a description", val: false}]; // List of all symptoms
-
-  };
-
-  var getTriggers = function(){
-  	//TODO: replace this by a DB call
-  	return [{id: 0, name:"trigger1", description:"this is a description 1", val: false}, {id: 1, name:"trigger2", description:"this is a description 2", val: false},
-  			{id: 2, name:"trigger3", description:"this is a description 3", val: false}, {id: 3, name:"trigger4", description:"this is a description 4", val: false}]; // List of all triggers
-
-  };
-
   var getCurrentHeadache = function(){
   	  return $localStorage.currentHeadache;
   };
@@ -88,6 +74,31 @@ angular.module('Chronic').service('dataService', function($localStorage) {
   	return [{id: 0, name:"trigger1", description:"this is a description 1", val: false}, {id: 1, name:"trigger2", description:"this is a description 2", val: false},
   			{id: 2, name:"trigger3", description:"this is a description 3", val: false}, {id: 3, name:"trigger4", description:"this is a description 4", val: false}]; // List of all triggers
 
+  };
+  
+  var getDBDrugs = function(){
+  	//TODO: replace this by DB call
+  	return [{id: 0, name:"drug1", description:"this is a description of drug1"}, {id: 1, name:"drug2", description:"this is a description of drug2"},
+            {id: 2, name:"drug3", description:"this is a description of drug3"}, {id: 3, name: "...", description: "this is a description"}];
+
+  };
+  
+  var getDrugs = function(){
+  	if($localStorage.drugList == null){
+  		$localStorage.drugList = getDBDrugs();
+  	}
+  	return $localStorage.drugList;
+  };
+  
+  var addDrug = function(drugName){
+	inList = false;
+	for(drug in $localStorage.drugList){
+		if($localStorage.drugList[drug].name == drugName) inList = true;
+	}
+  	if(!inList){
+  		var drug = {id: $localStorage.drugList[$localStorage.drugList.length-2].id+1, name: drugName, description: ""};
+  		$localStorage.drugList.splice($localStorage.drugList.length-1, 0, drug);
+  	}
   };
 
   var removeHeadache = function(){
@@ -142,6 +153,7 @@ angular.module('Chronic').service('dataService', function($localStorage) {
         $localStorage.currentHeadache = null;
         $localStorage.medicineList = null;
         $localStorage.currentMedicine = null;
+        $localStorage.drugList = null;
         headache = null;
         headacheList = null;
         medicine = null;
@@ -187,7 +199,9 @@ angular.module('Chronic').service('dataService', function($localStorage) {
     removeHeadache: removeHeadache,
     clearCache: clearCache,
     removeMedicine: removeMedicine,
-    getHeadachesNoEnd: getHeadachesNoEnd
+    getHeadachesNoEnd: getHeadachesNoEnd,
+    getDrugs: getDrugs,
+    addDrug: addDrug
     };
 
 

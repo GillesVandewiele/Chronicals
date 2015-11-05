@@ -167,6 +167,7 @@ angular.module('Chronic').controller('headacheController', function($scope, data
 
   $scope.deleteEntry = function(item){
   	$scope.headache.intensityValues.splice($scope.headache.intensityValues.indexOf(item), 1);
+  	$scope.$broadcast('endDateValidation');
   	if($scope.headache.intensityValues.length == 0) $("#endDateForm").hide();
   };
 
@@ -190,6 +191,7 @@ angular.module('Chronic').controller('headacheController', function($scope, data
 		else return 0;
 	});
   	if($scope.headache.intensityValues.length == 1) $("#endDateForm").show();
+  	$scope.$broadcast('endDateValidation');
   	navigator.popPage(page); // We're in the add intensity form. Popping a page will return to the list intensity form
   };
 
@@ -223,21 +225,35 @@ angular.module('Chronic').directive('validenddate', function() {
   return {
     require: 'ngModel',
     link: function($scope, ele, attrs, c) {
-  		console.log($("#"+attrs.button));
-    	c.$validators.validEndDate = function(modelValue, viewValue){
+		c.$validators.validEndDate = function(modelValue, viewValue){	
 	    	$scope.setEndDate(modelValue);
 	    	if(c.$isEmpty(modelValue)) {
 		        // consider empty models to be valid
 		        $("."+attrs.button).prop('disabled', false);
 		        return true;
 	    	}
-	    	if($scope.headache.intensityValues.length != 0 && $scope.end >= $scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key){	
+	    	var end1 = new Date(modelValue);
+	    	var end2 = new Date($scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key);
+	    	if($scope.headache.intensityValues.length != 0 && end1.getFullYear() >= end2.getFullYear() && end1.getMonth() >= end2.getMonth() && end1.getDate() >= end2.getDate()){	
 		        $("."+attrs.button).prop('disabled', false);
 	    		return true;
 	    	}
 		    $("."+attrs.button).prop('disabled', true);
 	    	return false;
 		};
+		$scope.$on('endDateValidation', dovalidation);
+    	function dovalidation(){
+	    	var end1 = new Date($scope.end);
+	    	var end2 = new Date($scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key);
+	    	if($scope.end == null || $scope.end.getMinutes() == null || $scope.end.getHours() == null || ($scope.headache.intensityValues.length != 0 && 
+	    		end1.getFullYear() >= end2.getFullYear() && end1.getMonth() >= end2.getMonth() && end1.getDate() >= end2.getDate())){      		
+		        $("."+attrs.button).prop('disabled', false);
+	    		$scope.intensityEndDate.endDate.$error.validEndDate = false;
+	    	} else {
+			    $("."+attrs.button).prop('disabled', true);			    
+		    	$scope.intensityEndDate.endDate.$error.validEndDate = true;			
+		    }
+	    }
     }
   };
 });
@@ -247,19 +263,33 @@ angular.module('Chronic').directive('validendtime', function() {
     require: 'ngModel',
     link: function($scope, ele, attrs, c) {
     	c.$validators.validEndTime = function(modelValue, viewValue){
-        	$scope.setEndTime(modelValue);
+			$scope.setEndTime(modelValue);
+	    	console.log(modelValue);
+	    	console.log($scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key);
 	    	if(c.$isEmpty(modelValue)) {
 		        // consider empty models to be valid
 		        $("."+attrs.button).prop('disabled', false);
 		        return true;
         	}
-        	if($scope.headache.intensityValues.length != 0 && $scope.end >= new Date($scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key)){      		
+        	var end1 = new Date(modelValue);
+        	var end2 = new Date($scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key);
+        	if($scope.headache.intensityValues.length != 0 && end1.getHours() >= end2.getHours() && end1.getMinutes() >= end2.getMinutes()){	
 		        $("."+attrs.button).prop('disabled', false);
-        		return true;
-        	}
+	    		return true;
+	    	}
 		    $("."+attrs.button).prop('disabled', true);
-        	return false;
+	    	return false;
     	};
-    }
+    	$scope.$on('endDateValidation', dovalidation);
+    	function dovalidation(){
+	    	if($scope.end == null || $scope.end.getDate() == null || $scope.end.getMonth() == null || $scope.end.getYear() == null || ($scope.headache.intensityValues.length != 0 && $scope.end >= new Date($scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key))){      		
+		        $("."+attrs.button).prop('disabled', false);
+	    		$scope.intensityEndDate.endTime.$error.validEndTime = false;
+	    	} else {
+			    $("."+attrs.button).prop('disabled', true);
+		    	$scope.intensityEndDate.endTime.$error.validEndTime = true;			
+		    }
+	    }
+	}
   };
 });
