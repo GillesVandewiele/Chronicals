@@ -75,9 +75,12 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
     $scope.startTime = current.start.getDate()+" "+months[current.start.getMonth()]+"    "+current.start.getHours() + ":" + ((current.start.getMinutes()<10?'0':'')+current.start.getMinutes()) ;
     if(current.end == null){
         current.end = new Date();
-
     }
-    $scope.endTime = current.end.getDate()+" "+months[current.end.getMonth()]+"    "+current.end.getHours() + ":" + ((current.end.getMinutes()<10?'0':'')+current.end.getMinutes()) ;
+    if(typeof current.end == "string"){
+    	current.end = new Date(current.end);
+    }
+    
+    $scope.endTime = current.end.getDate()+" "+months[current.end.getMonth()]+"    "+(current.end.getHours()<10?'0':'')+current.end.getHours() + ":" + (current.end.getMinutes()<10?'0':'')+current.end.getMinutes();
     $scope.labels = [];
     $scope.data = [];
     $scope.symptoms = [];

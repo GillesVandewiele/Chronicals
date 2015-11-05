@@ -92,22 +92,32 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
         if(!$scope.listItems) { $('#loadingImg').hide(); return; }
         for(i =0; i<$scope.listItems.length; i++){
             if($scope.listItems[i].hasOwnProperty("end")){
+            	//console.log(moment.parseZone($scope.listItems[i].intensityValues[0].key));
+            	var today = new Date();
+            	var _start = moment($scope.listItems[i].intensityValues[0].key);
+            	var _end = moment($scope.listItems[i].end);
+            	_start._tzm = today.getTimezoneOffset()/60;
+            	_end._tzm = today.getTimezoneOffset()/60;
                 $('#calendar').fullCalendar('renderEvent',
                     {
                         title: "Hoofdpijn"
-                        , start: $scope.listItems[i].intensityValues[0].key
-                        , end: $scope.listItems[i].end
+                        , start: _start.format()
+                        , end: _end.format()
                         , intensity: $scope.listItems[i].intensityValue
                         , color: '#f9332f'
                         , object: $scope.listItems[i]
                         ,ignoreTimezone: false
                     }, true);
             }else{
+            	var today = new Date();
+            	var _start = moment($scope.listItems[i].date);
+            	_start._tzm = today.getTimezoneOffset()/60;
+            	var _end = _start;
                 $('#calendar').fullCalendar('renderEvent',
                     {
                         title: "Medicijn"
-                        , start: $scope.listItems[i].date
-                        , end: $scope.listItems[i].date
+                        , start: _start.format()
+                        , end: _end.format()
                         , medicine: $scope.listItems[i].drug.name
                         , quantity: $scope.listItems[i].quantity
                         , color: '#0cc80c'
