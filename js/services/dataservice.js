@@ -11,6 +11,8 @@ angular.module('Chronic').service('dataService', function($localStorage) {
     var medicineList = [];
     var headacheList = [];
 
+    var dailyMedicine = [];
+
   var addHeadache = function(newObj){
       if($localStorage.headacheList) $localStorage.headacheList.push(newObj);
       else $localStorage.headacheList = [newObj];
@@ -59,7 +61,7 @@ angular.module('Chronic').service('dataService', function($localStorage) {
       var list = $localStorage.headacheList;
       if(list != null){
 	      list.sort(function(a,b){ //sort the list on their start dates // date of consumption
-	
+
 	          dateA = a.intensityValues[0].key;
 	          dateB = b.intensityValues[0].key;
 	          return (new Date(dateA.toString()))-(new Date(dateB.toString()));
@@ -153,13 +155,13 @@ angular.module('Chronic').service('dataService', function($localStorage) {
         listNoEnd = [];
         if(listItems != null){
 	        listItems.sort(function(a,b){ //sort the list on their start dates // date of consumption
-	
+
 	            dateA = a.intensityValues[0].key;
 	            dateB = b.intensityValues[0].key;
 	            return (new Date(dateA.toString()))-(new Date(dateB.toString()));
 	        });
-	
-	
+
+
 	        for (var i=0; i<listItems.length; i++){
 	            if(listItems[i].end == null){
 	                listNoEnd.push(listItems[i]);
@@ -170,6 +172,22 @@ angular.module('Chronic').service('dataService', function($localStorage) {
         return listNoEnd;
 
     };
+
+    var addDailyMedicine = function(medicine){
+        dailyMedicine = $localStorage.dailyMedicine;
+        if(dailyMedicine == null){
+            dailyMedicine = [];
+        }
+        dailyMedicine.push(medicine);
+        $localStorage.dailyMedicine = dailyMedicine;
+    };
+
+    var getDailyMedicines = function(){
+        if($localStorage.dailyMedicine == null){
+            $localStorage.dailyMedicine = [];
+        }
+        return $localStorage.dailyMedicine;
+    }
 
   return {
     addHeadache: addHeadache,
@@ -187,7 +205,10 @@ angular.module('Chronic').service('dataService', function($localStorage) {
     removeHeadache: removeHeadache,
     clearCache: clearCache,
     removeMedicine: removeMedicine,
-    getHeadachesNoEnd: getHeadachesNoEnd
+    getHeadachesNoEnd: getHeadachesNoEnd,
+    addDailyMedicine: addDailyMedicine,
+    getDailyMedicines: getDailyMedicines
+
     };
 
 
