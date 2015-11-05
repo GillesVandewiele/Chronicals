@@ -14,58 +14,20 @@
 
   <title>Geen naam</title>
 
-  <!-- Our style sheet -->
-  <link rel="stylesheet" href="css/style.css">
+   <!-- Our style sheet -->
+  <link rel="stylesheet" href="../css/style.css">
+	
+  <script src="./js/vendor/jquery-2.1.4.js"></script>
 
-  <!-- AngularJS | MIT License | https://angularjs.org/ -->
-  <script src="js/angular/angular.js"></script>
-
-  <!-- onsenui v1.3.11 | Apache License | http://onsen.io/ -->
-  <script src="js/onsenui.js"></script>
-
-  <!-- jQuery | MIT License | https://jquery.org/ -->
-  <script src="js/jquery-2.1.4.js"></script>
-
-  <!-- Headache controller -->
-  <script src="js/controllers/headacheController.js"> </script>
-    <script type="text/javascript" charset="utf-8" src="cordova-3.6.3.js"></script>
-    <script type="text/javascript" charset="utf-8">
-
-
-        // Wait for device API libraries to load
-        //
-        function onLoad() {
-            document.addEventListener("deviceready", onDeviceReady, false);
-        }
-
-        // device APIs are available
-        //
-        function onDeviceReady() {
-            ons.notification.alert("Lel");
-            // Register the event listener
-            document.addEventListener("backbutton", onBackKeyDown, false);
-        }
-
-        // Handle the back button
-        //
-        function onBackKeyDown() {
-            ons.notification.alert("Lel");
-            alert("Lel");
-        }
-
+	<script>
+		$(document).ready(function() { location.href = "./html/dashboard.html"});
+			
     </script>
 
 </head>
 
-<body ng-controller="headacheController">
+<body>
 
-  <ons-navigator var="myNavigator">
-
-    <ons-page>
-      <a href="html/dashboard.html">klik</a>
-    </ons-page>
-
-  </ons-navigator>
 
 
 </body>
