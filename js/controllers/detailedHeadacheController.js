@@ -79,13 +79,15 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
     if(typeof current.end == "string"){
     	current.end = new Date(current.end);
     }
-    
+
     $scope.endTime = current.end.getDate()+" "+months[current.end.getMonth()]+"    "+(current.end.getHours()<10?'0':'')+current.end.getHours() + ":" + (current.end.getMinutes()<10?'0':'')+current.end.getMinutes();
     $scope.labels = [];
     $scope.data = [];
     $scope.symptoms = [];
     $scope.triggers = [];
-    var sorted = sortOnKeys(current.intensityValues);
+    var arrayToSort = current.intensityValues;
+    var sorted = sortOnKeys(arrayToSort);
+    var medicines = dataService.getMedicineList();
 
     if(sorted != null){
         if(sorted[sorted.length-1].key.toString() != current.end.toString()){
@@ -97,8 +99,61 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
             $scope.data.push(obj["value"]);
         }
 
+        var medicinePositions = Array.apply(null, new Array($scope.data.length)).map(Number.prototype.valueOf, 0);
 
-        $scope.data = [$scope.data];
+        medicines.forEach(function (entry) {
+            if (!(entry.date < sorted[0].key || entry.date > sorted[sorted.length - 1].key)) {
+                //update sorted
+                var inserted = false;
+                var counter = 1;
+                while (!inserted) {
+                    if (sorted[counter].hasOwnProperty('key')) {
+                        if (new Date(sorted[counter].key) > new Date(entry.date)) {
+                            $scope.labels.splice(counter, 0, "" + (new Date(entry.date)).getHours() + ":" + ((new Date(entry.date)).getMinutes() < 10 ? '0' : '') + (new Date(entry.date)).getMinutes());
+                            sorted.splice(counter, 0, entry);
+                            var value = (Number($scope.data[counter - 1]) + Number($scope.data[counter])) / 2;
+                            $scope.data.splice(counter, 0, value);
+                            medicinePositions.splice(counter, 0, 1);
+                            inserted = true;
+                        }
+                    } else {
+                        if (new Date(sorted[counter].date) > new Date(entry.date)) {
+                            $scope.labels.splice(counter, 0, "" + (new Date(entry.date)).getHours() + ":" + ((new Date(entry.date)).getMinutes() < 10 ? '0' : '') + (new Date(entry.date)).getMinutes());
+                            sorted.splice(counter, 0, entry);
+                            var value = (Number($scope.data[counter - 1]) + Number($scope.data[counter])) / 2;
+                            $scope.data.splice(counter, 0, value);
+                            medicinePositions.splice(counter, 0, 1);
+                            inserted = true;
+                        }
+                    }
+
+                    counter++;
+                }
+                //update labels
+
+                //update data
+
+            }
+
+
+        });
+
+
+        $scope.data = {
+            labels: $scope.labels, datasets: [{
+                data: $scope.data, fillColor: "rgba(220,220,220,0.2)",
+                strokeColor: "rgba(220,220,220,1)",
+                pointColor: "rgba(220,220,220,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)"
+            }]
+        };
+
+
+
+
+
         for(var i =0; i<current.triggers.length; i++){
             if(current.triggers[i].val==true){
                 $scope.triggers.push(current.triggers[i].name);
@@ -114,13 +169,20 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
     }
 
 
-    $scope.series;
     $scope.onClick = function (points, evt) {
         console.log(points, evt);
     };
 
     ons.ready(function() {
         $('.hidden').removeClass("hidden");
+        var ctx = $('canvas').get(0).getContext("2d");
+        var myNewChart = new Chart(ctx).Line($scope.data, null);
+        for (var iter = 0; iter < medicinePositions.length; iter++) {
+            if (medicinePositions[iter] == 1)
+                myNewChart.datasets[0].points[iter].fillColor = "green";
+
+        }
+        myNewChart.update();
     });
 
 
