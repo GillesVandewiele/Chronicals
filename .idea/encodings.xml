@@ -17,5 +17,6 @@
     <file url="file://$PROJECT_DIR$/js/controllers/profileController.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/js/controllers/settingsController.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/js/services/dataservice.js" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

@@ -178,8 +178,10 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
         var ctx = $('canvas').get(0).getContext("2d");
         var myNewChart = new Chart(ctx).Line($scope.data, null);
         for (var iter = 0; iter < medicinePositions.length; iter++) {
-            if (medicinePositions[iter] == 1)
+            if (medicinePositions[iter] == 1) {
                 myNewChart.datasets[0].points[iter].fillColor = "green";
+                myNewChart.datasets[0].points[iter].radius = 6;
+            }
 
         }
         myNewChart.update();
