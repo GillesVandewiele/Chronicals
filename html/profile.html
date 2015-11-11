@@ -61,7 +61,7 @@
             </div>
 
             <ons-row>
-                <div class="navigatorTabBody" style="width: 100%">
+                <div style="width: 100%">
                     <ons-row style="width: 100%;">
                         <p class="label" style="width: 100%;">Dagelijkse innames medicijnen</p>
 
@@ -73,17 +73,17 @@
                             <ons-col width="35%"><ons-list-header><p>Hoeveelheid</p></ons-list-header></ons-col>
                             <ons-col><ons-list-header><p></p></ons-list-header></ons-col>
                         </ons-row>
-                        <ons-list-item height="10%" ng-repeat="value in dailyMedicines track by value.key">
+                        <ons-list-item height="10%" ng-repeat="value in dailyMedicines track by value.date">
                             <div>
-                                <!--<div style="width: 55%; display: inline-block;"><p>{{value.key | date:'dd-MM HH:mm'}}</p></div>-->
-                                <!--<div style="width: 25%; display: inline-block;"><p>{{value.value}}</p></div>-->
-                                <!--<div style="display: inline-block;"><p><ons-icon ng-click="deleteEntry(value);" icon="ion-trash-b buttonIcon"></ons-icon></p></div>-->
+                                <div style="width: 55%; display: inline-block;"><p>{{value.drug.name | date:'dd-MM HH:mm'}}</p></div>
+                                <div style="width: 25%; display: inline-block;"><p>{{value.quantity}}</p></div>
+                                <div style="width: 10%; display: inline-block; float: right;"><p><ons-icon ng-click="deleteEntry(value);" icon="ion-trash-b buttonIcon"></ons-icon></p></div>
                             </div>
                         </ons-list-item>
-                        <ons-list-item  ng-click="addDailyMedicine();location.reload()">
+                        <ons-list-item  onclick="location.href='dailyMedicine.html'" ng-click="location.reload()">
                             <ons-row>
                                 <ons-col width="85%"><p>Dagelijkse inname...</p></ons-col>
-                                <ons-col width="15%" style="align-items: flex-end"><p><ons-icon icon="ion-plus-round buttonIcon"></ons-icon></p></ons-col>
+                                <ons-col width="10%" style="float: right;text-align: rigth;"><p><ons-icon icon="ion-plus-round buttonIcon"></ons-icon></p></ons-col>
                             </ons-row>
                         </ons-list-item>
                     </ons-list>

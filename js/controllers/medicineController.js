@@ -10,10 +10,10 @@ angular.module('Chronic').controller('medicineController', function($scope, data
     ons.ready(function() {
         $('.hidden').removeClass("hidden");
     });
-	
+
 	// Initialize all fields on default values or on the values of current medicine (when modifying)
 	$scope.medicine = dataService.getCurrentMedicine();
-	
+
 	if($scope.medicine != null && $scope.medicine.drug != null){
 		$scope.selectedDrug = $scope.medicine.drug;
 	}
@@ -28,7 +28,7 @@ angular.module('Chronic').controller('medicineController', function($scope, data
     }else {
 	    $scope.drugQuantity = 0;
 	}
-	
+
 	$scope.getIndexOfMedicine = function(){
 		medicines = dataService.getMedicineList();
   		if(medicines == null || medicines.length == 0) return -1;
@@ -41,13 +41,13 @@ angular.module('Chronic').controller('medicineController', function($scope, data
 		}
 		return -1;
 	};
-	
+
 	$scope.medicineIndex = $scope.getIndexOfMedicine();
 
 	// Populate the dropdown and the advice
 	$scope.advice = "Dit is een voorbeeldadvies.";
 	$scope.drugs = dataService.getDrugs();
-	
+
 	// Create the possibility to add an own drug in the dropdown
 	$(document).on("click", '#drugDropdown', function(e){
   		if($scope.selectedDrug != null && $scope.selectedDrug.name=="..."){
@@ -57,28 +57,42 @@ angular.module('Chronic').controller('medicineController', function($scope, data
   	});
 
 	// Called when clicking "Sla Op"
-	$scope.addMedicine = function(){
-		var dateObj = new Date($scope.drugDate.getFullYear(), $scope.drugDate.getMonth(), $scope.drugDate.getDate(), $scope.drugTime.getHours(), $scope.drugTime.getMinutes());
+	$scope.addMedicine = function(newLocation, profile){
+        profile = typeof profile !== 'undefined' ? profile : false;
+        console.log("profiel daily medicine?", profile)
+		var dateObj = new Date($scope.drugDate.getFullYear(), $scope.drugDate.getMonth(), $scope.drugDate.getDate(), $scope.drugTime.getHours(), $scope.drugTime.getMinutes(), $scope.drugTime.getSeconds());
 		if($scope.ownDrug != null){
 			var drug = {id: 0, name:$scope.ownDrug, description:""};
 			var medicine = {drug: drug, quantity: $scope.drugQuantity, date: dateObj};
 		} else {
 			var medicine = {drug: $scope.selectedDrug, quantity: $scope.drugQuantity, date: dateObj};
 		}
-		
+
 		if($scope.medicineIndex != -1){
 			list = dataService.getMedicineList();
 	  		list[$scope.medicineIndex] = medicine;
-	  		dataService.setMedicineList(list);
+            if(profile){
+                dataService.setDailyMedicineList(list);
+            }else{
+                dataService.setMedicineList(list);
+            }
+
 		}
 		else {
-			dataService.addMedicine(medicine);
+            if(profile){
+                dataService.addDailyMedicine(medicine)
+            }else{
+                dataService.addMedicine(medicine);
+            }
+
 		}
-		if($scope.ownDrug != null) dataService.addDrug($scope.ownDrug);
+		if($scope.ownDrug != null) {
+            dataService.addDrug($scope.ownDrug);
+        }
   		dataService.setCurrentMedicine(null);
-		location.href='dashboard.html';
+		location.href=newLocation;
 	};
-	
+
 	// Called on canceling
   $scope.cancel = function(){
   	dataService.setCurrentMedicine(null);

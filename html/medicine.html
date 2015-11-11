@@ -74,7 +74,7 @@
 				     <small class="error" ng-show="addMedicineForm.drug.$error.required">
 	      				- U moet een medicijn ingeven!
       				 </small>
-	
+
 			     </ons-row>
 			     <ons-row style="margin-top: 5%;">
 			     	<p style="margin-left: 5%;">{{selectedDrug.description}}</p>
@@ -98,7 +98,7 @@
 		<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
         		<button class="button cancelButton"  ng-click="cancel();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
-        		<button class="button finishButton" ng-disabled="addMedicineForm.$invalid" ng-click="addMedicine();" style="float: right;">Sla op <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
+        		<button class="button finishButton" ng-disabled="addMedicineForm.$invalid" ng-click="addMedicine('dashboard.html');" style="float: right;">Sla op <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
 		</div>
       </div>

@@ -156,6 +156,8 @@ angular.module('Chronic').service('dataService', function($localStorage) {
         $localStorage.medicineList = null;
         $localStorage.currentMedicine = null;
         $localStorage.drugList = null;
+        $localStorage.dailyMedicine = null;
+        dailyMedicine = null;
         headache = null;
         headacheList = null;
         medicine = null;
@@ -201,6 +203,10 @@ angular.module('Chronic').service('dataService', function($localStorage) {
         return $localStorage.dailyMedicine;
     }
 
+    var setDailyMedicineList = function(list){
+        $localStorage.dailyMedicine = list;
+    };
+
   return {
     addHeadache: addHeadache,
     addMedicine: addMedicine,
@@ -220,6 +226,7 @@ angular.module('Chronic').service('dataService', function($localStorage) {
     getHeadachesNoEnd: getHeadachesNoEnd,
     addDailyMedicine: addDailyMedicine,
     getDailyMedicines: getDailyMedicines,
+    setDailyMedicineList: setDailyMedicineList,
     getDrugs: getDrugs,
     addDrug: addDrug
 
