@@ -46,7 +46,10 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
 	                $('.dashboardFooter').append('<p ng-click="show(navigator.html)">U heeft al ' + hours + ' uur geen hoofdpijn meer gehad!</p>');
 				} else {
 	                $('.dashboardFooter').empty();
-					$('.dashboardFooter').append('<p ng-click="">Welkom! Klik hier voor een korte handleiding</p>');
+					$('.dashboardFooter').append('<p>Welkom! Klik hier voor een korte handleiding</p>');
+                    $('.dashboardFooter').click(function(){
+                        location.href='manual.html';
+                    });
 				}
             }
 
