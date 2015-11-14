@@ -179,7 +179,7 @@
         <ons-toolbar>
             <div class="left"><ons-toolbar-button ng-click="myNavigator.popPage()"><ons-icon icon="ion-ios-arrow-back" style="font-size: 150%;"></ons-icon></ons-toolbar-button></div>
             <div class="center" style="margin: 0 auto; text-align: center;"><ons-toolbar-button onclick="location.href='dashboard.html'"><ons-icon icon="ion-ios-home" style="font-size: 150%;"></ons-icon></ons-toolbar-button></div>
-            <div class="right"></div>
+            <div class="right"><ons-toolbar-button ng-click="myNavigator.pushPage('intensityHelp.html')"><ons-icon icon="ion-ios-help" style="font-size: 150%;"></ons-icon></ons-toolbar-button></div>
         </ons-toolbar>
         <div style="text-align: center; margin-top: 5%;">
             <div><h2>Hoofdpijn</h2></div>
@@ -191,6 +191,10 @@
             <br/>
             <p>Naast de intensiteit op verschillende tijdstippen kan u ook het eindtijdstip instellen van de hoofdpijn. </p>
             <br/>
+            <p>De intensiteit wordt aangeduid op een schaal van 0 tot 10 <ons-icon icon="ion-ios-help" ng-click="myNavigator.pushPage('intensityHelp.html')" style="font-size: 150%;"></ons-icon></p>
+            <br/>
+
+            <br/>
             <p>Wanneer u op volgende <i class="ion-ios-icon-forward"></i> klikt  u de locatie van de hoofdpijn ingeven door op de juiste plaats op de figuur te drukken. U kunt vanuit vier verschillende standpunten bekijken.</p>
             <br/>
             <p>Op het volgende scherm heeft u de mogelijkheid om de symptomen aan te duiden die u ondervindt of ondervond.</p>
@@ -199,6 +203,71 @@
         </div>
     </ons-page>
 </script>
+
+<script type="text/ons-template" id="intensityHelp.html">
+    <ons-page>
+        <ons-toolbar>
+            <div class="left"><ons-toolbar-button ng-click="myNavigator.popPage()"><ons-icon icon="ion-ios-arrow-back" style="font-size: 150%;"></ons-icon></ons-toolbar-button></div>
+            <div class="center" style="margin: 0 auto; text-align: center;"><ons-toolbar-button onclick="location.href='dashboard.html'"><ons-icon icon="ion-ios-home" style="font-size: 150%;"></ons-icon></ons-toolbar-button></div>
+            <div class="right"></div>
+        </ons-toolbar>
+        <ul>
+            <li style="color: #01579B">10</li>
+            <li>Hoogst mogelijke pijn</li>
+            <li>onmogelijk om normaal te functioneren</li>
+            <li>grootste indenkbare pijn</li>
+            <li>bedrust aangeraden</li>
+            <br/>
+            <li style="color: #01579B">9</li>
+            <li>Heel hevige pijn</li>
+            <li>Mogelijk niet helder denken of spreken</li>
+            <li>Mogelijk niet normaal functioneren</li>
+            <li>bedrust aangeraden</li>
+            <br/>
+            <li style="color: #01579B">8</li>
+            <li>Hevige pijn</li>
+            <li>Verhindert normale activiteiten</li>
+            <li>rust aangeraden</li>
+            <br/>
+            <li style="color: #01579B">7</li>
+            <li>Hoge pijn</li>
+            <li>Moeilijk om zich te concentreren</li>
+            <li>Moeilijk om dagelijkste activiteiten uit te voeren</li>
+            <br/>
+            <li style="color: #01579B">6</li>
+            <li>Middelhoge pijn</li>
+            <li>Limiteert dagelijkse activiteiten</li>
+            <li>Sommige activiteiten krijgen lagere prioriteit</li>
+            <br/>
+            <li style="color: #01579B">5</li>
+            <li>Middelmatige pijn</li>
+            <li>Nood om het wat rustiger aan te doen</li>
+            <li>De pijn leidt meer af</li>
+            <br/>
+            <li style="color: #01579B">4</li>
+            <li>Milde-middelmatige pijn</li>
+            <li>Gewoonlijke activiteiten worden moelijker</li>
+            <br/>
+            <li style="color: #01579B">3</li>
+            <li>Afleidende pijn</li>
+            <li>Gewoonlijke activiteiten nog mogelijk</li>
+            <li>Kunnen moeilijker zijn</li>
+            <br>
+            <li style="color: #01579B">2</li>
+            <li>Milde pijn</li>
+            <li>Gewoonlijke activiteiten nog mogelijk</li>
+            <li>Kunnen moeilijker zijn</li>
+            <li style="color: #01579B">1</li>
+            <li>Heel milde pijn</li>
+            <li>Geen afleiding bij gewoonlijke activiteiten</li>
+            <br>
+            <li style="color: #01579B">0</li>
+            <li>Geen pijn</li>
+            <li>Geen hoofdpijn</li>
+        </ul>
+    </ons-page>
+</script>
+
 
 <script type="text/ons-template" id="manualAddMedicine.html">
     <ons-page>
