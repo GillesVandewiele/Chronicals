@@ -21,6 +21,12 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
         $('body').children().eq(1).hide();
     };
 
+    document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        document.addEventListener("backbutton", function (e) {
+            e.preventDefault();
+        }, false );}
+
     $scope.show = function (dlg) {
         if (dataService.getHeadachesNoEnd().length == 0) {
             return;
