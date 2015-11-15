@@ -75,6 +75,13 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
                 });
             }
         }
+        document.addEventListener("backbutton", backKeyDown, true);
+        navigator.app.overrideBackbutton(true);
+        function backKeyDown(e) {
+            e.preventDefault();
+            alert("HALLO JA DIT WERKT");
+
+        };
 
 
     });
