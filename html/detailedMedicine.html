@@ -29,21 +29,26 @@
 </head>
 
 <body ng-controller="detailedMedicineController">
-
+<div id="loadingImg" style="display: block;">
+    <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+    </div>
+</div>
 <ons-navigator var="detailedMedicineNavigator">
     <ons-page>
         <ons-toolbar>
             <div class="left">
-                <ons-toolbar-button onclick="location.href='history.html'"><i class="fa fa-chevron-left"></i>
+                <ons-toolbar-button ng-click=";transition();" onclick="location.href='history.html'"><i class="fa fa-chevron-left"></i>
                 </ons-toolbar-button>
             </div>
             <!--<div class="center" style="margin: 0 auto; text-align: center;">Nieuwe hoofdpijn</div>-->
             <div class="right">
                 <ons-toolbar-button>
-                    <ons-icon icon="fa fa-pencil" onclick="location.href='medicine.html'"></ons-icon>
+                    <ons-icon icon="fa fa-pencil" ng-click=";transition();" onclick="location.href='medicine.html'"></ons-icon>
                 </ons-toolbar-button>
                 <ons-toolbar-button>
-                    <ons-icon icon="fa  fa-trash-o buttonIcon" ng-click="deleteEntry();" onclick="location.href='history.html'"></ons-icon>
+                    <ons-icon icon="fa  fa-trash-o buttonIcon" ng-click="deleteEntry();transition();" onclick="location.href='history.html'"></ons-icon>
                 </ons-toolbar-button>
             </div>
         </ons-toolbar>

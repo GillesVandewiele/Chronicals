@@ -36,6 +36,12 @@
 </head>
 
 <body ng-controller="medicineController">
+<div id="loadingImg" style="display: block;">
+    <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+    </div>
+</div>
 
 <ons-page>
     <ons-toolbar>
@@ -84,8 +90,8 @@
 
         <div class="navigatorTabFoot">
             <ons-bottom-toolbar>
-                <button class="button cancelButton"  ng-click="cancel();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
-                <button class="button finishButton" ng-disabled="addMedicineForm.$invalid" ng-click="addMedicine('profile.html', true);" style="float: right;">Sla op <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
+                <button class="button cancelButton"  ng-click="cancel();transition();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
+                <button class="button finishButton" ng-disabled="addMedicineForm.$invalid" ng-click="addMedicine('profile.html', true);transition();" style="float: right;">Sla op <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
             </ons-bottom-toolbar>
         </div>
     </div>

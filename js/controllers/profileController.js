@@ -12,8 +12,15 @@ angular.module('Chronic').controller('profileController', function($scope, dataS
     $scope.dailyMedicines = dataService.getDailyMedicines();
     ons.ready(function() {
         $('.hidden').removeClass("hidden");
-        console.log($scope.dailyMedicines)
+        $('#loadingImg').hide();
     });
+
+    $scope.transition = function(){
+        //console.log($("body").children());
+        $("body").children().eq(0).show();
+        $('body').children().eq(1).hide();
+    };
+
 
     $scope.deleteEntry = function(item){
         $scope.dailyMedicines.splice($scope.dailyMedicines.indexOf(item), 1);

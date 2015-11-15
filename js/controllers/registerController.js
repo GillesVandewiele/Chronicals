@@ -13,6 +13,12 @@ angular.module('Chronic').controller('registerController', function($scope, data
         $('#loadingImg').hide();
     });
 
+    $scope.transition = function(){
+        //console.log($("body").children());
+        $("body").children().eq(0).show();
+        $('body').children().eq(1).hide();
+    };
+
     $scope.email = "";
     $scope.password = "";
 
@@ -39,7 +45,10 @@ angular.module('Chronic').controller('registerController', function($scope, data
         console.log("email: ", $scope.email);
         console.log("password: ", $scope.password);
 
+        //TODO: check if username already exists and stuff
         dataService.registerUser($scope.firstname, $scope.lastname, $scope.birthdate, $scope.sex, $scope.status, $scope.employment, $scope.email, CryptoJS.SHA3($scope.password));
+
+
         location.href="dashboard.html";
     }
 

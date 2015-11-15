@@ -13,8 +13,21 @@ angular.module('Chronic').controller('loginController', function($scope, dataSer
         $('#loadingImg').hide();
     });
 
-    $scope.email = "";
+    $scope.transition = function(){
+        //console.log($("body").children());
+        $("body").children().eq(0).show();
+        $('body').children().eq(1).hide();
+    };
+
+    $scope.email = dataService.getEmail();
     $scope.password = "";
+
+    //Focus on the correct field
+    if($scope.email==""){
+        $('#login__username').focus();
+    }else{
+        $('#login__password').focus();
+    }
 
     var array_compare = function(array1, array2){
         return (array1.length == array2.length) && array1.every(function(element, index) {
@@ -26,12 +39,12 @@ angular.module('Chronic').controller('loginController', function($scope, dataSer
 
         var pwHash = CryptoJS.SHA3($scope.password);
         if(array_compare(dataService.getPasswordHash().words,pwHash.words) && dataService.getEmail() == $scope.email){
-            $("#container").css("display", "none");
-            $("#loadingImg").show();
+            //$("#container").css("display", "none");
+            //$("#loadingImg").show();
+            $scope.transition();
             location.href="dashboard.html";
         }else{
             $(".error_message").show();
-
         }
     }
 

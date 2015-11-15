@@ -50,7 +50,7 @@
     <!-- Intensity page -->
     <ons-page id="dailyMedicineList.html">
         <ons-toolbar>
-            <div class="left"><div class="left" onclick="location.href='settings.html'"><ons-icon icon="ion-ios-arrow-back" style="font-size: 32px"></ons-icon><ons-toolbar-button></ons-toolbar-button></div></div>
+            <div class="left"><div class="left" ng-click=";transition();" onclick="location.href='settings.html'"><ons-icon icon="ion-ios-arrow-back" style="font-size: 32px"></ons-icon><ons-toolbar-button></ons-toolbar-button></div></div>
             <div class="center" style="margin: 0 auto; text-align: center;"></div>
             <div class="right"><ons-toolbar-button ng-click=""><ons-icon icon="ion-help" style="font-size: 100%;"></ons-icon></ons-toolbar-button></div>
         </ons-toolbar>
@@ -80,7 +80,7 @@
                                 <div style="width: 10%; display: inline-block; float: right;"><p><ons-icon ng-click="deleteEntry(value);" icon="ion-trash-b buttonIcon"></ons-icon></p></div>
                             </div>
                         </ons-list-item>
-                        <ons-list-item  onclick="location.href='dailyMedicine.html'" ng-click="location.reload()">
+                        <ons-list-item  onclick="location.href='dailyMedicine.html'" ng-click=";transition();location.reload()">
                             <ons-row>
                                 <ons-col width="85%"><p>Dagelijkse inname...</p></ons-col>
                                 <ons-col width="10%" style="float: right;text-align: right;"><p><ons-icon icon="ion-plus-round buttonIcon"></ons-icon></p></ons-col>

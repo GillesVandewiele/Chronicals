@@ -8,19 +8,16 @@
 
 
 angular.module('Chronic').controller("detailedHeadacheController", function($scope, dataService) {
-    document.addEventListener("backbutton", function(e){
-        if($.mobile.activePage.is('#login_page')){
-            e.preventDefault();
-        }
-        else {
-            if (confirm("Are you sure you want to logout?")) {
-                /* Here is where my AJAX code for logging off goes */
-            }
-            else {
-                return false;
-            }
-        }
-    }, false);
+    ons.ready(function() {
+        $('.hidden').removeClass("hidden");
+        $('#loadingImg').hide();
+    });
+
+    $scope.transition = function(){
+        //console.log($("body").children());
+        $("body").children().eq(0).show();
+        $('body').children().eq(1).hide();
+    };
 
     $scope.deleteEntry = function(){
         dataService.removeHeadache();

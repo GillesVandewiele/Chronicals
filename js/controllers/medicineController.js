@@ -9,9 +9,17 @@
 angular.module('Chronic').controller('medicineController', function($scope, dataService){
     ons.ready(function() {
         $('.hidden').removeClass("hidden");
+        $('#loadingImg').hide();
     });
 
-	// Initialize all fields on default values or on the values of current medicine (when modifying)
+    $scope.transition = function(){
+        //console.log($("body").children());
+        $("body").children().eq(0).show();
+        $('body').children().eq(1).hide();
+    };
+
+
+    // Initialize all fields on default values or on the values of current medicine (when modifying)
 	$scope.medicine = dataService.getCurrentMedicine();
 
 	if($scope.medicine != null && $scope.medicine.drug != null){
@@ -90,6 +98,7 @@ angular.module('Chronic').controller('medicineController', function($scope, data
             dataService.addDrug($scope.ownDrug);
         }
   		dataService.setCurrentMedicine(null);
+        $scope.transition();
 		location.href=newLocation;
 	};
 

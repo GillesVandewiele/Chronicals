@@ -39,12 +39,19 @@
 </head>
 
 <body ng-controller="dashboardController">
+<div id="loadingImg" style="display: block;">
+    <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+    </div>
+</div>
+
 <ons-navigator>
     <ons-page class="dashboardPage">
         <div class="dashboard">
             <ons-row class="row">
 
-                <div class="tileContent tile half" ng-click="clearVariables();" onclick="location.href='headache.html'">
+                <div class="tileContent tile half" ng-click="clearVariables();transition()" onclick="location.href='headache.html'">
                     <div class="tileContentInner">
                         <i class="icon fa fa-user-md"></i>
 
@@ -52,7 +59,7 @@
                     </div>
                 </div>
 
-                <div class="tileContent tile half last" ng-click="clearVariables();" onclick="location.href='medicine.html'">
+                <div class="tileContent tile half last" ng-click="clearVariables();transition();" onclick="location.href='medicine.html'">
                     <div class="tileContentInner">
                         <i class="icon fa fa-medkit"></i>
 
@@ -63,7 +70,7 @@
             </ons-row>
             <ons-row class="row stretch">
 
-                <div class="tileContent tile large" style="width: 100%;" onclick="location.href='history.html'">
+                <div class="tileContent tile large" style="width: 100%;" ng-click="transition();" onclick="location.href='history.html'">
                     <i class="icon fa fa-calendar-check-o dashboardMidIcon"></i>
 
                     <div id="midTile" style="width:100%;">
@@ -97,7 +104,7 @@
                         <p>Advies</p>
                     </div>
                 </div>
-                <div class="tileContent tile half last" onclick="location.href='settings.html'">
+                <div class="tileContent tile half last" ng-click="transition();" onclick="location.href='settings.html'">
                     <div class="tileContentInner">
                         <i class="icon fa fa-cog"></i>
                         <p>Instellingen</p>

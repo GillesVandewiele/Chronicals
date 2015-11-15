@@ -8,9 +8,16 @@
 
 angular.module('Chronic').controller("historyController", function($scope, dataService) {
 
-	ons.ready(function() {
+    ons.ready(function() {
         $('.hidden').removeClass("hidden");
+        $('#loadingImg').hide();
     });
+
+    $scope.transition = function(){
+        //console.log($("body").children());
+        $("body").children().eq(0).show();
+        $('body').children().eq(1).hide();
+    };
 
     $scope.getTimeDateString = function(tijdstip){
         var datum = new Date(tijdstip);
@@ -210,6 +217,7 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
             }else{
                 dataService.setCurrentMedicine(obj);
             }
+            $scope.transition();
             location.href = 'detailedMedicine.html';
         }
 

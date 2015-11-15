@@ -44,13 +44,6 @@
             <div class="double-bounce2"></div>
         </div>
     </div>
-	<ons-template id="popover.html" class="hidden">
-		  <ons-popover direction="up down" cancelable>
-		    <div style="text-align: center; opacity: 0.5;">
-		      <p><small>{{message}}</small></p>
-		    </div>
-		  </ons-popover>
-	 </ons-template>
 
 
   <ons-navigator var="myNavigator" class="hidden">
@@ -106,13 +99,20 @@
 
 		<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
-        		<button class="button cancelButton" ng-click="cancel();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
+        		<button class="button cancelButton" ng-click="cancel();;transition();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
         		<button class="button nextButton" ng-disabled="!headache.intensityValues.length" ng-click="setEnd(endDate, endTime); myNavigator.pushPage('location.html')" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
 		</div>
       </div>
     </ons-page>
   </ons-navigator>
+    <ons-template id="popover.html" class="hidden">
+        <ons-popover direction="up down" cancelable>
+            <div style="text-align: center; opacity: 0.5;">
+                <p><small>{{message}}</small></p>
+            </div>
+        </ons-popover>
+    </ons-template>
 
 
   <script type="text/ons-template" id="intensity.html">
@@ -235,7 +235,7 @@
 
       	<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
-        		<button class="button cancelButton"  ng-click="cancel();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
+        		<button class="button cancelButton"  ng-click="cancel();;transition();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
         		<button class="button nextButton" ng-click="myNavigator.pushPage('symptoms.html')" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
     	</div>
@@ -280,7 +280,7 @@
 
       	<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
-        		<button class="button cancelButton"  ng-click="cancel();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
+        		<button class="button cancelButton"  ng-click="cancel();;transition();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
         		<button class="button nextButton" ng-click="myNavigator.pushPage('triggers.html')" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
     	</div>
@@ -323,8 +323,8 @@
 
       	<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>
-        		<button class="button cancelButton" ng-click="cancel();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
-        		<button class="button finishButton" ng-click="closeAndSave()" style="float: right;">Sla op <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
+        		<button class="button cancelButton" ng-click="cancel();transition();;"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
+        		<button class="button finishButton" ng-click="closeAndSave();transition();" style="float: right;">Sla op <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
         	</ons-bottom-toolbar>
     	</div>
       </div>

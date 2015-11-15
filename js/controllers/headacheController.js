@@ -10,7 +10,14 @@ angular.module('Chronic').controller('headacheController', function($scope, data
 
     ons.ready(function() {
         $('.hidden').removeClass("hidden");
+        $('#loadingImg').hide();
     });
+
+    $scope.transition = function(){
+        //console.log($("body").children());
+        $("body").children().eq(0).show();
+        $('body').children().eq(1).hide();
+    };
 
   $scope.headache = dataService.getCurrentHeadache();
 

@@ -223,10 +223,13 @@ angular.module('Chronic').service('dataService', function($localStorage) {
 
     var getEmail = function(){
         email = $localStorage.email;
+        if(email==null)
+            email = "";
         return email;
     };
 
     var registerUser = function (firstname, lastname, birthdate, sex, status, employment, email, sha3) {
+        //TODO: register on the server or check if server already has this shit
         $localStorage.firstname = firstname;
         $localStorage.lastname = lastname;
         $localStorage.birthdate = birthdate;

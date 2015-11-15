@@ -11,7 +11,15 @@ angular.module('Chronic').controller("settingsController", function($scope, data
 
     ons.ready(function() {
         $('.hidden').removeClass("hidden");
+        $('#loadingImg').hide();
     });
+
+    $scope.transition = function(){
+        //console.log($("body").children());
+        $("body").children().eq(0).show();
+        $('body').children().eq(1).hide();
+    };
+
 
     $scope.alert = function() {
         ons.notification.alert({
