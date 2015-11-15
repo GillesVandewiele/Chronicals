@@ -147,12 +147,6 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   $(document).on("click", '.popover', function(){
   	$scope.popover.hide();
   });
-  
-  document.addEventListener("backbutton", onBackKeyDown, false);
-	function onBackKeyDown(e) {
-		alert("dit is een test");
-	  e.preventDefault();
-	}
 
   ons.createPopover('popover.html').then(function(popover) {
   	// Create a popover for the help buttons
@@ -225,7 +219,7 @@ angular.module('Chronic').directive('validenddate', function() {
   return {
     require: 'ngModel',
     link: function($scope, ele, attrs, c) {
-		c.$validators.validEndDate = function(modelValue, viewValue){	
+		c.$validators.validEndDate = function(modelValue, viewValue){
 	    	$scope.setEndDate(modelValue);
 	    	if(c.$isEmpty(modelValue)) {
 		        // consider empty models to be valid
@@ -234,7 +228,7 @@ angular.module('Chronic').directive('validenddate', function() {
 	    	}
 	    	var end1 = new Date(modelValue);
 	    	var end2 = new Date($scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key);
-	    	if($scope.headache.intensityValues.length != 0 && end1.getFullYear() >= end2.getFullYear() && end1.getMonth() >= end2.getMonth() && end1.getDate() >= end2.getDate()){	
+	    	if($scope.headache.intensityValues.length != 0 && end1.getFullYear() >= end2.getFullYear() && end1.getMonth() >= end2.getMonth() && end1.getDate() >= end2.getDate()){
 		        $("."+attrs.button).prop('disabled', false);
 	    		return true;
 	    	}
@@ -245,13 +239,13 @@ angular.module('Chronic').directive('validenddate', function() {
     	function dovalidation(){
 	    	var end1 = new Date($scope.end);
 	    	var end2 = new Date($scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key);
-	    	if($scope.end == null || $scope.end.getMinutes() == null || $scope.end.getHours() == null || ($scope.headache.intensityValues.length != 0 && 
-	    		end1.getFullYear() >= end2.getFullYear() && end1.getMonth() >= end2.getMonth() && end1.getDate() >= end2.getDate())){      		
+	    	if($scope.end == null || $scope.end.getMinutes() == null || $scope.end.getHours() == null || ($scope.headache.intensityValues.length != 0 &&
+	    		end1.getFullYear() >= end2.getFullYear() && end1.getMonth() >= end2.getMonth() && end1.getDate() >= end2.getDate())){
 		        $("."+attrs.button).prop('disabled', false);
 	    		$scope.intensityEndDate.endDate.$error.validEndDate = false;
 	    	} else {
-			    $("."+attrs.button).prop('disabled', true);			    
-		    	$scope.intensityEndDate.endDate.$error.validEndDate = true;			
+			    $("."+attrs.button).prop('disabled', true);
+		    	$scope.intensityEndDate.endDate.$error.validEndDate = true;
 		    }
 	    }
     }
@@ -271,7 +265,7 @@ angular.module('Chronic').directive('validendtime', function() {
         	}
         	var end1 = new Date(modelValue);
         	var end2 = new Date($scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key);
-        	if($scope.headache.intensityValues.length != 0 && end1.getHours() >= end2.getHours() && end1.getMinutes() >= end2.getMinutes()){	
+        	if($scope.headache.intensityValues.length != 0 && end1.getHours() >= end2.getHours() && end1.getMinutes() >= end2.getMinutes()){
 		        $("."+attrs.button).prop('disabled', false);
 	    		return true;
 	    	}
@@ -280,12 +274,12 @@ angular.module('Chronic').directive('validendtime', function() {
     	};
     	$scope.$on('endDateValidation', dovalidation);
     	function dovalidation(){
-	    	if($scope.end == null || $scope.end.getDate() == null || $scope.end.getMonth() == null || $scope.end.getYear() == null || ($scope.headache.intensityValues.length != 0 && $scope.end >= new Date($scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key))){      		
+	    	if($scope.end == null || $scope.end.getDate() == null || $scope.end.getMonth() == null || $scope.end.getYear() == null || ($scope.headache.intensityValues.length != 0 && $scope.end >= new Date($scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key))){
 		        $("."+attrs.button).prop('disabled', false);
 	    		$scope.intensityEndDate.endTime.$error.validEndTime = false;
 	    	} else {
 			    $("."+attrs.button).prop('disabled', true);
-		    	$scope.intensityEndDate.endTime.$error.validEndTime = true;			
+		    	$scope.intensityEndDate.endTime.$error.validEndTime = true;
 		    }
 	    }
 	}

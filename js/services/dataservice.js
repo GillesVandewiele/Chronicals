@@ -2,7 +2,7 @@ angular.module('Chronic').service('dataService', function($localStorage) {
 
   // Reset the local storage; always comment this out!
   //  $localStorage.$reset();
-    //
+
 
     var headache;
 
@@ -12,6 +12,10 @@ angular.module('Chronic').service('dataService', function($localStorage) {
     var headacheList = [];
 
     var dailyMedicine = [];
+
+    var passwordHash = "";
+    var email = "";
+
 
   var addHeadache = function(newObj){
       if($localStorage.headacheList) $localStorage.headacheList.push(newObj);
@@ -201,12 +205,37 @@ angular.module('Chronic').service('dataService', function($localStorage) {
             $localStorage.dailyMedicine = [];
         }
         return $localStorage.dailyMedicine;
-    }
+    };
 
     var setDailyMedicineList = function(list){
         $localStorage.dailyMedicine = list;
     };
 
+    var getPasswordHash = function(){
+        passwordHash = $localStorage.passwordHash;
+        return passwordHash;
+    };
+
+    var setEmail = function(user){
+        email = user;
+        $localStorage.email = user;
+    };
+
+    var getEmail = function(){
+        email = $localStorage.email;
+        return email;
+    };
+
+    var registerUser = function (firstname, lastname, birthdate, sex, status, employment, email, sha3) {
+        $localStorage.firstname = firstname;
+        $localStorage.lastname = lastname;
+        $localStorage.birthdate = birthdate;
+        $localStorage.sex = sex;
+        $localStorage.status = status;
+        $localStorage.employment = employment;
+        $localStorage.email = email;
+        $localStorage.passwordHash = sha3;
+    };
   return {
     addHeadache: addHeadache,
     addMedicine: addMedicine,
@@ -228,7 +257,11 @@ angular.module('Chronic').service('dataService', function($localStorage) {
     getDailyMedicines: getDailyMedicines,
     setDailyMedicineList: setDailyMedicineList,
     getDrugs: getDrugs,
-    addDrug: addDrug
+    addDrug: addDrug,
+    getPasswordHash: getPasswordHash,
+    getEmail: getEmail,
+    setEmail: setEmail,
+    registerUser:registerUser
 
     };
 

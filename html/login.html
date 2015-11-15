@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" ng-app="Chronic">
 <head>
     <meta charset="UTF-8">
 
@@ -24,36 +24,47 @@
     <script src="../js/controllers/chronic.js"> </script>
     <!--/*Dataservice VOOR de controller-->
     <script src="../js/services/dataservice.js"> </script>
-    <script src="../js/controllers/headacheController.js"> </script>
+    <script src="../js/cryptojs/SHA3.js"></script>
+    <script src="../js/controllers/loginController.js"> </script>
     <script src="../js/vendor/Chart.min.js"></script>
     <script src="../js/vendor/angular-chart.js"></script>
 
 </head>
-<body class="align">
+<body class="align" ng-controller="loginController">
+<div id="loadingImg" style="display: block;width: 100%;">
+    <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+    </div>
+</div>
 
-<div class="site__container">
+<div id="container" class="site__container">
 
     <div class="grid__container">
 
-        <form action="dashboard.html" method="post" class="form form--login">
+        <form ng-submit="submitLogin()" method="post" class="form form--login">
 
             <div class="form__field">
-                <label class="fontawesome-user" for="login__username"><span class="hidden">email</span></label>
-                <input id="login__username" type="text" class="form__input" placeholder="email" required>
+                <label class="fontawesome-user" style="width: 80px; padding-left: 10px; padding-right: 10px;" for="login__username">  <span class="hidden">Email</span></label>
+                <input id="login__username" ng-model="email" type="email" class="form__input" placeholder="email" required>
             </div>
 
             <div class="form__field">
-                <label class="fontawesome-lock" for="login__password"><span class="hidden">Pin</span></label>
-                <input id="login__password" type="password" class="form__input" placeholder="Paswoord" required pattern="[0-9]*" inputmode="numeric">
+                <label class="fontawesome-lock" style="width: 80px; padding-left: 10px; padding-right: 10px;" for="login__password">  <span class="hidden">Pin</span></label>
+                <input id="login__password" type="password" ng-model="password" class="form__input" placeholder="Paswoord" required pattern="[0-9]*" inputmode="numeric">
             </div>
 
             <div class="form__field">
-                <input type="submit" value="Log in">
+                <input type="submit" value="Log in" ng-disabled="form.$invalid">
+            </div>
+
+            <div class="error_message" style="display: none">
+                <p class="text--center" style="color: #cd0a0a">Verkeerde email/pin</p>
             </div>
 
         </form>
 
-        <p class="text--center">Nog geen account? <a href="#">Vraag account aan</a> <span class="fontawesome-arrow-right"></span></p>
+        <p class="text--center">Nog geen account? <a href="register.html">Maak account aan</a> <span class="fontawesome-arrow-right"></span></p>
 
     </div>
 
