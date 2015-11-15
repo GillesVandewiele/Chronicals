@@ -23,10 +23,16 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
 
     document.addEventListener("deviceready", onDeviceReady, false);
     function onDeviceReady() {
-        document.addEventListener("backbutton", function (e) {
+        window.alert("HALLO");
+        console.log("HALLO");
+        document.addEventListener("backbutton", backKeyDown, true);
+        navigator.app.overrideBackbutton(true);
+        function backKeyDown(e) {
             e.preventDefault();
             window.alert("HALLO JA DIT WERKT");
-        }, false );}
+
+        };
+    }
 
     $scope.show = function (dlg) {
         if (dataService.getHeadachesNoEnd().length == 0) {
@@ -40,7 +46,7 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
         } else {
             $scope.dialogs[dlg].show();
         }
-    }
+    };
 
     ons.ready(function () {
         $('.hidden').removeClass("hidden");
