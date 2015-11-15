@@ -48,6 +48,14 @@
         function onLoad() {
 
             document.addEventListener("deviceready", onDeviceReady, false);
+            alert("WELKOM JAJ AJA JA AJ");
+            document.addEventListener("backbutton", backKeyDown, true);
+            navigator.app.overrideBackbutton(true);
+            function backKeyDown(e) {
+                e.preventDefault();
+                alert("HALLO JA DIT WERKT");
+
+            };
         }
 
         // Cordova is loaded and it is now safe to make calls Cordova methods
