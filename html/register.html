@@ -56,7 +56,7 @@
 
             <div class="form__field">
                 <label class="fontawesome-calendar" style="width: 110px; padding-left: 5px; padding-right: 0px;" for="register__birthdate">  <span class="hidden">Geboorte</span></label>
-                <input id="register__birthdate" ng-model="birthdate" type="date" class="form__input" placeholder="Last name" required>
+                <input id="register__birthdate" ng-model="birthdate" type="date" min="1900-01-01" max="2050-01-01" class="form__input" placeholder="Last name" required>
             </div>
 
             <div class="form__field">
