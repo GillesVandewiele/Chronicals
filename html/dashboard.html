@@ -46,6 +46,7 @@
         // it will call the event `deviceready`.
         //
         function onLoad() {
+
             document.addEventListener("deviceready", onDeviceReady, false);
         }
 
@@ -53,12 +54,12 @@
         //
         function onDeviceReady() {
             // Now safe to use the Cordova API
-            window.alert("WELKOM JAJ AJA JA AJ");
+            alert("WELKOM JAJ AJA JA AJ");
             document.addEventListener("backbutton", backKeyDown, true);
             navigator.app.overrideBackbutton(true);
             function backKeyDown(e) {
                 e.preventDefault();
-                window.alert("HALLO JA DIT WERKT");
+                alert("HALLO JA DIT WERKT");
 
             };
         }
