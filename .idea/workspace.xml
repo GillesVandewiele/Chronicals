@@ -2,29 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43c9da2d-e225-43f7-8236-b9dae08b7604" name="Default" comment="medicine in graph of headachegraph">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/dailyMedicine.html" afterPath="$PROJECT_DIR$/html/dailyMedicine.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/dashboard.html" afterPath="$PROJECT_DIR$/html/dashboard.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/detailedHeadache.html" afterPath="$PROJECT_DIR$/html/detailedHeadache.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/detailedMedicine.html" afterPath="$PROJECT_DIR$/html/detailedMedicine.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/headache.html" afterPath="$PROJECT_DIR$/html/headache.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/history.html" afterPath="$PROJECT_DIR$/html/history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/manual.html" afterPath="$PROJECT_DIR$/html/manual.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/medicine.html" afterPath="$PROJECT_DIR$/html/medicine.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/profile.html" afterPath="$PROJECT_DIR$/html/profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/settings.html" afterPath="$PROJECT_DIR$/html/settings.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/dashboardController.js" afterPath="$PROJECT_DIR$/js/controllers/dashboardController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/detailedHeadacheController.js" afterPath="$PROJECT_DIR$/js/controllers/detailedHeadacheController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/detailedMedicineController.js" afterPath="$PROJECT_DIR$/js/controllers/detailedMedicineController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/headacheController.js" afterPath="$PROJECT_DIR$/js/controllers/headacheController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/historyController.js" afterPath="$PROJECT_DIR$/js/controllers/historyController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/indexController.js" afterPath="$PROJECT_DIR$/js/controllers/indexController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/loginController.js" afterPath="$PROJECT_DIR$/js/controllers/loginController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/manualController.js" afterPath="$PROJECT_DIR$/js/controllers/manualController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/medicineController.js" afterPath="$PROJECT_DIR$/js/controllers/medicineController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/profileController.js" afterPath="$PROJECT_DIR$/js/controllers/profileController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/registerController.js" afterPath="$PROJECT_DIR$/js/controllers/registerController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/settingsController.js" afterPath="$PROJECT_DIR$/js/controllers/settingsController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/services/dataservice.js" afterPath="$PROJECT_DIR$/js/services/dataservice.js" />
     </list>
     <ignored path="Code.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,19 +25,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="headache.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/html/headache.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.125">
-              <caret line="326" column="90" selection-start-line="326" selection-start-column="90" selection-end-line="326" selection-end-column="90" />
-              <folding>
-                <element signature="n#style#0;n#ons-icon#0;n#ons-toolbar-button#0;n#div#2;n#ons-toolbar#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#ons-popover#0;n#ons-template#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="manual.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html/manual.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -122,21 +89,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="settings.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html/settings.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.0459183">
+            <state vertical-scroll-proportion="-25.625">
               <caret line="41" column="60" selection-start-line="41" selection-start-column="60" selection-end-line="41" selection-end-column="60" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="history.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/html/history.html">
+      <file leaf-file-name="detailedHeadache.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html/detailedHeadache.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.75">
-              <caret line="111" column="69" selection-start-line="111" selection-start-column="69" selection-end-line="111" selection-end-column="69" />
+            <state vertical-scroll-proportion="-6.6363635">
+              <caret line="75" column="34" selection-start-line="75" selection-start-column="25" selection-end-line="75" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="detailedHeadacheController.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/controllers/detailedHeadacheController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.22058824">
+              <caret line="98" column="12" selection-start-line="98" selection-start-column="12" selection-end-line="98" selection-end-column="12" />
+              <folding>
+                <element signature="e#3505#5329#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dataservice.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/services/dataservice.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -154,16 +143,6 @@
                 <element signature="n#style#0;n#div#3;n#form#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#0;n#div#3;n#form#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="historyController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/controllers/historyController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="204" column="4" selection-start-line="204" selection-start-column="4" selection-end-line="204" selection-end-column="4" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -198,11 +177,9 @@
         <option value="$PROJECT_DIR$/html/login.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/html/register.html" />
-        <option value="$PROJECT_DIR$/js/services/dataservice.js" />
         <option value="$PROJECT_DIR$/js/controllers/loginController.js" />
         <option value="$PROJECT_DIR$/html/dashboard.html" />
         <option value="$PROJECT_DIR$/js/controllers/dashboardController.js" />
-        <option value="$PROJECT_DIR$/js/controllers/detailedHeadacheController.js" />
         <option value="$PROJECT_DIR$/js/controllers/detailedMedicineController.js" />
         <option value="$PROJECT_DIR$/js/controllers/headacheController.js" />
         <option value="$PROJECT_DIR$/js/controllers/indexController.js" />
@@ -211,7 +188,6 @@
         <option value="$PROJECT_DIR$/js/controllers/registerController.js" />
         <option value="$PROJECT_DIR$/js/controllers/settingsController.js" />
         <option value="$PROJECT_DIR$/html/dailyMedicine.html" />
-        <option value="$PROJECT_DIR$/html/detailedHeadache.html" />
         <option value="$PROJECT_DIR$/html/detailedMedicine.html" />
         <option value="$PROJECT_DIR$/html/headache.html" />
         <option value="$PROJECT_DIR$/js/controllers/historyController.js" />
@@ -221,6 +197,9 @@
         <option value="$PROJECT_DIR$/js/controllers/medicineController.js" />
         <option value="$PROJECT_DIR$/html/profile.html" />
         <option value="$PROJECT_DIR$/html/settings.html" />
+        <option value="$PROJECT_DIR$/html/detailedHeadache.html" />
+        <option value="$PROJECT_DIR$/js/services/dataservice.js" />
+        <option value="$PROJECT_DIR$/js/controllers/detailedHeadacheController.js" />
       </list>
     </option>
   </component>
@@ -744,14 +723,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/services/dataservice.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="223" column="8" selection-start-line="223" selection-start-column="8" selection-end-line="223" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/controllers/chronic.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -764,14 +735,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="21" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/detailedHeadacheController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.290323">
-          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -856,14 +819,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.625">
           <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/detailedHeadache.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.25">
-          <caret line="87" column="8" selection-start-line="87" selection-start-column="8" selection-end-line="87" selection-end-column="8" />
           <folding />
         </state>
       </provider>
@@ -989,9 +944,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/html/settings.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0459183">
+        <state vertical-scroll-proportion="-25.625">
           <caret line="41" column="60" selection-start-line="41" selection-start-column="60" selection-end-line="41" selection-end-column="60" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/detailedHeadache.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.6363635">
+          <caret line="75" column="34" selection-start-line="75" selection-start-column="25" selection-end-line="75" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/services/dataservice.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controllers/detailedHeadacheController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22058824">
+          <caret line="98" column="12" selection-start-line="98" selection-start-column="12" selection-end-line="98" selection-end-column="12" />
+          <folding>
+            <element signature="e#3505#5329#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

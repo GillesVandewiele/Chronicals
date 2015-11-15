@@ -8,10 +8,7 @@
 
 
 angular.module('Chronic').controller("detailedHeadacheController", function($scope, dataService) {
-    ons.ready(function() {
-        $('.hidden').removeClass("hidden");
-        $('#loadingImg').hide();
-    });
+
 
     $scope.transition = function(){
         //console.log($("body").children());
@@ -98,7 +95,8 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
 
         var medicinePositions = Array.apply(null, new Array($scope.data.length)).map(Number.prototype.valueOf, 0);
 
-        medicines.forEach(function (entry) {
+        if(medicines != null){
+            medicines.forEach(function (entry) {
             if (!(entry.date < sorted[0].key || entry.date > sorted[sorted.length - 1].key)) {
                 //update sorted
                 var inserted = false;
@@ -134,7 +132,7 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
 
 
         });
-
+        }
 
         $scope.data = {
             labels: $scope.labels, datasets: [{
@@ -170,8 +168,10 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
         console.log(points, evt);
     };
 
+
     ons.ready(function() {
         $('.hidden').removeClass("hidden");
+        $('#loadingImg').hide();
         var ctx = $('canvas').get(0).getContext("2d");
         var myNewChart = new Chart(ctx).Line($scope.data, null);
         for (var iter = 0; iter < medicinePositions.length; iter++) {
@@ -183,8 +183,6 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
         }
         myNewChart.update();
     });
-
-
 
 });
 
