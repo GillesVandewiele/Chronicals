@@ -25,6 +25,7 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
     function onDeviceReady() {
         document.addEventListener("backbutton", function (e) {
             e.preventDefault();
+            window.alert("HALLO JA DIT WERKT");
         }, false );}
 
     $scope.show = function (dlg) {
