@@ -56,7 +56,7 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
 
     ons.ready(function () {
         $('.hidden').removeClass("hidden");
-        $http({ method: 'GET', url: 'http://192.168.182.5:8080/Chronic/rest/PatientService/patients?lastName=Lannoye&firstName=Kiani' }).
+        $http({ method: 'GET', url: 'http://192.168.43.136:8080/Chronic/rest/PatientService/patients?lastName=Lannoye&firstName=Kiani' }).
         success(function (data, status, headers, config) {
             alert(""+data["firstName"]);
         }).
