@@ -35,8 +35,6 @@
     <script src="../js/controllers/dashboardController.js"></script>
     <script src="../js/vendor/Chart.min.js"></script>
     <script src="../js/vendor/angular-chart.js"></script>
-    <script src="phonegap.js"></script>
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8">
 
         // Call onDeviceReady when Cordova is loaded.
@@ -52,7 +50,6 @@
                 document.addEventListener("backbutton", backKeyDown, true);
             }
             document.addEventListener("backbutton", backKeyDown, true);
-            navigator.app.overrideBackbutton(true);
         }
         function backKeyDown(e) {
             e.preventDefault();
@@ -66,7 +63,6 @@
             // Now safe to use the Cordova API
             alert("WELKOM JAJ AJA JA AJ");
             document.addEventListener("backbutton", backKeyDown, true);
-            navigator.app.overrideBackbutton(true);
             function backKeyDown(e) {
                 e.preventDefault();
                 alert("HALLO JA DIT WERKT");

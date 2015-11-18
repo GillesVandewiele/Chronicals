@@ -20,6 +20,7 @@ angular.module('Chronic').service('dataService', function($localStorage) {
   var addHeadache = function(newObj){
       if($localStorage.headacheList) $localStorage.headacheList.push(newObj);
       else $localStorage.headacheList = [newObj];
+      headacheList.push(newObj);
   };
 
   var addMedicine = function(newObj){

@@ -6,8 +6,14 @@
  This file contains the controller for the dashboard view.
  */
 
-
-angular.module('Chronic').controller("dashboardController", function($scope, dataService) {
+angular.module('Chronic').config(['$httpProvider', function($httpProvider) {
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common["X-Requested-With"];
+    $httpProvider.defaults.headers.common["Accept"] = "application/json";
+    $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+}
+]);
+angular.module('Chronic').controller("dashboardController", function($scope, dataService,$http) {
 
     $scope.dialogs = {};
     ons.ready(function() {
@@ -50,6 +56,13 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
 
     ons.ready(function () {
         $('.hidden').removeClass("hidden");
+        $http({ method: 'GET', url: 'http://localhost:8080/Chronic/rest/PatientService/patients?lastName=Lannoye&firstName=Kiani' }).
+        success(function (data, status, headers, config) {
+            alert(""+data["firstName"]);
+        }).
+        error(function (data, status, headers, config) {
+            alert("error retrieving data")
+        });
 
         if (dataService.getHeadachesNoEnd().length > 0) {
             $('.dashboardFooter').css("background-color", "#f9332f");
@@ -76,7 +89,6 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
             }
         }
         document.addEventListener("backbutton", backKeyDown, true);
-        navigator.app.overrideBackbutton(true);
         function backKeyDown(e) {
             e.preventDefault();
             alert("HALLO JA DIT WERKT");
