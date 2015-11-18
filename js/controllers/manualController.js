@@ -26,7 +26,7 @@ angular.module('Chronic').controller('manualController', function($scope, dataSe
             "diagnosis": ""};
 
         //$http({ method: 'POST', url: 'http://localhost:8080/Chronic/rest/PatientService/patients' , body: user}).
-        $http.post('http://192.168.43.136:8080/Chronic/rest/PatientService/patients', user).
+        $http.post('http://192.168.182.5:8080/Chronic/rest/PatientService/patients', user).
         success(function (data, status, headers, config) {
 
             console.log("Return van indienen user:"+status);
