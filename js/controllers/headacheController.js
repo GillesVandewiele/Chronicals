@@ -238,24 +238,28 @@ angular.module('Chronic').directive('validenddate', function() {
 	    	var end2 = new Date($scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key);
 	    	end1.setSeconds(0); end1.setMilliseconds(0);
 	    	end2.setSeconds(0); end2.setMilliseconds(0);
-	    	if($scope.headache.intensityValues.length != 0 && end1 - end2 >= 0){
+	    	if($scope.headache.intensityValues.length != 0 && end1 >= end2){
 		        $("."+attrs.button).prop('disabled', false);
-	    		return true;
-	    	}
-		    $("."+attrs.button).prop('disabled', true);
-	    	return false;
+	    		return false;
+	    	}else if($scope.headache.intensityValues.length != 0 && end1 < end2) {
+                $("." + attrs.button).prop('disabled', true);
+                return true;
+            }
+
 		};
 		$scope.$on('endDateValidation', dovalidation);
     	function dovalidation(){
-	    	var end1 = new Date($scope.end);
-	    	var end2 = new Date($scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key);
-	    	end1.setSeconds(0); end1.setMilliseconds(0);
-	    	end2.setSeconds(0); end2.setMilliseconds(0);
-	    	if($scope.end == null || $scope.end.getMinutes() == null || $scope.end.getHours() == null || ($scope.headache.intensityValues.length != 0 &&
-	    		end1 - end2 >= 0)){
+	    	var endDate = new Date($scope.end);
+	    	var lastIntensityDate = new Date($scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key);
+	    	endDate.setSeconds(0);
+            endDate.setMilliseconds(0);
+	    	lastIntensityDate.setSeconds(0);
+            lastIntensityDate.setMilliseconds(0);
+
+	    	if($scope.end == null || $scope.end.getMinutes() == null || $scope.end.getHours() == null|| ($scope.headache.intensityValues.length != 0 && endDate >= lastIntensityDate)){
 		        $("."+attrs.button).prop('disabled', false);
 	    		$scope.intensityEndDate.endDate.$error.validEndDate = true;
-	    	} else {
+	    	} else if(($scope.headache.intensityValues.length > 0 && endDate < lastIntensityDate)) {
 			    $("."+attrs.button).prop('disabled', true);
 		    	$scope.intensityEndDate.endDate.$error.validEndDate = false;
 		    }
@@ -275,28 +279,34 @@ angular.module('Chronic').directive('validendtime', function() {
 		        $("."+attrs.button).prop('disabled', false);
 		        return true;
         	}
-        	var end1 = new Date($scope.end);
-        	var end2 = new Date($scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key);
-        	end1.setSeconds(0); end1.setMilliseconds(0);
-        	end2.setSeconds(0); end2.setMilliseconds(0);
-        	if($scope.headache.intensityValues.length != 0 && end1 - end2 >= 0){
+        	var endDate = new Date($scope.end);
+        	var lastIntensityDate = new Date($scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key);
+        	endDate.setSeconds(0);
+            endDate.setMilliseconds(0);
+        	lastIntensityDate.setSeconds(0);
+            lastIntensityDate.setMilliseconds(0);
+        	if($scope.headache.intensityValues.length > 0 && endDate >= lastIntensityDate){
 		        $("."+attrs.button).prop('disabled', false);
-	    		return true;
-	    	}
-		    $("."+attrs.button).prop('disabled', true);
-	    	return false;
+	    		return false;
+	    	}else if($scope.headache.intensityValues.length > 0 && endDate < lastIntensityDate){
+                $("."+attrs.button).prop('disabled', true);
+                return true;
+            }
+
     	};
     	$scope.$on('endDateValidation', dovalidation);
     	function dovalidation(){
-	    	var end1 = new Date($scope.end);
-	    	var end2 = new Date($scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key);
-	    	end1.setSeconds(0); end1.setMilliseconds(0);
-	    	end2.setSeconds(0); end2.setMilliseconds(0);
-	    	if($scope.end == null || $scope.end.getDate() == null || $scope.end.getMonth() == null || $scope.end.getYear() == null 
-	    	|| ($scope.headache.intensityValues.length != 0 && end1 - end2 >= 0)){
+	    	var endDate = new Date($scope.end);
+	    	var lastIntensityValue = new Date($scope.headache.intensityValues[$scope.headache.intensityValues.length-1].key);
+	    	endDate.setSeconds(0);
+            endDate.setMilliseconds(0);
+	    	lastIntensityValue.setSeconds(0);
+            lastIntensityValue.setMilliseconds(0);
+	    	if($scope.end == null || $scope.end.getDate() == null || $scope.end.getMonth() == null || $scope.end.getYear() == null
+	    	|| ($scope.headache.intensityValues.length != 0 && endDate >= lastIntensityValue)){
 		        $("."+attrs.button).prop('disabled', false);
 	    		$scope.intensityEndDate.endTime.$error.validEndTime = true;
-	    	} else {
+	    	} else if($scope.headache.intensityValues.length >0 && endDate < lastIntensityValue) {
 			    $("."+attrs.button).prop('disabled', true);
 		    	$scope.intensityEndDate.endTime.$error.validEndTime = false;
 		    }
