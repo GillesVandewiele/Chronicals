@@ -10,6 +10,7 @@
 
     <!-- Our style sheet -->
     <link rel="stylesheet" href="../css/style.css">
+<<<<<<< HEAD
     <!-- Add this script to your header -->
     <!--<script type="text/javascript">
         var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
@@ -17,6 +18,8 @@
             document.write('<link rel="stylesheet" href="/css/chrome.css" type="text/css" />');
         }
     </script>-->
+=======
+>>>>>>> 13bf4e40c594611cdeeafff57c74b6075acab6f6
 
     <!-- AngularJS + ngStorage | MIT License | https://angularjs.org/ -->
     <script src="../js/angular/angular.js"></script>
@@ -35,7 +38,44 @@
     <script src="../js/controllers/dashboardController.js"></script>
     <script src="../js/vendor/Chart.min.js"></script>
     <script src="../js/vendor/angular-chart.js"></script>
-    <script type="text/javascript" src="phonegap.js"></script>
+    <script src="../js/cryptojs/SHA3.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+
+        // Call onDeviceReady when Cordova is loaded.
+        //
+        // At this point, the document has loaded but cordova-1.7.0.js has not.
+        // When Cordova is loaded and talking with the native device,
+        // it will call the event `deviceready`.
+        //
+        function onLoad() {
+
+            document.addEventListener("deviceready", onDeviceReady, false);
+            function onDeviceReady(){
+                document.addEventListener("backbutton", backKeyDown, true);
+            }
+            document.addEventListener("backbutton", backKeyDown, true);
+        }
+        function backKeyDown(e) {
+            e.preventDefault();
+            alert("HALLO JA DIT WERKT");
+
+        };
+
+        // Cordova is loaded and it is now safe to make calls Cordova methods
+        //
+        function onDeviceReady() {
+            // Now safe to use the Cordova API
+            alert("WELKOM JAJ AJA JA AJ");
+            document.addEventListener("backbutton", backKeyDown, true);
+            function backKeyDown(e) {
+                e.preventDefault();
+                alert("HALLO JA DIT WERKT");
+
+            };
+        }
+
+    </script>
 </head>
 
 <body ng-controller="dashboardController">

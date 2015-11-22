@@ -6,11 +6,12 @@
  This file contains the controller to add and modify headaches.
  */
 
-angular.module('Chronic').controller('loginController', function($scope, dataService){
+angular.module('Chronic').controller('loginController', function($scope, dataService,$http){
 
     ons.ready(function() {
         $('.hidden').removeClass("hidden");
         $('#loadingImg').hide();
+        Ladda.bind( 'input[type=submit]' );
     });
 
     $scope.transition = function(){
@@ -37,15 +38,31 @@ angular.module('Chronic').controller('loginController', function($scope, dataSer
 
     $scope.submitLogin = function(){
 
-        var pwHash = CryptoJS.SHA3($scope.password);
-        if(array_compare(dataService.getPasswordHash().words,pwHash.words) && dataService.getEmail() == $scope.email){
-            //$("#container").css("display", "none");
-            //$("#loadingImg").show();
+        var pwHash = sha3_512($scope.password);
+        //try to login
+        //retrieve user
+        $http.get('http://localhost:8080/Chronic/rest/PatientService/login', {headers:{'Authorization':'Basic '+btoa($scope.email+":"+sha3_512(sha3_512($scope.password)+dataService.getApiKey()))}}).
+        success(function (data, status, headers, config) {
+            console.log("User succesfully logged in:",data);
+            var user = data;
+            dataService.registerUser(user.firstname, user.lastname, user.birthdate, user.sex, user.status, user.employment, user.email, sha3_512($scope.password));
             $scope.transition();
             location.href="dashboard.html";
-        }else{
-            $(".error_message").show();
-        }
+        }).
+        error(function (data, status, headers, config) {
+            console.log("error loggin in: "+status);
+            console.log("data:" +data);
+            if(dataService.getPasswordHash().toString()==pwHash.toString() && dataService.getEmail() == $scope.email){
+                //$("#container").css("display", "none");
+                //$("#loadingImg").show();
+                $scope.transition();
+                location.href="dashboard.html";
+            }else{
+                $(".error_message").show();
+            }
+        });
+
+
     }
 
 });

@@ -1,4 +1,4 @@
-angular.module('Chronic').service('dataService', function($localStorage) {
+angular.module('Chronic').service('dataService', function($localStorage, $http) {
 
   // Reset the local storage; always comment this out!
   //  $localStorage.$reset();
@@ -15,6 +15,10 @@ angular.module('Chronic').service('dataService', function($localStorage) {
 
     var passwordHash = "";
     var email = "";
+
+    var triggers = [];
+    var symptoms = [];
+    var drugs = [];
 
 
   var addHeadache = function(newObj){
@@ -77,30 +81,74 @@ angular.module('Chronic').service('dataService', function($localStorage) {
   };
 
   var getSymptoms = function(){
-  	//TODO: replace this by a DB call
-  	return [{id: 0, name:"symptom1", description:"this is a description", val: false}, {id: 1, name:"symptom2", description:"this is a description", val: false},
-  			{id: 2, name:"symptom3", description:"this is a description", val: false}, {id: 3, name:"symptom4", description:"this is a description", val: false}]; // List of all symptoms
+      //$http({ method: 'GET', url: 'http://localhost:8080/Chronic/rest/SymptomService/Symptoms' }).
+      //success(function (data, status, headers, config) {
+      //    //alert(""+data);
+      //    console.log("symptoms fetched:"+data);
+      //    symptoms = data;
+      //    symptoms.forEach(function(entry){
+      //        entry["val"]=false;
+      //    });
+      //
+      //}).
+      //error(function (data, status, headers, config) {
+      //    alert("error retrieving data")
+      //});
+      //return symptoms;
+  	////TODO: replace this by a DB call
+  	//return [{id: 0, name:"symptom1", description:"this is a description", val: false}, {id: 1, name:"symptom2", description:"this is a description", val: false},
+  	//		{id: 2, name:"symptom3", description:"this is a description", val: false}, {id: 3, name:"symptom4", description:"this is a description", val: false}]; // List of all symptoms
 
   };
 
   var getTriggers = function(){
-  	//TODO: replace this by a DB call
-  	return [{id: 0, name:"trigger1", description:"this is a description 1", val: false}, {id: 1, name:"trigger2", description:"this is a description 2", val: false},
-  			{id: 2, name:"trigger3", description:"this is a description 3", val: false}, {id: 3, name:"trigger4", description:"this is a description 4", val: false}]; // List of all triggers
+
+      $http({ method: 'GET', url: 'http://localhost:8080/Chronic/rest/TriggerService/Triggers' }).
+      success(function (data, status, headers, config) {
+          //alert(""+data);
+          console.log("triggers fetched:"+data);
+          triggers = data;
+          triggers.forEach(function(entry){
+             entry["val"]=false;
+          });
+
+      }).
+      error(function (data, status, headers, config) {
+          alert("error retrieving data")
+      });
+      return triggers;
+
+  	////TODO: replace this by a DB call
+  	//return [{id: 0, name:"trigger1", description:"this is a description 1", val: false}, {id: 1, name:"trigger2", description:"this is a description 2", val: false},
+  	//		{id: 2, name:"trigger3", description:"this is a description 3", val: false}, {id: 3, name:"trigger4", description:"this is a description 4", val: false}]; // List of all triggers
 
   };
 
   var getDBDrugs = function(){
-  	//TODO: replace this by DB call
-  	return [{id: 0, name:"drug1", description:"this is a description of drug1"}, {id: 1, name:"drug2", description:"this is a description of drug2"},
-            {id: 2, name:"drug3", description:"this is a description of drug3"}, {id: 3, name: "...", description: "this is a description"}];
+      $http({ method: 'GET', url: 'http://localhost:8080/Chronic/rest/DrugService/drugs' }).
+      success(function (data, status, headers, config) {
+          //alert(""+data);
+          console.log("Drugs fetched:"+data);
+          drugs = data;
+
+      }).
+      error(function (data, status, headers, config) {
+          alert("error retrieving data")
+      });
+      return drugs;
+  	////TODO: replace this by DB call
+  	//return [{id: 0, name:"drug1", description:"this is a description of drug1"}, {id: 1, name:"drug2", description:"this is a description of drug2"},
+       //     {id: 2, name:"drug3", description:"this is a description of drug3"}, {id: 3, name: "...", description: "this is a description"}];
 
   };
 
   var getDrugs = function(){
+      var list = getDBDrugs();
   	if($localStorage.drugList == null){
   		$localStorage.drugList = getDBDrugs();
-  	}
+  	}else{
+        $localStorage.drugList.push.apply($localStorage.drugList, list);
+    }
   	return $localStorage.drugList;
   };
 
@@ -247,6 +295,10 @@ angular.module('Chronic').service('dataService', function($localStorage) {
         $localStorage.email = email;
         $localStorage.passwordHash = sha3;
     };
+
+    var getApiKey = function(){
+        return "FiFoEdUdLOI4D19lj7Vb5pi72dDZf2aB";
+    }
   return {
     addHeadache: addHeadache,
     addMedicine: addMedicine,
@@ -272,7 +324,8 @@ angular.module('Chronic').service('dataService', function($localStorage) {
     getPasswordHash: getPasswordHash,
     getEmail: getEmail,
     setEmail: setEmail,
-    registerUser:registerUser
+    registerUser:registerUser,
+    getApiKey: getApiKey
 
     };
 
