@@ -17,11 +17,10 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
 
     $scope.dialogs = {};
     ons.ready(function() {
+    	ons.disableDeviceBackButtonHandler();
         $('.hidden').removeClass("hidden");
         $('#loadingImg').hide();
     });
-    
-    ons.disableDeviceBackButtonHandler();
 
     $scope.transition = function(){
         //console.log($("body").children());
