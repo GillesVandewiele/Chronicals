@@ -35,36 +35,13 @@
     <script src="../js/controllers/dashboardController.js"></script>
     <script src="../js/vendor/Chart.min.js"></script>
     <script src="../js/vendor/angular-chart.js"></script>
-    <script type="text/javascript" charset="utf-8">
-
-        //Android back button handler methods
-		$(document).ready(function()
-		{
-		document.addEventListener("deviceready", setOverrideBackbutton, false);
-		});
-		
-		/**
-		* Allow override of the back button on Android platforms
-		*/
-		function setOverrideBackbutton()
-		{
-		if (typeof device != "undefined" && device.platform == "Android")
-		{
-		    navigator.app.overrideBackbutton(true);
-		}
-		document.addEventListener("backbutton", backButtonTap, true);
-		}
-		
-		/**
-		 * Callback after a backbutton tap on Android and windows platforms.
-		 * Do nothing.
-		 */
-		function backButtonTap()
-		{
-		//Do not remove
-		}
-
-    </script>
+    <script type="text/javascript" src="cordova.js">
+    	document.addEventListener("deviceready", onDeviceReady, false);
+		function onDeviceReady() {
+		    document.addEventListener("backbutton", function (e) {
+		        e.preventDefault();
+		    }, false );}
+    </script>  
 
 </head>
 
