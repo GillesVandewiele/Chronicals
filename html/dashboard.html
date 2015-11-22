@@ -43,6 +43,9 @@
 	    // When PhoneGap is loaded and talking with the native device,
 	    // it will call the event `deviceready`.
 	    // 
+	    ons.ready(function(){
+	    	ons.disableDeviceBackButtonHandler();
+	    });
 	    document.addEventListener("deviceready", onDeviceReady, false);
 	    function onDeviceReady() {
 	        document.addEventListener("backbutton", function (e) {

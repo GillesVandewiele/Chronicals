@@ -17,7 +17,6 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
 
     $scope.dialogs = {};
     ons.ready(function() {
-    	ons.disableDeviceBackButtonHandler();
         $('.hidden').removeClass("hidden");
         $('#loadingImg').hide();
     });
