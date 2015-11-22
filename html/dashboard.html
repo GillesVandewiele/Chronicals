@@ -35,24 +35,6 @@
     <script src="../js/controllers/dashboardController.js"></script>
     <script src="../js/vendor/Chart.min.js"></script>
     <script src="../js/vendor/angular-chart.js"></script>
-    <script src="phonegap.js"></script>
-    <script type="text/javascript" charset="utf-8">
-
-	    // Call onDeviceReady when PhoneGap is loaded.
-	    //
-	    // At this point, the document has loaded but phonegap-1.0.0.js has not.
-	    // When PhoneGap is loaded and talking with the native device,
-	    // it will call the event `deviceready`.
-	    // 
-	    document.addEventListener("deviceready", onDeviceReady, false);
-	    function onDeviceReady() {
-	        document.addEventListener("backbutton", function (e) {
-	        	alert("back button");
-	            e.preventDefault();
-	        }, false );
-		}
-
-    </script>
 </head>
 
 <body ng-controller="dashboardController">
