@@ -20,6 +20,7 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
         $('.hidden').removeClass("hidden");
         $('#loadingImg').hide();
         $scope.dashboardPage.getDeviceBackButtonHandler().setListener(function(event) {
+        	alert("wtf");
 		  // Call parent handler
 		  event.preventDefault();
 		});
