@@ -19,14 +19,9 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
     ons.ready(function() {
         $('.hidden').removeClass("hidden");
         $('#loadingImg').hide();
-        ons.setDefaultDeviceBackButtonListener(function() {
-		  if (navigator.notification.confirm("Are you sure to close the app?", 
-		    function(index) {
-		      if (index == 1) { // OK button
-		        navigator.app.exitApp(); // Close the app
-		      }
-		    }
-		  ));
+        $scope.dashboardPage.getDeviceBackButtonHandler().setListener(function(event) {
+		  // Call parent handler
+		  event.preventDefault();
 		});
 	});
 
