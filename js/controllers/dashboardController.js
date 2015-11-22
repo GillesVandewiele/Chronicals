@@ -56,9 +56,46 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
 
     ons.ready(function () {
         $('.hidden').removeClass("hidden");
-        //$http({ method: 'GET', url: 'http://192.168.43.136:8080/Chronic/rest/PatientService/patients?lastName=Lannoye&firstName=Kiani' }).
+        var user = {
+            "firstName": "Kiani",
+            "lastName": "Lannoye",
+            "birthDate": "23-12-1992",
+            "email": "kdlannoy@gmail.com",
+            "password": ""+sha3_512("0123"),
+            "isMale": true,
+            "relation": 2,
+            "advice": "",
+            "isEmployed": true,
+            "diagnosis": ""};
+
+
+        //register user
+        $http.post('http://localhost:8080/Chronic/rest/PatientService/patients', JSON.stringify(user)).
+        success(function (data, status, headers, config) {
+
+            console.log("Return van indienen user:"+status);
+        }).
+        error(function (data, status, headers, config) {
+            console.log("error creating user: "+status);
+            console.log("data:" +data);
+        });
+
+        //retrieve user
+        $http.get('http://localhost:8080/Chronic/rest/PatientService/patients?lastName='+user.lastName+'&firstName='+user.firstName, {headers:{'Authorization':'Basic '+btoa(user.email+":"+sha3_512(user.password+dataService.getApiKey()))}}).
+        success(function (data, status, headers, config) {
+            console.log("User retrieved:",data);
+        }).
+        error(function (data, status, headers, config) {
+            console.log("error retrieving user: "+status);
+            console.log("data:" +data);
+        });
+
+
+        //console.log(dataService.getPasswordHash());
+        //$http({ method: 'GET', url: 'http://localhost:8080/Chronic/rest/SymptomService/Symptoms' }).
         //success(function (data, status, headers, config) {
-        //    alert(""+data["firstName"]);
+        //    alert(""+data);
+        //    console.log(data);
         //}).
         //error(function (data, status, headers, config) {
         //    alert("error retrieving data")
