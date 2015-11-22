@@ -20,14 +20,14 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
         $('.hidden').removeClass("hidden");
         $('#loadingImg').hide();
         ons.setDefaultDeviceBackButtonListener(function() {
-			  if (navigator.notification.confirm("Are you sure to close the app?", 
-			    function(index) {
-			      if (index == 1) { // OK button
-			        navigator.app.exitApp(); // Close the app
-			      }
-			    }
-			  ));
-			});
+		  if (navigator.notification.confirm("Are you sure to close the app?", 
+		    function(index) {
+		      if (index == 1) { // OK button
+		        navigator.app.exitApp(); // Close the app
+		      }
+		    }
+		  ));
+		});
 	});
 
     $scope.transition = function(){
@@ -36,9 +36,9 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
         $('body').children().eq(1).hide();
     };
     
-    $scope.doSomething(){
+    $scope.doSomething = function(){
     	alert("do something");
-    }
+    };
 
     document.addEventListener("deviceready", onDeviceReady, false);
     function onDeviceReady() {
