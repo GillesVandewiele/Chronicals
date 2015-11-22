@@ -47,7 +47,7 @@
 </div>
 
 <ons-navigator var="dashboardNavigator">
-    <ons-page class="dashboardPage" var="dashboardPage">
+    <ons-page class="dashboardPage" var="dashboardPage" ng-device-backbutton="doSomething()">
 		<script>
 		  ons.ready(function() {
 		    dashboardPage.setDeviceBackButtonHandler(function() {

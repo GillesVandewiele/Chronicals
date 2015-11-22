@@ -26,6 +26,10 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
         $("body").children().eq(0).show();
         $('body').children().eq(1).hide();
     };
+    
+    $scope.doSomething(){
+    	alert("do something");
+    }
 
     document.addEventListener("deviceready", onDeviceReady, false);
     function onDeviceReady() {
