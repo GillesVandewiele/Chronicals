@@ -8,14 +8,3 @@
 
 
 var app = angular.module('Chronic', ['onsen.directives', 'ngStorage', "chart.js"]);
-app.run(function($rootScope){
-    ons.ready(function() {
-        alert("READY");
-    });
-
-    document.addEventListener("backbutton", function (e) {
-        alert("THE BACK BUTTON WAS HIT!");
-        e.preventDefault();
-     });
-});
-
