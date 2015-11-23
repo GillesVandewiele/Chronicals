@@ -2,7 +2,7 @@ angular.module('Chronic').service('dataService', function($localStorage, $http) 
 
   // Reset the local storage; always comment this out!
   //  $localStorage.$reset();
-
+  //  localStorage.clear();
     var headache;
 
     var medicine;
@@ -25,6 +25,8 @@ angular.module('Chronic').service('dataService', function($localStorage, $http) 
           headacheList = $localStorage.headacheList;
           headacheList.push(newObj);
           $localStorage.headacheList = headacheList;
+          localStorage.headacheList = headacheList;
+          window.localStorage.headacheList = headacheList;
           console.log("nieuwe headache geadd:",$localStorage.headacheList)
       }
       else {

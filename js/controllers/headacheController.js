@@ -113,7 +113,7 @@ angular.module('Chronic').controller('headacheController', function($scope, data
 
   	dataService.setCurrentHeadache(null);
   	location.href="dashboard.html";
-      console.log(JSON.stringify($scope.headache));
+    console.log(JSON.stringify($scope.headache));
   };
 
   $scope.cancel = function(){
