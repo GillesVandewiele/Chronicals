@@ -3,9 +3,9 @@ angular.module('Chronic').service('dataService', function($http) {
   // Reset the local storage; always comment this out!
   //  $localStorage.$reset();
   //  localStorage.clear();
-    var headache;
+    var currentHeadache;
 
-    var medicine;
+    var currentMedicine;
 
     var medicineList = [];
     var headacheList = [];
@@ -21,12 +21,12 @@ angular.module('Chronic').service('dataService', function($http) {
 
 
   var addHeadache = function(newObj){
+      console.log("addHeadache:",JSON.parse(localStorage.getItem("headacheList")));
       if(JSON.parse(localStorage.getItem("headacheList")) != null) {
           headacheList = JSON.parse(localStorage.getItem("headacheList"));
           headacheList.push(newObj);
           localStorage.setItem("headacheList", JSON.stringify(headacheList));
 
-          console.log("nieuwe headache geadd:",JSON.parse(localStorage.getItem("headacheList")));
       }
       else {
           localStorage.setItem("headacheList", JSON.stringify([newObj]));
@@ -36,7 +36,7 @@ angular.module('Chronic').service('dataService', function($http) {
   };
 
   var addMedicine = function(newObj){
-      if(JSON.parse(localStorage.getItem("medicineList"))){
+      if(JSON.parse(localStorage.getItem("medicineList"))!= null){
           medicineList = JSON.parse(localStorage.getItem("medicineList"));
           medicineList.push(newObj);
           localStorage.setItem("medicineList", JSON.stringify(medicineList));
@@ -48,10 +48,12 @@ angular.module('Chronic').service('dataService', function($http) {
 
   var setCurrentHeadache = function(newObj){
       localStorage.setItem("currentHeadache", JSON.stringify(newObj));
+      currentHeadache = newObj;
   };
 
   var setCurrentMedicine = function(newObj){
       localStorage.setItem("currentMedicine", JSON.stringify(newObj));
+      currentMedicine = newObj;
   };
 
   var getCurrentHeadache = function(){
@@ -80,33 +82,38 @@ angular.module('Chronic').service('dataService', function($http) {
   };
 
   var setMedicineList = function(list){
+      medicineList = list;
       localStorage.setItem("medicineList",JSON.stringify(list));
   };
 
   var setHeadacheList = function(list){
+      headacheList = list;
+
       localStorage.setItem("headacheList",JSON.stringify(list));
   };
 
   var getSymptoms = function(){
-      //$http({ method: 'GET', url: 'http://localhost:8080/Chronic/rest/SymptomService/Symptoms' }).
-      //success(function (data, status, headers, config) {
-      //    //alert(""+data);
-      //    console.log("symptoms fetched:"+data);
-      //    symptoms = data;
-      //    symptoms.forEach(function(entry){
-      //        entry["val"]=false;
-      //    });
-      //
-      //}).
-      //error(function (data, status, headers, config) {
-      //    alert("error retrieving data")
-      //});
-      //return symptoms;
-  	//TODO: replace this by a DB call
-  	return [{id: 0, name:"symptom1", description:"this is a description", val: false}, {id: 1, name:"symptom2", description:"this is a description", val: false},
-  			{id: 2, name:"symptom3", description:"this is a description", val: false}, {id: 3, name:"symptom4", description:"this is a description", val: false}]; // List of all symptoms
+      //TODO: replace this by a DB call
+      symptomsList =  [{id: 0, name:"symptom1", description:"this is a description", val: false}, {id: 1, name:"symptom2", description:"this is a description", val: false},
+          {id: 2, name:"symptom3", description:"this is a description", val: false}, {id: 3, name:"symptom4", description:"this is a description", val: false}]; // List of all symptoms
 
-  };
+
+      $http({ method: 'GET', url: 'http://localhost:8080/Chronic/rest/SymptomService/symptoms' }).
+      success(function (data, status, headers, config) {
+          //alert(""+data);
+          //console.log("symptoms fetched:"+data);
+          symptoms = data;
+          symptoms.forEach(function(entry){
+              entry["val"]=false;
+          });
+
+      }).
+      error(function (data, status, headers, config) {
+          alert("error retrieving data")
+      });
+      symptomsList.push.apply(symptoms);
+      return symptomsList;
+  	};
 
   var getTriggers = function(){
       //
@@ -131,34 +138,48 @@ angular.module('Chronic').service('dataService', function($http) {
 
   };
 
-  var getDBDrugs = function(){
-      //$http({ method: 'GET', url: 'http://localhost:8080/Chronic/rest/DrugService/drugs' }).
-      //success(function (data, status, headers, config) {
-      //    //alert(""+data);
-      //    console.log("Drugs fetched:"+data);
-      //    drugs = data;
-      //
-      //}).
-      //error(function (data, status, headers, config) {
-      //    alert("error retrieving data")
-      //});
-      //return drugs;
-  	////TODO: replace this by DB call
-  	return [{id: 0, name:"drug1", description:"this is a description of drug1"}, {id: 1, name:"drug2", description:"this is a description of drug2"},
-            {id: 2, name:"drug3", description:"this is a description of drug3"}, {id: 3, name: "...", description: "this is a description"}];
 
-  };
 
   var getDrugs = function(){
-      var list = getDBDrugs();
-  	if(JSON.parse(localStorage.getItem("drugList") == null)){
-  		localStorage.setItem("drugList",JSON.stringify(getDBDrugs()));
-  	}else{
-        list2 = JSON.parse(localStorage.getItem("drugList"));
-        list2.push.apply(list);
-        localStorage.setItem("drugList",JSON.stringify(list2));
-    }
-  	return JSON.parse(localStorage.getItem("drugList"));
+      var drugsList =  [{id: 0, name:"drug1", description:"this is a description of drug1"}, {id: 1, name:"drug2", description:"this is a description of drug2"},
+          {id: 2, name:"drug3", description:"this is a description of drug3"}, {id: 3, name: "...", description: "this is a description"}];
+
+      $http({ method: 'GET', url: 'http://localhost:8080/Chronic/rest/DrugService/drugs' }).
+      success(function (data, status, headers, config) {
+          //alert(""+data);
+
+
+          //drugsList = drugsList.concat(data);
+          //
+          //var list = drugsList;
+          //
+          //if(JSON.parse(localStorage.getItem("drugList") == null)){
+          //    localStorage.setItem("drugList",JSON.stringify(list));
+          //}else{
+          //    localStorage.setItem("drugList",JSON.stringify(list));
+          //}
+          //console.log("return:", JSON.parse(localStorage.getItem("drugList")));
+          //return JSON.parse(localStorage.getItem("drugList"));
+            return drugsList;
+      }).
+      error(function (data, status, headers, config) {
+          console.log("error retrieving data");
+          list = drugsList;
+          console.log("list:", list);
+          console.log("list drugs", JSON.parse(localStorage.getItem("drugList") ));
+          if(JSON.parse(localStorage.getItem("drugList") == null)){
+              localStorage.setItem("drugList",JSON.stringify(list));
+          }else{
+              list2 = JSON.parse(localStorage.getItem("drugList"));
+              if(list2 != null)
+                  list2.push.apply(list);
+              else
+                  list2 = list;
+              localStorage.setItem("drugList",JSON.stringify(list2));
+          }
+          //return JSON.parse(localStorage.getItem("drugList"));
+          return drugsList;
+      });
   };
 
   var addDrug = function(drugName){
@@ -193,7 +214,7 @@ angular.module('Chronic').service('dataService', function($http) {
       localStorage.setItem("headacheList", JSON.stringify(list));
       headacheList = list;
 
-      headache = null;
+      currentHeadache = null;
       localStorage.setItem("currentHeadache",JSON.stringify(null));
 
   };
@@ -217,12 +238,13 @@ angular.module('Chronic').service('dataService', function($http) {
         localStorage.setItem("medicineList",JSON.stringify(list));
         medicineList = list;
 
-        medicine = null;
+        currentMedicine = null;
         localStorage.setItem("currentMedicine", JSON.stringify(null));
     };
 
     var clearCache = function(){
         localStorage.clear();
+
     };
 
     var getHeadachesNoEnd = function(){

@@ -100,30 +100,31 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
         //    alert("error retrieving data")
         //});
         //
-        //if (dataService.getHeadachesNoEnd().length > 0) {
-        //    $('.dashboardFooter').css("background-color", "#f9332f");
-        //    $('.dashboardFooter').empty();
-        //    $('.dashboardFooter').attr("ng-click", "show('navigator.html')");
-        //    console.log("lel", dataService.getHeadachesNoEnd()[dataService.getHeadachesNoEnd().length - 1].intensityValues[0].key);
-        //    var hours = parseInt(Math.abs(new Date() - new Date(dataService.getHeadachesNoEnd()[dataService.getHeadachesNoEnd().length - 1].intensityValues[0].key)) / 36e5);
-        //    console.log("duratie: ", hours);
-        //    $('.dashboardFooter').append('<p>Uw hoofdpijn duurt al ' + hours + ' uur</p><p>Druk hier om meer info toe te voegen</p>');
-        //    dataService.setCurrentHeadache(dataService.getHeadachesNoEnd()[dataService.getHeadachesNoEnd().length - 1]);
-        //
-        //
-        //} else {
-        //    if(dataService.getHeadacheList() != null && dataService.getHeadacheList().length > 0){
-        //        $('.dashboardFooter').empty();
-        //        var hours = parseInt(Math.abs(new Date() - new Date(dataService.getHeadacheList()[dataService.getHeadacheList().length - 1].end)) / 36e5);
-        //        $('.dashboardFooter').append('<p ng-click="show(navigator.html)">U heeft al ' + hours + ' uur geen hoofdpijn meer gehad!</p>');
-        //    } else {
-        //        $('.dashboardFooter').empty();
-        //        $('.dashboardFooter').append('<p>Welkom! Klik hier voor een korte handleiding</p>');
-        //        $('.dashboardFooter').click(function(){
-        //            location.href='manual.html';
-        //        });
-        //    }
-        //}
+        if (dataService.getHeadachesNoEnd().length > 0) {
+            $('.dashboardFooter').css("background-color", "#f9332f");
+            $('.dashboardFooter').empty();
+            $('.dashboardFooter').attr("ng-click", "show('navigator.html')");
+            //console.log("lel", dataService.getHeadachesNoEnd()[dataService.getHeadachesNoEnd().length - 1].intensityValues[0].key);
+            var hours = parseInt(Math.abs(new Date() - new Date(dataService.getHeadachesNoEnd()[dataService.getHeadachesNoEnd().length - 1].intensityValues[0].key)) / 36e5);
+            //console.log("duratie: ", hours);
+            $('.dashboardFooter').append('<p>Uw hoofdpijn duurt al ' + hours + ' uur</p><p>Druk hier om meer info toe te voegen</p>');
+            dataService.setCurrentHeadache(dataService.getHeadachesNoEnd()[dataService.getHeadachesNoEnd().length - 1]);
+            //console.log("currentHeadache", dataService.getCurrentHeadache());
+
+
+        } else {
+            if(dataService.getHeadacheList() != null && dataService.getHeadacheList().length > 0){
+                $('.dashboardFooter').empty();
+                var hours = parseInt(Math.abs(new Date() - new Date(dataService.getHeadacheList()[dataService.getHeadacheList().length - 1].end)) / 36e5);
+                $('.dashboardFooter').append('<p ng-click="show(navigator.html)">U heeft al ' + hours + ' uur geen hoofdpijn meer gehad!</p>');
+            } else {
+                $('.dashboardFooter').empty();
+                $('.dashboardFooter').append('<p>Welkom! Klik hier voor een korte handleiding</p>');
+                $('.dashboardFooter').click(function(){
+                    location.href='manual.html';
+                });
+            }
+        }
         document.addEventListener("backbutton", backKeyDown, true);
         function backKeyDown(e) {
             e.preventDefault();
@@ -175,13 +176,12 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
     };
 
     $scope.closeListItem = function () {
-        dataService.getCurrentHeadache().end = new Date();
+        currentHeadache = dataService.getCurrentHeadache();
+        currentHeadache.end = new Date();
+        dataService.setCurrentHeadache(currentHeadache);
+        console.log("currentHeadache", currentHeadache, dataService.getCurrentHeadache());
     };
 
-
-    $scope.addDetailsListItem = function(){
-
-    };
 
     $scope.deleteListItem = function(){
         dataService.removeHeadache(dataService.getCurrentHeadache());

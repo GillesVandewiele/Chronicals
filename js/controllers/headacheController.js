@@ -11,19 +11,17 @@ angular.module('Chronic').controller('headacheController', function($scope, data
     ons.ready(function() {
         $('.hidden').removeClass("hidden");
         $('#loadingImg').hide();
+
     });
 
     $scope.transition = function(){
-        //console.log($("body").children());
         $("body").children().eq(0).show();
         $('body').children().eq(1).hide();
     };
 
   $scope.headache = dataService.getCurrentHeadache();
-    console.log("wtf", $scope.headache);
-    console.log($scope.headache == null);
+
   if($scope.headache == null){
-      console.log("uitgevoerd");
   	$scope.headache = { intensityValues: [], end: null, location: null, triggers: dataService.getTriggers(), symptoms: dataService.getSymptoms()};
   }
 
@@ -61,25 +59,44 @@ angular.module('Chronic').controller('headacheController', function($scope, data
 
   $scope.getIndexOfHeadache = function(){
   	headaches = dataService.getHeadacheList();
-  	if(headaches == null || headaches.length == 0) return -1;
+  	if(headaches == null || headaches.length == 0){
+        return -1;
+    }
   	for(headache in headaches){
   		equalIntensityValues = true;
-  		for(value in headache.intensityValues){
-  			if(headache.intensityValues[value] != $scope.headache.intensityValues[value]) equalIntensityValues = false;
+  		for(value in headaches[headache].intensityValues){
+            if(headaches[headache].intensityValues.length != $scope.headache.intensityValues.length){
+                equalIntensityValues = false;
+                break;
+            }
+  			if(headaches[headache].intensityValues[value].key != $scope.headache.intensityValues[value].key ||
+                headaches[headache].intensityValues[value].value != $scope.headache.intensityValues[value].value) {
+                equalIntensityValues = false;
+            }
   		}
   		equalEnd = $scope.headache.end == headaches[headache].end;
   		equalLocation = $scope.headache.location == headaches[headache].location;
   		equalSymptoms = true;
-  		for(symptom in headache.symptoms){
-  			if(headache.symptoms[symptom] != $scope.headache.symptoms[symptom]) equalSymptoms = false;
+  		for(symptom in headaches[headache].symptoms){
+  			if(headaches[headache].symptoms[symptom].id != $scope.headache.symptoms[symptom].id ||
+                headaches[headache].symptoms[symptom].name != $scope.headache.symptoms[symptom].name ||
+                headaches[headache].symptoms[symptom].description != $scope.headache.symptoms[symptom].description){
+                equalSymptoms = false;
+            }
   		}
   		equalTriggers = true;
-  		for(trigger in headache.triggers){
-  			if(headache.triggers[trigger] != $scope.headache.triggers[trigger]) equalTriggers = false;
+  		for(trigger in headaches[headache].triggers){
+  			if(headaches[headache].triggers[trigger].id != $scope.headache.triggers[trigger].id ||
+                headaches[headache].triggers[trigger].name != $scope.headache.triggers[trigger].name ||
+                headaches[headache].triggers[trigger].description != $scope.headache.triggers[trigger].description) {
+                equalTriggers = false;
+            }
   		}
-  		if(equalIntensityValues && equalEnd && equalLocation && equalSymptoms && equalTriggers) return headache;
-  		return -1;
+  		if(equalIntensityValues && equalEnd && equalLocation && equalSymptoms && equalTriggers){
+            return headache;
+        }
   	}
+    return -1;
   };
 
   $scope.headacheIndex = $scope.getIndexOfHeadache();
@@ -87,7 +104,6 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   /* Create a nice short time string from the start date and time */
 
   $scope.updateStartTimeString = function(){
-      console.log($scope.headache);
   	if($scope.headache.intensityValues[0] == null) {
   		$scope.startTimeString = "";
   		return;
@@ -110,13 +126,15 @@ angular.module('Chronic').controller('headacheController', function($scope, data
 
   	if($scope.headacheIndex != -1){
 	  	list = dataService.getHeadacheList();
+        console.log("pre add", list);
 	  	list[$scope.headacheIndex] = $scope.headache;
 	  	dataService.setHeadacheList(list);
+        console.log("post add", dataService.getHeadacheList())
   	} else dataService.addHeadache($scope.headache);
 
   	dataService.setCurrentHeadache(null);
   	location.href="dashboard.html";
-    console.log(JSON.stringify($scope.headache));
+    //console.log(JSON.stringify($scope.headache));
   };
 
   $scope.cancel = function(){
