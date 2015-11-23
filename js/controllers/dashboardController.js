@@ -67,8 +67,6 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
             "advice": "",
             "isEmployed": true,
             "diagnosis": ""};
-        alert(localStorage.getItem("test"));
-        console.log("haha:", localStorage.getItem("test"));
 
         ////register user
         //$http.post('http://localhost:8080/Chronic/rest/PatientService/patients', JSON.stringify(user)).

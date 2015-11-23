@@ -1,4 +1,4 @@
-angular.module('Chronic').service('dataService', function($localStorage, $http) {
+angular.module('Chronic').service('dataService', function($http) {
 
   // Reset the local storage; always comment this out!
   //  $localStorage.$reset();
@@ -21,48 +21,54 @@ angular.module('Chronic').service('dataService', function($localStorage, $http) 
 
 
   var addHeadache = function(newObj){
-      if($localStorage.headacheList) {
-          headacheList = $localStorage.headacheList;
+      if(JSON.parse(localStorage.getItem("headacheList")) != null) {
+          headacheList = JSON.parse(localStorage.getItem("headacheList"));
           headacheList.push(newObj);
-          $localStorage.headacheList = headacheList;
+          localStorage.setItem("headacheList", JSON.stringify(headacheList));
 
-          console.log("nieuwe headache geadd:",$localStorage.headacheList)
+          console.log("nieuwe headache geadd:",JSON.parse(localStorage.getItem("headacheList")));
       }
       else {
-          $localStorage.headacheList = [newObj];
+          localStorage.setItem("headacheList", JSON.stringify([newObj]));
           headacheList = [newObj];
       }
 
   };
 
   var addMedicine = function(newObj){
-      if($localStorage.medicineList) $localStorage.medicineList.push(newObj);
-      else $localStorage.medicineList = [newObj];
+      if(JSON.parse(localStorage.getItem("medicineList"))){
+          medicineList = JSON.parse(localStorage.getItem("medicineList"));
+          medicineList.push(newObj);
+          localStorage.setItem("medicineList", JSON.stringify(medicineList));
+      }
+      else{
+          localStorage.setItem("medicineList", JSON.stringify([newObj]));
+      }
   };
 
   var setCurrentHeadache = function(newObj){
-  	  $localStorage.currentHeadache = newObj;
+      localStorage.setItem("currentHeadache", JSON.stringify(newObj));
   };
 
   var setCurrentMedicine = function(newObj){
-  	  $localStorage.currentMedicine = newObj;
+      localStorage.setItem("currentMedicine", JSON.stringify(newObj));
   };
 
   var getCurrentHeadache = function(){
-  	  return $localStorage.currentHeadache;
+  	  return JSON.parse(localStorage.getItem("currentHeadache"));
   };
 
   var getCurrentMedicine = function(){
-  	  return $localStorage.currentMedicine;
+      return JSON.parse(localStorage.getItem("currentMedicine"));
   };
 
   var getMedicineList = function(){
-      return $localStorage.medicineList;
+      return JSON.parse(localStorage.getItem("medicineList"));
   };
 
   var getHeadacheList = function(){
-      var list = $localStorage.headacheList;
-      if(list != null){
+      var list = JSON.parse(localStorage.getItem("headacheList"));
+      if(list != null && list != "null"){
 	      list.sort(function(a,b){ //sort the list on their start dates // date of consumption
 
 	          dateA = a.intensityValues[0].key;
@@ -74,11 +80,11 @@ angular.module('Chronic').service('dataService', function($localStorage, $http) 
   };
 
   var setMedicineList = function(list){
-      $localStorage.medicineList = list;
+      localStorage.setItem("medicineList",JSON.stringify(list));
   };
 
   var setHeadacheList = function(list){
-      $localStorage.headacheList = list;
+      localStorage.setItem("headacheList",JSON.stringify(list));
   };
 
   var getSymptoms = function(){
@@ -145,28 +151,32 @@ angular.module('Chronic').service('dataService', function($localStorage, $http) 
 
   var getDrugs = function(){
       var list = getDBDrugs();
-  	if($localStorage.drugList == null){
-  		$localStorage.drugList = getDBDrugs();
+  	if(JSON.parse(localStorage.getItem("drugList") == null)){
+  		localStorage.setItem("drugList",JSON.stringify(getDBDrugs()));
   	}else{
-        $localStorage.drugList.push.apply($localStorage.drugList, list);
+        list2 = JSON.parse(localStorage.getItem("drugList"));
+        list2.push.apply(list);
+        localStorage.setItem("drugList",JSON.stringify(list2));
     }
-  	return $localStorage.drugList;
+  	return JSON.parse(localStorage.getItem("drugList"));
   };
 
   var addDrug = function(drugName){
 	inList = false;
-	for(drug in $localStorage.drugList){
-		if($localStorage.drugList[drug].name == drugName) inList = true;
+	for(drug in JSON.parse(localStorage.getItem("drugList"))){
+		if(JSON.parse(localStorage.getItem("drugList")[drug].name == drugName)) inList = true;
 	}
   	if(!inList){
-  		var drug = {id: $localStorage.drugList[$localStorage.drugList.length-2].id+1, name: drugName, description: ""};
-  		$localStorage.drugList.splice($localStorage.drugList.length-1, 0, drug);
+  		var drug = {id: JSON.parse(localStorage.getItem("drugList"))[JSON.parse(localStorage.getItem("drugList")).length-2].id+1, name: drugName, description: ""};
+  		var list = JSON.parse(localStorage.getItem("drugList"));
+        list = list.splice(list.length-1,0, drug);
+        localStorage.setItem("drugList", JSON.stringify(list));
   	}
   };
 
   var removeHeadache = function(){
-      var list = $localStorage.headacheList;
-      var current = $localStorage.currentHeadache;
+      var list = JSON.parse(localStorage.getItem("headacheList"));
+      var current = JSON.parse(localStorage.getItem("currentHeadache"));
 
       var index = -1;
       for(var i=0; i<list.length; i++){
@@ -180,17 +190,17 @@ angular.module('Chronic').service('dataService', function($localStorage, $http) 
           console.log("Removed:",list.splice(index, 1));
       }
 
-      $localStorage.headacheList = list;
+      localStorage.setItem("headacheList", JSON.stringify(list));
       headacheList = list;
 
       headache = null;
-      $localStorage.currentHeadache = null;
+      localStorage.setItem("currentHeadache",JSON.stringify(null));
 
   };
 
     var removeMedicine = function(){
-        var list = $localStorage.medicineList;
-        var current = $localStorage.currentMedicine;
+        var list = JSON.parse(localStorage.getItem("medicineList"));
+        var current = JSON.parse(localStorage.getItem("currentMedicine"));
 
         var index = -1;
         for(var i=0; i<list.length; i++){
@@ -204,25 +214,15 @@ angular.module('Chronic').service('dataService', function($localStorage, $http) 
             console.log("Removed:", list.splice(index, 1));
         }
 
-        $localStorage.medicineList = list;
+        localStorage.setItem("medicineList",JSON.stringify(list));
         medicineList = list;
 
         medicine = null;
-        $localStorage.currentMedicine = null;
+        localStorage.setItem("currentMedicine", JSON.stringify(null));
     };
 
     var clearCache = function(){
-        $localStorage.headacheList = null;
-        $localStorage.currentHeadache = null;
-        $localStorage.medicineList = null;
-        $localStorage.currentMedicine = null;
-        $localStorage.drugList = null;
-        $localStorage.dailyMedicine = null;
-        dailyMedicine = null;
-        headache = null;
-        headacheList = null;
-        medicine = null;
-        medicineList = null;
+        localStorage.clear();
     };
 
     var getHeadachesNoEnd = function(){
@@ -249,37 +249,37 @@ angular.module('Chronic').service('dataService', function($localStorage, $http) 
     };
 
     var addDailyMedicine = function(medicine){
-        dailyMedicine = $localStorage.dailyMedicine;
+        dailyMedicine = JSON.parse(localStorage.getItem("dailyMedicine"));
         if(dailyMedicine == null){
             dailyMedicine = [];
         }
         dailyMedicine.push(medicine);
-        $localStorage.dailyMedicine = dailyMedicine;
+        localStorage.setItem("dailyMedicine",JSON.stringify(dailyMedicine));
     };
 
     var getDailyMedicines = function(){
-        if($localStorage.dailyMedicine == null){
-            $localStorage.dailyMedicine = [];
+        if(JSON.parse(localStorage.getItem("dailyMedicine") == null)){
+            localStorage.setItem("dailyMedicine",JSON.stringify([]));
         }
-        return $localStorage.dailyMedicine;
+        return JSON.parse(localStorage.getItem("dailyMedicine"));
     };
 
     var setDailyMedicineList = function(list){
-        $localStorage.dailyMedicine = list;
+        localStorage.setItem("dailyMedicine", JSON.stringify(list));
     };
 
     var getPasswordHash = function(){
-        passwordHash = $localStorage.passwordHash;
+        passwordHash = JSON.parse(localStorage.getItem("passwordHash"));
         return passwordHash;
     };
 
     var setEmail = function(user){
         email = user;
-        $localStorage.email = user;
+        localStorage.setItem("email",JSON.stringify(user));
     };
 
     var getEmail = function(){
-        email = $localStorage.email;
+        email = JSON.parse(localStorage.getItem("email"));
         if(email==null)
             email = "";
         return email;
@@ -287,14 +287,14 @@ angular.module('Chronic').service('dataService', function($localStorage, $http) 
 
     var registerUser = function (firstname, lastname, birthdate, sex, status, employment, email, sha3) {
         //TODO: register on the server or check if server already has this shit
-        $localStorage.firstname = firstname;
-        $localStorage.lastname = lastname;
-        $localStorage.birthdate = birthdate;
-        $localStorage.sex = sex;
-        $localStorage.status = status;
-        $localStorage.employment = employment;
-        $localStorage.email = email;
-        $localStorage.passwordHash = sha3;
+        localStorage.setItem("firstname", JSON.stringify(firstname));
+        localStorage.setItem("lastname",JSON.stringify(lastname));
+        localStorage.setItem("birthdate",JSON.stringify(birthdate));
+        localStorage.setItem("sex",JSON.stringify(sex));
+        localStorage.setItem("status", JSON.stringify(status));
+        localStorage.setItem("employment",JSON.stringify(employment));
+        localStorage.setItem("email", JSON.stringify(email));
+        localStorage.setItem("passwordHash",JSON.stringify(sha3));
     };
 
     var getApiKey = function(){

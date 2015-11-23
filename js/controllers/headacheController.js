@@ -20,8 +20,10 @@ angular.module('Chronic').controller('headacheController', function($scope, data
     };
 
   $scope.headache = dataService.getCurrentHeadache();
-
+    console.log("wtf", $scope.headache);
+    console.log($scope.headache == null);
   if($scope.headache == null){
+      console.log("uitgevoerd");
   	$scope.headache = { intensityValues: [], end: null, location: null, triggers: dataService.getTriggers(), symptoms: dataService.getSymptoms()};
   }
 
@@ -85,6 +87,7 @@ angular.module('Chronic').controller('headacheController', function($scope, data
   /* Create a nice short time string from the start date and time */
 
   $scope.updateStartTimeString = function(){
+      console.log($scope.headache);
   	if($scope.headache.intensityValues[0] == null) {
   		$scope.startTimeString = "";
   		return;
