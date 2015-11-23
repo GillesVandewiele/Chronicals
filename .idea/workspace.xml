@@ -2,217 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43c9da2d-e225-43f7-8236-b9dae08b7604" name="Default" comment="medicine in graph of headachegraph">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/ladda-themeless.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/vendor/ladda.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/vendor/spin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Chronicals-debug.apk" afterPath="$PROJECT_DIR$/Chronicals-debug.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apple-touch-icon.png" afterPath="$PROJECT_DIR$/apple-touch-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/font_awesome/fonts/FontAwesome.otf" afterPath="$PROJECT_DIR$/css/font_awesome/fonts/FontAwesome.otf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/font_awesome/fonts/fontawesome-webfont.eot" afterPath="$PROJECT_DIR$/css/font_awesome/fonts/fontawesome-webfont.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/font_awesome/fonts/fontawesome-webfont.ttf" afterPath="$PROJECT_DIR$/css/font_awesome/fonts/fontawesome-webfont.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/font_awesome/fonts/fontawesome-webfont.woff" afterPath="$PROJECT_DIR$/css/font_awesome/fonts/fontawesome-webfont.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/font_awesome/fonts/fontawesome-webfont.woff2" afterPath="$PROJECT_DIR$/css/font_awesome/fonts/fontawesome-webfont.woff2" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/ionicons/fonts/ionicons.eot" afterPath="$PROJECT_DIR$/css/ionicons/fonts/ionicons.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/ionicons/fonts/ionicons.ttf" afterPath="$PROJECT_DIR$/css/ionicons/fonts/ionicons.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/ionicons/fonts/ionicons.woff" afterPath="$PROJECT_DIR$/css/ionicons/fonts/ionicons.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/favicon.ico" afterPath="$PROJECT_DIR$/favicon.ico" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/1_location.png" afterPath="$PROJECT_DIR$/img/1_location.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/2_location.png" afterPath="$PROJECT_DIR$/img/2_location.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/3_location.png" afterPath="$PROJECT_DIR$/img/3_location.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/4_location.png" afterPath="$PROJECT_DIR$/img/4_location.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/dropdown.png" afterPath="$PROJECT_DIR$/img/dropdown.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/angular/angular.min.js.gzip" afterPath="$PROJECT_DIR$/js/angular/angular.min.js.gzip" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/cupertino/images/animated-overlay.gif" afterPath="$PROJECT_DIR$/lib/cupertino/images/animated-overlay.gif" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/cupertino/images/ui-bg_diagonals-thick_90_eeeeee_40x40.png" afterPath="$PROJECT_DIR$/lib/cupertino/images/ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/cupertino/images/ui-bg_flat_15_cd0a0a_40x100.png" afterPath="$PROJECT_DIR$/lib/cupertino/images/ui-bg_flat_15_cd0a0a_40x100.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/cupertino/images/ui-bg_glass_100_e4f1fb_1x400.png" afterPath="$PROJECT_DIR$/lib/cupertino/images/ui-bg_glass_100_e4f1fb_1x400.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/cupertino/images/ui-bg_glass_50_3baae3_1x400.png" afterPath="$PROJECT_DIR$/lib/cupertino/images/ui-bg_glass_50_3baae3_1x400.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/cupertino/images/ui-bg_glass_80_d7ebf9_1x400.png" afterPath="$PROJECT_DIR$/lib/cupertino/images/ui-bg_glass_80_d7ebf9_1x400.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/cupertino/images/ui-bg_highlight-hard_100_f2f5f7_1x100.png" afterPath="$PROJECT_DIR$/lib/cupertino/images/ui-bg_highlight-hard_100_f2f5f7_1x100.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/cupertino/images/ui-bg_highlight-hard_70_000000_1x100.png" afterPath="$PROJECT_DIR$/lib/cupertino/images/ui-bg_highlight-hard_70_000000_1x100.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/cupertino/images/ui-bg_highlight-soft_100_deedf7_1x100.png" afterPath="$PROJECT_DIR$/lib/cupertino/images/ui-bg_highlight-soft_100_deedf7_1x100.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/cupertino/images/ui-bg_highlight-soft_25_ffef8f_1x100.png" afterPath="$PROJECT_DIR$/lib/cupertino/images/ui-bg_highlight-soft_25_ffef8f_1x100.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/cupertino/images/ui-icons_2694e8_256x240.png" afterPath="$PROJECT_DIR$/lib/cupertino/images/ui-icons_2694e8_256x240.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/cupertino/images/ui-icons_2e83ff_256x240.png" afterPath="$PROJECT_DIR$/lib/cupertino/images/ui-icons_2e83ff_256x240.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/cupertino/images/ui-icons_3d80b3_256x240.png" afterPath="$PROJECT_DIR$/lib/cupertino/images/ui-icons_3d80b3_256x240.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/cupertino/images/ui-icons_72a7cf_256x240.png" afterPath="$PROJECT_DIR$/lib/cupertino/images/ui-icons_72a7cf_256x240.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/cupertino/images/ui-icons_ffffff_256x240.png" afterPath="$PROJECT_DIR$/lib/cupertino/images/ui-icons_ffffff_256x240.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/img/Andy_Bernard.jpg" afterPath="$PROJECT_DIR$/phonegap-workshop-master/img/Andy_Bernard.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/img/Angela_Martin.jpg" afterPath="$PROJECT_DIR$/phonegap-workshop-master/img/Angela_Martin.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/img/Creed_Bratton.jpg" afterPath="$PROJECT_DIR$/phonegap-workshop-master/img/Creed_Bratton.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/img/Dwight_Schrute.jpg" afterPath="$PROJECT_DIR$/phonegap-workshop-master/img/Dwight_Schrute.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/img/Jim_Halpert.jpg" afterPath="$PROJECT_DIR$/phonegap-workshop-master/img/Jim_Halpert.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/img/Kelly_Kapoor.jpg" afterPath="$PROJECT_DIR$/phonegap-workshop-master/img/Kelly_Kapoor.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/img/Kevin_Malone.jpg" afterPath="$PROJECT_DIR$/phonegap-workshop-master/img/Kevin_Malone.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/img/Meredith_Palmer.jpg" afterPath="$PROJECT_DIR$/phonegap-workshop-master/img/Meredith_Palmer.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/img/Michael_Scott.jpg" afterPath="$PROJECT_DIR$/phonegap-workshop-master/img/Michael_Scott.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/img/Oscar_Martinez.jpg" afterPath="$PROJECT_DIR$/phonegap-workshop-master/img/Oscar_Martinez.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/img/Pamela_Beesly.jpg" afterPath="$PROJECT_DIR$/phonegap-workshop-master/img/Pamela_Beesly.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/img/Phyllis_Lapin.jpg" afterPath="$PROJECT_DIR$/phonegap-workshop-master/img/Phyllis_Lapin.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/img/Ryan_Howard.jpg" afterPath="$PROJECT_DIR$/phonegap-workshop-master/img/Ryan_Howard.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/img/Stanley_Hudson.jpg" afterPath="$PROJECT_DIR$/phonegap-workshop-master/img/Stanley_Hudson.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/img/Toby_Flenderson.jpg" afterPath="$PROJECT_DIR$/phonegap-workshop-master/img/Toby_Flenderson.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/img/unknown.jpg" afterPath="$PROJECT_DIR$/phonegap-workshop-master/img/unknown.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tile-wide.png" afterPath="$PROJECT_DIR$/tile-wide.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tile.png" afterPath="$PROJECT_DIR$/tile.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.editorconfig" afterPath="$PROJECT_DIR$/.editorconfig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.htaccess" afterPath="$PROJECT_DIR$/.htaccess" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Code.iml" afterPath="$PROJECT_DIR$/.idea/Code.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.project" afterPath="$PROJECT_DIR$/.project" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/404.html" afterPath="$PROJECT_DIR$/404.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LICENSE.txt" afterPath="$PROJECT_DIR$/LICENSE.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/browserconfig.xml" afterPath="$PROJECT_DIR$/browserconfig.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components.html" afterPath="$PROJECT_DIR$/components.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/crossdomain.xml" afterPath="$PROJECT_DIR$/crossdomain.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/angular-chart.css" afterPath="$PROJECT_DIR$/css/angular-chart.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/angular-chart.min.css" afterPath="$PROJECT_DIR$/css/angular-chart.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/angular-chart.min.css.map" afterPath="$PROJECT_DIR$/css/angular-chart.min.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/familyfontawesome.css" afterPath="$PROJECT_DIR$/css/familyfontawesome.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/font_awesome/css/font-awesome.css" afterPath="$PROJECT_DIR$/css/font_awesome/css/font-awesome.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/font_awesome/css/font-awesome.css.map" afterPath="$PROJECT_DIR$/css/font_awesome/css/font-awesome.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/font_awesome/css/font-awesome.min.css" afterPath="$PROJECT_DIR$/css/font_awesome/css/font-awesome.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/font_awesome/fonts/fontawesome-webfont.svg" afterPath="$PROJECT_DIR$/css/font_awesome/fonts/fontawesome-webfont.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/fontcss.css" afterPath="$PROJECT_DIR$/css/fontcss.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/fullcalendar.css" afterPath="$PROJECT_DIR$/css/fullcalendar.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/fullcalendar.ios.css" afterPath="$PROJECT_DIR$/css/fullcalendar.ios.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/fullcalendar.min.css" afterPath="$PROJECT_DIR$/css/fullcalendar.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/fullcalendar.print.css" afterPath="$PROJECT_DIR$/css/fullcalendar.print.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/gcal.js" afterPath="$PROJECT_DIR$/css/gcal.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/ionicons/css/ionicons.css" afterPath="$PROJECT_DIR$/css/ionicons/css/ionicons.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/ionicons/css/ionicons.min.css" afterPath="$PROJECT_DIR$/css/ionicons/css/ionicons.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/ionicons/fonts/ionicons.svg" afterPath="$PROJECT_DIR$/css/ionicons/fonts/ionicons.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/login.css" afterPath="$PROJECT_DIR$/css/login.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main.css" afterPath="$PROJECT_DIR$/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/normalize.css" afterPath="$PROJECT_DIR$/css/normalize.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/onsen-css-components-dark-theme.css" afterPath="$PROJECT_DIR$/css/onsen-css-components-dark-theme.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/onsenui.css" afterPath="$PROJECT_DIR$/css/onsenui.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/dailyMedicine.html" afterPath="$PROJECT_DIR$/html/dailyMedicine.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/dashboard.html" afterPath="$PROJECT_DIR$/html/dashboard.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/detailedHeadache.html" afterPath="$PROJECT_DIR$/html/detailedHeadache.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/detailedMedicine.html" afterPath="$PROJECT_DIR$/html/detailedMedicine.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/headache.html" afterPath="$PROJECT_DIR$/html/headache.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/history.html" afterPath="$PROJECT_DIR$/html/history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/login.html" afterPath="$PROJECT_DIR$/html/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/manual.html" afterPath="$PROJECT_DIR$/html/manual.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/medicine.html" afterPath="$PROJECT_DIR$/html/medicine.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/profile.html" afterPath="$PROJECT_DIR$/html/profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/register.html" afterPath="$PROJECT_DIR$/html/register.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/settings.html" afterPath="$PROJECT_DIR$/html/settings.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/humans.txt" afterPath="$PROJECT_DIR$/humans.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/.gitignore" afterPath="$PROJECT_DIR$/img/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/angular/README.md" afterPath="$PROJECT_DIR$/js/angular/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/angular/angular-csp.css" afterPath="$PROJECT_DIR$/js/angular/angular-csp.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/angular/angular.js" afterPath="$PROJECT_DIR$/js/angular/angular.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/angular/angular.min.js" afterPath="$PROJECT_DIR$/js/angular/angular.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/angular/angular.min.js.map" afterPath="$PROJECT_DIR$/js/angular/angular.min.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/angular/bower.json" afterPath="$PROJECT_DIR$/js/angular/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/angular/index.js" afterPath="$PROJECT_DIR$/js/angular/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/angular/ngStorage.min.js" afterPath="$PROJECT_DIR$/js/angular/ngStorage.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/angular/package.json" afterPath="$PROJECT_DIR$/js/angular/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/chronic.js" afterPath="$PROJECT_DIR$/js/controllers/chronic.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/dashboardController.js" afterPath="$PROJECT_DIR$/js/controllers/dashboardController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/detailedHeadacheController.js" afterPath="$PROJECT_DIR$/js/controllers/detailedHeadacheController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/detailedMedicineController.js" afterPath="$PROJECT_DIR$/js/controllers/detailedMedicineController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/headacheController.js" afterPath="$PROJECT_DIR$/js/controllers/headacheController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/historyController.js" afterPath="$PROJECT_DIR$/js/controllers/historyController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/indexController.js" afterPath="$PROJECT_DIR$/js/controllers/indexController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/loginController.js" afterPath="$PROJECT_DIR$/js/controllers/loginController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/manualController.js" afterPath="$PROJECT_DIR$/js/controllers/manualController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/medicineController.js" afterPath="$PROJECT_DIR$/js/controllers/medicineController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/profileController.js" afterPath="$PROJECT_DIR$/js/controllers/profileController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/registerController.js" afterPath="$PROJECT_DIR$/js/controllers/registerController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/settingsController.js" afterPath="$PROJECT_DIR$/js/controllers/settingsController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/cryptojs/SHA3.js" afterPath="$PROJECT_DIR$/js/cryptojs/SHA3.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/fullcalendar.js" afterPath="$PROJECT_DIR$/js/fullcalendar/fullcalendar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/fullcalendar.min.js" afterPath="$PROJECT_DIR$/js/fullcalendar/fullcalendar.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/gcal.js" afterPath="$PROJECT_DIR$/js/fullcalendar/gcal.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang-all.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang-all.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/ar-ma.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/ar-ma.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/ar-sa.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/ar-sa.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/ar-tn.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/ar-tn.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/ar.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/ar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/bg.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/bg.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/ca.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/ca.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/cs.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/cs.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/da.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/da.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/de-at.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/de-at.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/de.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/de.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/el.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/el.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/en-au.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/en-au.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/en-ca.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/en-ca.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/en-gb.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/en-gb.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/es.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/es.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/fa.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/fa.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/fi.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/fi.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/fr-ca.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/fr-ca.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/fr.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/fr.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/he.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/he.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/hi.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/hi.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/hr.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/hr.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/hu.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/hu.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/id.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/id.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/is.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/is.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/it.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/it.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/ja.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/ja.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/ko.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/ko.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/lt.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/lt.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/lv.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/lv.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/nb.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/nb.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/nl.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/nl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/pl.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/pl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/pt-br.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/pt-br.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/pt.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/pt.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/ro.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/ro.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/ru.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/ru.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/sk.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/sk.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/sl.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/sl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/sr-cyrl.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/sr-cyrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/sr.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/sr.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/sv.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/sv.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/th.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/th.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/tr.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/tr.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/uk.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/uk.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/vi.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/vi.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/zh-cn.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/zh-cn.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/fullcalendar/lang/zh-tw.js" afterPath="$PROJECT_DIR$/js/fullcalendar/lang/zh-tw.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/services/dataservice.js" afterPath="$PROJECT_DIR$/js/services/dataservice.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/vendor/Chart.js" afterPath="$PROJECT_DIR$/js/vendor/Chart.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/vendor/Chart.min.js" afterPath="$PROJECT_DIR$/js/vendor/Chart.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/vendor/angular-chart.js" afterPath="$PROJECT_DIR$/js/vendor/angular-chart.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/vendor/angular-chart.min.js" afterPath="$PROJECT_DIR$/js/vendor/angular-chart.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/vendor/angular-chart.min.js.map" afterPath="$PROJECT_DIR$/js/vendor/angular-chart.min.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/vendor/jquery-2.1.4.js" afterPath="$PROJECT_DIR$/js/vendor/jquery-2.1.4.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/vendor/jquery-ui-1.7.3.custom.min.js" afterPath="$PROJECT_DIR$/js/vendor/jquery-ui-1.7.3.custom.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/vendor/jquery-ui-1.8.16.custom.min.js" afterPath="$PROJECT_DIR$/js/vendor/jquery-ui-1.8.16.custom.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/vendor/onsenui.js" afterPath="$PROJECT_DIR$/js/vendor/onsenui.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/vendor/onsenui.min.js" afterPath="$PROJECT_DIR$/js/vendor/onsenui.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/cupertino/jquery-ui.min.css" afterPath="$PROJECT_DIR$/lib/cupertino/jquery-ui.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/jquery-ui.custom.min.js" afterPath="$PROJECT_DIR$/lib/jquery-ui.custom.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/jquery.min.js" afterPath="$PROJECT_DIR$/lib/jquery.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/moment.min.js" afterPath="$PROJECT_DIR$/lib/moment.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/config.xml" afterPath="$PROJECT_DIR$/phonegap-workshop-master/config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/css/source-sans-pro.js" afterPath="$PROJECT_DIR$/phonegap-workshop-master/css/source-sans-pro.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/css/styles.css" afterPath="$PROJECT_DIR$/phonegap-workshop-master/css/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/index.html" afterPath="$PROJECT_DIR$/phonegap-workshop-master/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/js/EmployeeView.js" afterPath="$PROJECT_DIR$/phonegap-workshop-master/js/EmployeeView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/js/HomeView.js" afterPath="$PROJECT_DIR$/phonegap-workshop-master/js/HomeView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/js/main.js" afterPath="$PROJECT_DIR$/phonegap-workshop-master/js/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/js/storage/ls-store.js" afterPath="$PROJECT_DIR$/phonegap-workshop-master/js/storage/ls-store.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/js/storage/memory-store.js" afterPath="$PROJECT_DIR$/phonegap-workshop-master/js/storage/memory-store.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/js/storage/websql-store.js" afterPath="$PROJECT_DIR$/phonegap-workshop-master/js/storage/websql-store.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/lib/handlebars.js" afterPath="$PROJECT_DIR$/phonegap-workshop-master/lib/handlebars.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/lib/iscroll.js" afterPath="$PROJECT_DIR$/phonegap-workshop-master/lib/iscroll.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/lib/jquery-1.8.2.min.js" afterPath="$PROJECT_DIR$/phonegap-workshop-master/lib/jquery-1.8.2.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phonegap-workshop-master/readme.md" afterPath="$PROJECT_DIR$/phonegap-workshop-master/readme.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robots.txt" afterPath="$PROJECT_DIR$/robots.txt" />
     </list>
     <ignored path="Code.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -233,64 +25,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="registerController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/controllers/registerController.js">
+      <file leaf-file-name="detailedHeadacheController.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/controllers/detailedHeadacheController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="76" column="173" selection-start-line="76" selection-start-column="8" selection-end-line="76" selection-end-column="173" />
+            <state vertical-scroll-proportion="0.5390625">
+              <caret line="141" column="34" selection-start-line="141" selection-start-column="34" selection-end-line="141" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dashboardController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/controllers/dashboardController.js">
+      <file leaf-file-name="detailedHeadache.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html/detailedHeadache.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="90" column="11" selection-start-line="82" selection-start-column="8" selection-end-line="90" selection-end-column="11" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/html/login.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.29319373">
-              <caret line="64" column="18" selection-start-line="64" selection-start-column="18" selection-end-line="64" selection-end-column="18" />
+            <state vertical-scroll-proportion="-8.541667">
+              <caret line="71" column="41" selection-start-line="71" selection-start-column="41" selection-end-line="71" selection-end-column="41" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="loginController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/controllers/loginController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dashboard.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/html/dashboard.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="3.75">
-              <caret line="30" column="50" selection-start-line="13" selection-start-column="4" selection-end-line="30" selection-end-column="50" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#ons-row#1;n#div#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#ons-row#1;n#div#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#ons-list#0;n#div#0;n#div#0;n#ons-row#1;n#div#0;n#ons-page#0;n#ons-navigator#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#ons-template#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#ons-dialog#0;n#ons-template#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#ons-list#0;n#ons-dialog#0;n#ons-template#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#ons-list-item#0;n#ons-list#0;n#ons-dialog#0;n#ons-template#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#ons-list-item#1;n#ons-list#0;n#ons-dialog#0;n#ons-template#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -334,7 +84,6 @@
         <option value="$PROJECT_DIR$/html/profile.html" />
         <option value="$PROJECT_DIR$/html/settings.html" />
         <option value="$PROJECT_DIR$/html/detailedHeadache.html" />
-        <option value="$PROJECT_DIR$/js/controllers/detailedHeadacheController.js" />
         <option value="$PROJECT_DIR$/js/controllers/chronic.js" />
         <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/js/controllers/manualController.js" />
@@ -346,8 +95,9 @@
         <option value="$PROJECT_DIR$/js/controllers/registerController.js" />
         <option value="$PROJECT_DIR$/js/services/dataservice.js" />
         <option value="$PROJECT_DIR$/js/controllers/dashboardController.js" />
-        <option value="$PROJECT_DIR$/js/controllers/loginController.js" />
         <option value="$PROJECT_DIR$/html/login.html" />
+        <option value="$PROJECT_DIR$/js/controllers/loginController.js" />
+        <option value="$PROJECT_DIR$/js/controllers/detailedHeadacheController.js" />
       </list>
     </option>
   </component>
@@ -388,6 +138,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -472,7 +223,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -601,11 +351,9 @@
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34925374" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19600308" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2782475" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980783" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935917" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48358208" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
@@ -613,10 +361,12 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34925374" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875264" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980783" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -863,20 +613,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/detailedHeadache.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.6363635">
-          <caret line="75" column="34" selection-start-line="75" selection-start-column="25" selection-end-line="75" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/detailedHeadacheController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="98" column="12" selection-start-line="98" selection-start-column="12" selection-end-line="98" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.121753246">
@@ -897,7 +633,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="335" column="120" selection-start-line="335" selection-start-column="120" selection-end-line="335" selection-end-column="120" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -912,7 +647,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="82" column="109" selection-start-line="82" selection-start-column="109" selection-end-line="82" selection-end-column="109" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -920,7 +654,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="54" column="47" selection-start-line="54" selection-start-column="47" selection-end-line="54" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -928,7 +661,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="38" column="4" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -936,7 +668,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="75" column="22" selection-start-line="75" selection-start-column="22" selection-end-line="75" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -944,7 +675,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.129032">
           <caret line="73" column="20" selection-start-line="73" selection-start-column="13" selection-end-line="73" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -952,7 +682,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.828125">
           <caret line="56" column="36" selection-start-line="56" selection-start-column="36" selection-end-line="56" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -960,16 +689,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.20512821">
           <caret line="38" column="11" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="11" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#ons-row#1;n#form#0;n#div#1;n#div#0;n#ons-page#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#1;n#ons-row#1;n#form#0;n#div#1;n#div#0;n#ons-page#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/html/dashboard.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.75">
+        <state vertical-scroll-proportion="0.7305195">
           <caret line="30" column="50" selection-start-line="13" selection-start-column="4" selection-end-line="30" selection-end-column="50" />
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -989,7 +714,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.25">
           <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1021,16 +745,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/controllers/loginController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+        <state vertical-scroll-proportion="0.1640625">
+          <caret line="58" column="11" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/html/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29319373">
-          <caret line="64" column="18" selection-start-line="64" selection-start-column="18" selection-end-line="64" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.19642857">
+          <caret line="49" column="146" selection-start-line="49" selection-start-column="146" selection-end-line="49" selection-end-column="146" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/detailedHeadache.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.541667">
+          <caret line="71" column="41" selection-start-line="71" selection-start-column="41" selection-end-line="71" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controllers/detailedHeadacheController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5390625">
+          <caret line="141" column="34" selection-start-line="141" selection-start-column="34" selection-end-line="141" selection-end-column="34" />
           <folding />
         </state>
       </provider>

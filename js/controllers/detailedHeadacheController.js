@@ -148,11 +148,15 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
 
 
 
-
-        for(var i =0; i<current.triggers.length; i++){
-            if(current.triggers[i].val==true){
-                $scope.triggers.push(current.triggers[i].name);
+        if(current.triggers == null){
+            console.log("no triggers")
+        }else{
+            for(var i =0; i<current.triggers.length; i++){
+                if(current.triggers[i].val==true){
+                    $scope.triggers.push(current.triggers[i].name);
+                }
             }
+
         }
         for(var i =0; i<current.symptoms.length; i++){
             if(current.symptoms[i].val==true){

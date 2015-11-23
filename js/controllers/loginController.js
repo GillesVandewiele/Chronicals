@@ -11,8 +11,31 @@ angular.module('Chronic').controller('loginController', function($scope, dataSer
     ons.ready(function() {
         $('.hidden').removeClass("hidden");
         $('#loadingImg').hide();
-        Ladda.bind( 'input[type=submit]' );
     });
+
+    $scope.cors = function(method, url) {
+        var xhr = new XMLHttpRequest();
+        if ("withCredentials" in xhr) {
+
+            // Check if the XMLHttpRequest object has a "withCredentials" property.
+            // "withCredentials" only exists on XMLHTTPRequest2 objects.
+            xhr.open(method, url, true);
+
+        } else if (typeof XDomainRequest != "undefined") {
+
+            // Otherwise, check if XDomainRequest.
+            // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+            xhr = new XDomainRequest();
+            xhr.open(method, url);
+
+        } else {
+
+            // Otherwise, CORS is not supported by the browser.
+            xhr = null;
+
+        }
+        return xhr;
+    }
 
     $scope.transition = function(){
         //console.log($("body").children());
@@ -41,6 +64,7 @@ angular.module('Chronic').controller('loginController', function($scope, dataSer
         var pwHash = sha3_512($scope.password);
         //try to login
         //retrieve user
+
         $http.get('http://localhost:8080/Chronic/rest/PatientService/login', {headers:{'Authorization':'Basic '+btoa($scope.email+":"+sha3_512(sha3_512($scope.password)+dataService.getApiKey()))}}).
         success(function (data, status, headers, config) {
             console.log("User succesfully logged in:",data);
