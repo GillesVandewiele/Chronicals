@@ -12,6 +12,7 @@ angular.module('Chronic').controller('manualController', function($scope, dataSe
         $('.hidden').removeClass("hidden");
         $('#loadingImg').hide();
 
+        localStorage.setItem("test", "foo");
 
 
         var user = {"firstName": "Bart",
