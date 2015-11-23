@@ -3,7 +3,6 @@ angular.module('Chronic').service('dataService', function($localStorage, $http) 
   // Reset the local storage; always comment this out!
   //  $localStorage.$reset();
 
-
     var headache;
 
     var medicine;
@@ -26,6 +25,7 @@ angular.module('Chronic').service('dataService', function($localStorage, $http) 
           headacheList = $localStorage.headacheList;
           headacheList.push(newObj);
           $localStorage.headacheList = headacheList;
+          console.log("nieuwe headache geadd:",$localStorage.headacheList)
       }
       else {
           $localStorage.headacheList = [newObj];
@@ -95,50 +95,50 @@ angular.module('Chronic').service('dataService', function($localStorage, $http) 
       //    alert("error retrieving data")
       //});
       //return symptoms;
-  	////TODO: replace this by a DB call
-  	//return [{id: 0, name:"symptom1", description:"this is a description", val: false}, {id: 1, name:"symptom2", description:"this is a description", val: false},
-  	//		{id: 2, name:"symptom3", description:"this is a description", val: false}, {id: 3, name:"symptom4", description:"this is a description", val: false}]; // List of all symptoms
+  	//TODO: replace this by a DB call
+  	return [{id: 0, name:"symptom1", description:"this is a description", val: false}, {id: 1, name:"symptom2", description:"this is a description", val: false},
+  			{id: 2, name:"symptom3", description:"this is a description", val: false}, {id: 3, name:"symptom4", description:"this is a description", val: false}]; // List of all symptoms
 
   };
 
   var getTriggers = function(){
-
-      $http({ method: 'GET', url: 'http://localhost:8080/Chronic/rest/TriggerService/Triggers' }).
-      success(function (data, status, headers, config) {
-          //alert(""+data);
-          console.log("triggers fetched:"+data);
-          triggers = data;
-          triggers.forEach(function(entry){
-             entry["val"]=false;
-          });
-
-      }).
-      error(function (data, status, headers, config) {
-          alert("error retrieving data")
-      });
-      return triggers;
+      //
+      //$http({ method: 'GET', url: 'http://localhost:8080/Chronic/rest/TriggerService/Triggers' }).
+      //success(function (data, status, headers, config) {
+      //    //alert(""+data);
+      //    console.log("triggers fetched:"+data);
+      //    triggers = data;
+      //    triggers.forEach(function(entry){
+      //       entry["val"]=false;
+      //    });
+      //
+      //}).
+      //error(function (data, status, headers, config) {
+      //    alert("error retrieving data")
+      //});
+      //return triggers;
 
   	////TODO: replace this by a DB call
-  	//return [{id: 0, name:"trigger1", description:"this is a description 1", val: false}, {id: 1, name:"trigger2", description:"this is a description 2", val: false},
-  	//		{id: 2, name:"trigger3", description:"this is a description 3", val: false}, {id: 3, name:"trigger4", description:"this is a description 4", val: false}]; // List of all triggers
+  	return [{id: 0, name:"trigger1", description:"this is a description 1", val: false}, {id: 1, name:"trigger2", description:"this is a description 2", val: false},
+  			{id: 2, name:"trigger3", description:"this is a description 3", val: false}, {id: 3, name:"trigger4", description:"this is a description 4", val: false}]; // List of all triggers
 
   };
 
   var getDBDrugs = function(){
-      $http({ method: 'GET', url: 'http://localhost:8080/Chronic/rest/DrugService/drugs' }).
-      success(function (data, status, headers, config) {
-          //alert(""+data);
-          console.log("Drugs fetched:"+data);
-          drugs = data;
-
-      }).
-      error(function (data, status, headers, config) {
-          alert("error retrieving data")
-      });
-      return drugs;
+      //$http({ method: 'GET', url: 'http://localhost:8080/Chronic/rest/DrugService/drugs' }).
+      //success(function (data, status, headers, config) {
+      //    //alert(""+data);
+      //    console.log("Drugs fetched:"+data);
+      //    drugs = data;
+      //
+      //}).
+      //error(function (data, status, headers, config) {
+      //    alert("error retrieving data")
+      //});
+      //return drugs;
   	////TODO: replace this by DB call
-  	//return [{id: 0, name:"drug1", description:"this is a description of drug1"}, {id: 1, name:"drug2", description:"this is a description of drug2"},
-       //     {id: 2, name:"drug3", description:"this is a description of drug3"}, {id: 3, name: "...", description: "this is a description"}];
+  	return [{id: 0, name:"drug1", description:"this is a description of drug1"}, {id: 1, name:"drug2", description:"this is a description of drug2"},
+            {id: 2, name:"drug3", description:"this is a description of drug3"}, {id: 3, name: "...", description: "this is a description"}];
 
   };
 
