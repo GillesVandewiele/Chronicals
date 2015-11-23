@@ -25,8 +25,7 @@ angular.module('Chronic').service('dataService', function($localStorage, $http) 
           headacheList = $localStorage.headacheList;
           headacheList.push(newObj);
           $localStorage.headacheList = headacheList;
-          localStorage.headacheList = headacheList;
-          window.localStorage.headacheList = headacheList;
+
           console.log("nieuwe headache geadd:",$localStorage.headacheList)
       }
       else {
