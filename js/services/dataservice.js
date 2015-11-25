@@ -141,45 +141,7 @@ angular.module('Chronic').service('dataService', function($http) {
 
 
   var getDrugs = function(){
-      var drugsList =  [{id: 0, name:"drug1", description:"this is a description of drug1"}, {id: 1, name:"drug2", description:"this is a description of drug2"},
-          {id: 2, name:"drug3", description:"this is a description of drug3"}, {id: 3, name: "...", description: "this is a description"}];
-
-      $http({ method: 'GET', url: 'http://localhost:8080/Chronic/rest/DrugService/drugs' }).
-      success(function (data, status, headers, config) {
-          //alert(""+data);
-
-
-          //drugsList = drugsList.concat(data);
-          //
-          //var list = drugsList;
-          //
-          //if(JSON.parse(localStorage.getItem("drugList") == null)){
-          //    localStorage.setItem("drugList",JSON.stringify(list));
-          //}else{
-          //    localStorage.setItem("drugList",JSON.stringify(list));
-          //}
-          //console.log("return:", JSON.parse(localStorage.getItem("drugList")));
-          //return JSON.parse(localStorage.getItem("drugList"));
-            return drugsList;
-      }).
-      error(function (data, status, headers, config) {
-          console.log("error retrieving data");
-          list = drugsList;
-          console.log("list:", list);
-          console.log("list drugs", JSON.parse(localStorage.getItem("drugList") ));
-          if(JSON.parse(localStorage.getItem("drugList") == null)){
-              localStorage.setItem("drugList",JSON.stringify(list));
-          }else{
-              list2 = JSON.parse(localStorage.getItem("drugList"));
-              if(list2 != null)
-                  list2.push.apply(list);
-              else
-                  list2 = list;
-              localStorage.setItem("drugList",JSON.stringify(list2));
-          }
-          //return JSON.parse(localStorage.getItem("drugList"));
-          return drugsList;
-      });
+      return JSON.parse(localStorage.getItem("drugList"));
   };
 
   var addDrug = function(drugName){
@@ -248,8 +210,8 @@ angular.module('Chronic').service('dataService', function($http) {
     };
 
     var getHeadachesNoEnd = function(){
-        listItems = getHeadacheList();
-        listNoEnd = [];
+        var listItems = getHeadacheList();
+        var listNoEnd = [];
         if(listItems != null){
 	        listItems.sort(function(a,b){ //sort the list on their start dates // date of consumption
 

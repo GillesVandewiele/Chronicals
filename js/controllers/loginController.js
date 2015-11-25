@@ -76,14 +76,19 @@ angular.module('Chronic').controller('loginController', function($scope, dataSer
         error(function (data, status, headers, config) {
             console.log("error loggin in: "+status);
             console.log("data:" +data);
-            if(dataService.getPasswordHash().toString()==pwHash.toString() && dataService.getEmail() == $scope.email){
-                //$("#container").css("display", "none");
-                //$("#loadingImg").show();
-                $scope.transition();
-                location.href="dashboard.html";
-            }else{
+            if(dataService.getPasswordHash()==null || dataService.getPasswordHash().length<1){
                 $(".error_message").show();
+            }else{
+                if(dataService.getPasswordHash().toString()==pwHash.toString() && dataService.getEmail() == $scope.email){
+                    //$("#container").css("display", "none");
+                    //$("#loadingImg").show();
+                    $scope.transition();
+                    location.href="dashboard.html";
+                }else{
+                    $(".error_message").show();
+                }
             }
+
         });
 
 

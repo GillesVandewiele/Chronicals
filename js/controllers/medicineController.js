@@ -55,6 +55,7 @@ angular.module('Chronic').controller('medicineController', function($scope, data
 	// Populate the dropdown and the advice
 	$scope.advice = "Dit is een voorbeeldadvies.";
 	$scope.drugs = dataService.getDrugs();
+    //console.log("lel", $scope.drugs);
 
 	// Create the possibility to add an own drug in the dropdown
 	$(document).on("click", '#drugDropdown', function(e){

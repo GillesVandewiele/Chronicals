@@ -11,6 +11,8 @@ angular.module('Chronic').config(['$httpProvider', function($httpProvider) {
     delete $httpProvider.defaults.headers.common["X-Requested-With"];
     $httpProvider.defaults.headers.common["Accept"] = "application/json";
     $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+    $httpProvider.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
+
 }
 ]);
 angular.module('Chronic').controller("dashboardController", function($scope, dataService,$http) {
@@ -68,6 +70,8 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
             "isEmployed": true,
             "diagnosis": ""};
 
+        $scope.getShitFromRest();
+
         ////register user
         //$http.post('http://localhost:8080/Chronic/rest/PatientService/patients', JSON.stringify(user)).
         //success(function (data, status, headers, config) {
@@ -108,7 +112,9 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
             var hours = parseInt(Math.abs(new Date() - new Date(dataService.getHeadachesNoEnd()[dataService.getHeadachesNoEnd().length - 1].intensityValues[0].key)) / 36e5);
             //console.log("duratie: ", hours);
             $('.dashboardFooter').append('<p>Uw hoofdpijn duurt al ' + hours + ' uur</p><p>Druk hier om meer info toe te voegen</p>');
-            dataService.setCurrentHeadache(dataService.getHeadachesNoEnd()[dataService.getHeadachesNoEnd().length - 1]);
+            var current = dataService.getHeadachesNoEnd()[dataService.getHeadachesNoEnd().length - 1];
+            dataService.setCurrentHeadache(current);
+            console.log("currentHeadache:", dataService.getCurrentHeadache());
             //console.log("currentHeadache", dataService.getCurrentHeadache());
 
 
@@ -176,7 +182,7 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
     };
 
     $scope.closeListItem = function () {
-        currentHeadache = dataService.getCurrentHeadache();
+        var currentHeadache = dataService.getCurrentHeadache();
         currentHeadache.end = new Date();
         dataService.setCurrentHeadache(currentHeadache);
         console.log("currentHeadache", currentHeadache, dataService.getCurrentHeadache());
@@ -187,6 +193,36 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
         dataService.removeHeadache(dataService.getCurrentHeadache());
 
     };
+
+    $scope.getShitFromRest = function(){
+            $http({ method: 'GET', url: 'http://localhost:8080/Chronic/rest/DrugService/drugs' }).
+            success(function (data, status, headers, config) {
+                //alert(""+data);
+
+                var list = data;
+
+                if(JSON.parse(localStorage.getItem("drugList")) == null){
+                    console.log("tis null");
+                    localStorage.setItem("drugList",JSON.stringify(list));
+                }else{
+                    console.log("tis niet null");
+                    list.concat(JSON.parse(localStorage.getItem("drugList")));
+                    localStorage.setItem("drugList",JSON.stringify(list));
+                }
+                //return drugsList;
+            }).
+            error(function (data, status, headers, config) {
+                console.log("geen connectie met rest service");
+                var drugsList =  [{id: 0, name:"drug1", description:"this is a description of drug1"}, {id: 1, name:"drug2", description:"this is a description of drug2"},
+                    {id: 2, name:"drug3", description:"this is a description of drug3"}, {id: 3, name: "...", description: "this is a description"}];
+                if(JSON.parse(localStorage.getItem("drugList"))==null){
+                    var drugsList =  [{id: 0, name:"drug1", description:"this is a description of drug1"}, {id: 1, name:"drug2", description:"this is a description of drug2"},
+                        {id: 2, name:"drug3", description:"this is a description of drug3"}, {id: 3, name: "...", description: "this is a description"}];
+                        localStorage.setItem("drugList", JSON.stringify(drugsList));
+                }
+                //return drugsList;
+            });
+    }
 }
 );
 
