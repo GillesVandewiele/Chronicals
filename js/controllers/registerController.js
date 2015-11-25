@@ -36,6 +36,8 @@ angular.module('Chronic').controller('registerController', function($scope, data
 
 
 
+
+
     $scope.submitRegister = function(){
         //console.log("firstname: ", $scope.firstname);
         //console.log("lastname: ", $scope.lastname);
@@ -49,33 +51,39 @@ angular.module('Chronic').controller('registerController', function($scope, data
         //TODO: check if username already exists and stuff
 
 
-        //var user = {
-        //    "firstName": $scope.firstname,
-        //    "lastName": $scope.lastname,
-        //    "birthDate": "",
-        //    "email": $scope.email,
-        //    "password": ""+sha3_512($scope.password),
-        //    "isMale": true,
-        //    "relation": 2,
-        //    "advice": "",
-        //    "isEmployed": true,
-        //    "diagnosis": ""};
-        //
-        //
-        //
-        //$http.post('http://localhost:8080/Chronic/rest/PatientService/patients', JSON.stringify(user)).
-        ////$http({ method: 'POST', url: 'http://localhost:8080/Chronic/rest/PatientService/patients' , body: JSON.stringify(user)}).
-        //success(function (data, status, headers, config) {
-        //
-        //    console.log("Return van indienen user:"+status);
-        //}).
-        //error(function (data, status, headers, config) {
-        //    console.log("error creating user: "+status);
-        //    console.log("data:" +data);
-        //});
+        var user = {
+            "firstName": $scope.firstname,
+            "lastName": $scope.lastname,
+            "birthDate": "",
+            "email": $scope.email,
+            "password": ""+sha3_512($scope.password),
+            "isMale": true,
+            "relation": 2,
+            "advice": "",
+            "isEmployed": true,
+            "diagnosis": ""};
 
-        dataService.registerUser($scope.firstname, $scope.lastname, $scope.birthdate, $scope.sex, $scope.status, $scope.employment, $scope.email, sha3_512($scope.password));
-        location.href="dashboard.html";
+
+
+        $http.post('http://localhost:8080/Chronic/rest/PatientService/patients', JSON.stringify(user)).
+        //$http({ method: 'POST', url: 'http://localhost:8080/Chronic/rest/PatientService/patients' , body: JSON.stringify(user)}).
+        success(function (data, status, headers, config) {
+
+            console.log("Return van indienen user:"+status);
+            dataService.clearCache();
+            dataService.registerUser($scope.firstname, $scope.lastname, $scope.birthdate, $scope.sex, $scope.status, $scope.employment, $scope.email, sha3_512($scope.password));
+            location.href="dashboard.html";
+        }).
+        error(function (data, status, headers, config) {
+            console.log("error creating user: "+status);
+            console.log("data:" +data);
+            alert("Geen verbinding met de REST service, we gaan verder met lokale gegevens voor testing-purposes");
+            dataService.clearCache();
+            dataService.registerUser($scope.firstname, $scope.lastname, $scope.birthdate, $scope.sex, $scope.status, $scope.employment, $scope.email, sha3_512($scope.password));
+            location.href="dashboard.html";
+        });
+
+
     }
 
 });

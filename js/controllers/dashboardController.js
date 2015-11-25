@@ -9,8 +9,9 @@
 angular.module('Chronic').config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common["X-Requested-With"];
-    $httpProvider.defaults.headers.common["Accept"] = "application/json";
-    $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+    $httpProvider.defaults.headers.common["Accept"] = "application/json, * / *";
+
+    $httpProvider.defaults.headers.common["Content-Type"] = "application/json, text/plain";
     $httpProvider.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 
 }
@@ -28,19 +29,6 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
         $("body").children().eq(0).show();
         $('body').children().eq(1).hide();
     };
-
-    document.addEventListener("deviceready", onDeviceReady, false);
-    function onDeviceReady() {
-        window.alert("HALLO");
-        console.log("HALLO");
-        document.addEventListener("backbutton", backKeyDown, true);
-        navigator.app.overrideBackbutton(true);
-        function backKeyDown(e) {
-            e.preventDefault();
-            window.alert("HALLO JA DIT WERKT");
-
-        };
-    }
 
     $scope.show = function (dlg) {
         if (dataService.getHeadachesNoEnd().length == 0) {
@@ -70,7 +58,12 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
             "isEmployed": true,
             "diagnosis": ""};
 
+
+
         $scope.getShitFromRest();
+
+
+
 
         ////register user
         //$http.post('http://localhost:8080/Chronic/rest/PatientService/patients', JSON.stringify(user)).
@@ -114,7 +107,7 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
             $('.dashboardFooter').append('<p>Uw hoofdpijn duurt al ' + hours + ' uur</p><p>Druk hier om meer info toe te voegen</p>');
             var current = dataService.getHeadachesNoEnd()[dataService.getHeadachesNoEnd().length - 1];
             dataService.setCurrentHeadache(current);
-            console.log("currentHeadache:", dataService.getCurrentHeadache());
+            //console.log("currentHeadache:", dataService.getCurrentHeadache());
             //console.log("currentHeadache", dataService.getCurrentHeadache());
 
 
@@ -131,13 +124,6 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
                 });
             }
         }
-        document.addEventListener("backbutton", backKeyDown, true);
-        function backKeyDown(e) {
-            e.preventDefault();
-            alert("HALLO JA DIT WERKT");
-
-        };
-
 
     });
 
@@ -202,10 +188,10 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
                 var list = data;
 
                 if(JSON.parse(localStorage.getItem("drugList")) == null){
-                    console.log("tis null");
+                    //console.log("tis null");
                     localStorage.setItem("drugList",JSON.stringify(list));
                 }else{
-                    console.log("tis niet null");
+                    //console.log("tis niet null");
                     list.concat(JSON.parse(localStorage.getItem("drugList")));
                     localStorage.setItem("drugList",JSON.stringify(list));
                 }
