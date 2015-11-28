@@ -71,16 +71,14 @@ angular.module('Chronic').controller('registerController', function($scope, data
 
             console.log("Return van indienen user:"+status);
             dataService.clearCache();
-            dataService.registerUser($scope.firstname, $scope.lastname, $scope.birthdate, $scope.sex, $scope.status, $scope.employment, $scope.email, sha3_512($scope.password));
-            location.href="dashboard.html";
+            location.href="login.html";
         }).
         error(function (data, status, headers, config) {
             console.log("error creating user: "+status);
             console.log("data:" +data);
             alert("Geen verbinding met de REST service, we gaan verder met lokale gegevens voor testing-purposes");
             dataService.clearCache();
-            dataService.registerUser($scope.firstname, $scope.lastname, $scope.birthdate, $scope.sex, $scope.status, $scope.employment, $scope.email, sha3_512($scope.password));
-            location.href="dashboard.html";
+            location.href="login.html";
         });
 
 

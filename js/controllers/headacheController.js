@@ -9,9 +9,9 @@
 angular.module('Chronic').controller('headacheController', function($scope, dataService){
 
     ons.ready(function() {
+        ons.bootstrap();
         $('.hidden').removeClass("hidden");
         $('#loadingImg').hide();
-
     });
 
     $scope.transition = function(){
@@ -244,6 +244,8 @@ angular.module('Chronic').directive('ngModel', function( $filter ) {
     };
 });
 
+/** COMMENTED OUT BECAUSE OF BUG **/
+/*
 angular.module('Chronic').directive('validenddate', function() {
   return {
     require: 'ngModel',
@@ -335,3 +337,4 @@ angular.module('Chronic').directive('validendtime', function() {
 	}
   };
 });
+*/
