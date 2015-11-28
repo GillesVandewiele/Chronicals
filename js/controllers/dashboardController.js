@@ -9,14 +9,13 @@
 angular.module('Chronic').config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common["X-Requested-With"];
-    $httpProvider.defaults.headers.common["Accept"] = "application/json, * / *";
+    $httpProvider.defaults.headers.common["Accept"] = "application/json";
 
-    $httpProvider.defaults.headers.common["Content-Type"] = "application/json, text/plain";
+    $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
     $httpProvider.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 
 }
-]);
-angular.module('Chronic').controller("dashboardController", function($scope, dataService,$http) {
+]).controller("dashboardController", function($scope, dataService,$http) {
 
     $scope.dialogs = {};
     ons.ready(function() {
@@ -187,10 +186,10 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
     };
 
     $scope.getShitFromRest = function(){
-            $http({ method: 'GET', url: 'http://localhost:8080/Chronic/rest/DrugService/drugs' }).
+            $http({ method: 'GET', url: 'http://localhost:8080/Chronic/rest/DrugService/drugs'}).
             success(function (data, status, headers, config) {
                 //alert(""+data);
-
+                console.log("succesfully retrieved");
                 var list = data;
 
                 if(JSON.parse(localStorage.getItem("drugList")) == null){

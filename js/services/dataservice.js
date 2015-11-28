@@ -167,7 +167,7 @@ angular.module('Chronic').service('dataService', function($http) {
 
   var getAdvice = function(){
       return JSON.parse(localStorage.getItem("advice"));
-  }
+  };
 
   var getDrugs = function(){
       return JSON.parse(localStorage.getItem("drugList"));
