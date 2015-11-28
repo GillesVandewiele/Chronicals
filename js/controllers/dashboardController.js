@@ -168,10 +168,16 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
     };
 
     $scope.closeListItem = function () {
+        //console.log("currentHeadache preSetEnd", currentHeadache, dataService.getCurrentHeadache());
         var currentHeadache = dataService.getCurrentHeadache();
+        var orig = jQuery.extend(true, {}, currentHeadache);;
         currentHeadache.end = new Date();
+        currentHeadache.location = "LEL";
         dataService.setCurrentHeadache(currentHeadache);
-        console.log("currentHeadache", currentHeadache, dataService.getCurrentHeadache());
+        dataService.removeHeadache(orig);
+        dataService.addHeadache(currentHeadache);
+
+        //console.log("currentHeadache", currentHeadache, dataService.getCurrentHeadache());
     };
 
 

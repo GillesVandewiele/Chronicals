@@ -34,31 +34,6 @@
     <script src="../js/vendor/Chart.min.js"></script>
     <script src="../js/vendor/angular-chart.js"></script>
 
-
-    <script type="text/javascript" charset="utf-8">
-
-
-        // Wait for device API libraries to load
-        //
-        function onLoad() {
-            document.addEventListener("deviceready", onDeviceReady, false);
-        }
-
-        // device APIs are available
-        //
-        function onDeviceReady() {
-            // Register the event listener
-            document.addEventListener("backbutton", onBackKeyDown, false);
-        }
-
-        // Handle the back button
-        //
-        function onBackKeyDown() {
-        }
-
-    </script>
-
-
 </head>
 
 <body ng-controller="historyController">
@@ -110,7 +85,7 @@
         <ons-toolbar>
             <div class="left"><ons-toolbar-button ng-click=";transition();" onclick="location.href='dashboard.html'"><i class="fa fa-chevron-left"></i> </ons-toolbar-button></div>
             <!--<div class="center" style="margin: 0 auto; text-align: center;">Nieuwe hoofdpijn</div>-->
-            <div class="center"><ons-toolbar-button ng-click="historyNavigator.popPage()"><ons-icon icon="fa fa-list"></ons-icon> </ons-toolbar-button><ons-toolbar-button ng><ons-icon icon="fa fa-calendar buttonIcon"></ons-icon></ons-toolbar-button></div>
+            <div class="center"><ons-toolbar-button ng-click="historyNavigator.popPage();"><ons-icon icon="fa fa-list"></ons-icon> </ons-toolbar-button><ons-toolbar-button ng><ons-icon icon="fa fa-calendar buttonIcon"></ons-icon></ons-toolbar-button></div>
         </ons-toolbar>
         <div class="loadingImg" style="display: block;">
             <div class="spinner">
