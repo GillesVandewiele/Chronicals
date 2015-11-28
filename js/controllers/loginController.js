@@ -13,6 +13,9 @@ angular.module('Chronic').controller('loginController', function($scope, dataSer
         $('#loadingImg').hide();
     });
 
+    // Set everything to null until a login has occured
+    dataService.registerUser(null, null, null, null, null, null, null, null);
+
     $scope.cors = function(method, url) {
         var xhr = new XMLHttpRequest();
         if ("withCredentials" in xhr) {
@@ -65,11 +68,15 @@ angular.module('Chronic').controller('loginController', function($scope, dataSer
         //try to login
         //retrieve user
 
+        // We can't use getAuthorization yet from the dataservice since no user is registered yet.
         $http.get('http://localhost:8080/Chronic/rest/PatientService/login', {headers:{'Authorization':'Basic '+btoa($scope.email+":"+sha3_512(sha3_512($scope.password)+dataService.getApiKey()))}}).
         success(function (data, status, headers, config) {
             console.log("User succesfully logged in:",data);
             var user = data;
+            console.log(data.advice);
+            dataService.setAdvice(data.advice);
             dataService.registerUser(user.firstname, user.lastname, user.birthdate, user.sex, user.status, user.employment, user.email, sha3_512($scope.password));
+            dataService.syncDB();
             $scope.transition();
             location.href="dashboard.html";
         }).

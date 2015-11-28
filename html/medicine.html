@@ -42,71 +42,93 @@
             <div class="double-bounce2"></div>
         </div>
     </div>
-	<ons-page>
-      <ons-toolbar>
-      	<div class="left"></div>
-        <div class="center" style="margin: 0 auto; text-align: center;"></div>
-        <div class="right"></div>
-      </ons-toolbar>
+    <ons-navigator var="myNavigator" class="hidden">
+        <ons-page>
+          <ons-toolbar>
+            <div class="left"></div>
+            <div class="center" style="margin: 0 auto; text-align: center;"></div>
+            <div class="right"><ons-toolbar-button ng-click="myNavigator.pushPage('manualAddMedicine.html');"><ons-icon icon="ion-help" style="font-size: 100%;"></ons-icon></ons-toolbar-button></div>
+          </ons-toolbar>
 
-      <div class="navigatorTab">
-      	<div class="navigatorTabHead">
-      		<ons-icon icon="fa-info-circle" style="font-size: 250%;"></ons-icon> <br>
-      		<p class="label">{{advice}}</p>
-      	</div>
+          <div class="navigatorTab">
+            <div class="navigatorTabHead">
+                <h1>Medicijn ingeven</h1>
+            </div>
 
-      	<div class="navigatorTabBody">
-      		<form name="addMedicineForm">
-		      	<ons-row>
-	      			<p class="label" style="margin-left: 5%;">Medicijn + hoeveelheid:</p>
-		      	</ons-row>
-	      		<ons-row>
-				    <div class="selectDiv" style="width: 40%;">
-				        <span class="selectDefault">{{selectedDrug.name}}</span>
-					      <select id="drugDropdown" name="drug" ng-options="drug as drug.name for drug in drugs" ng-model="selectedDrug" required>
-					      	<option style="display:none" value="">select a drug</option>
-						  </select>
-				     </div>
-					  <input id="ownDrug" type="text" ng-model="ownDrug">
-				     <input type="number" name="quantity" style="width: 20%;" min="1" class="medicineQuantity" ng-model="drugQuantity" required>
-				     <label>mg</label>
-				     <small class="error" ng-show="addMedicineForm.quantity.$error.required">
-	      				- U moet een hoeveelheid ingeven!
-      				 </small>
-				     <small class="error" ng-show="addMedicineForm.quantity.$error.min">
-	      				- U moet een correcte hoeveelheid ingeven!
-      				 </small>
-				     <small class="error" ng-show="addMedicineForm.drug.$error.required">
-	      				- U moet een medicijn ingeven!
-      				 </small>
+            <div class="navigatorTabBody">
+                <form name="addMedicineForm">
+                    <ons-row>
+                        <p class="label" style="margin-left: 5%;">Medicijn + hoeveelheid:</p>
+                    </ons-row>
+                    <ons-row>
+                        <div class="selectDiv" style="width: 40%;">
+                            <span class="selectDefault">{{selectedDrug.name}}</span>
+                              <select id="drugDropdown" name="drug" ng-options="drug as drug.name for drug in drugs" ng-model="selectedDrug" required>
+                                <option style="display:none" value="">select a drug</option>
+                              </select>
+                         </div>
+                          <input id="ownDrug" type="text" ng-model="ownDrug">
+                         <input type="number" name="quantity" style="width: 20%;" min="1" class="medicineQuantity" ng-model="drugQuantity" required>
+                         <label>mg</label>
+                        <ons-row>
+                         <small class="error" ng-show="addMedicineForm.quantity.$error.required">
+                            - U moet een hoeveelheid ingeven!
+                         </small>
+                         <small class="error" ng-show="addMedicineForm.quantity.$error.min">
+                            - U moet een correcte hoeveelheid ingeven!
+                         </small>
+                         <small class="error" ng-show="addMedicineForm.drug.$error.required">
+                            - U moet een medicijn ingeven!
+                         </small>
+                        </ons-row>
 
-			     </ons-row>
-			     <ons-row style="margin-top: 5%;">
-			     	<p style="margin-left: 5%;">{{selectedDrug.description}}</p>
-			     </ons-row>
-			     <ons-row>
-	      			<p class="label" style="margin-left: 5%">Tijdstip van inname:</p>
-	      		 </ons-row>
-			     <ons-row>
-			     	<input type="date" name="medicineDate" ng-model="drugDate" style="margin-left: 5%;" min="2013-01-01" max="2050-01-01" class="datePicker" required></ons-col>
-	      			<input type="time" name="medicineTime" placeholder="HH:mm" ng-model="drugTime" class="timePicker" step="60" required></ons-col>
-	      			<small class="error" ng-show="addMedicineForm.medicineTime.$error.time">
-	      				- U moet een geldig tijdstip ingeven!
-      				 </small>
-				     <small class="error" ng-show="addMedicineForm.medicineDate.$error.date">
-	      				- U moet een geldig datum ingeven!
-      				 </small>
-			     </ons-row>
-		     </form>
-      	</div>
+                     </ons-row>
+                     <ons-row style="margin-top: 5%;">
+                        <p style="margin-left: 5%;">{{selectedDrug.description}}</p>
+                     </ons-row>
+                     <ons-row>
+                        <p class="label" style="margin-left: 5%">Tijdstip van inname:</p>
+                     </ons-row>
+                     <ons-row>
+                        <input type="date" name="medicineDate" ng-model="drugDate" style="margin-left: 5%;" min="2013-01-01" max="2050-01-01" class="datePicker" required></ons-col>
+                        <input type="time" name="medicineTime" placeholder="HH:mm" ng-model="drugTime" class="timePicker" step="60" required></ons-col>
+                        <small class="error" ng-show="addMedicineForm.medicineTime.$error.time">
+                            - U moet een geldig tijdstip ingeven!
+                         </small>
+                         <small class="error" ng-show="addMedicineForm.medicineDate.$error.date">
+                            - U moet een geldig datum ingeven!
+                         </small>
+                     </ons-row>
+                 </form>
+            </div>
 
-		<div class="navigatorTabFoot">
-		    <ons-bottom-toolbar>
-        		<button class="button cancelButton"  ng-click="cancel();;transition();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
-        		<button class="button finishButton" ng-disabled="addMedicineForm.$invalid" ng-click="addMedicine('dashboard.html');" style="float: right;">Sla op <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
-        	</ons-bottom-toolbar>
-		</div>
-      </div>
-    </ons-page>
+            <div class="navigatorTabFoot">
+                <ons-bottom-toolbar>
+                    <button class="button cancelButton"  ng-click="cancel();;transition();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
+                    <button class="button finishButton" ng-disabled="addMedicineForm.$invalid" ng-click="addMedicine('dashboard.html');" style="float: right;">Sla op <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
+                </ons-bottom-toolbar>
+            </div>
+          </div>
+        </ons-page>
+    </ons-navigator>
+
+    <script type="text/ons-template" id="manualAddMedicine.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left"><ons-toolbar-button ng-click="myNavigator.popPage()"><ons-icon icon="ion-ios-arrow-back" style="font-size: 150%;"></ons-icon></ons-toolbar-button></div>
+                <div class="center" style="margin: 0 auto; text-align: center;"><ons-toolbar-button ng-click=";transition();" onclick="location.href='dashboard.html'"><ons-icon icon="ion-ios-home" style="font-size: 150%;"></ons-icon></ons-toolbar-button></div>
+                <div class="right"></div>
+            </ons-toolbar>
+            <div style="text-align: center; margin-top: 5%;">
+                <div><h2>Medicijn</h2></div>
+                <hr>
+            </div>
+
+            <div style="margin-left: 2%; margin-right: 2%;text-align: justify">
+                <p>Een inname van een medicijn toevoegen is heel eenvoudig. U hoeft enkel het medicijn te selecteren en het tijdstip. Als het medicijn niet in de keuzelijst staat kan u drukken op "..." om zelf de naam van een medicijn in te geven.</p>
+            </div>
+        </ons-page>
+    </script>
 
 </body>
+</html>

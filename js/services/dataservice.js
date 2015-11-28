@@ -81,6 +81,48 @@ angular.module('Chronic').service('dataService', function($http) {
       return list;
   };
 
+  var getAuthorization = function() {
+      var currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      if(currentUser != null) return 'Basic ' + btoa(currentUser.email + ":" + sha3_512(currentUser.passwordHash + getApiKey()));
+      else return null;
+  };
+
+  var syncDB = function(){
+      // First check if there's an internet connection available
+      console.log(getAuthorization());
+      $http.get('http://localhost:8080/Chronic/rest/DBService/status', {headers:{'Authorization': getAuthorization()}}).
+          success(function (data, status, headers, config) {
+                alert("CONNECTED TO INTERNET OR DATABASE " + status)
+              // Get advice for patient
+
+              // Get new drugs
+
+                // Get new symptoms
+                var symptomsList = JSON.parse(localStorage.getItem("symptoms"));
+                if(symptomsList == null) symptomsList = [];
+                $http({ method: 'GET', url: 'http://localhost:8080/Chronic/rest/SymptomService/symptoms' }).
+                    success(function (data, status, headers, config) {
+                        //alert(""+data);
+                        //console.log("symptoms fetched:"+data);
+                        symptoms = data;
+                        symptoms.forEach(function(entry){
+                            entry["val"]=false;
+                        });
+                        symptomsList.push.apply(symptoms);
+                        console.log(symptomsList)
+                        localStorage.setItem("symptoms", JSON.stringify(symptomsList));
+                    }).
+                    error(function (data, status, headers, config) {
+                        alert("error retrieving symptoms from database")
+                    });
+
+              // Get new triggers
+          }).
+          error(function (data, status, headers, config) {
+              alert("NO INTERNET OR DATABASE CONNECTION " + status)
+          });
+  }
+
   var setMedicineList = function(list){
       medicineList = list;
       localStorage.setItem("medicineList",JSON.stringify(list));
@@ -93,26 +135,7 @@ angular.module('Chronic').service('dataService', function($http) {
   };
 
   var getSymptoms = function(){
-      //TODO: replace this by a DB call
-      symptomsList =  [{id: 0, name:"symptom1", description:"this is a description", val: false}, {id: 1, name:"symptom2", description:"this is a description", val: false},
-          {id: 2, name:"symptom3", description:"this is a description", val: false}, {id: 3, name:"symptom4", description:"this is a description", val: false}]; // List of all symptoms
-
-
-      $http({ method: 'GET', url: 'http://localhost:8080/Chronic/rest/SymptomService/symptoms' }).
-      success(function (data, status, headers, config) {
-          //alert(""+data);
-          //console.log("symptoms fetched:"+data);
-          symptoms = data;
-          symptoms.forEach(function(entry){
-              entry["val"]=false;
-          });
-
-      }).
-      error(function (data, status, headers, config) {
-          alert("error retrieving data")
-      });
-      symptomsList.push.apply(symptoms);
-      return symptomsList;
+      return JSON.parse(localStorage.getItem("symptoms"));
   	};
 
   var getTriggers = function(){
@@ -138,7 +161,13 @@ angular.module('Chronic').service('dataService', function($http) {
 
   };
 
+  var setAdvice = function(advice){
+      localStorage.setItem("advice", JSON.stringify(advice));
+  };
 
+  var getAdvice = function(){
+      return JSON.parse(localStorage.getItem("advice"));
+  }
 
   var getDrugs = function(){
       return JSON.parse(localStorage.getItem("drugList"));
@@ -269,8 +298,12 @@ angular.module('Chronic').service('dataService', function($http) {
         return email;
     };
 
-    var registerUser = function (firstname, lastname, birthdate, sex, status, employment, email, sha3) {
+    var registerUser = function (_firstname, _lastname, _birthdate, _sex, _status, _employment, _email, _sha3) {
+        var user = { firstname: _firstname, lastname: _lastname, birthdate: _birthdate, sex: _sex, status: _status,
+                     employment: _employment, email: _email, passwordHash: _sha3 };
+        localStorage.setItem("currentUser", JSON.stringify(user));
         //TODO: register on the server or check if server already has this shit
+        /*
         localStorage.setItem("firstname", JSON.stringify(firstname));
         localStorage.setItem("lastname",JSON.stringify(lastname));
         localStorage.setItem("birthdate",JSON.stringify(birthdate));
@@ -279,11 +312,13 @@ angular.module('Chronic').service('dataService', function($http) {
         localStorage.setItem("employment",JSON.stringify(employment));
         localStorage.setItem("email", JSON.stringify(email));
         localStorage.setItem("passwordHash",JSON.stringify(sha3));
+        */
     };
 
     var getApiKey = function(){
         return "FiFoEdUdLOI4D19lj7Vb5pi72dDZf2aB";
-    }
+    };
+
   return {
     addHeadache: addHeadache,
     addMedicine: addMedicine,
@@ -310,7 +345,11 @@ angular.module('Chronic').service('dataService', function($http) {
     getEmail: getEmail,
     setEmail: setEmail,
     registerUser:registerUser,
-    getApiKey: getApiKey
+    getApiKey: getApiKey,
+    getAuthorization: getAuthorization,
+    setAdvice: setAdvice,
+    getAdvice: getAdvice,
+    syncDB: syncDB
 
     };
 
