@@ -158,11 +158,14 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
             }
 
         }
-        for(var i =0; i<current.symptoms.length; i++){
-            if(current.symptoms[i].val==true){
-                $scope.symptoms.push(current.symptoms[i].name);
+        if(current.symptoms != null){
+            for(var i =0; i<current.symptoms.length; i++){
+                if(current.symptoms[i].val==true){
+                    $scope.symptoms.push(current.symptoms[i].name);
+                }
             }
         }
+
 
 
     }

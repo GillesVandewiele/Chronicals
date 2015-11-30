@@ -15,9 +15,11 @@ angular.module('Chronic').service('dataService', function($http) {
     var passwordHash = "";
     var email = "";
 
+    var patientID = -1;
     var triggers = [];
     var symptoms = [];
     var drugs = [];
+
 
 
   var addHeadache = function(newObj){
@@ -274,11 +276,51 @@ angular.module('Chronic').service('dataService', function($http) {
         if(JSON.parse(localStorage.getItem("dailyMedicine") == null)){
             localStorage.setItem("dailyMedicine",JSON.stringify([]));
         }
+        JSON.parse(localStorage.getItem("dailyMedicine")).forEach( function(s) {
+
+        } );
+
         return JSON.parse(localStorage.getItem("dailyMedicine"));
     };
 
     var setDailyMedicineList = function(list){
         localStorage.setItem("dailyMedicine", JSON.stringify(list));
+        console.log("jajaja==========");
+        list.forEach( function(s) {
+            var medicine;
+            medicine.patientID = dataService.get
+            $http.post('http://localhost:8080/Chronic/rest/MedicineService/medicines', {headers:{'Authorization': getAuthorization()}}).
+            success(function (data, status, headers, config) {
+                alert("CONNECTED TO INTERNET OR DATABASE " + status)
+                // Get advice for patient
+
+                // Get new drugs
+
+                // Get new symptoms
+                var symptomsList = JSON.parse(localStorage.getItem("symptoms"));
+                if(symptomsList == null) symptomsList = [];
+                $http({ method: 'GET', url: 'http://localhost:8080/Chronic/rest/SymptomService/symptoms' }).
+                success(function (data, status, headers, config) {
+                    //alert(""+data);
+                    //console.log("symptoms fetched:"+data);
+                    symptoms = data;
+                    symptoms.forEach(function(entry){
+                        entry["val"]=false;
+                    });
+                    symptomsList.push.apply(symptoms);
+                    console.log(symptomsList)
+                    localStorage.setItem("symptoms", JSON.stringify(symptomsList));
+                }).
+                error(function (data, status, headers, config) {
+                    alert("error retrieving symptoms from database")
+                });
+
+                // Get new triggers
+            }).
+            error(function (data, status, headers, config) {
+                alert("NO INTERNET OR DATABASE CONNECTION " + status)
+            });
+        } );
     };
 
     var getPasswordHash = function(){
@@ -298,9 +340,9 @@ angular.module('Chronic').service('dataService', function($http) {
         return email;
     };
 
-    var registerUser = function (_firstname, _lastname, _birthdate, _sex, _status, _employment, _email, _sha3) {
+    var registerUser = function (_firstname, _lastname, _birthdate, _sex, _status, _employment, _email, _sha3, _patientID) {
         var user = { firstname: _firstname, lastname: _lastname, birthdate: _birthdate, sex: _sex, status: _status,
-                     employment: _employment, email: _email, passwordHash: _sha3 };
+                     employment: _employment, email: _email, passwordHash: _sha3, patientID: _patientID };
         localStorage.setItem("currentUser", JSON.stringify(user));
         //TODO: register on the server or check if server already has this shit
         /*

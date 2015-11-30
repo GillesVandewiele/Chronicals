@@ -75,7 +75,7 @@ angular.module('Chronic').controller('loginController', function($scope, dataSer
             var user = data;
             console.log(data.advice);
             dataService.setAdvice(data.advice);
-            dataService.registerUser(user.firstname, user.lastname, user.birthdate, user.sex, user.status, user.employment, user.email, sha3_512($scope.password));
+            dataService.registerUser(user.firstname, user.lastname, user.birthdate, user.sex, user.status, user.employment, user.email, sha3_512($scope.password), user.patientID);
             dataService.syncDB();
             $scope.transition();
             location.href="dashboard.html";

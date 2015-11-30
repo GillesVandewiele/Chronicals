@@ -145,7 +145,6 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
             });
             $scope.fillEvents();
         });
-        $scope.loadEvents();
 
     });
 
