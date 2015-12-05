@@ -5,21 +5,24 @@
 
  This file contains the controller for the dashboard view.
  */
+/*
 
-angular.module('Chronic').config(['$httpProvider', function($httpProvider) {
-    $httpProvider.defaults.useXDomain = true;
-    delete $httpProvider.defaults.headers.common["X-Requested-With"];
-    $httpProvider.defaults.headers.common["Accept"] = "application/json";
+ .config(['$httpProvider', function($httpProvider) {
+ $httpProvider.defaults.useXDomain = true;
+ delete $httpProvider.defaults.headers.common["X-Requested-With"];
+ $httpProvider.defaults.headers.common["Accept"] = "application/json";
 
-    $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
-    $httpProvider.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
-    $httpProvider.defaults.headers.common = {};
-    $httpProvider.defaults.headers.post = {};
-    $httpProvider.defaults.headers.put = {};
-    $httpProvider.defaults.headers.patch = {};
+ $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+ $httpProvider.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
+ $httpProvider.defaults.headers.common = {};
+ $httpProvider.defaults.headers.post = {};
+ $httpProvider.defaults.headers.put = {};
+ $httpProvider.defaults.headers.patch = {};
 
-}
-]).controller("dashboardController", function($scope, dataService,$http) {
+ }
+ ]).
+ */
+angular.module('Chronic').controller("dashboardController", function($scope, dataService,$http) {
 
     $scope.dialogs = {};
     ons.ready(function() {
