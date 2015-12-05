@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43c9da2d-e225-43f7-8236-b9dae08b7604" name="Default" comment="medicine in graph of headachegraph">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/dashboardController.js" afterPath="$PROJECT_DIR$/js/controllers/dashboardController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/manualController.js" afterPath="$PROJECT_DIR$/js/controllers/manualController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/services/dataservice.js" afterPath="$PROJECT_DIR$/js/services/dataservice.js" />
     </list>
     <ignored path="Code.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,16 +29,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="387" column="23" selection-start-line="387" selection-start-column="23" selection-end-line="387" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="loginController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/controllers/loginController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="77" column="79" selection-start-line="77" selection-start-column="78" selection-end-line="77" selection-end-column="79" />
               <folding />
             </state>
           </provider>
@@ -88,11 +77,21 @@
       <file leaf-file-name="dashboardController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/controllers/dashboardController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.36699507">
-              <caret line="188" column="66" selection-start-line="188" selection-start-column="66" selection-end-line="188" selection-end-column="66" />
+            <state vertical-scroll-proportion="0.63054186">
+              <caret line="215" column="41" selection-start-line="215" selection-start-column="41" selection-end-line="215" selection-end-column="41" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-17.5">
+              <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -156,7 +155,6 @@
         <option value="$PROJECT_DIR$/js/controllers/chronic.js" />
         <option value="$PROJECT_DIR$/html/register.html" />
         <option value="$PROJECT_DIR$/html/login.html" />
-        <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/html/dashboard.html" />
         <option value="$PROJECT_DIR$/html/headache.html" />
         <option value="$PROJECT_DIR$/js/controllers/headacheController.js" />
@@ -169,6 +167,7 @@
         <option value="$PROJECT_DIR$/js/controllers/loginController.js" />
         <option value="$PROJECT_DIR$/js/controllers/manualController.js" />
         <option value="$PROJECT_DIR$/js/services/dataservice.js" />
+        <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/js/controllers/dashboardController.js" />
       </list>
     </option>
@@ -742,13 +741,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07853403">
-          <caret line="2" column="47" selection-start-line="2" selection-start-column="47" selection-end-line="2" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/angular/ngStorage.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -879,10 +871,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.5">
+          <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/controllers/dashboardController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.36699507">
-          <caret line="188" column="66" selection-start-line="188" selection-start-column="66" selection-end-line="188" selection-end-column="66" />
+        <state vertical-scroll-proportion="0.63054186">
+          <caret line="215" column="41" selection-start-line="215" selection-start-column="41" selection-end-line="215" selection-end-column="41" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>

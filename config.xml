@@ -26,6 +26,6 @@
     <platform name="ios" />
     <platform name="android" />
 
-
+    <access origin="http://example.com" />
 
 </widget>

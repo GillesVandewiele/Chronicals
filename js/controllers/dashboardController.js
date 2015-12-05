@@ -200,6 +200,7 @@ angular.module('Chronic').config(['$httpProvider', function($httpProvider) {
                     list.concat(JSON.parse(localStorage.getItem("drugList")));
                     localStorage.setItem("drugList",JSON.stringify(list));
                 }
+                alert("Tis gelukt!");
                 //return drugsList;
             }).
             error(function (data, status, headers, config) {
@@ -212,6 +213,7 @@ angular.module('Chronic').config(['$httpProvider', function($httpProvider) {
                         localStorage.setItem("drugList", JSON.stringify(drugsList));
                 }
                 //return drugsList;
+                alert("Tis nie gelukt :( !");
             });
     }
 }
