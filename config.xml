@@ -26,6 +26,7 @@
     <platform name="ios" />
     <platform name="android" />
 
-    <access origin="http://example.com" />
+    <access origin="*" />
+    <allow-navigation href = "http://tw06v033.ugent.be/" />
 
 </widget>
