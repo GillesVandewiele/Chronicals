@@ -69,7 +69,7 @@ angular.module('Chronic').controller('loginController', function($scope, dataSer
         //retrieve user
 
         // We can't use getAuthorization yet from the dataservice since no user is registered yet.
-        $http.get('http://localhost:8080/Chronic/rest/PatientService/login', {headers:{'Authorization':'Basic '+btoa($scope.email+":"+sha3_512(sha3_512($scope.password)+dataService.getApiKey()))}}).
+        $http.get('http://tw06v033.ugent.be/Chronic/rest/PatientService/login', {headers:{'Authorization':'Basic '+btoa($scope.email+":"+sha3_512(sha3_512($scope.password)+dataService.getApiKey()))}}).
         success(function (data, status, headers, config) {
             console.log("User succesfully logged in:",data);
             var user = data;
