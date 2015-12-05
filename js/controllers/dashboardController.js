@@ -186,7 +186,7 @@ angular.module('Chronic').config(['$httpProvider', function($httpProvider) {
     };
 
     $scope.getShitFromRest = function(){
-            $http({ method: 'GET', url: 'http://localhost:8080/Chronic/rest/DrugService/drugs'}).
+            $http({ method: 'GET', url: 'http://tw06v033.ugent.be/Chronic/rest/DrugService/drugs'}).
             success(function (data, status, headers, config) {
                 //alert(""+data);
                 console.log("succesfully retrieved");

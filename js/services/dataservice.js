@@ -289,7 +289,7 @@ angular.module('Chronic').service('dataService', function($http) {
         list.forEach( function(s) {
             var medicine;
             medicine.patientID = dataService.get
-            $http.post('http://localhost:8080/Chronic/rest/MedicineService/medicines', {headers:{'Authorization': getAuthorization()}}).
+            $http.post('http://tw06v033.ugent.be/Chronic/rest/MedicineService/medicines', {headers:{'Authorization': getAuthorization()}}).
             success(function (data, status, headers, config) {
                 alert("CONNECTED TO INTERNET OR DATABASE " + status)
                 // Get advice for patient
@@ -299,7 +299,7 @@ angular.module('Chronic').service('dataService', function($http) {
                 // Get new symptoms
                 var symptomsList = JSON.parse(localStorage.getItem("symptoms"));
                 if(symptomsList == null) symptomsList = [];
-                $http({ method: 'GET', url: 'http://localhost:8080/Chronic/rest/SymptomService/symptoms' }).
+                $http({ method: 'GET', url: 'http://tw06v033.ugent.be/Chronic/rest/SymptomService/symptoms' }).
                 success(function (data, status, headers, config) {
                     //alert(""+data);
                     //console.log("symptoms fetched:"+data);
