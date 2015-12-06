@@ -158,8 +158,22 @@ angular.module('Chronic').service('dataService', function ($http) {
             });
     };
 
+    var getDBStatus = function(){
+        return new Promise(
+            function(resolve, reject){
+                $http.get('http://tw06v033.ugent.be/Chronic/rest/DBService/status').
+                success(function (data, status, headers, config) {
+                    resolve();
+                }).error(function (data, status, headers, config) {
+                    reject();
+                });
+            }
+        );
+    };
+
     var syncDB = function () {
         return Promise.all([getDrugsFromDB(), getSymptomsFromDB(), getTriggersFromDB()]);
+        //TODO: get patient advice
     };
 
 
@@ -416,7 +430,8 @@ angular.module('Chronic').service('dataService', function ($http) {
         getAuthorization: getAuthorization,
         setAdvice: setAdvice,
         getAdvice: getAdvice,
-        syncDB: syncDB
+        syncDB: syncDB,
+        getDBStatus: getDBStatus
 
     };
 

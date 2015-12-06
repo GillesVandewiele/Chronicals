@@ -46,38 +46,40 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
             //retrieve user
 
             // We can't use getAuthorization yet from the dataservice since no user is registered yet.
-            $http.get('http://tw06v033.ugent.be/Chronic/rest/PatientService/login', {headers: {'Authorization': 'Basic ' + btoa($scope.email + ":" + sha3_512(sha3_512($scope.password) + dataService.getApiKey()))}}).
-            success(function (data, status, headers, config) {
-                console.log("User succesfully logged in:", data);
-                var user = data;
-                console.log(data);
-                dataService.setAdvice(data.advice);
-                dataService.registerUser(user.firstName, user.lastName, user.birthDate, user.isMale, user.relation, user.isEmployed, user.email, sha3_512($scope.password), user.patientID);
-                dataService.syncDB().then(function (result) {
-                    $scope.transition();
-                    location.href = "dashboard.html";
-                }, function(result){
-                    alert("failed");
-                });
-
-            }).
-            error(function (data, status, headers, config) {
-                console.log("error loggin in: " + status);
-                console.log("data:" + data);
-                if (dataService.getPasswordHash() == null || dataService.getPasswordHash().length < 1) {
-                    $(".error_message").show();
-                } else {
-                    if (dataService.getPasswordHash().toString() == pwHash.toString() && dataService.getEmail() == $scope.email) {
-                        //$("#container").css("display", "none");
-                        //$("#loadingImg").show();
+            //dataService.getDBStatus().then(function(result){
+                $http.get('http://tw06v033.ugent.be/Chronic/rest/PatientService/login', {headers: {'Authorization': 'Basic ' + btoa($scope.email + ":" + sha3_512(sha3_512($scope.password) + dataService.getApiKey()))}}).
+                success(function (data, status, headers, config) {
+                    console.log("User succesfully logged in:", data);
+                    var user = data;
+                    console.log(data);
+                    dataService.setAdvice(data.advice);
+                    dataService.registerUser(user.firstName, user.lastName, user.birthDate, user.isMale, user.relation, user.isEmployed, user.email, sha3_512($scope.password), user.patientID);
+                    dataService.syncDB().then(function (result) {
                         $scope.transition();
                         location.href = "dashboard.html";
-                    } else {
-                        $(".error_message").show();
-                    }
-                }
+                    }, function(result){
+                        alert("failed");
+                    });
 
-            });
+                }).
+                error(function (data, status, headers, config) {
+                    console.log("error loggin in: " + status);
+                    console.log("data:" + data);
+                    if (dataService.getPasswordHash() == null || dataService.getPasswordHash().length < 1) {
+                        $(".error_message").show();
+                    } else {
+                        if (dataService.getPasswordHash().toString() == pwHash.toString() && dataService.getEmail() == $scope.email) {
+                            //$("#container").css("display", "none");
+                            //$("#loadingImg").show();
+                            $scope.transition();
+                            location.href = "dashboard.html";
+                        } else {
+                            $(".error_message").show();
+                        }
+                    }
+
+                });
+            //});
 
         }
 
