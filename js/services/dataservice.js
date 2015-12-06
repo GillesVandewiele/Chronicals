@@ -101,18 +101,18 @@ angular.module('Chronic').service('dataService', function ($http) {
             var list = data;
             // drugList consists of a list specified by the doctor which is gotten remotely,
             // and a list of own-made drugs
-            if(JSON.parse(localStorage.getItem("ownDrugList")) != null) {
+            if (JSON.parse(localStorage.getItem("ownDrugList")) != null) {
                 list = list.concat(JSON.parse(localStorage.getItem("ownDrugList")));
             }
             list[list.length] = {id: -1, name: "...", description: "Own custom drug"};
             console.log("Druglist = ", list);
-            localStorage.setItem("drugList",JSON.stringify(list));
+            localStorage.setItem("drugList", JSON.stringify(list));
         }).
         error(function (data, status, headers, config) {
             console.log(data, status)
             // If the connection failed, we just use the old drugList (this can't be the first time the app is started)
             var drugList = JSON.parse(localStorage.getItem("drugList"));
-            if(drugList == null) alert("Er moet een internetverbinding aanwezig zijn wanneer u de app voor de eerste keer opstart.");
+            if (drugList == null) alert("Er moet een internetverbinding aanwezig zijn wanneer u de app voor de eerste keer opstart.");
         });
 
         // Get new symptoms
@@ -126,19 +126,11 @@ angular.module('Chronic').service('dataService', function ($http) {
         }).
         error(function (data, status, headers, config) {
             var symptoms = JSON.parse(localStorage.getItem("symptoms"));
-            if(symptoms == null) alert("Er moet een internetverbinding aanwezig zijn wanneer u de app voor de eerste keer opstart.");
+            if (symptoms == null) alert("Er moet een internetverbinding aanwezig zijn wanneer u de app voor de eerste keer opstart.");
 
         });
-
-            // Get new triggers
-        /*}).
-        error(function (data, status, headers, config) {
-            console.log("Status code:" + status);
-            console.log("Data:" + data);
-            console.log("config:"+config);
-            alert("NO INTERNET OR DATABASE CONNECTION " + status)
-        });*/
     }
+
 
     var setMedicineList = function (list) {
         medicineList = list;
@@ -421,8 +413,8 @@ angular.module('Chronic').service('dataService', function ($http) {
         getApiKey: getApiKey,
         getAuthorization: getAuthorization,
         setAdvice: setAdvice,
-        getAdvice: getAdvice,
-        syncDB: syncDB
+        getAdvice: getAdvice
+        //syncDB: syncDB
 
     };
 

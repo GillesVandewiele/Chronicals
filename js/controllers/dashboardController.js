@@ -54,8 +54,6 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
         $('.hidden').removeClass("hidden");
 
 
-
-
         ////register user
         //$http.post('http://localhost:8080/Chronic/rest/PatientService/patients', JSON.stringify(user)).
         //success(function (data, status, headers, config) {
@@ -176,6 +174,8 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
         dataService.removeHeadache(dataService.getCurrentHeadache());
 
     };
+
+
 }
 );
 
