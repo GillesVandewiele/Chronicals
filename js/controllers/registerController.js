@@ -7,7 +7,19 @@
  */
 
 
-angular.module('Chronic').controller('registerController', function($scope, dataService,$http){
+angular.module('Chronic').config(['$httpProvider', function($httpProvider) {
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common["X-Requested-With"];
+    $httpProvider.defaults.headers.common["Accept"] = "application/json";
+
+    $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+    $httpProvider.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
+    $httpProvider.defaults.headers.common = {};
+    $httpProvider.defaults.headers.post = {};
+    $httpProvider.defaults.headers.put = {};
+    $httpProvider.defaults.headers.patch = {};
+
+}]).controller('registerController', function($scope, dataService,$http){
 
     ons.ready(function() {
         $('.hidden').removeClass("hidden");
@@ -52,20 +64,21 @@ angular.module('Chronic').controller('registerController', function($scope, data
 
 
         var user = {
-            "firstName": $scope.firstname,
-            "lastName": $scope.lastname,
+            "firstName": "Tess",
+            "lastName": "Tester",
             "birthDate": "",
-            "email": $scope.email,
-            "password": ""+sha3_512($scope.password),
-            "isMale": true,
-            "relation": 2,
+            "email": "tess@gmail.com",
+            "password": "49e72eb390a16df6ecd8a88bf5ba84851459a6b6700a25a9b1147b42c6f5e76bea0d3586ba0aee80298fc8689a296ba7c29f73ab27586da75a262f51743fc73b",
+            "isMale": false,
+            //"relation": 2,
             "advice": "",
             "isEmployed": true,
-            "diagnosis": ""};
+            "diagnosis": ""
+        };
 
 
 
-        $http.post('http://localhost:8080/Chronic/rest/PatientService/patients', JSON.stringify(user)).
+        $http.post('http://tw06v033.ugent.be/Chronic/rest/PatientService/patients', user).
         //$http({ method: 'POST', url: 'http://localhost:8080/Chronic/rest/PatientService/patients' , body: JSON.stringify(user)}).
         success(function (data, status, headers, config) {
 

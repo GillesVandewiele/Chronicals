@@ -92,7 +92,7 @@ angular.module('Chronic').service('dataService', function($http) {
   var syncDB = function(){
       // First check if there's an internet connection available
       console.log(getAuthorization());
-      $http.get('http://localhost:8080/Chronic/rest/DBService/status', {headers:{'Authorization': getAuthorization()}}).
+      $http.get('http://tw06v033.ugent.be/Chronic/rest/DBService/status', {headers:{'Authorization': getAuthorization()}}).
           success(function (data, status, headers, config) {
                 alert("CONNECTED TO INTERNET OR DATABASE " + status)
               // Get advice for patient
@@ -102,7 +102,7 @@ angular.module('Chronic').service('dataService', function($http) {
                 // Get new symptoms
                 var symptomsList = JSON.parse(localStorage.getItem("symptoms"));
                 if(symptomsList == null) symptomsList = [];
-                $http({ method: 'GET', url: 'http://localhost:8080/Chronic/rest/SymptomService/symptoms' }).
+                $http({ method: 'GET', url: 'http://tw06v033.ugent.be/Chronic/rest/SymptomService/symptoms' }).
                     success(function (data, status, headers, config) {
                         //alert(""+data);
                         //console.log("symptoms fetched:"+data);

@@ -6,7 +6,20 @@
  This file contains the controller to add and modify headaches.
  */
 
-angular.module('Chronic').controller('loginController', function($scope, dataService,$http){
+angular.module('Chronic').config(['$httpProvider', function($httpProvider) {
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common["X-Requested-With"];
+    $httpProvider.defaults.headers.common["Accept"] = "application/json";
+
+    $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+    $httpProvider.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
+    $httpProvider.defaults.headers.common = {};
+    $httpProvider.defaults.headers.post = {};
+    $httpProvider.defaults.headers.put = {};
+    $httpProvider.defaults.headers.patch = {};
+
+}]).controller('loginController', function($scope, dataService,$http){
+
 
     ons.ready(function() {
         $('.hidden').removeClass("hidden");
@@ -15,31 +28,6 @@ angular.module('Chronic').controller('loginController', function($scope, dataSer
 
     // Set everything to null until a login has occured
     dataService.registerUser(null, null, null, null, null, null, null, null);
-
-    $scope.cors = function(method, url) {
-        var xhr = new XMLHttpRequest();
-        if ("withCredentials" in xhr) {
-
-            // Check if the XMLHttpRequest object has a "withCredentials" property.
-            // "withCredentials" only exists on XMLHTTPRequest2 objects.
-            xhr.open(method, url, true);
-
-        } else if (typeof XDomainRequest != "undefined") {
-
-            // Otherwise, check if XDomainRequest.
-            // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
-            xhr = new XDomainRequest();
-            xhr.open(method, url);
-
-        } else {
-
-            // Otherwise, CORS is not supported by the browser.
-            xhr = null;
-
-        }
-        return xhr;
-    }
-
     $scope.transition = function(){
         //console.log($("body").children());
         $("body").children().eq(0).show();
