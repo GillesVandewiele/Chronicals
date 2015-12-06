@@ -6,7 +6,20 @@
  This file contains the controller to add and modify headaches.
  */
 
-angular.module('Chronic').controller('loginController', function($scope, dataService,$http){
+angular.module('Chronic').config(['$httpProvider', function($httpProvider) {
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common["X-Requested-With"];
+    $httpProvider.defaults.headers.common["Accept"] = "application/json";
+
+    $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+    $httpProvider.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
+    $httpProvider.defaults.headers.common = {};
+    $httpProvider.defaults.headers.post = {};
+    $httpProvider.defaults.headers.put = {};
+    $httpProvider.defaults.headers.patch = {};
+
+}]).controller('loginController', function($scope, dataService,$http){
+
 
     ons.ready(function() {
         $('.hidden').removeClass("hidden");
