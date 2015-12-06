@@ -52,20 +52,6 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
 
     ons.ready(function () {
         $('.hidden').removeClass("hidden");
-        var user = {
-            "firstName": "Kiani",
-            "lastName": "Lannoye",
-            "birthDate": "23-12-1992",
-            "email": "kdlannoy@gmail.com",
-            "password": ""+sha3_512("0123"),
-            "isMale": true,
-            "relation": 2,
-            "advice": "",
-            "isEmployed": true,
-            "diagnosis": ""};
-
-
-
         $scope.getShitFromRest();
 
 
@@ -213,13 +199,14 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
                     console.log(list);
                     localStorage.setItem("drugList",JSON.stringify(list));
                 }
-                alert("Tis gelukt!");
                 //return drugsList;
             }).
             error(function (data, status, headers, config) {
+
                 var drugList = JSON.parse(localStorage.getItem("drugList"));
                 if(drugList != null) return drugList;
                 else alert("Er moet een internetverbinding aanwezig zijn wanneer u de app voor de eerste keer opstart.");
+
             });
     }
 }
