@@ -65,6 +65,8 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
 
     $scope.getIndexOfHeadache = function () {
         headaches = dataService.getHeadacheList();
+        console.log("ALL HEADACHES = ", headaches);
+        console.log("SCOPE HEADACHE = ", $scope.headache);
         if (headaches == null || headaches.length == 0) {
             return -1;
         }

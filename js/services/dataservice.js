@@ -89,7 +89,6 @@ angular.module('Chronic').service('dataService', function ($http) {
     };
 
     var getDrugsFromDB = function(){
-        console.log("called 1");
         return new Promise(
             function (resolve, reject) {
                 $http.get('http://tw06v033.ugent.be/Chronic/rest/DrugService/drugs', {headers: {'Accept': 'application/json'}}).
@@ -108,8 +107,6 @@ angular.module('Chronic').service('dataService', function ($http) {
                 }).
                 error(function (data, status, headers, config) {
                     // If the connection failed, we just use the old drugList (this can't be the first time the app is started)
-                    console.log("data:" + data);
-                    console.log("status:" + status);
                     var drugList = JSON.parse(localStorage.getItem("drugList"));
                     if (drugList == null) alert("Er moet een internetverbinding aanwezig zijn wanneer u de app voor de eerste keer opstart.");
                     reject();
@@ -118,20 +115,20 @@ angular.module('Chronic').service('dataService', function ($http) {
     };
 
     var getSymptomsFromDB = function(){
-        console.log("called 2");
         return new Promise(
             function (resolve, reject) {
                 $http({method: 'GET', url: 'http://tw06v033.ugent.be/Chronic/rest/SymptomService/symptoms'}).
                 success(function (data, status, headers, config) {
                     var symptoms = data;
+                    var newSymptoms = [];
                     symptoms.forEach(function (entry) {
-                        entry["val"] = false;
+                        newSymptoms.push({id: entry.symptomID, name: entry.name, description: entry.description,
+                                          val: false});
                     });
-                    localStorage.setItem("symptoms", JSON.stringify(symptoms));
+                    localStorage.setItem("symptoms", JSON.stringify(newSymptoms));
                     resolve();
                 }).
                 error(function (data, status, headers, config) {
-                    console.log("symptoms rejected");
                     var symptoms = JSON.parse(localStorage.getItem("symptoms"));
                     if (symptoms == null) alert("Er moet een internetverbinding aanwezig zijn wanneer u de app voor de eerste keer opstart.");
                     reject();
@@ -139,8 +136,30 @@ angular.module('Chronic').service('dataService', function ($http) {
             });
     };
 
+    var getTriggersFromDB = function(){
+        return new Promise(
+            function (resolve, reject) {
+                $http({method: 'GET', url: 'http://tw06v033.ugent.be/Chronic/rest/TriggerService/triggers'}).
+                success(function (data, status, headers, config) {
+                    var triggers = data;
+                    var newTriggers = [];
+                    triggers.forEach(function (entry) {
+                        newTriggers.push({id: entry.triggerID, name: entry.name, description: entry.description,
+                                          val: false});
+                    });
+                    localStorage.setItem("triggers", JSON.stringify(newTriggers));
+                    resolve();
+                }).
+                error(function (data, status, headers, config) {
+                    var triggers = JSON.parse(localStorage.getItem("symptoms"));
+                    if (triggers == null) alert("Er moet een internetverbinding aanwezig zijn wanneer u de app voor de eerste keer opstart.");
+                    reject();
+                });
+            });
+    };
+
     var syncDB = function () {
-        return Promise.all([getDrugsFromDB(), getSymptomsFromDB()]);
+        return Promise.all([getDrugsFromDB(), getSymptomsFromDB(), getTriggersFromDB()]);
     };
 
 
@@ -160,36 +179,7 @@ angular.module('Chronic').service('dataService', function ($http) {
     };
 
     var getTriggers = function () {
-        //
-        //$http({ method: 'GET', url: 'http://localhost:8080/Chronic/rest/TriggerService/Triggers' }).
-        //success(function (data, status, headers, config) {
-        //    //alert(""+data);
-        //    console.log("triggers fetched:"+data);
-        //    triggers = data;
-        //    triggers.forEach(function(entry){
-        //       entry["val"]=false;
-        //    });
-        //
-        //}).
-        //error(function (data, status, headers, config) {
-        //    alert("error retrieving data")
-        //});
-        //return triggers;
-
-        ////TODO: replace this by a DB call
-        return [{id: 0, name: "trigger1", description: "this is a description 1", val: false}, {
-            id: 1,
-            name: "trigger2",
-            description: "this is a description 2",
-            val: false
-        },
-            {id: 2, name: "trigger3", description: "this is a description 3", val: false}, {
-                id: 3,
-                name: "trigger4",
-                description: "this is a description 4",
-                val: false
-            }]; // List of all triggers
-
+        return JSON.parse(localStorage.getItem("triggers"));
     };
 
     var setAdvice = function (advice) {
