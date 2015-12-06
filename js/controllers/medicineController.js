@@ -18,6 +18,7 @@ angular.module('Chronic').controller('medicineController', function($scope, data
         $('body').children().eq(1).hide();
     };
 
+    $scope.addMedicineForm = {};
 
     // Initialize all fields on default values or on the values of current medicine (when modifying)
 	$scope.medicine = dataService.getCurrentMedicine();
@@ -58,32 +59,34 @@ angular.module('Chronic').controller('medicineController', function($scope, data
     //console.log("lel", $scope.drugs);
 
 	// Create the possibility to add an own drug in the dropdown
-	$(document).on("click", '#drugDropdown', function(e){
-        console.log("Nog een test", $scope.selectedDrug, e);
-  		if($scope.selectedDrug != null && $scope.selectedDrug.name=="..."){
-            console.log("test");
-  			$(".selectDiv").hide();
-  			$("#ownDrug").show();
-  		}
-  	});
+    $scope.dropdownClick = function(selectedDrug){
+        if(selectedDrug != null && selectedDrug.name=="..."){
+            $(".selectDiv").hide();
+            $("#ownDrug").show();
+        } else {
+            $scope.selectedDrug = selectedDrug;
+        }
+    };
+
+    $scope.typeText = function(text){
+        $scope.ownDrug = text;
+    }
 
 	// Called when clicking "Sla Op"
 	$scope.addMedicine = function(newLocation, profile){
         profile = typeof profile !== 'undefined' ? profile : false;
         console.log("profiel daily medicine?", profile)
 		var dateObj = new Date($scope.drugDate.getFullYear(), $scope.drugDate.getMonth(), $scope.drugDate.getDate(), $scope.drugTime.getHours(), $scope.drugTime.getMinutes(), $scope.drugTime.getSeconds());
-		if($scope.ownDrug != null){
+		console.log($scope.ownDrug);
+        if($scope.ownDrug != null){
 			var drug = {id: 0, name:$scope.ownDrug, description:""};
 			var medicine = {drug: drug, quantity: $scope.drugQuantity, date: dateObj};
             if(JSON.parse(localStorage.getItem("ownDrugList")) == null){
-                console.log("tis null");
-                localStorage.setItem("ownDrugList",JSON.stringify(list));
+                localStorage.setItem("ownDrugList",JSON.stringify([drug]));
             }else{
-                console.log("tis niet null", list);
-                var list = JSON.parse(localStorage.getItem("drugList")).concat(medicine);
-                localStorage.setItem("ownDrugList",JSON.stringify(list));
+                localStorage.setItem("ownDrugList", JSON.stringify(JSON.parse(localStorage.getItem("ownDrugList")).concat([drug])));
             }
-            console.log(JSON.parse(localStorage.getItem("ownDrugList")));
+            localStorage.setItem("drugList",JSON.stringify(JSON.parse(localStorage.getItem("drugList")).concat([drug])));
 		} else {
 			var medicine = {drug: $scope.selectedDrug, quantity: $scope.drugQuantity, date: dateObj};
 		}

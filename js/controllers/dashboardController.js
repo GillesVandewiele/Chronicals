@@ -194,7 +194,10 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
                     localStorage.setItem("drugList",JSON.stringify(list));
                 }else{
                     console.log("tis niet null", list);
-                    list.concat(JSON.parse(localStorage.getItem("ownDrugList")));
+                    if(JSON.parse(localStorage.getItem("ownDrugList")) != null) {
+                        list = list.concat(JSON.parse(localStorage.getItem("ownDrugList")));
+                    }
+                    console.log("own drug list = ", JSON.parse(localStorage.getItem("ownDrugList")));
                     list[list.length] = {id: -1, name: "...", description: "Own custom drug"};
                     console.log(list);
                     localStorage.setItem("drugList",JSON.stringify(list));
