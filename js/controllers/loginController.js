@@ -65,10 +65,11 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                 console.log(data);
                 dataService.setAdvice(data.advice);
                 dataService.registerUser(user.firstName, user.lastName, user.birthDate, user.isMale, user.relation, user.isEmployed, user.email, sha3_512($scope.password), user.patientID);
-                $scope.syncDB().then(function () {
-                    alert("jajajaj");
+                $scope.syncDB().then().then(function (result) {
                     $scope.transition();
                     location.href = "dashboard.html";
+                }, function(result){
+                    alert("failed");
                 });
 
             }).
@@ -92,7 +93,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
 
             $scope.syncDB = function () {
                 return new Promise(
-                    function () {
+                    function (resolve, reject) {
                         // First check if there's an internet connection available
                         var currentUser = JSON.parse(localStorage.getItem("currentUser"));
                         //$http.get('http://tw06v033.ugent.be/Chronic/rest/DBService/status').
@@ -102,7 +103,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                         // Get new drugs
                         $http.get('http://tw06v033.ugent.be/Chronic/rest/DrugService/drugs', {headers: {'Accept': 'application/json'}}).
                         success(function (data, status, headers, config) {
-                            alert("CONNECTED TO INTERNET OR DATABASE " + status);
+                            //alert("CONNECTED TO INTERNET OR DATABASE " + status);
                             var list = data;
                             // drugList consists of a list specified by the doctor which is gotten remotely,
                             // and a list of own-made drugs
@@ -112,6 +113,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                             list[list.length] = {id: -1, name: "...", description: "Own custom drug"};
                             console.log("Druglist = ", list);
                             localStorage.setItem("drugList", JSON.stringify(list));
+                            resolve();
                         }).
                         error(function (data, status, headers, config) {
                             // If the connection failed, we just use the old drugList (this can't be the first time the app is started)
@@ -119,32 +121,24 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                             console.log("status:" + status);
                             var drugList = JSON.parse(localStorage.getItem("drugList"));
                             if (drugList == null) alert("Er moet een internetverbinding aanwezig zijn wanneer u de app voor de eerste keer opstart.");
+                            reject();
                         });
 
-                        // Get new symptoms
-                        $http({method: 'GET', url: 'http://tw06v033.ugent.be/Chronic/rest/SymptomService/symptoms'}).
-                        success(function (data, status, headers, config) {
-                            var symptoms = data;
-                            symptoms.forEach(function (entry) {
-                                entry["val"] = false;
-                            });
-                            localStorage.setItem("symptoms", JSON.stringify(symptoms));
-                        }).
-                        error(function (data, status, headers, config) {
-                            var symptoms = JSON.parse(localStorage.getItem("symptoms"));
-                            if (symptoms == null) alert("Er moet een internetverbinding aanwezig zijn wanneer u de app voor de eerste keer opstart.");
-
-                        });
+                        //// Get new symptoms
+                        //$http({method: 'GET', url: 'http://tw06v033.ugent.be/Chronic/rest/SymptomService/symptoms'}).
+                        //success(function (data, status, headers, config) {
+                        //    var symptoms = data;
+                        //    symptoms.forEach(function (entry) {
+                        //        entry["val"] = false;
+                        //    });
+                        //    localStorage.setItem("symptoms", JSON.stringify(symptoms));
+                        //}).
+                        //error(function (data, status, headers, config) {
+                        //    var symptoms = JSON.parse(localStorage.getItem("symptoms"));
+                        //    if (symptoms == null) alert("Er moet een internetverbinding aanwezig zijn wanneer u de app voor de eerste keer opstart.");
+                        //
+                        //});
                     });
-
-                // Get new triggers
-                /*}).
-                 error(function (data, status, headers, config) {
-                 console.log("Status code:" + status);
-                 console.log("Data:" + data);
-                 console.log("config:"+config);
-                 alert("NO INTERNET OR DATABASE CONNECTION " + status)
-                 });*/
             }
 
 
