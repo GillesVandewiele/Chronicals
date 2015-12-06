@@ -75,9 +75,7 @@ angular.module('Chronic').controller('medicineController', function($scope, data
 	// Called when clicking "Sla Op"
 	$scope.addMedicine = function(newLocation, profile){
         profile = typeof profile !== 'undefined' ? profile : false;
-        console.log("profiel daily medicine?", profile)
 		var dateObj = new Date($scope.drugDate.getFullYear(), $scope.drugDate.getMonth(), $scope.drugDate.getDate(), $scope.drugTime.getHours(), $scope.drugTime.getMinutes(), $scope.drugTime.getSeconds());
-		console.log($scope.ownDrug);
         if($scope.ownDrug != null){
 			var drug = {id: 0, name:$scope.ownDrug, description:""};
 			var medicine = {drug: drug, quantity: $scope.drugQuantity, date: dateObj};
@@ -92,7 +90,7 @@ angular.module('Chronic').controller('medicineController', function($scope, data
 		}
 
 		if($scope.medicineIndex != -1){
-			list = dataService.getMedicineList();
+			var list = dataService.getMedicineList();
 	  		list[$scope.medicineIndex] = medicine;
             if(profile){
                 dataService.setDailyMedicineList(list);

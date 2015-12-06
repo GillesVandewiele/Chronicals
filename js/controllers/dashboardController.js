@@ -52,7 +52,6 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
 
     ons.ready(function () {
         $('.hidden').removeClass("hidden");
-        $scope.getShitFromRest();
 
 
 
@@ -177,41 +176,6 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
         dataService.removeHeadache(dataService.getCurrentHeadache());
 
     };
-
-    $scope.getShitFromRest = function(){
-            $http({ method: 'GET', url: 'http://tw06v033.ugent.be/Chronic/rest/DrugService/drugs'}).
-            success(function (data, status, headers, config) {
-                console.log("succesfully retrieved");
-                var list = data;
-                console.log(list);
-                // drugList consists of a list specified by the doctor which is gotten remotely,
-                // and a list of own-made drugs
-
-                if(JSON.parse(localStorage.getItem("drugList")) == null){
-                    console.log("tis null");
-                    list[list.length] = {id: -1, name: "...", description: "Own custom drug"};
-                    console.log(list);
-                    localStorage.setItem("drugList",JSON.stringify(list));
-                }else{
-                    console.log("tis niet null", list);
-                    if(JSON.parse(localStorage.getItem("ownDrugList")) != null) {
-                        list = list.concat(JSON.parse(localStorage.getItem("ownDrugList")));
-                    }
-                    console.log("own drug list = ", JSON.parse(localStorage.getItem("ownDrugList")));
-                    list[list.length] = {id: -1, name: "...", description: "Own custom drug"};
-                    console.log(list);
-                    localStorage.setItem("drugList",JSON.stringify(list));
-                }
-                //return drugsList;
-            }).
-            error(function (data, status, headers, config) {
-
-                var drugList = JSON.parse(localStorage.getItem("drugList"));
-                if(drugList != null) return drugList;
-                else alert("Er moet een internetverbinding aanwezig zijn wanneer u de app voor de eerste keer opstart.");
-
-            });
-    }
 }
 );
 
