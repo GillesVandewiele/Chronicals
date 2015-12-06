@@ -107,7 +107,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         console.log("User pw:"+currentUser.passwordHash);
         $http.get('http://tw06v033.ugent.be/Chronic/rest/DBService/status').
         success(function (data, status, headers, config) {
-            alert("CONNECTED TO INTERNET OR DATABASE " + status)
+            alert("CONNECTED TO INTERNET OR DATABASE " + status);
             // Get advice for patient
 
             // Get new drugs
@@ -332,7 +332,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         list.forEach(function (s) {
             var medicine;
             medicine.patientID = dataService.get
-            $http.post('http://tw06v033.ugent.be/Chronic/rest/MedicineService/medicines').
+            $http.post('http://tw06v033.ugent.be/Chronic/rest/MedicineService/medicines', {headers: {'Authorization': getAuthorization()}}).
             success(function (data, status, headers, config) {
                 alert("CONNECTED TO INTERNET OR DATABASE " + status)
                 // Get advice for patient

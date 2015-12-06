@@ -19,8 +19,6 @@ var app = angular.module('Chronic', ['onsen.directives', 'ngStorage', "chart.js"
         $httpProvider.defaults.headers.post = {};
         $httpProvider.defaults.headers.put = {};
         $httpProvider.defaults.headers.patch = {};
-
-
     }]);
 
 
