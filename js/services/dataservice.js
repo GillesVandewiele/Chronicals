@@ -1,16 +1,4 @@
-angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
-    $httpProvider.defaults.useXDomain = true;
-    delete $httpProvider.defaults.headers.common["X-Requested-With"];
-    $httpProvider.defaults.headers.common["Accept"] = "application/json";
-
-    $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
-    $httpProvider.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
-    $httpProvider.defaults.headers.common = {};
-    $httpProvider.defaults.headers.post = {};
-    $httpProvider.defaults.headers.put = {};
-    $httpProvider.defaults.headers.patch = {};
-
-}]).service('dataService', function ($http) {
+angular.module('Chronic').service('dataService', function ($http) {
 
     // Reset the local storage; always comment this out!
     //  $localStorage.$reset();
@@ -105,14 +93,14 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         console.log(getAuthorization());
         var currentUser = JSON.parse(localStorage.getItem("currentUser"));
         console.log("User pw:"+currentUser.passwordHash);
-        $http.get('http://tw06v033.ugent.be/Chronic/rest/DBService/status').
-        success(function (data, status, headers, config) {
-            alert("CONNECTED TO INTERNET OR DATABASE " + status);
+        //$http.get('http://tw06v033.ugent.be/Chronic/rest/DBService/status').
+        //success(function (data, status, headers, config) {
             // Get advice for patient
 
             // Get new drugs
             $http({ method: 'GET', url: 'http://tw06v033.ugent.be/Chronic/rest/DrugService/drugs'}).
             success(function (data, status, headers, config) {
+                alert("CONNECTED TO INTERNET OR DATABASE " + status);
                 var list = data;
                 // drugList consists of a list specified by the doctor which is gotten remotely,
                 // and a list of own-made drugs
@@ -145,13 +133,13 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
             });
 
             // Get new triggers
-        }).
+        /*}).
         error(function (data, status, headers, config) {
             console.log("Status code:" + status);
             console.log("Data:" + data);
             console.log("config:"+config);
             alert("NO INTERNET OR DATABASE CONNECTION " + status)
-        });
+        });*/
     }
 
     var setMedicineList = function (list) {
