@@ -70,24 +70,22 @@
                           <input id="ownDrug" type="text" ng-model="ownDrug">
                          <input type="number" name="quantity" style="width: 20%;" min="1" class="medicineQuantity" ng-model="drugQuantity" required>
                          <label>mg</label>
-                        <ons-row>
-                         <small class="error" ng-show="addMedicineForm.quantity.$error.required">
-                            - U moet een hoeveelheid ingeven!
-                         </small>
-                         <small class="error" ng-show="addMedicineForm.quantity.$error.min">
-                            - U moet een correcte hoeveelheid ingeven!
-                         </small>
-                         <small class="error" ng-show="addMedicineForm.drug.$error.required">
-                            - U moet een medicijn ingeven!
-                         </small>
-                        </ons-row>
 
                      </ons-row>
+                    <small class="error" ng-show="addMedicineForm.quantity.$error.required">
+                        - U moet een hoeveelheid ingeven!
+                    </small> <br/>
+                    <small class="error" ng-show="addMedicineForm.quantity.$error.min">
+                        - U moet een correcte hoeveelheid ingeven!
+                    </small> <br/>
+                    <small class="error" ng-show="addMedicineForm.drug.$error.required">
+                        - U moet een medicijn ingeven!
+                    </small> <br/>
                      <ons-row style="margin-top: 5%;">
                         <p style="margin-left: 5%;">{{selectedDrug.description}}</p>
                      </ons-row>
                      <ons-row>
-                        <p class="label" style="margin-left: 5%">Tijdstip van inname:</p>
+                        <p class="label" style="margin-left: 5%; margin-top:5%; ">Tijdstip van inname:</p>
                      </ons-row>
                      <ons-row>
                         <input type="date" name="medicineDate" ng-model="drugDate" style="margin-left: 5%;" min="2013-01-01" max="2050-01-01" class="datePicker" required></ons-col>

@@ -195,32 +195,31 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
     $scope.getShitFromRest = function(){
             $http({ method: 'GET', url: 'http://tw06v033.ugent.be/Chronic/rest/DrugService/drugs'}).
             success(function (data, status, headers, config) {
-                //alert(""+data);
                 console.log("succesfully retrieved");
                 var list = data;
+                console.log(list);
+                // drugList consists of a list specified by the doctor which is gotten remotely,
+                // and a list of own-made drugs
 
                 if(JSON.parse(localStorage.getItem("drugList")) == null){
-                    //console.log("tis null");
+                    console.log("tis null");
+                    list[list.length] = {id: -1, name: "...", description: "Own custom drug"};
+                    console.log(list);
                     localStorage.setItem("drugList",JSON.stringify(list));
                 }else{
-                    //console.log("tis niet null");
-                    list.concat(JSON.parse(localStorage.getItem("drugList")));
+                    console.log("tis niet null", list);
+                    list.concat(JSON.parse(localStorage.getItem("ownDrugList")));
+                    list[list.length] = {id: -1, name: "...", description: "Own custom drug"};
+                    console.log(list);
                     localStorage.setItem("drugList",JSON.stringify(list));
                 }
                 alert("Tis gelukt!");
                 //return drugsList;
             }).
             error(function (data, status, headers, config) {
-                console.log("geen connectie met rest service");
-                var drugsList =  [{id: 0, name:"drug1", description:"this is a description of drug1"}, {id: 1, name:"drug2", description:"this is a description of drug2"},
-                    {id: 2, name:"drug3", description:"this is a description of drug3"}, {id: 3, name: "...", description: "this is a description"}];
-                if(JSON.parse(localStorage.getItem("drugList"))==null){
-                    var drugsList =  [{id: 0, name:"drug1", description:"this is a description of drug1"}, {id: 1, name:"drug2", description:"this is a description of drug2"},
-                        {id: 2, name:"drug3", description:"this is a description of drug3"}, {id: 3, name: "...", description: "this is a description"}];
-                        localStorage.setItem("drugList", JSON.stringify(drugsList));
-                }
-                //return drugsList;
-                alert("Tis nie gelukt :( !");
+                var drugList = JSON.parse(localStorage.getItem("drugList"));
+                if(drugList != null) return drugList;
+                else alert("Er moet een internetverbinding aanwezig zijn wanneer u de app voor de eerste keer opstart.");
             });
     }
 }

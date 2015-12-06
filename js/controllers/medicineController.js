@@ -59,7 +59,9 @@ angular.module('Chronic').controller('medicineController', function($scope, data
 
 	// Create the possibility to add an own drug in the dropdown
 	$(document).on("click", '#drugDropdown', function(e){
+        console.log("Nog een test", $scope.selectedDrug, e);
   		if($scope.selectedDrug != null && $scope.selectedDrug.name=="..."){
+            console.log("test");
   			$(".selectDiv").hide();
   			$("#ownDrug").show();
   		}
@@ -73,6 +75,15 @@ angular.module('Chronic').controller('medicineController', function($scope, data
 		if($scope.ownDrug != null){
 			var drug = {id: 0, name:$scope.ownDrug, description:""};
 			var medicine = {drug: drug, quantity: $scope.drugQuantity, date: dateObj};
+            if(JSON.parse(localStorage.getItem("ownDrugList")) == null){
+                console.log("tis null");
+                localStorage.setItem("ownDrugList",JSON.stringify(list));
+            }else{
+                console.log("tis niet null", list);
+                var list = JSON.parse(localStorage.getItem("drugList")).concat(medicine);
+                localStorage.setItem("ownDrugList",JSON.stringify(list));
+            }
+            console.log(JSON.parse(localStorage.getItem("ownDrugList")));
 		} else {
 			var medicine = {drug: $scope.selectedDrug, quantity: $scope.drugQuantity, date: dateObj};
 		}
@@ -95,9 +106,6 @@ angular.module('Chronic').controller('medicineController', function($scope, data
             }
 
 		}
-		if($scope.ownDrug != null) {
-            dataService.addDrug($scope.ownDrug);
-        }
   		dataService.setCurrentMedicine(null);
         $scope.transition();
 		location.href=newLocation;
