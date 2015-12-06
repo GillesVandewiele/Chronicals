@@ -64,26 +64,28 @@ angular.module('Chronic').config(['$httpProvider', function($httpProvider) {
 
 
         var user = {
-            "firstName": "Tess",
-            "lastName": "Tester",
+            "firstName": $scope.firstname,
+            "lastName": $scope.lastname,
             "birthDate": "",
-            "email": "tess@gmail.com",
-            "password": "49e72eb390a16df6ecd8a88bf5ba84851459a6b6700a25a9b1147b42c6f5e76bea0d3586ba0aee80298fc8689a296ba7c29f73ab27586da75a262f51743fc73b",
-            "isMale": false,
+            "email": $scope.email,
+            "password": ""+sha3_512($scope.password),
+            "isMale": true,
             //"relation": 2,
             "advice": "",
             "isEmployed": true,
-            "diagnosis": ""
-        };
+            "diagnosis": ""};
 
 
 
-        $http.post('http://tw06v033.ugent.be/Chronic/rest/PatientService/patients', user).
+        $http.post('http://tw06v033.ugent.be/Chronic/rest/PatientService/patients', JSON.stringify(user),{headers: {
+            'Content-Type': 'application/json'
+        }}).
         //$http({ method: 'POST', url: 'http://localhost:8080/Chronic/rest/PatientService/patients' , body: JSON.stringify(user)}).
         success(function (data, status, headers, config) {
 
             console.log("Return van indienen user:"+status);
             dataService.clearCache();
+            dataService.registerUser(user.firstName, user.lastName, user.birthDate, user.isMale, "", user.isEmployed, user.email, user.password, 0);
             location.href="login.html";
         }).
         error(function (data, status, headers, config) {
