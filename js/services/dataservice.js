@@ -90,47 +90,45 @@ angular.module('Chronic').service('dataService', function ($http) {
 
     var syncDB = function () {
         // First check if there's an internet connection available
-        console.log(getAuthorization());
-        var currentUser = JSON.parse(localStorage.getItem("currentUser"));
-        console.log("User pw:"+currentUser.passwordHash);
         //$http.get('http://tw06v033.ugent.be/Chronic/rest/DBService/status').
         //success(function (data, status, headers, config) {
-            // Get advice for patient
+        // Get advice for patient
 
-            // Get new drugs
-            $http({ method: 'GET', url: 'http://tw06v033.ugent.be/Chronic/rest/DrugService/drugs'}).
-            success(function (data, status, headers, config) {
-                alert("CONNECTED TO INTERNET OR DATABASE " + status);
-                var list = data;
-                // drugList consists of a list specified by the doctor which is gotten remotely,
-                // and a list of own-made drugs
-                if(JSON.parse(localStorage.getItem("ownDrugList")) != null) {
-                    list = list.concat(JSON.parse(localStorage.getItem("ownDrugList")));
-                }
-                list[list.length] = {id: -1, name: "...", description: "Own custom drug"};
-                console.log("Druglist = ", list);
-                localStorage.setItem("drugList",JSON.stringify(list));
-            }).
-            error(function (data, status, headers, config) {
-                // If the connection failed, we just use the old drugList (this can't be the first time the app is started)
-                var drugList = JSON.parse(localStorage.getItem("drugList"));
-                if(drugList == null) alert("Er moet een internetverbinding aanwezig zijn wanneer u de app voor de eerste keer opstart.");
+        // Get new drugs
+        $http.get('http://tw06v033.ugent.be/Chronic/rest/DrugService/drugs', {headers: {'Content-Type': 'application/json'}}).
+        success(function (data, status, headers, config) {
+            alert("CONNECTED TO INTERNET OR DATABASE " + status);
+            var list = data;
+            // drugList consists of a list specified by the doctor which is gotten remotely,
+            // and a list of own-made drugs
+            if(JSON.parse(localStorage.getItem("ownDrugList")) != null) {
+                list = list.concat(JSON.parse(localStorage.getItem("ownDrugList")));
+            }
+            list[list.length] = {id: -1, name: "...", description: "Own custom drug"};
+            console.log("Druglist = ", list);
+            localStorage.setItem("drugList",JSON.stringify(list));
+        }).
+        error(function (data, status, headers, config) {
+            console.log(data, status)
+            // If the connection failed, we just use the old drugList (this can't be the first time the app is started)
+            var drugList = JSON.parse(localStorage.getItem("drugList"));
+            if(drugList == null) alert("Er moet een internetverbinding aanwezig zijn wanneer u de app voor de eerste keer opstart.");
+        });
+
+        // Get new symptoms
+        $http({method: 'GET', url: 'http://tw06v033.ugent.be/Chronic/rest/SymptomService/symptoms'}).
+        success(function (data, status, headers, config) {
+            var symptoms = data;
+            symptoms.forEach(function (entry) {
+                entry["val"] = false;
             });
+            localStorage.setItem("symptoms", JSON.stringify(symptoms));
+        }).
+        error(function (data, status, headers, config) {
+            var symptoms = JSON.parse(localStorage.getItem("symptoms"));
+            if(symptoms == null) alert("Er moet een internetverbinding aanwezig zijn wanneer u de app voor de eerste keer opstart.");
 
-            // Get new symptoms
-            $http({method: 'GET', url: 'http://tw06v033.ugent.be/Chronic/rest/SymptomService/symptoms'}).
-            success(function (data, status, headers, config) {
-                var symptoms = data;
-                symptoms.forEach(function (entry) {
-                    entry["val"] = false;
-                });
-                localStorage.setItem("symptoms", JSON.stringify(symptoms));
-            }).
-            error(function (data, status, headers, config) {
-                var symptoms = JSON.parse(localStorage.getItem("symptoms"));
-                if(symptoms == null) alert("Er moet een internetverbinding aanwezig zijn wanneer u de app voor de eerste keer opstart.");
-
-            });
+        });
 
             // Get new triggers
         /*}).

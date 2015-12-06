@@ -62,12 +62,19 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         success(function (data, status, headers, config) {
             console.log("User succesfully logged in:", data);
             var user = data;
-            console.log(data);
             dataService.setAdvice(data.advice);
             dataService.registerUser(user.firstName, user.lastName, user.birthDate, user.isMale, user.relation, user.isEmployed, user.email, sha3_512($scope.password), user.patientID);
-            dataService.syncDB();
-            $scope.transition();
-            location.href = "dashboard.html";
+            var promise = new Promise(
+                function(resolve, reject) {
+                    dataService.syncDB();
+                }
+            );
+            promise.then(
+                function(){
+                    $scope.transition();
+                    location.href = "dashboard.html";
+                }
+            );
         }).
         error(function (data, status, headers, config) {
             console.log("error loggin in: " + status);
