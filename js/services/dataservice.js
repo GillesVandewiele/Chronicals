@@ -1,16 +1,4 @@
-angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
-    $httpProvider.defaults.useXDomain = true;
-    delete $httpProvider.defaults.headers.common["X-Requested-With"];
-    $httpProvider.defaults.headers.common["Accept"] = "application/json";
-
-    $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
-    $httpProvider.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
-    $httpProvider.defaults.headers.common = {};
-    $httpProvider.defaults.headers.post = {};
-    $httpProvider.defaults.headers.put = {};
-    $httpProvider.defaults.headers.patch = {};
-
-}]).service('dataService', function ($http) {
+angular.module('Chronic').service('dataService', function ($http) {
 
     // Reset the local storage; always comment this out!
     //  $localStorage.$reset();
@@ -105,9 +93,9 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         console.log(getAuthorization());
         var currentUser = JSON.parse(localStorage.getItem("currentUser"));
         console.log("User pw:"+currentUser.passwordHash);
-        $http.get('http://tw06v033.ugent.be/Chronic/rest/DBService/status', {headers: {'Authorization': 'Basic ' + btoa(email + ":" + sha3_512(passwordHash + getApiKey()))}}).
+        $http.get('http://tw06v033.ugent.be/Chronic/rest/DBService/status').
         success(function (data, status, headers, config) {
-            alert("CONNECTED TO INTERNET OR DATABASE " + status)
+            alert("CONNECTED TO INTERNET OR DATABASE " + status);
             // Get advice for patient
 
             // Get new drugs
@@ -136,7 +124,6 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         error(function (data, status, headers, config) {
             console.log("Status code:" + status);
             console.log("Data:" + data);
-            console.log("headers:"+parseHeaders(headers));
             console.log("config:"+config);
             alert("NO INTERNET OR DATABASE CONNECTION " + status)
         });
@@ -320,7 +307,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         list.forEach(function (s) {
             var medicine;
             medicine.patientID = dataService.get
-            $http.post('http://tw06v033.ugent.be/Chronic/rest/MedicineService/medicines').
+            $http.post('http://tw06v033.ugent.be/Chronic/rest/MedicineService/medicines', {headers: {'Authorization': getAuthorization()}}).
             success(function (data, status, headers, config) {
                 alert("CONNECTED TO INTERNET OR DATABASE " + status)
                 // Get advice for patient
