@@ -20,16 +20,14 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
     };
 
     $scope.loadAreas = function(){
-        $('img').mapster();
-        $('img').mapster('set',true,'mandibular_left');
         $('#img_location1').mapster(
             {
-                fillOpacity: 1,
-                fillColor: "FFFFFF",
+                fillOpacity: 0.4,
+                fillColor: "009999",
                 stroke: true,
-                strokeColor: "000000",
-                strokeOpacity: 1,
-                strokeWidth: 20
+                strokeColor: "0066FF",
+                strokeOpacity: 0.8,
+                strokeWidth: 1
             });
     }
 
