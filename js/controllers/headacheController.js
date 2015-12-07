@@ -86,8 +86,9 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
                 strokeOpacity: 0.8,
                 strokeWidth: 1,
                 onClick: function (e) {
+                    $('img').mapster('set', !$scope.headache.location[e.key], e.key);
+                    $('#img_location2').mapster('set', $scope.headache.location[e.key], e.key);
                     $scope.headache.location[e.key] = !$scope.headache.location[e.key];
-                    $('img').mapster('set', $scope.headache.location[e.key], e.key);
                 }
             });
 
@@ -101,8 +102,9 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
                 strokeOpacity: 0.8,
                 strokeWidth: 1,
                 onClick: function (e) {
+                    $('img').mapster('set', !$scope.headache.location[e.key], e.key);
+                    $('#img_location3').mapster('set', $scope.headache.location[e.key], e.key);
                     $scope.headache.location[e.key] = !$scope.headache.location[e.key];
-                    $('img').mapster('set', $scope.headache.location[e.key], e.key);
                 }
             });
 
@@ -116,8 +118,9 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
                 strokeOpacity: 0.8,
                 strokeWidth: 1,
                 onClick: function (e) {
+                    $('img').mapster('set', !$scope.headache.location[e.key], e.key);
+                    $('#img_location4').mapster('set', $scope.headache.location[e.key], e.key);
                     $scope.headache.location[e.key] = !$scope.headache.location[e.key];
-                    $('img').mapster('set', $scope.headache.location[e.key], e.key);
                 }
             });
 
