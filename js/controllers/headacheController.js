@@ -18,16 +18,60 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
         $("body").children().eq(0).show();
         $('body').children().eq(1).hide();
     };
+    
+    var img1_zones = [];
 
     $scope.loadAreas = function(){
-        $('img').mapster(
+        $('#img_location1').mapster(
             {
                 fillOpacity: 0.4,
                 fillColor: "009999",
                 stroke: true,
                 strokeColor: "0066FF",
                 strokeOpacity: 0.8,
-                strokeWidth: 1
+                strokeWidth: 1,
+                onClick: function (e) {
+                    alert(e.key);
+                }
+            });
+
+        $('#img_location2').mapster(
+            {
+                fillOpacity: 0.4,
+                fillColor: "009999",
+                stroke: true,
+                strokeColor: "0066FF",
+                strokeOpacity: 0.8,
+                strokeWidth: 1,
+                onClick: function (e) {
+                    alert(e.key);
+                }
+            });
+
+        $('#img_location3').mapster(
+            {
+                fillOpacity: 0.4,
+                fillColor: "009999",
+                stroke: true,
+                strokeColor: "0066FF",
+                strokeOpacity: 0.8,
+                strokeWidth: 1,
+                onClick: function (e) {
+                    alert(e.key);
+                }
+            });
+
+        $('#img_location4').mapster(
+            {
+                fillOpacity: 0.4,
+                fillColor: "009999",
+                stroke: true,
+                strokeColor: "0066FF",
+                strokeOpacity: 0.8,
+                strokeWidth: 1,
+                onClick: function (e) {
+                    alert(e.key);
+                }
             });
     }
 
