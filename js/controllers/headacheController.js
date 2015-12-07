@@ -21,28 +21,29 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
 
 
     $scope.locations = {
-        "mandibular_right": 0,
-        "mandibular_left": 0,
-        "maxillar_right": 0,
-        "maxillar_left": 0,
-        "orbital_right": 0,
-        "orbital_left": 0,
-        "frontal_right": 0,
-        "frontal_mid": 0,
-        "frontal_left": 0,
-        "parietal_right": 0,
-        "parietal_mid": 0,
-        "parietal_left": 0,
-        "temporal_right": 0,
-        "temporal_left": 0,
-        "occipital_right": 0,
-        "occipital_mid": 0,
-        "occipital_left": 0,
-        "cervical_right": 0,
-        "cervical_mid": 0,
-        "cervical_left": 0
+        "mandibular_right": false,
+        "mandibular_left": false,
+        "maxillar_right": false,
+        "maxillar_left": false,
+        "orbital_right": false,
+        "orbital_left": false,
+        "frontal_right": false,
+        "frontal_mid": false,
+        "frontal_left": false,
+        "parietal_right": false,
+        "parietal_mid": false,
+        "parietal_left": false,
+        "temporal_right": false,
+        "temporal_left": false,
+        "occipital_right": false,
+        "occipital_mid": false,
+        "occipital_left": false,
+        "cervical_right": false,
+        "cervical_mid": false,
+        "cervical_left": false
     };
 
+    /*
     var img1_zones = ["mandibular_left", "maxillar_left", "orbital_left", "temporal_left", "parietal_left", "frontal_left",
         "frontal_mid", "parietal_mid", "orbital_right", "maxillar_right", "mandibular_right", "frontal_right",
         "parietal_right"];
@@ -56,10 +57,12 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
 
     var img4_zones = ["occipital_left", "occipital_mid", "occipital_right", "cervical_left", "cervical_mid", "temporal_left",
         "maxillar_left", "mandibular_left", "parietal_left", "parietal_mid", "parietal_right", "cervical_right"];
+    */
 
     $scope.loadAreas = function () {
         $('#img_location1').mapster(
             {
+                mapKey: 'data-key',
                 fillOpacity: 0.4,
                 fillColor: "009999",
                 stroke: true,
@@ -67,12 +70,15 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
                 strokeOpacity: 0.8,
                 strokeWidth: 1,
                 onClick: function (e) {
-                    alert(img1_zones[e.key]);
+                    $('img').mapster('set', !$scope.headache.location[e.key], e.key);
+                    $('#img_location1').mapster('set', $scope.headache.location[e.key], e.key);
+                    $scope.headache.location[e.key] = !$scope.headache.location[e.key];
                 }
             });
 
         $('#img_location2').mapster(
             {
+                mapKey: 'data-key',
                 fillOpacity: 0.4,
                 fillColor: "009999",
                 stroke: true,
@@ -80,12 +86,14 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
                 strokeOpacity: 0.8,
                 strokeWidth: 1,
                 onClick: function (e) {
-                    alert(img2_zones[e.key]);
+                    $scope.headache.location[e.key] = !$scope.headache.location[e.key];
+                    $('img').mapster('set', $scope.headache.location[e.key], e.key);
                 }
             });
 
         $('#img_location3').mapster(
             {
+                mapKey: 'data-key',
                 fillOpacity: 0.4,
                 fillColor: "009999",
                 stroke: true,
@@ -93,12 +101,14 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
                 strokeOpacity: 0.8,
                 strokeWidth: 1,
                 onClick: function (e) {
-                    alert(img3_zones[e.key]);
+                    $scope.headache.location[e.key] = !$scope.headache.location[e.key];
+                    $('img').mapster('set', $scope.headache.location[e.key], e.key);
                 }
             });
 
         $('#img_location4').mapster(
             {
+                mapKey: 'data-key',
                 fillOpacity: 0.4,
                 fillColor: "009999",
                 stroke: true,
@@ -106,9 +116,12 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
                 strokeOpacity: 0.8,
                 strokeWidth: 1,
                 onClick: function (e) {
-                    alert(img4_zones[e.key]);
+                    $scope.headache.location[e.key] = !$scope.headache.location[e.key];
+                    $('img').mapster('set', $scope.headache.location[e.key], e.key);
                 }
             });
+
+        $scope.setAreas();
     }
 
     $scope.headache = dataService.getCurrentHeadache();
@@ -117,7 +130,7 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
         $scope.headache = {
             intensityValues: [],
             end: null,
-            location: null,
+            location: $scope.locations,
             triggers: dataService.getTriggers(),
             symptoms: dataService.getSymptoms()
         };
@@ -128,6 +141,19 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
             $scope.headache.end = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), endTime.getHours(), endTime.getMinutes(), endTime.getSeconds());
         }
     };
+
+    $scope.setAreas = function(){
+        console.log("setting areas..");
+            if($scope.headache.location != null){
+                for (var loc in $scope.headache.location) {
+                    if ($scope.headache.location.hasOwnProperty(loc) && $scope.headache.location[loc]) {
+                        $('img').mapster('set', $scope.headache.location[loc], loc);
+                    }
+                }
+            }
+    };
+
+    $scope.setAreas();
 
     if ($scope.headache != null) {
         if ($scope.end != null) {
@@ -163,6 +189,7 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
             return -1;
         }
         for (headache in headaches) {
+            console.log($scope.headache ,"=?=", headaches[headache]);
             equalIntensityValues = true;
             for (value in headaches[headache].intensityValues) {
                 if (headaches[headache].intensityValues.length != $scope.headache.intensityValues.length) {
@@ -175,7 +202,14 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
                 }
             }
             equalEnd = $scope.headache.end == headaches[headache].end;
-            equalLocation = $scope.headache.location == headaches[headache].location;
+            equalLocation = true;
+            for (var location in headaches[headache].location) {
+                if (headaches[headache].location.hasOwnProperty(location)) {
+                    if($scope.headache.location[location] != headaches[headache].location[location]){
+                        equalLocation = false;
+                    }
+                }
+            }
             equalSymptoms = true;
             for (symptom in headaches[headache].symptoms) {
                 if (symptom == null || headaches == null || headaches[headache] == null || headaches[headache].symptoms == null || headaches[headache].symptoms[symptom] == null) {
@@ -195,6 +229,7 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
                     equalTriggers = false;
                 }
             }
+            console.log(equalIntensityValues , equalEnd , equalLocation , equalSymptoms , equalTriggers)
             if (equalIntensityValues && equalEnd && equalLocation && equalSymptoms && equalTriggers) {
                 return headache;
             }
@@ -203,6 +238,7 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
     };
 
     $scope.headacheIndex = $scope.getIndexOfHeadache();
+    console.log($scope.headacheIndex);
 
     /* Create a nice short time string from the start date and time */
 
