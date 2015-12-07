@@ -384,9 +384,3 @@ angular.module('Chronic').directive('ngModel', function ($filter) {
         }
     };
 });
- }
- }
- }
- };
- });
- */
