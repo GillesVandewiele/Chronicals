@@ -91,7 +91,7 @@ angular.module('Chronic').service('dataService', function ($http) {
     var getDrugsFromDB = function(){
         return new Promise(
             function (resolve, reject) {
-                $http.get('http://tw06v033.ugent.be/Chronic/rest/DrugService/drugs', {headers: {'Accept': 'application/json'}}).
+                $http.get('http://tw06v033.ugent.be/Chronic/rest/DrugService/drugs', {headers: {'Authorization': getAuthorization()}}).
                 success(function (data, status, headers, config) {
                     //alert("CONNECTED TO INTERNET OR DATABASE " + status);
                     var list = data;
@@ -117,7 +117,7 @@ angular.module('Chronic').service('dataService', function ($http) {
     var getSymptomsFromDB = function(){
         return new Promise(
             function (resolve, reject) {
-                $http({method: 'GET', url: 'http://tw06v033.ugent.be/Chronic/rest/SymptomService/symptoms'}).
+                $http.get('http://tw06v033.ugent.be/Chronic/rest/SymptomService/symptoms', {headers: {'Authorization': getAuthorization()}}).
                 success(function (data, status, headers, config) {
                     var symptoms = data;
                     var newSymptoms = [];
@@ -139,7 +139,7 @@ angular.module('Chronic').service('dataService', function ($http) {
     var getTriggersFromDB = function(){
         return new Promise(
             function (resolve, reject) {
-                $http({method: 'GET', url: 'http://tw06v033.ugent.be/Chronic/rest/TriggerService/triggers'}).
+                $http.get('http://tw06v033.ugent.be/Chronic/rest/TriggerService/triggers', {headers: {'Authorization': getAuthorization()}}).
                 success(function (data, status, headers, config) {
                     var triggers = data;
                     var newTriggers = [];

@@ -19,6 +19,24 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
         $('body').children().eq(1).hide();
     };
 
+    $scope.loadAreas = function(){
+        $('#img_location1').mapster(
+            {
+                fillOpacity: 0.4,
+                fillColor: "d42e16",
+                stroke: true,
+                strokeColor: "3320FF",
+                strokeOpacity: 0.8,
+                strokeWidth: 4,
+                areas: [
+                    {
+                        key: "mandibular_left",
+                        fillColor: "ffffff"
+                    }
+                ]
+            });
+    }
+
     $scope.headache = dataService.getCurrentHeadache();
 
     if ($scope.headache == null) {

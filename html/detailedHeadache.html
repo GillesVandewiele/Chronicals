@@ -64,22 +64,24 @@
             </ons-row>
             <ons-row>
                 <p class="label list_header" style="width: 100%; text-align: center;">Intensiteitscurve</p>
-                <canvas id="line" class="chart chart-line" chart-data="data"
-                        chart-labels="labels" chart-click="onClick" style="width: 100%;">
-                </canvas>
+                <div style="margin:auto;">
+                    <canvas id="line" class="chart chart-line" chart-data="data"
+                            chart-labels="labels" chart-click="onClick">
+                    </canvas>
+                </div>
             </ons-row>
             <ons-row>
                 <div class="detailsList">
-                    <div class="list_header">
+                    <div class="list_header" style="margin-top: 2%; margin-bottom: 2%;">
                         Symptomen
                     </div>
-                    <div ng-repeat="symptom in symptoms">
+                    <div ng-repeat="symptom in symptoms" style="margin-top:2%;">
                         <p>{{symptom}}</p>
                     </div>
-                    <div class="list_header">
+                    <div class="list_header" style="margin-top: 2%; margin-bottom: 2%;">
                         Triggers
                     </div>
-                    <div ng-repeat="symptom in triggers">
+                    <div ng-repeat="symptom in triggers" style="margin-top:2%;">
                         <p>{{symptom}}</p>
                     </div>
                 </div>
