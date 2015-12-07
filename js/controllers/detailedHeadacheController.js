@@ -100,25 +100,27 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
             if (!(entry.date < sorted[0].key || entry.date > sorted[sorted.length - 1].key)) {
                 //update sorted
                 var inserted = false;
-                var counter = 1;
-                while (!inserted) {
-                    if (sorted[counter].hasOwnProperty('key')) {
-                        if (new Date(sorted[counter].key) > new Date(entry.date)) {
-                            $scope.labels.splice(counter, 0, "" + (new Date(entry.date)).getHours() + ":" + ((new Date(entry.date)).getMinutes() < 10 ? '0' : '') + (new Date(entry.date)).getMinutes());
-                            sorted.splice(counter, 0, entry);
-                            var value = (Number($scope.data[counter - 1]) + Number($scope.data[counter])) / 2;
-                            $scope.data.splice(counter, 0, value);
-                            medicinePositions.splice(counter, 0, 1);
-                            inserted = true;
-                        }
-                    } else {
-                        if (new Date(sorted[counter].date) > new Date(entry.date)) {
-                            $scope.labels.splice(counter, 0, "" + (new Date(entry.date)).getHours() + ":" + ((new Date(entry.date)).getMinutes() < 10 ? '0' : '') + (new Date(entry.date)).getMinutes());
-                            sorted.splice(counter, 0, entry);
-                            var value = (Number($scope.data[counter - 1]) + Number($scope.data[counter])) / 2;
-                            $scope.data.splice(counter, 0, value);
-                            medicinePositions.splice(counter, 0, 1);
-                            inserted = true;
+                var counter = 0;
+                while (!inserted && counter < sorted.length) {
+                    if(sorted[counter] != null){
+                        if (sorted[counter].hasOwnProperty('key')) {
+                            if (new Date(sorted[counter].key) > new Date(entry.date)) {
+                                $scope.labels.splice(counter, 0, "" + (new Date(entry.date)).getHours() + ":" + ((new Date(entry.date)).getMinutes() < 10 ? '0' : '') + (new Date(entry.date)).getMinutes());
+                                sorted.splice(counter, 0, entry);
+                                var value = (Number($scope.data[counter - 1]) + Number($scope.data[counter])) / 2;
+                                $scope.data.splice(counter, 0, value);
+                                medicinePositions.splice(counter, 0, 1);
+                                inserted = true;
+                            }
+                        } else {
+                            if (new Date(sorted[counter].date) > new Date(entry.date)) {
+                                $scope.labels.splice(counter, 0, "" + (new Date(entry.date)).getHours() + ":" + ((new Date(entry.date)).getMinutes() < 10 ? '0' : '') + (new Date(entry.date)).getMinutes());
+                                sorted.splice(counter, 0, entry);
+                                var value = (Number($scope.data[counter - 1]) + Number($scope.data[counter])) / 2;
+                                $scope.data.splice(counter, 0, value);
+                                medicinePositions.splice(counter, 0, 1);
+                                inserted = true;
+                            }
                         }
                     }
 

@@ -24,6 +24,14 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
         return ""+(datum.getDate())+"/"+(datum.getMonth()+1)+" "+(datum.getHours()<10?'0':'')+datum.getHours()+":"+(datum.getMinutes()<10?'0':'')+datum.getMinutes();
     };
 
+    $scope.objTracker = function(object){
+        if(object.hasOwnProperty('end')){
+            return Math.random() + object.intensityValues + object.end + object.location + object.symptoms + object.triggers;
+        } else {
+            return Math.random() + object.drug + object.quantity + object.date;
+        }
+    };
+
     $scope.listItems =[];
     if($scope.listItems.length>0){
         $scope.listItems = [];
