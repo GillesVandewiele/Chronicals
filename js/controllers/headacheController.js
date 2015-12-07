@@ -19,7 +19,30 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
         $('body').children().eq(1).hide();
     };
 
-    $scope.loadAreas = function(){
+    $scope.locations = {
+        "mandibular_right": 0,
+        "mandibular_left": 0,
+        "maxillar_right": 0,
+        "maxillar_left": 0,
+        "orbital_right": 0,
+        "orbital_left": 0,
+        "frontal_right": 0,
+        "frontal_mid": 0,
+        "frontal_left": 0,
+        "parietal_right": 0,
+        "parietal_mid": 0,
+        "parietal_left": 0,
+        "temporal_right": 0,
+        "temporal_left": 0,
+        "occipital_right": 0,
+        "occipital_mid": 0,
+        "occipital_left": 0,
+        "cervical_right": 0,
+        "cervical_mid": 0,
+        "cervical_left": 0
+    }
+
+    $scope.loadAreas = function () {
         $('img').mapster(
             {
                 fillOpacity: 0.4,
