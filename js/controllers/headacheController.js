@@ -23,17 +23,11 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
         $('#img_location1').mapster(
             {
                 fillOpacity: 0.4,
-                fillColor: "d42e16",
+                fillColor: "009999",
                 stroke: true,
-                strokeColor: "3320FF",
+                strokeColor: "990000",
                 strokeOpacity: 0.8,
-                strokeWidth: 4,
-                areas: [
-                    {
-                        key: "mandibular_left",
-                        fillColor: "ffffff"
-                    }
-                ]
+                strokeWidth: 4
             });
     }
 
