@@ -20,7 +20,7 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
     };
 
     $scope.loadAreas = function(){
-        $('#img_location1').mapster(
+        $('img').mapster(
             {
                 fillOpacity: 0.4,
                 fillColor: "009999",

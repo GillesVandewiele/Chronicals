@@ -85,7 +85,7 @@
       	  <hr>
       	  <form name="intensityEndDate" id="endDateForm" ng-show="headache.intensityValues.length">
 	      	  <ons-row>
-		  			<p class="label timeLabel" style="margin-top: 5%;">Eindtijd: (optioneel)</p>
+		  			<p class="label list_header">Eindtijd: (optioneel)</p>
 			  </ons-row>
 			  <ons-row>
 		  			<ons-col class="col ons-col-inner"><input name="endDate" type="date" ng-model="endDate" min="2013-01-01" max="2050-01-01" class="datePicker" validenddate button="nextButton" /></ons-col>
@@ -305,30 +305,60 @@
 		      <ons-carousel-item style="position: absolute; bottom: 0;">
                 <ons-row>
                     <ons-icon icon="ion-ios-arrow-back buttonIcon" ng-click="carousel.last()" style="margin-top: 25%; margin-left: auto;"></ons-icon>
-                      <img src="../img/1_location.png" width="260" height="196" border="0" id="img_location1" usemap="#map_location1" />
-                      <map name="map_location1" id="map_location1">
-                          <area style="width:0; height: 0;" name="mandibular_left" href="#" shape="poly" coords="135,104,131,99,118,107,100,114,84,118,68,117,66,128,68,138,73,144,86,143,97,141,112,134,126,125,132,115,134,106,134,105" />
-                      </map>
+                    <img src="../img/1_location.png" width="260" height="196" border="0" id="img_location1" usemap="#map_location1" />
+                    <map name="map_location1" id="map_location1">
+                        <area shape="poly" name="mandibular_left" coords="134,104,130,101,123,103,121,105,118,106,106,111,102,113,97,114,92,114,86,115,82,116,79,116,75,115,72,116,70,119,69,122,69,127,69,131,71,136,72,141,73,144,74,145,80,145,85,144,91,143,98,141,106,137,111,134,116,132,120,129,125,124,129,121,132,116,133,111"  href="#" />
+                        <area shape="poly" name="maxilar_left" coords="71,117,65,111,64,107,65,100,65,97,68,96,77,96,89,95,94,93,99,91,105,89,112,87,120,88,124,92,124,96,124,100,124,103,120,105,114,108,106,111,102,113,93,114,84,115,77,116,74,115,75,115"  href="#" />
+                        <area shape="poly" name="orbital_left" coords="66,96,71,96,76,96,85,95,90,95,97,92,105,89,106,85,106,80,104,75,99,70,91,68,84,67,77,67,72,68,68,71,65,74,63,76,63,80,64,91,65,97" href="#" />
+                        <area shape="poly" name="temporal_left" coords="105,77,106,81,105,88,111,87,114,87,121,86,127,83,128,79,132,74,140,72,148,71,149,69,150,64,152,58,152,52,152,44,152,40,150,39,146,39,138,40,119,42,116,45,114,47,110,55,106,63,104,70,103,74"  href="#" />
+                        <area shape="poly" name="paretal_left" coords="113,47,102,42,96,39,94,34,99,30,109,21,117,17,128,13,136,11,141,12,144,17,148,24,153,34,152,39,148,39,138,40,119,42"  href="#" />
+                        <area shape="poly" name="frontal_left" coords="71,68,73,61,74,49,78,42,81,38,84,37,88,37,95,37,97,40,102,42,108,44,113,47,112,50,106,64,103,73,99,70,95,69,91,68,86,67,81,67,75,67,71,68"  href="#" />
+                        <area shape="poly" name="frontal_mid" coords="65,73,61,73,58,72,54,70,52,66,54,58,57,53,60,48,63,40,64,35,66,33,73,34,79,35,85,36,80,39,76,44,74,50,73,60,71,68,71,69,68,71"  href="#" />
+                        <area shape="poly" name="paretal_mid" coords="66,33,68,29,70,24,74,18,78,14,88,9,95,5,103,3,112,4,120,6,125,7,133,10,133,11,122,15,118,17,112,20,107,23,103,26,99,30,96,32,94,34,95,37,89,37,85,37,84,36,83,35,75,34,72,34"  href="#" />
+                    </map>
 
                       <!--<img src="../img/1_location.png"/>-->
                     <ons-icon icon="ion-ios-arrow-forward buttonIcon" ng-click="carousel.next()" style="margin-top: 25%; margin-right: auto;"></ons-icon>
                 </ons-row>
 		      </ons-carousel-item>
 		      <ons-carousel-item>
-		        <ons-icon icon="ion-ios-arrow-back buttonIcon" ng-click="carousel.prev()" style="margin-top: 25%"></ons-icon>
-		        <img src="../img/2_location.png"></img>
-		        <ons-icon icon="ion-ios-arrow-forward buttonIcon" ng-click="carousel.next()" style="margin-top: 25%"></ons-icon>
-		      </ons-carousel-item>
+                <ons-row>
+                    <ons-icon icon="ion-ios-arrow-back buttonIcon" ng-click="carousel.prev()" style="margin-top: 25%; margin-left: auto;"></ons-icon>
+                    <img src="../img/2_location.png" width="260" height="196" border="0" id="img_location2" usemap="#map_location2" />
+                    <map name="map_location2" id="map_location2">
+                        <area shape="poly" coords="66,104,70,101,77,103,79,105,82,106,94,111,98,113,103,114,108,114,114,115,118,116,121,116,125,115,128,116,130,119,131,122,131,127,131,131,129,136,128,141,127,144,126,145,120,145,115,144,109,143,102,141,94,137,89,134,84,132,80,129,75,124,71,121,68,116,67,111"  href="#" />
+
+                        <area shape="poly" coords="129,117,135,111,136,107,135,100,135,97,132,96,123,96,111,95,106,93,101,91,95,89,88,87,80,88,76,92,76,96,76,100,76,103,80,105,86,108,94,111,98,113,107,114,116,115,123,116,126,115,125,115"  href="#" />
+
+                        <area shape="poly" coords="134,96,129,96,124,96,115,95,110,95,103,92,95,89,94,85,94,80,96,75,101,70,109,68,116,67,123,67,128,68,132,71,135,74,137,76,137,80,136,91,135,97"  href="#" />
+
+                        <area shape="poly" coords="95,77,94,81,95,88,89,87,86,87,79,86,73,83,72,79,68,74,60,72,52,71,51,69,50,64,48,58,48,52,48,44,48,40,50,39,54,39,62,40,81,42,84,45,86,47,90,55,94,63,96,70,97,74"  href="#" />
+
+                        <area shape="poly" coords="87,47,98,42,104,39,106,34,101,30,91,21,83,17,72,13,64,11,59,12,56,17,52,24,47,34,48,39,52,39,62,40,81,42"  href="#" />
+
+                        <area shape="poly" coords="129,68,127,61,126,49,122,42,119,38,116,37,112,37,105,37,103,40,98,42,92,44,87,47,88,50,94,64,97,73,101,70,105,69,109,68,114,67,119,67,125,67,129,68"  href="#" />
+
+                        <area shape="poly" coords="135,73,139,73,142,72,146,70,148,66,146,58,143,53,140,48,137,40,136,35,134,33,127,34,121,35,115,36,120,39,124,44,126,50,127,60,129,68,129,69,132,71"  href="#" />
+
+                        <area shape="poly" coords="134,33,132,29,130,24,126,18,122,14,112,9,105,5,97,3,88,4,80,6,75,7,67,10,67,11,78,15,82,17,88,20,93,23,97,26,101,30,104,32,106,34,105,37,111,37,115,37,116,36,117,35,125,34,128,34"  href="#" />
+                    </map>
+                    <ons-icon icon="ion-ios-arrow-forward buttonIcon" ng-click="carousel.next()" style="margin-top: 25%; margin-right: auto;"></ons-icon>
+		        </ons-row>
+              </ons-carousel-item>
 		      <ons-carousel-item>
-		        <ons-icon icon="ion-ios-arrow-back buttonIcon" ng-click="carousel.prev()" style="margin-top: 25%"></ons-icon>
-		        <img src="../img/3_location.png"></img>
-		        <ons-icon icon="ion-ios-arrow-forward buttonIcon" ng-click="carousel.next()" style="margin-top: 25%"></ons-icon>
-		      </ons-carousel-item>
+                <ons-row>
+                    <ons-icon icon="ion-ios-arrow-back buttonIcon" ng-click="carousel.prev()" style="margin-top: 25%; margin-left: auto;"></ons-icon>
+                    <img src="../img/3_location.png" width="260" height="196" border="0" id="img_location3" usemap="#map_location3" />
+                    <ons-icon icon="ion-ios-arrow-forward buttonIcon" ng-click="carousel.next()" style="margin-top: 25%; margin-right: auto;"></ons-icon>
+                </ons-row>
+              </ons-carousel-item>
 		      <ons-carousel-item>
-		        <ons-icon icon="ion-ios-arrow-back buttonIcon" ng-click="carousel.prev()" style="margin-top: 25%"></ons-icon>
-		        <img src="../img/4_location.png"></img>
-		        <ons-icon icon="ion-ios-arrow-forward buttonIcon" ng-click="carousel.first()" style="margin-top: 25%"></ons-icon>
-		      </ons-carousel-item>
+                <ons-row>
+                    <ons-icon icon="ion-ios-arrow-back buttonIcon" ng-click="carousel.prev()" style="margin-top: 25%; margin-left: auto;"></ons-icon>
+                    <img src="../img/4_location.png" width="260" height="196" border="0" id="img_location4" usemap="#map_location4" />
+                    <ons-icon icon="ion-ios-arrow-forward buttonIcon" ng-click="carousel.first()" style="margin-top: 25%; margin-right: auto;"></ons-icon>
+                </ons-row>
+              </ons-carousel-item>
 		    </ons-carousel>
       	</div>
 

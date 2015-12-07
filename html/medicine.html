@@ -58,20 +58,23 @@
             <div class="navigatorTabBody">
                 <form name="addMedicineForm">
                     <ons-row>
-                        <p class="label" style="margin-left: 5%;">Medicijn + hoeveelheid:</p>
+                        <p class="label list_header">Medicijn + hoeveelheid</p>
                     </ons-row>
                     <ons-row>
                         <div class="selectDiv" style="width: 40%;">
                             <span class="selectDefault">{{selectedDrug.name}}</span>
                               <select id="drugDropdown" ng-change="dropdownClick(selectedDrug)" ng-model="selectedDrug" name="drug" ng-options="drug as drug.name for drug in drugs" required>
-                                <option style="display:none" value="">select a drug</option>
+                                <option style="display:none" value=""></option>
                               </select>
                          </div>
                          <input id="ownDrug" type="text" ng-model="ownDrug" ng-change="typeText(ownDrug)">
                          <input type="number" name="quantity" style="width: 20%;" min="1" class="medicineQuantity" ng-model="drugQuantity" required>
-                         <label>mg</label>
+                         <label style="margin-left: 2%;">mg</label>
 
                      </ons-row>
+                    <ons-row style="margin-top: 5%;">
+                        <p style="margin-left: 5%;">{{selectedDrug.description}}</p>
+                    </ons-row>
                     <small class="error" ng-show="addMedicineForm.quantity.$error.required">
                         - U moet een hoeveelheid ingeven!
                     </small> <br/>
@@ -81,11 +84,8 @@
                     <small class="error" ng-show="addMedicineForm.drug.$error.required">
                         - U moet een medicijn ingeven!
                     </small> <br/>
-                     <ons-row style="margin-top: 5%;">
-                        <p style="margin-left: 5%;">{{selectedDrug.description}}</p>
-                     </ons-row>
                      <ons-row>
-                        <p class="label" style="margin-left: 5%; margin-top:5%; ">Tijdstip van inname:</p>
+                         <p class="label list_header">Tijdstip van inname</p>
                      </ons-row>
                      <ons-row>
                         <input type="date" name="medicineDate" ng-model="drugDate" style="margin-left: 5%;" min="2013-01-01" max="2050-01-01" class="datePicker" required></ons-col>

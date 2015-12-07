@@ -62,8 +62,8 @@
                 <div class="label" style="width: 35%;">Eindtijd:</div>
                 <div class="label" style="width: 65%;text-align: right">{{endTime}}</div>
             </ons-row>
-            <ons-row>
-                <p class="label list_header" style="width: 100%; text-align: center;">Intensiteitscurve</p>
+            <ons-row style="margin-top: 2%;">
+                <p class="label list_header">Intensiteitscurve</p>
                 <div style="margin:auto;">
                     <canvas id="line" class="chart chart-line" chart-data="data"
                             chart-labels="labels" chart-click="onClick">
@@ -72,13 +72,13 @@
             </ons-row>
             <ons-row>
                 <div class="detailsList">
-                    <div class="list_header" style="margin-top: 2%; margin-bottom: 2%;">
+                    <div class="list_header">
                         Symptomen
                     </div>
                     <div ng-repeat="symptom in symptoms" style="margin-top:2%;">
                         <p>{{symptom}}</p>
                     </div>
-                    <div class="list_header" style="margin-top: 2%; margin-bottom: 2%;">
+                    <div class="list_header">
                         Triggers
                     </div>
                     <div ng-repeat="symptom in triggers" style="margin-top:2%;">
