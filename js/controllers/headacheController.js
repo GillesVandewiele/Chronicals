@@ -18,10 +18,46 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
         $("body").children().eq(0).show();
         $('body').children().eq(1).hide();
     };
-    
-    var img1_zones = [];
 
-    $scope.loadAreas = function(){
+
+    $scope.locations = {
+        "mandibular_right": 0,
+        "mandibular_left": 0,
+        "maxillar_right": 0,
+        "maxillar_left": 0,
+        "orbital_right": 0,
+        "orbital_left": 0,
+        "frontal_right": 0,
+        "frontal_mid": 0,
+        "frontal_left": 0,
+        "parietal_right": 0,
+        "parietal_mid": 0,
+        "parietal_left": 0,
+        "temporal_right": 0,
+        "temporal_left": 0,
+        "occipital_right": 0,
+        "occipital_mid": 0,
+        "occipital_left": 0,
+        "cervical_right": 0,
+        "cervical_mid": 0,
+        "cervical_left": 0
+    };
+
+    var img1_zones = ["mandibular_left", "maxillar_left", "orbital_left", "temporal_left", "parietal_left", "frontal_left",
+        "frontal_mid", "parietal_mid", "orbital_right", "maxillar_right", "mandibular_right", "frontal_right",
+        "parietal_right"];
+
+    var img2_zones = ["mandibular_right", "maxillar_right", "orbital_right", "temporal_right", "parietal_right", "frontal_right",
+        "frontal_mid", "parietal_mid", "orbital_left", "maxillar_left", "mandibular_left", "frontal_left",
+        "parietal_left"];
+
+    var img3_zones = ["occipital_right", "occipital_mid", "occipital_left", "cervical_right", "cervical_mid", "temporal_right",
+        "maxillar_right", "mandibular_right", "parietal_right", "parietal_mid", "parietal_left", "cervical_left"];
+
+    var img4_zones = ["occipital_left", "occipital_mid", "occipital_right", "cervical_left", "cervical_mid", "temporal_left",
+        "maxillar_left", "mandibular_left", "parietal_left", "parietal_mid", "parietal_right", "cervical_right"];
+
+    $scope.loadAreas = function () {
         $('#img_location1').mapster(
             {
                 fillOpacity: 0.4,
@@ -31,7 +67,7 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
                 strokeOpacity: 0.8,
                 strokeWidth: 1,
                 onClick: function (e) {
-                    alert(e.key);
+                    alert(img1_zones[e.key]);
                 }
             });
 
@@ -44,7 +80,7 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
                 strokeOpacity: 0.8,
                 strokeWidth: 1,
                 onClick: function (e) {
-                    alert(e.key);
+                    alert(img2_zones[e.key]);
                 }
             });
 
@@ -57,7 +93,7 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
                 strokeOpacity: 0.8,
                 strokeWidth: 1,
                 onClick: function (e) {
-                    alert(e.key);
+                    alert(img3_zones[e.key]);
                 }
             });
 
@@ -70,7 +106,7 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
                 strokeOpacity: 0.8,
                 strokeWidth: 1,
                 onClick: function (e) {
-                    alert(e.key);
+                    alert(img4_zones[e.key]);
                 }
             });
     }
