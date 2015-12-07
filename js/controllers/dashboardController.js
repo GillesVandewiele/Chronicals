@@ -161,7 +161,6 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
         var currentHeadache = dataService.getCurrentHeadache();
         var orig = jQuery.extend(true, {}, currentHeadache);;
         currentHeadache.end = new Date();
-        currentHeadache.location = "LEL";
         dataService.setCurrentHeadache(currentHeadache);
         dataService.removeHeadache(orig);
         dataService.addHeadache(currentHeadache);
