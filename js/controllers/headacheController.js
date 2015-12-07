@@ -25,9 +25,9 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
                 fillOpacity: 0.4,
                 fillColor: "009999",
                 stroke: true,
-                strokeColor: "990000",
+                strokeColor: "0066FF",
                 strokeOpacity: 0.8,
-                strokeWidth: 4
+                strokeWidth: 1
             });
     }
 
