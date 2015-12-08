@@ -314,12 +314,25 @@ div .last{
 	padding: 0;
 	align-content: center;
 	text-align: center;
-	display: inline-block;
+	display: flex;
+    flex-direction: column;
     border-bottom: 4px solid #1e1f3f;
 
     margin-right: 0 !important;
+    overflow: scroll;
 
 }
+
+.tile.large > div {
+    flex: 1;
+    overflow: scroll;
+}
+
+.dashboardlist {
+    height:100%;
+    overflow: scroll;
+}
+
 .row.footer.dashboardFooter{
 	background-color: #01579B;
     width: 96%;
@@ -327,6 +340,10 @@ div .last{
     margin-right: auto;
     margin-top: 3%;
     height: 15% !important;
+}
+
+#midTile{
+    height: 90%;
 }
 
 .dashboardMidIcon{
