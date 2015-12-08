@@ -1,5 +1,5 @@
 /*!
- NAAM VAN ONS PROJECT, v1.0
+ Chronicals, v1.0
  Created by Kiani Lannoye & Gilles Vandewiele, commissioned by UZ Ghent
  https://github.com/kianilannoye/Chronicals
 
@@ -42,22 +42,6 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
         "cervical_mid": false,
         "cervical_left": false
     };
-
-    /*
-    var img1_zones = ["mandibular_left", "maxillar_left", "orbital_left", "temporal_left", "parietal_left", "frontal_left",
-        "frontal_mid", "parietal_mid", "orbital_right", "maxillar_right", "mandibular_right", "frontal_right",
-        "parietal_right"];
-
-    var img2_zones = ["mandibular_right", "maxillar_right", "orbital_right", "temporal_right", "parietal_right", "frontal_right",
-        "frontal_mid", "parietal_mid", "orbital_left", "maxillar_left", "mandibular_left", "frontal_left",
-        "parietal_left"];
-
-    var img3_zones = ["occipital_right", "occipital_mid", "occipital_left", "cervical_right", "cervical_mid", "temporal_right",
-        "maxillar_right", "mandibular_right", "parietal_right", "parietal_mid", "parietal_left", "cervical_left"];
-
-    var img4_zones = ["occipital_left", "occipital_mid", "occipital_right", "cervical_left", "cervical_mid", "temporal_left",
-        "maxillar_left", "mandibular_left", "parietal_left", "parietal_mid", "parietal_right", "cervical_right"];
-    */
 
     $scope.loadAreas = function () {
         $('#img_location1').mapster(
@@ -129,6 +113,8 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
 
     $scope.headache = dataService.getCurrentHeadache();
 
+    console.log($scope.headache);
+
     if ($scope.headache == null) {
         $scope.headache = {
             intensityValues: [],
@@ -140,9 +126,11 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
     }
 
     $scope.setEnd = function (endDate, endTime) {
+        console.log(endDate, endTime);
         if (endDate != null && endTime != null) {
             $scope.headache.end = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), endTime.getHours(), endTime.getMinutes(), endTime.getSeconds());
         }
+        console.log("nieuw eind =", $scope.headache.end);
     };
 
     $scope.setAreas = function(){
@@ -159,10 +147,11 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
     $scope.setAreas();
 
     if ($scope.headache != null) {
-        if ($scope.end != null) {
+        if ($scope.headache.end != null) {
             $scope.end = new Date($scope.headache.end);
             $scope.endDate = $scope.end;
             $scope.endTime = $scope.end;
+            console.log("hallo!", $scope.end);
         }
     } else $scope.end = null;
 
@@ -186,13 +175,10 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
 
     $scope.getIndexOfHeadache = function () {
         headaches = dataService.getHeadacheList();
-        console.log("ALL HEADACHES = ", headaches);
-        console.log("SCOPE HEADACHE = ", $scope.headache);
         if (headaches == null || headaches.length == 0) {
             return -1;
         }
         for (headache in headaches) {
-            console.log($scope.headache ,"=?=", headaches[headache]);
             equalIntensityValues = true;
             for (value in headaches[headache].intensityValues) {
                 if (headaches[headache].intensityValues.length != $scope.headache.intensityValues.length) {
@@ -232,7 +218,6 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
                     equalTriggers = false;
                 }
             }
-            console.log(equalIntensityValues , equalEnd , equalLocation , equalSymptoms , equalTriggers)
             if (equalIntensityValues && equalEnd && equalLocation && equalSymptoms && equalTriggers) {
                 return headache;
             }
@@ -241,7 +226,6 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
     };
 
     $scope.headacheIndex = $scope.getIndexOfHeadache();
-    console.log($scope.headacheIndex);
 
     /* Create a nice short time string from the start date and time */
 
@@ -268,15 +252,12 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
 
         if ($scope.headacheIndex != -1) {
             list = dataService.getHeadacheList();
-            console.log("pre add", list);
             list[$scope.headacheIndex] = $scope.headache;
             dataService.setHeadacheList(list);
-            console.log("post add", dataService.getHeadacheList())
         } else dataService.addHeadache($scope.headache);
 
         dataService.setCurrentHeadache(null);
         location.href = "dashboard.html";
-        //console.log(JSON.stringify($scope.headache));
     };
 
     $scope.cancel = function () {

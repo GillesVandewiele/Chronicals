@@ -1,5 +1,5 @@
 /*!
- 	NAAM VAN ONS PROJECT, v1.0
+ 	Chronicals, v1.0
  	Created by Kiani Lannoye & Gilles Vandewiele, commissioned by UZ Ghent
     https://github.com/kianilannoye/Chronicals
 
@@ -327,10 +327,6 @@ div .last{
     margin-right: auto;
     margin-top: 3%;
     height: 15% !important;
-}
-
-#midTile{
-    height: 74%;
 }
 
 .dashboardMidIcon{

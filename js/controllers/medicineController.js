@@ -1,5 +1,5 @@
 /*!
- 	NAAM VAN ONS PROJECT, v1.0
+ 	Chronicals, v1.0
  	Created by Kiani Lannoye & Gilles Vandewiele, commissioned by UZ Ghent
     https://github.com/kianilannoye/Chronicals
 
@@ -13,7 +13,6 @@ angular.module('Chronic').controller('medicineController', function($scope, data
     });
 
     $scope.transition = function(){
-        //console.log($("body").children());
         $("body").children().eq(0).show();
         $('body').children().eq(1).hide();
     };
