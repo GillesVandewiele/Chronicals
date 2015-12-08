@@ -68,7 +68,7 @@
                               </select>
                          </div>
                          <input id="ownDrug" type="text" ng-model="ownDrug" ng-change="typeText(ownDrug)">
-                         <input type="number" name="quantity" style="width: 20%;" min="1" class="medicineQuantity" ng-model="drugQuantity" required>
+                         <input type="number" name="quantity" style="width: 20%;" min="1" class="medicineQuantity" ng-model="drugQuantity" ng-change="typeNumber(drugQuantity)" required>
                          <label style="margin-left: 2%;">mg</label>
 
                      </ons-row>
@@ -88,8 +88,8 @@
                          <p class="label list_header">Tijdstip van inname</p>
                      </ons-row>
                      <ons-row>
-                        <input type="date" name="medicineDate" ng-model="drugDate" style="margin-left: 5%;" min="2013-01-01" max="2050-01-01" class="datePicker" required></ons-col>
-                        <input type="time" name="medicineTime" placeholder="HH:mm" ng-model="drugTime" class="timePicker" step="60" required></ons-col>
+                        <input type="date" name="medicineDate" ng-model="drugDate" ng-change="typeDate(drugDate)" style="margin-left: 5%;" min="2013-01-01" max="2050-01-01" class="datePicker" required></ons-col>
+                        <input type="time" name="medicineTime" placeholder="HH:mm" ng-model="drugTime" ng-change="typeTime(drugTime)" class="timePicker" step="60" required></ons-col>
                         <small class="error" ng-show="addMedicineForm.medicineTime.$error.time">
                             - U moet een geldig tijdstip ingeven!
                          </small>

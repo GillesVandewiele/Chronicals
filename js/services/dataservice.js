@@ -101,8 +101,8 @@ angular.module('Chronic').service('dataService', function ($http) {
                         list = list.concat(JSON.parse(localStorage.getItem("ownDrugList")));
                     }
                     list[list.length] = {id: -1, name: "...", description: "Own custom drug"};
-                    console.log("Druglist = ", list);
                     localStorage.setItem("drugList", JSON.stringify(list));
+                    console.log("Drugs received = ", list);
                     resolve();
                 }).
                 error(function (data, status, headers, config) {
@@ -126,6 +126,7 @@ angular.module('Chronic').service('dataService', function ($http) {
                                           val: false});
                     });
                     localStorage.setItem("symptoms", JSON.stringify(newSymptoms));
+                    console.log("Symptoms received = ", newSymptoms);
                     resolve();
                 }).
                 error(function (data, status, headers, config) {
@@ -148,6 +149,7 @@ angular.module('Chronic').service('dataService', function ($http) {
                                           val: false});
                     });
                     localStorage.setItem("triggers", JSON.stringify(newTriggers));
+                    console.log("Triggers received = ", newTriggers);
                     resolve();
                 }).
                 error(function (data, status, headers, config) {
@@ -172,6 +174,7 @@ angular.module('Chronic').service('dataService', function ($http) {
     };
 
     var syncDB = function () {
+        console.log("???");
         return Promise.all([getDrugsFromDB(), getSymptomsFromDB(), getTriggersFromDB()]);
         //TODO: get patient advice
     };

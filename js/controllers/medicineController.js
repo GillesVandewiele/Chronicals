@@ -56,7 +56,6 @@ angular.module('Chronic').controller('medicineController', function($scope, data
 	// Populate the dropdown and the advice
 	$scope.advice = "Dit is een voorbeeldadvies.";
 	$scope.drugs = dataService.getDrugs();
-    //console.log("lel", $scope.drugs);
 
 	// Create the possibility to add an own drug in the dropdown
     $scope.dropdownClick = function(selectedDrug){
@@ -70,6 +69,25 @@ angular.module('Chronic').controller('medicineController', function($scope, data
 
     $scope.typeText = function(text){
         $scope.ownDrug = text;
+    };
+
+    $scope.typeNumber = function(number){
+        $scope.drugQuantity = number;
+    };
+
+    $scope.typeDate = function(date){
+        if(date != null) {
+            $scope.drugDate.setFullYear(date.getFullYear());
+            $scope.drugDate.setMonth(date.getMonth());
+            $scope.drugDate.setDate(date.getDate());
+        }
+    };
+
+    $scope.typeTime = function(time){
+        if(time != null) {
+            $scope.drugTime.setHours(time.getHours());
+            $scope.drugTime.setMinutes(time.getMinutes());
+        }
     }
 
 	// Called when clicking "Sla Op"
