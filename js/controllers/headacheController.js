@@ -284,10 +284,11 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
     $scope.closeAndSave = function () {
 
         if ($scope.headacheIndex != -1) {
-            list = dataService.getHeadacheList();
+            var list = dataService.getHeadacheList();
             list[$scope.headacheIndex] = $scope.headache;
             dataService.setHeadacheList(list);
             dataService.sendHeadacheToDB($scope.headache).then(function(result){
+                console.log("result:"+result);
                 console.log("Return van indienen hoofdpijn:"+status);
                 dataService.setCurrentHeadache(null);
                 location.href = "dashboard.html";
