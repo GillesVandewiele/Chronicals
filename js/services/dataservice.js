@@ -317,7 +317,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                             console.log(drugID);
                             if(drugList[aDrug].id == drugID) drug = drugList[aDrug];
                         }
-                        newMedicines.push({drug: drug, quantity: quantity, date: date})
+                        newMedicines.push({id: entry.drugID, drug: drug, quantity: quantity, date: date})
                     });
                     localStorage.setItem("medicineList", JSON.stringify(newMedicines));
                     resolve();
