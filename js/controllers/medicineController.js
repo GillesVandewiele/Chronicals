@@ -113,6 +113,16 @@ angular.module('Chronic').controller('medicineController', function($scope, data
                 dataService.setDailyMedicineList(list);
             }else{
                 dataService.setMedicineList(list);
+                dataService.sendMedicineToDB(medicine).then(function(result){
+                    console.log("Return van indienen medicijn:"+status);
+                    dataService.setCurrentMedicine(null);
+                    location.href = newLocation;
+                }, function(result){
+                    console.log("Rest fout");
+                    console.log(medicine);
+                    dataService.setCurrentMedicine(null);
+                    location.href=newLocation;
+                });
             }
 
 		}
@@ -121,7 +131,18 @@ angular.module('Chronic').controller('medicineController', function($scope, data
                 dataService.addDailyMedicine(medicine)
             }else{
                 dataService.addMedicine(medicine);
+                dataService.sendMedicineToDB(medicine).then(function(result){
+                    console.log("Return van indienen medicijn:"+status);
+                    dataService.setCurrentMedicine(null);
+                    location.href = newLocation;
+                }, function(result){
+                    console.log("Rest fout");
+                    console.log(medicine);
+                    dataService.setCurrentMedicine(null);
+                    location.href=newLocation;
+                });
             }
+
 
 		}
   		dataService.setCurrentMedicine(null);

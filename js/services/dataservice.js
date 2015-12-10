@@ -90,25 +90,10 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
             }
             console.log("Symptoms", newSymptoms);
             dataPost.symptomIDs = newSymptoms;
-            //var newHeadacheTriggers = JSON.parse(localStorage.getItem("triggers"));
-            //for(var trigger in newHeadacheTriggers){
-            //    var triggerIndex = entry.triggerIDs.indexOf(newHeadacheTriggers[trigger].id);
-            //    if(triggerIndex > -1){
-            //        newHeadacheTriggers[triggerIndex].val = true;
-            //    }
-            //}
-            //var newHeadacheSymptoms = JSON.parse(localStorage.getItem("symptoms"));
-            //for(var symptom in newHeadacheSymptoms){
-            //    var symptomIndex = entry.triggerIDs.indexOf(newHeadacheSymptoms[symptom].id);
-            //    if(symptomIndex > -1){
-            //        newHeadacheSymptoms[symptomIndex].val = true;
-            //    }
-            //}
-
 
             $http({
                 method: 'POST',
-                url: "http://tw06v033.ugent.be/Chronic/rest/HeadacheService/headaches?patientID=2",
+                url: "http://tw06v033.ugent.be/Chronic/rest/HeadacheService/headaches?patientID="+patientID,
                 data: JSON.stringify(dataPost),
                 headers: {
                     'Content-Type': 'application/json'
@@ -120,28 +105,30 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                 reject();
             });
         });
+    };
 
-        //    .then(function successCallback(response) {
-        //    // this callback will be called asynchronously
-        //    // when the response is available
-        //    console.log("Return van indienen hoofdpijn:"+status);
-        //}, function errorCallback(response) {
-        //    // called asynchronously if an error occurs
-        //    // or server returns response with an error status.
-        //    console.log("error creating user: "+response);
-        //    //console.log("data:" +data);
-        //    console.log(response);
-        //    console.log(response.config);
-        //});
+    var sendMedicineToDB = function(medicineObj){
+        return new Promise(function(resolve,reject) {
+            var dataPost = {
+                "drugID" : medicineObj.id,
+                "date": medicineObj.date.toString(),
+                "quantity": medicineObj.quantity
+            };
 
-            //$http.post("http://tw06v033.ugent.be/Chronic/rest/HeadacheService/headaches?patientID="+patientID, JSON.stringify(headacheObj)).
-            //    success(function (data, status, headers, config) {
-            //        console.log("Return van indienen user:"+status);
-            //    }).
-            //    error(function (data, status, headers, config) {
-            //        console.log("error creating user: "+status);
-            //        console.log("data:" +data);
-            //    });
+            $http({
+                method: 'POST',
+                url: "http://tw06v033.ugent.be/Chronic/rest/MedicineService/medicines?patientID="+patientID,
+                data: JSON.stringify(dataPost),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).success(function (data, status, headers, config) {
+                resolve();
+            }).
+            error(function (data, status, headers, config) {
+                reject();
+            });
+        });
     };
 
 
@@ -604,8 +591,8 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         getAdvice: getAdvice,
         syncDB: syncDB,
         getDBStatus: getDBStatus,
-        sendHeadacheToDB: sendHeadacheToDB
-
+        sendHeadacheToDB: sendHeadacheToDB,
+        sendMedicineToDB: sendMedicineToDB
     };
 
 
