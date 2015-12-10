@@ -7,7 +7,18 @@
  */
 
 
-angular.module('Chronic').controller("detailedHeadacheController", function($scope, dataService) {
+angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common["X-Requested-With"];
+    $httpProvider.defaults.headers.common["Accept"] = "application/json";
+
+    $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+    $httpProvider.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
+    $httpProvider.defaults.headers.common = {};
+    $httpProvider.defaults.headers.post = {};
+    $httpProvider.defaults.headers.put = {};
+    $httpProvider.defaults.headers.patch = {};
+}]).controller("detailedHeadacheController", function($scope, dataService) {
 
 
     $scope.transition = function(){
@@ -17,7 +28,13 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
     };
 
     $scope.deleteEntry = function(){
-        dataService.removeHeadache();
+
+        dataService.removeHeadache().then(function(result){
+            location.href = "history.html";
+        }, function(result){
+            location.href = "history.html";
+        });
+
     };
 
 
@@ -57,7 +74,7 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
     if(current == null){
         current = dataService.getCurrentHeadache();
         if(current==null){
-            dataService.setCurrentHeadache(dataService.getHeadacheList()[0]);
+            //dataService.setCurrentHeadache(dataService.getHeadacheList()[0]);
             current = dataService.getCurrentHeadache();
         }
     }
@@ -148,7 +165,7 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
         };
 
 
-        console.log(current);
+
 
         if(current.triggers == null){
             console.log("no triggers")

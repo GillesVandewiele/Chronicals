@@ -168,6 +168,8 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
             }else{
                 dataService.setCurrentHeadache(obj);
             }
+            console.log("De geklikte dinge is:",dataService.getCurrentHeadache());
+            $scope.transition();
             location.href='detailedHeadache.html';
         }else{
             if(obj.hasOwnProperty('title')){

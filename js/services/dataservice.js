@@ -78,7 +78,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
             }
             console.log("Triggers", newTriggers);
             dataPost.triggerIDs = newTriggers;
-            console.log("Datapost:"+dataPost);
+
             var newSymptoms = [];
             for (var symptom in headacheObj.symptoms){
                 console.log("Symptom:"+headacheObj.symptoms[symptom]);
@@ -90,7 +90,9 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
             }
             console.log("Symptoms", newSymptoms);
             dataPost.symptomIDs = newSymptoms;
-
+            var patientID = JSON.parse(localStorage.getItem("currentUser")).patientID;
+            dataPost.headacheID = headacheObj.id;
+            console.log("Datapost:"+JSON.stringify(dataPost));
             $http({
                 method: 'POST',
                 url: "http://tw06v033.ugent.be/Chronic/rest/HeadacheService/headaches?patientID="+patientID,
@@ -99,10 +101,10 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                     'Content-Type': 'application/json'
                 }
             }).success(function (data, status, headers, config) {
-                resolve();
+                resolve(data);
             }).
             error(function (data, status, headers, config) {
-                reject();
+                reject(data);
             });
         });
     };
@@ -114,7 +116,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                 "date": medicineObj.date.toString(),
                 "quantity": medicineObj.quantity
             };
-
+            var patientID = JSON.parse(localStorage.getItem("currentUser")).patientID;
             $http({
                 method: 'POST',
                 url: "http://tw06v033.ugent.be/Chronic/rest/MedicineService/medicines?patientID="+patientID,
@@ -341,6 +343,19 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         );
     };
 
+    var removeMedicineFromDB = function(medicine){
+        return new Promise(
+            function(resolve, reject){
+                $http.delete('http://tw06v033.ugent.be/Chronic/rest/MedicineService/medicines/delete').
+                success(function (data, status, headers, config) {
+                    resolve();
+                }).error(function (data, status, headers, config) {
+                    reject();
+                });
+            }
+        );
+    };
+
     var syncDB = function () {
         return Promise.all([getDrugsFromDB(), getSymptomsFromDB(), getTriggersFromDB(),
                             getHeadachesFromDB(), getMedicinesFromDB()]);
@@ -396,23 +411,31 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     };
 
     var removeHeadache = function () {
+        return new Promise(function(resolve,reject) {
+
         var list = JSON.parse(localStorage.getItem("headacheList"));
         var current = JSON.parse(localStorage.getItem("currentHeadache"));
 
-        var index = -1;
-        for (var i = 0; i < list.length; i++) {
-            if (list[i].intensityValues[0].key == current.intensityValues[0].key) {
-                index = i;
-                break;
+        removeMedicineFromDB(current).then(function(result){
+            var index = -1;
+            for (var i = 0; i < list.length; i++) {
+                if (list[i].intensityValues[0].key == current.intensityValues[0].key) {
+                    index = i;
+                    break;
+                }
             }
-        }
+            list.splice(index, 1);
 
-        localStorage.setItem("headacheList", JSON.stringify(list));
-        headacheList = list;
+            localStorage.setItem("headacheList", JSON.stringify(list));
+            headacheList = list;
+
+        });
+
 
         currentHeadache = null;
         localStorage.setItem("currentHeadache", JSON.stringify(null));
 
+        });
     };
 
     var removeMedicine = function () {
@@ -426,6 +449,9 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                 break;
             }
         }
+
+        list.splice(index, 1);
+
 
         localStorage.setItem("medicineList", JSON.stringify(list));
         medicineList = list;

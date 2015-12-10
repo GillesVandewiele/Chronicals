@@ -12,37 +12,6 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
         ons.bootstrap();
         $('.hidden').removeClass("hidden");
         $('#loadingImg').hide();
-        //var headache = {
-        //    "intensityValues":[{"key":"2015-12-07T12:45:00", "value":7},{"key":"2015-12-07T12:55:00","value":8}],
-        //    "end" : "2015-12-07T14:00:00",
-        //    "locations" : {
-        //        "mandibular_right": false,
-        //        "mandibular_left": true,
-        //        "maxillar_right": false,
-        //        "maxillar_left": false,
-        //        "orbital_right": false,
-        //        "orbital_left": false,
-        //        "frontal_right": false,
-        //        "frontal_mid": false,
-        //        "frontal_left": false,
-        //        "parietal_right": false,
-        //        "parietal_mid": false,
-        //        "parietal_left": false,
-        //        "temporal_right": false,
-        //        "temporal_left": false,
-        //        "occipital_right": false,
-        //        "occipital_mid": false,
-        //        "occipital_left": false,
-        //        "cervical_right": false,
-        //        "cervical_mid": false,
-        //        "cervical_left": false
-        //    },
-        //    "symptomIDs" : [0,1],
-        //    "triggerIDS" : [0,1]
-        //
-        //};
-
-
     });
 
     $scope.transition = function () {
@@ -285,13 +254,16 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
     $scope.closeAndSave = function () {
 
         if ($scope.headacheIndex != -1) {
-            var list = dataService.getHeadacheList();
-            list[$scope.headacheIndex] = $scope.headache;
-            dataService.setHeadacheList(list);
+
             dataService.sendHeadacheToDB($scope.headache).then(function(result){
-                console.log("result:"+result);
+                console.log("result:"+JSON.stringify(result));
                 console.log("Return van indienen hoofdpijn:"+status);
+
                 dataService.setCurrentHeadache(null);
+                var list = dataService.getHeadacheList();
+                $scope.headache.id = result.headacheID;
+                list[$scope.headacheIndex] = $scope.headache;
+                dataService.setHeadacheList(list);
                 location.href = "dashboard.html";
             }, function(result){
                 console.log("Rest fout");
@@ -300,10 +272,14 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
                 location.href="dashboard.html";
             });
         } else{
-            dataService.addHeadache($scope.headache);
+
             dataService.sendHeadacheToDB($scope.headache).then(function(result){
-                console.log("Return van indienen hoofdpijn:"+status);
-                dataService.setCurrentHeadache(null);
+                var list = dataService.getHeadacheList();
+                console.log("Nieuwe id:",result.headacheID);
+                $scope.headache.id = result.headacheID;
+                list[$scope.headacheIndex] = $scope.headache;
+                dataService.setHeadacheList(list);
+                dataService.addHeadache($scope.headache);
                 location.href = "dashboard.html";
             });
         }
