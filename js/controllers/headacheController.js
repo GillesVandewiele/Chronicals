@@ -168,7 +168,9 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
         console.log("setting areas..");
             if($scope.headache.location != null){
                 for (var loc in $scope.headache.location) {
+                    console.log("teset1");
                     if ($scope.headache.location.hasOwnProperty(loc) && $scope.headache.location[loc]) {
+                        console.log("test21");
                         $('img').mapster('set', $scope.headache.location[loc], loc);
                     }
                 }

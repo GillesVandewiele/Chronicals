@@ -206,7 +206,6 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                     }
                     list[list.length] = {id: -1, name: "...", description: "Own custom drug"};
                     localStorage.setItem("drugList", JSON.stringify(list));
-                    console.log("Drugs received = ", list);
                     resolve();
                 }).
                 error(function (data, status, headers, config) {
@@ -230,7 +229,6 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                                           val: false});
                     });
                     localStorage.setItem("symptoms", JSON.stringify(newSymptoms));
-                    console.log("Symptoms received = ", newSymptoms);
                     resolve();
                 }).
                 error(function (data, status, headers, config) {
@@ -253,7 +251,6 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                                           val: false});
                     });
                     localStorage.setItem("triggers", JSON.stringify(newTriggers));
-                    console.log("Triggers received = ", newTriggers);
                     resolve();
                 }).
                 error(function (data, status, headers, config) {
@@ -268,48 +265,74 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         return new Promise(
             function (resolve, reject) {
                 var patientID = JSON.parse(localStorage.getItem("currentUser")).patientID;
-                console.log('http://tw06v033.ugent.be/Chronic/rest/HeadacheService/headaches?patientID='+patientID);
                 $http.get('http://tw06v033.ugent.be/Chronic/rest/HeadacheService/headaches?patientID='+patientID, {headers: {'Authorization': getAuthorization()}}).
                 success(function (data, status, headers, config) {
                     var headaches = data;
                     var newHeadaches = [];
-                    console.log("Hallo, ik heb de volgende data opgehaald voor jou");
                     headaches.forEach(function (entry) {
                         var newLocations = {};
                         for(var headacheLocation in entry.locations){
                             newLocations[entry.locations[headacheLocation].key] = Boolean(entry.locations[headacheLocation].value);
                         }
                         var newHeadacheTriggers = JSON.parse(localStorage.getItem("triggers"));
-                        for(var trigger in newHeadacheTriggers){
-                            var triggerIndex = entry.triggerIDs.indexOf(newHeadacheTriggers[trigger].id);
-                            if(triggerIndex > -1){
-                                newHeadacheTriggers[triggerIndex].val = true;
+
+                        for(var triggerID in entry.triggerIDs){
+                            for(var trigger in newHeadacheTriggers){
+                                if(newHeadacheTriggers[trigger].id == entry.triggerIDs[triggerID]){
+                                    newHeadacheTriggers[trigger].val = true;
+                                }
                             }
                         }
                         var newHeadacheSymptoms = JSON.parse(localStorage.getItem("symptoms"));
-                        for(var symptom in newHeadacheSymptoms){
-                            var symptomIndex = entry.triggerIDs.indexOf(newHeadacheSymptoms[symptom].id);
-                            if(symptomIndex > -1){
-                                newHeadacheSymptoms[symptomIndex].val = true;
+                        for(var symptomID in entry.symptomIDs){
+                            for(var symptom in newHeadacheSymptoms){
+                                if(newHeadacheSymptoms[symptom].id == entry.symptomIDs[symptomID]){
+                                    newHeadacheSymptoms[symptom].val = true;
+                                }
                             }
                         }
-                        newHeadaches.push({end: entry.end, intensityValues: entry.intensityValues, locations: newLocations,
+                        newHeadaches.push({end: entry.end, intensityValues: entry.intensityValues, location: newLocations,
                                            symptoms: newHeadacheSymptoms, triggers: newHeadacheTriggers});
-                        console.log(newHeadaches);
-                        localStorage.setItem("headacheList", JSON.stringify(newHeadaches));
                     });
+                    localStorage.setItem("headacheList", JSON.stringify(newHeadaches));
                     resolve();
                 }).
                 error(function (data, status, headers, config) {
-                    var triggers = JSON.parse(localStorage.getItem("symptoms"));
-                    if (triggers == null) alert("Er moet een internetverbinding aanwezig zijn wanneer u de app voor de eerste keer opstart.");
+                    var headaches = JSON.parse(localStorage.getItem("headacheList"));
+                    if (headaches == null) alert("Er moet een internetverbinding aanwezig zijn wanneer u de app voor de eerste keer opstart.");
                     reject();
                 });
             });
     };
 
     var getMedicinesFromDB = function(){
-
+        return new Promise(
+            function (resolve, reject) {
+                var patientID = JSON.parse(localStorage.getItem("currentUser")).patientID;
+                $http.get('http://tw06v033.ugent.be/Chronic/rest/MedicineService/medicines?patientID='+patientID, {headers: {'Authorization': getAuthorization()}}).
+                success(function (data, status, headers, config) {
+                    var medicines = data;
+                    var newMedicines = [];
+                    medicines.forEach(function (entry) {
+                        var drugID = entry.drugID;
+                        var date = new Date(entry.date);
+                        var quantity = entry.quantity;
+                        var drugList = JSON.parse(localStorage.getItem("drugList"));
+                        var drug = {};
+                        for(var drug in drugList){
+                            if(drugList[drug].id = drugID) drug = drugList[drug];
+                        }
+                        newMedicines.push({drug: drug, quantity: quantity, date: date})
+                    });
+                    localStorage.setItem("medicineList", JSON.stringify(newMedicines));
+                    resolve();
+                }).
+                error(function (data, status, headers, config) {
+                    var medicines = JSON.parse(localStorage.getItem("medicineList"));
+                    if (medicines == null) alert("Er moet een internetverbinding aanwezig zijn wanneer u de app voor de eerste keer opstart.");
+                    reject();
+                });
+            });
     };
 
     var getDBStatus = function(){
@@ -326,7 +349,8 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     };
 
     var syncDB = function () {
-        return Promise.all([getDrugsFromDB(), getSymptomsFromDB(), getTriggersFromDB(), getHeadachesFromDB()]);
+        return Promise.all([getDrugsFromDB(), getSymptomsFromDB(), getTriggersFromDB(),
+                            getHeadachesFromDB(), getMedicinesFromDB()]);
     };
 
 
@@ -390,10 +414,6 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
             }
         }
 
-        if (index > -1) {
-            console.log("Removed:", list.splice(index, 1));
-        }
-
         localStorage.setItem("headacheList", JSON.stringify(list));
         headacheList = list;
 
@@ -412,10 +432,6 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                 index = i;
                 break;
             }
-        }
-
-        if (index > -1) {
-            console.log("Removed:", list.splice(index, 1));
         }
 
         localStorage.setItem("medicineList", JSON.stringify(list));
@@ -475,7 +491,6 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
 
     var setDailyMedicineList = function (list) {
         localStorage.setItem("dailyMedicine", JSON.stringify(list));
-        console.log("jajaja==========");
         list.forEach(function (s) {
             var medicine;
             //medicine.patientID = dataService.get
@@ -492,13 +507,11 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                 $http({method: 'GET', url: 'http://tw06v033.ugent.be/Chronic/rest/SymptomService/symptoms'}).
                 success(function (data, status, headers, config) {
                     //alert(""+data);
-                    //console.log("symptoms fetched:"+data);
                     symptoms = data;
                     symptoms.forEach(function (entry) {
                         entry["val"] = false;
                     });
                     symptomsList.push.apply(symptoms);
-                    console.log(symptomsList)
                     localStorage.setItem("symptoms", JSON.stringify(symptomsList));
                 }).
                 error(function (data, status, headers, config) {

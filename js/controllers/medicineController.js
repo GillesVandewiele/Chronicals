@@ -42,7 +42,7 @@ angular.module('Chronic').controller('medicineController', function($scope, data
   		if(medicines == null || medicines.length == 0) return -1;
   		if($scope.medicine == null) return -1;
 		for(medicine in medicines){
-			equalDrug = (medicines[medicine].drug.id == $scope.medicine.drug.id && medicines[medicine].drug.quantity == $scope.medicine.drug.quantity);
+			equalDrug = (medicines[medicine].drug.id == $scope.medicine.drug.id);
 			equalDate = medicines[medicine].date == $scope.medicine.date;
 			equalQuantity = medicines[medicine].quantity == $scope.medicine.quantity;
 			if(equalDrug && equalDate && equalQuantity) return medicine;
