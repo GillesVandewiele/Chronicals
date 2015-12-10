@@ -186,13 +186,17 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                 success(function (data, status, headers, config) {
                     //alert("CONNECTED TO INTERNET OR DATABASE " + status);
                     var list = data;
+                    var remoteDrugs = [];
+                    list.forEach(function(entry){
+                        remoteDrugs.push({id: entry.drugID, name: entry.name, description: entry.description});
+                    });
                     // drugList consists of a list specified by the doctor which is gotten remotely,
                     // and a list of own-made drugs
                     if (JSON.parse(localStorage.getItem("ownDrugList")) != null) {
-                        list = list.concat(JSON.parse(localStorage.getItem("ownDrugList")));
+                        remoteDrugs = remoteDrugs.concat(JSON.parse(localStorage.getItem("ownDrugList")));
                     }
-                    list[list.length] = {id: -1, name: "...", description: "Own custom drug"};
-                    localStorage.setItem("drugList", JSON.stringify(list));
+                    //remoteDrugs[remoteDrugs.length] = {id: -1, name: "...", description: "Own custom drug"};
+                    localStorage.setItem("drugList", JSON.stringify(remoteDrugs));
                     resolve();
                 }).
                 error(function (data, status, headers, config) {
@@ -306,8 +310,10 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                         var quantity = entry.quantity;
                         var drugList = JSON.parse(localStorage.getItem("drugList"));
                         var drug = {};
-                        for(var drug in drugList){
-                            if(drugList[drug].id = drugID) drug = drugList[drug];
+                        for(var aDrug in drugList){
+                            console.log(drugList[aDrug]);
+                            console.log(drugID);
+                            if(drugList[aDrug].id == drugID) drug = drugList[aDrug];
                         }
                         newMedicines.push({drug: drug, quantity: quantity, date: date})
                     });
