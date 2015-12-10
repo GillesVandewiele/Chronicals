@@ -21,6 +21,7 @@ angular.module('Chronic').controller('medicineController', function($scope, data
 
     // Initialize all fields on default values or on the values of current medicine (when modifying)
 	$scope.medicine = dataService.getCurrentMedicine();
+    console.log("Current Medicine = ", $scope.medicine);
 
 	if($scope.medicine != null && $scope.medicine.drug != null){
 		$scope.selectedDrug = $scope.medicine.drug;
@@ -95,7 +96,7 @@ angular.module('Chronic').controller('medicineController', function($scope, data
 		var dateObj = new Date($scope.drugDate.getFullYear(), $scope.drugDate.getMonth(), $scope.drugDate.getDate(), $scope.drugTime.getHours(), $scope.drugTime.getMinutes(), $scope.drugTime.getSeconds());
         if($scope.ownDrug != null){
 			var drug = {id: 0, name:$scope.ownDrug, description:""};
-			var medicine = {drug: drug, quantity: $scope.drugQuantity, date: dateObj};
+			var medicine = {id: -1, drug: drug, quantity: $scope.drugQuantity, date: dateObj};
             if(JSON.parse(localStorage.getItem("ownDrugList")) == null){
                 localStorage.setItem("ownDrugList",JSON.stringify([drug]));
             }else{
@@ -103,8 +104,11 @@ angular.module('Chronic').controller('medicineController', function($scope, data
             }
             localStorage.setItem("drugList",JSON.stringify(JSON.parse(localStorage.getItem("drugList")).concat([drug])));
 		} else {
-			var medicine = {drug: $scope.selectedDrug, quantity: $scope.drugQuantity, date: dateObj};
+            if($scope.medicineIndex == -1) var medicine = {id: -1, drug: $scope.selectedDrug, quantity: $scope.drugQuantity, date: dateObj};
+            else var medicine = {id: $scope.medicine.id, drug: $scope.selectedDrug, quantity: $scope.drugQuantity, date: dateObj};
 		}
+
+        console.log("Going to store ", medicine);
 
 		if($scope.medicineIndex != -1){
 			var list = dataService.getMedicineList();
