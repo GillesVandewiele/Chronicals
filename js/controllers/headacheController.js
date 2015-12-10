@@ -287,7 +287,16 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
             list = dataService.getHeadacheList();
             list[$scope.headacheIndex] = $scope.headache;
             dataService.setHeadacheList(list);
-            //dataService.sendHeadacheToDB($scope.headache);
+            dataService.sendHeadacheToDB($scope.headache).then(function(result){
+                console.log("Return van indienen hoofdpijn:"+status);
+                dataService.setCurrentHeadache(null);
+                location.href = "dashboard.html";
+            }, function(result){
+                console.log("Rest fout");
+                console.log($scope.headache);
+                dataService.setCurrentHeadache(null);
+                location.href="dashboard.html";
+            });
         } else{
             dataService.addHeadache($scope.headache);
             dataService.sendHeadacheToDB($scope.headache).then(function(result){
