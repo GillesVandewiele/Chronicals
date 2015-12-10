@@ -22,9 +22,15 @@ angular.module('Chronic').controller("detailedMedicineController", function($sco
     };
 
     $scope.deleteEntry = function(){
-        console.log("Removed: ", dataService.getCurrentMedicine());
-        dataService.removeMedicine();
+
+        dataService.removeMedicine().then(function(result){
+            location.href = "history.html";
+        }, function(result){
+            //location.href = "history.html";
+        });
+
     };
+
     $scope.current = dataService.getCurrentMedicine();
 
     var current = dataService.getCurrentMedicine();

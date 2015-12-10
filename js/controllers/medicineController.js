@@ -88,7 +88,7 @@ angular.module('Chronic').controller('medicineController', function($scope, data
             $scope.drugTime.setHours(time.getHours());
             $scope.drugTime.setMinutes(time.getMinutes());
         }
-    }
+    };
 
 	// Called when clicking "Sla Op"
 	$scope.addMedicine = function(newLocation, profile){
@@ -109,49 +109,55 @@ angular.module('Chronic').controller('medicineController', function($scope, data
 		}
 
         console.log("Going to store ", medicine);
-
+        $scope.medicine = medicine;
+        console.log("Medicine index:"+$scope.medicineIndex);
 		if($scope.medicineIndex != -1){
-			var list = dataService.getMedicineList();
-	  		list[$scope.medicineIndex] = medicine;
             if(profile){
                 dataService.setDailyMedicineList(list);
             }else{
-                dataService.setMedicineList(list);
-                dataService.sendMedicineToDB(medicine).then(function(result){
-                    console.log("Return van indienen medicijn:"+status);
+                dataService.sendMedicineToDB(medicine).then(function(result) {
+                    var list = dataService.getMedicineList();
+                    $scope.medicine.id = result.medicineID;
+                    list[$scope.medicineIndex] = $scope.medicine;
+                    dataService.setMedicineList(list);
                     dataService.setCurrentMedicine(null);
+                    $scope.transition();
                     location.href = newLocation;
-                }, function(result){
+                }, function(){
                     console.log("Rest fout");
-                    console.log(medicine);
+                    console.log($scope.medicine);
                     dataService.setCurrentMedicine(null);
+                    $scope.transition();
                     location.href=newLocation;
                 });
             }
-
 		}
 		else {
             if(profile){
                 dataService.addDailyMedicine(medicine)
             }else{
-                dataService.addMedicine(medicine);
-                dataService.sendMedicineToDB(medicine).then(function(result){
-                    console.log("Return van indienen medicijn:"+status);
-                    dataService.setCurrentMedicine(null);
+                dataService.sendMedicineToDB($scope.medicine).then(function(result, status){
+                    var list = dataService.getMedicineList();
+                    console.log("Nieuwe id:",result.medicineID);
+                    $scope.medicine.id = result.medicineID;
+                    list[$scope.medicineIndex] = $scope.medicine;
+                    dataService.setMedicineList(list);
+                    dataService.addMedicine($scope.medicine);
+                    $scope.transition();
                     location.href = newLocation;
-                }, function(result){
+                }, function(result, status){
                     console.log("Rest fout");
-                    console.log(medicine);
+                    console.log($scope.medicine);
+                    console.log("Data:"+result);
+                    conosle.log("Status", status);
                     dataService.setCurrentMedicine(null);
+                    $scope.transition();
                     location.href=newLocation;
                 });
             }
 
 
 		}
-  		dataService.setCurrentMedicine(null);
-        $scope.transition();
-		location.href=newLocation;
 	};
 
 	// Called on canceling

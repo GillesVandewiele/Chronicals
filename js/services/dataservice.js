@@ -112,9 +112,10 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     var sendMedicineToDB = function(medicineObj){
         return new Promise(function(resolve,reject) {
             var dataPost = {
-                "drugID" : medicineObj.id,
+                "drugID" : medicineObj.drug.id,
                 "date": medicineObj.date.toString(),
-                "quantity": medicineObj.quantity
+                "quantity": medicineObj.quantity,
+                "medicineID":medicineObj.id
             };
             var patientID = JSON.parse(localStorage.getItem("currentUser")).patientID;
             $http({
@@ -122,13 +123,14 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                 url: "http://tw06v033.ugent.be/Chronic/rest/MedicineService/medicines?patientID="+patientID,
                 data: JSON.stringify(dataPost),
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': getAuthorization()
                 }
             }).success(function (data, status, headers, config) {
-                resolve();
+                resolve(data, status);
             }).
             error(function (data, status, headers, config) {
-                reject();
+                reject(data, status);
             });
         });
     };
@@ -172,7 +174,6 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         var list = JSON.parse(localStorage.getItem("headacheList"));
         if (list != null && list != "null") {
             list.sort(function (a, b) { //sort the list on their start dates // date of consumption
-
                 dateA = a.intensityValues[0].key;
                 dateB = b.intensityValues[0].key;
                 return (new Date(dateA.toString())) - (new Date(dateB.toString()));
@@ -356,6 +357,21 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         );
     };
 
+    var removeMedicineFromDB = function(medicine){
+        return new Promise(
+            function(resolve, reject){
+                $http.delete('http://tw06v033.ugent.be/Chronic/rest/MedicineService/medicines/delete?medicineID='+medicine.id,{headers: {'Authorization': getAuthorization()}}).
+                success(function (data, status, headers, config) {
+                    resolve(data);
+                }).error(function (data, status, headers, config) {
+                    console.log("Status:"+status);
+                    console.log("data:"+data);
+                    reject(data);
+                });
+            }
+        );
+    };
+
     var syncDB = function () {
         return Promise.all([getDrugsFromDB(), getSymptomsFromDB(), getTriggersFromDB(),
                             getHeadachesFromDB(), getMedicinesFromDB()]);
@@ -441,25 +457,34 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     };
 
     var removeMedicine = function () {
-        var list = JSON.parse(localStorage.getItem("medicineList"));
-        var current = JSON.parse(localStorage.getItem("currentMedicine"));
+        return new Promise(function(resolve,reject) {
 
-        var index = -1;
-        for (var i = 0; i < list.length; i++) {
-            if (list[i].drug.name == current.drug.name && list[i].quantity == current.quantity && list[i].date == current.date) {
-                index = i;
-                break;
-            }
-        }
+            var list = JSON.parse(localStorage.getItem("medicineList"));
+            var current = JSON.parse(localStorage.getItem("currentMedicine"));
 
-        list.splice(index, 1);
+            removeMedicineFromDB(current).then(function(result){
+                var index = -1;
+                for (var i = 0; i < list.length; i++) {
+                    if (list[i].drug.name == current.drug.name && list[i].quantity == current.quantity && list[i].date == current.date) {
+                        index = i;
+                        break;
+                    }
+                }
+                list.splice(index, 1);
 
+                localStorage.setItem("medicineList", JSON.stringify(list));
+                medicineList = list;
+                console.log("Gelukt+data:", result);
+                resolve(result);
+            }, function(result){
+                console.log("Rest fout", ""+result);
+                reject(result)
+            });
 
-        localStorage.setItem("medicineList", JSON.stringify(list));
-        medicineList = list;
+            currentMedicine = null;
+            localStorage.setItem("currentMedicine", JSON.stringify(null));
 
-        currentMedicine = null;
-        localStorage.setItem("currentMedicine", JSON.stringify(null));
+        });
     };
 
     var clearCache = function () {
