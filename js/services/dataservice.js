@@ -53,7 +53,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
 
     var sendHeadacheToDB = function(headacheObj){
         return new Promise(function(resolve,reject) {
-            dataPost = {
+            var dataPost = {
                 "intensityValues" : headacheObj.intensityValues,
                 "end": headacheObj.end,
                 "locations": headacheObj.location,
@@ -71,10 +71,25 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
             for (var trigger in headacheObj.triggers){
                 console.log("Trigger:"+headacheObj.triggers[trigger]);
                 console.log("Trigger id:"+headacheObj.triggers[trigger].id);
-                newTriggers.push(headacheObj.triggers[trigger].id);
+                if(headacheObj.triggers[trigger].val){
+                    newTriggers.push(headacheObj.triggers[trigger].id);
+                }
+
             }
             console.log("Triggers", newTriggers);
             dataPost.triggerIDs = newTriggers;
+            console.log("Datapost:"+dataPost);
+            var newSymptoms = [];
+            for (var symptom in headacheObj.symptoms){
+                console.log("Symptom:"+headacheObj.symptoms[symptom]);
+                console.log("Symptom id:"+headacheObj.symptoms[symptom].id);
+                if(headacheObj.symptoms[symptom].val){
+                    newSymptoms.push(headacheObj.symptoms[symptom].id);
+                }
+
+            }
+            console.log("Symptoms", newSymptoms);
+            dataPost.symptomIDs = newSymptoms;
             //var newHeadacheTriggers = JSON.parse(localStorage.getItem("triggers"));
             //for(var trigger in newHeadacheTriggers){
             //    var triggerIndex = entry.triggerIDs.indexOf(newHeadacheTriggers[trigger].id);
@@ -94,7 +109,10 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
             $http({
                 method: 'POST',
                 url: "http://tw06v033.ugent.be/Chronic/rest/HeadacheService/headaches?patientID=2",
-                data: dataPost
+                data: JSON.stringify(dataPost),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             }).success(function (data, status, headers, config) {
                 resolve();
             }).
