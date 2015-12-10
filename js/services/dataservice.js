@@ -1,4 +1,15 @@
-angular.module('Chronic').service('dataService', function ($http) {
+angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common["X-Requested-With"];
+    $httpProvider.defaults.headers.common["Accept"] = "application/json";
+
+    $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+    $httpProvider.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
+    $httpProvider.defaults.headers.common = {};
+    $httpProvider.defaults.headers.post = {};
+    $httpProvider.defaults.headers.put = {};
+    $httpProvider.defaults.headers.patch = {};
+}]).service('dataService', function ($http) {
 
     // Reset the local storage; always comment this out!
     //  $localStorage.$reset();
@@ -20,6 +31,12 @@ angular.module('Chronic').service('dataService', function ($http) {
     var symptoms = [];
     var drugs = [];
 
+    var getAuthorization = function () {
+        var currentUser = JSON.parse(localStorage.getItem("currentUser"));
+        if (currentUser != null) return 'Basic ' + btoa(currentUser.email + ":" + sha3_512(currentUser.passwordHash + getApiKey()));
+        else return null;
+    };
+
 
     var addHeadache = function (newObj) {
         if (JSON.parse(localStorage.getItem("headacheList")) != null) {
@@ -32,8 +49,84 @@ angular.module('Chronic').service('dataService', function ($http) {
             localStorage.setItem("headacheList", JSON.stringify([newObj]));
             headacheList = [newObj];
         }
-
     };
+
+    var sendHeadacheToDB = function(headacheObj){
+        return new Promise(function(resolve,reject) {
+            dataPost = {
+                "intensityValues" : headacheObj.intensityValues,
+                "end": headacheObj.end,
+                "locations": headacheObj.location,
+                "symptomIDs": [],
+                "triggerIDs": []
+            };
+
+            var newLocations = {};
+            for(var headacheLocation in headacheObj.location){
+                //console.log("locations:"+headacheLocation+headacheObj.location[headacheLocation]);
+                newLocations[headacheLocation] = headacheObj.location[headacheLocation];
+            }
+            dataPost.locations = newLocations;
+            var newTriggers = [];
+            for (var trigger in headacheObj.triggers){
+                console.log("Trigger:"+headacheObj.triggers[trigger]);
+                console.log("Trigger id:"+headacheObj.triggers[trigger].id);
+                newTriggers.push(headacheObj.triggers[trigger].id);
+            }
+            console.log("Triggers", newTriggers);
+            dataPost.triggerIDs = newTriggers;
+            //var newHeadacheTriggers = JSON.parse(localStorage.getItem("triggers"));
+            //for(var trigger in newHeadacheTriggers){
+            //    var triggerIndex = entry.triggerIDs.indexOf(newHeadacheTriggers[trigger].id);
+            //    if(triggerIndex > -1){
+            //        newHeadacheTriggers[triggerIndex].val = true;
+            //    }
+            //}
+            //var newHeadacheSymptoms = JSON.parse(localStorage.getItem("symptoms"));
+            //for(var symptom in newHeadacheSymptoms){
+            //    var symptomIndex = entry.triggerIDs.indexOf(newHeadacheSymptoms[symptom].id);
+            //    if(symptomIndex > -1){
+            //        newHeadacheSymptoms[symptomIndex].val = true;
+            //    }
+            //}
+
+
+            $http({
+                method: 'POST',
+                url: "http://tw06v033.ugent.be/Chronic/rest/HeadacheService/headaches?patientID=2",
+                data: dataPost
+            }).success(function (data, status, headers, config) {
+                resolve();
+            }).
+            error(function (data, status, headers, config) {
+                reject();
+            });
+        });
+
+        //    .then(function successCallback(response) {
+        //    // this callback will be called asynchronously
+        //    // when the response is available
+        //    console.log("Return van indienen hoofdpijn:"+status);
+        //}, function errorCallback(response) {
+        //    // called asynchronously if an error occurs
+        //    // or server returns response with an error status.
+        //    console.log("error creating user: "+response);
+        //    //console.log("data:" +data);
+        //    console.log(response);
+        //    console.log(response.config);
+        //});
+
+            //$http.post("http://tw06v033.ugent.be/Chronic/rest/HeadacheService/headaches?patientID="+patientID, JSON.stringify(headacheObj)).
+            //    success(function (data, status, headers, config) {
+            //        console.log("Return van indienen user:"+status);
+            //    }).
+            //    error(function (data, status, headers, config) {
+            //        console.log("error creating user: "+status);
+            //        console.log("data:" +data);
+            //    });
+    };
+
+
 
     var addMedicine = function (newObj) {
         if (JSON.parse(localStorage.getItem("medicineList")) != null) {
@@ -79,12 +172,6 @@ angular.module('Chronic').service('dataService', function ($http) {
             });
         }
         return list;
-    };
-
-    var getAuthorization = function () {
-        var currentUser = JSON.parse(localStorage.getItem("currentUser"));
-        if (currentUser != null) return 'Basic ' + btoa(currentUser.email + ":" + sha3_512(currentUser.passwordHash + getApiKey()));
-        else return null;
     };
 
     var getDrugsFromDB = function(){
@@ -492,7 +579,8 @@ angular.module('Chronic').service('dataService', function ($http) {
         setAdvice: setAdvice,
         getAdvice: getAdvice,
         syncDB: syncDB,
-        getDBStatus: getDBStatus
+        getDBStatus: getDBStatus,
+        sendHeadacheToDB: sendHeadacheToDB
 
     };
 

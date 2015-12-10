@@ -159,7 +159,7 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
     $scope.closeListItem = function () {
         //console.log("currentHeadache preSetEnd", currentHeadache, dataService.getCurrentHeadache());
         var currentHeadache = dataService.getCurrentHeadache();
-        var orig = jQuery.extend(true, {}, currentHeadache);;
+        var orig = jQuery.extend(true, {}, currentHeadache);
         currentHeadache.end = new Date();
         dataService.setCurrentHeadache(currentHeadache);
         dataService.removeHeadache(orig);
