@@ -148,7 +148,7 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
         };
 
 
-
+        console.log(current);
 
         if(current.triggers == null){
             console.log("no triggers")

@@ -287,7 +287,7 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
             list = dataService.getHeadacheList();
             list[$scope.headacheIndex] = $scope.headache;
             dataService.setHeadacheList(list);
-            dataService.sendHeadacheToDB($scope.headache);
+            //dataService.sendHeadacheToDB($scope.headache);
         } else{
             dataService.addHeadache($scope.headache);
             dataService.sendHeadacheToDB($scope.headache).then(function(result){
