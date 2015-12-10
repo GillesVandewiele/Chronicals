@@ -282,7 +282,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                                 }
                             }
                         }
-                        newHeadaches.push({end: entry.end, intensityValues: entry.intensityValues, location: newLocations,
+                        newHeadaches.push({id: entry.headacheID, end: entry.end, intensityValues: entry.intensityValues, location: newLocations,
                                            symptoms: newHeadacheSymptoms, triggers: newHeadacheTriggers});
                     });
                     localStorage.setItem("headacheList", JSON.stringify(newHeadaches));

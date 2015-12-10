@@ -148,6 +148,7 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
 
     if ($scope.headache == null) {
         $scope.headache = {
+            id: -1,
             intensityValues: [],
             end: null,
             location: $scope.locations,
