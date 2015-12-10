@@ -343,10 +343,10 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         );
     };
 
-    var removeMedicineFromDB = function(medicine){
+    var removeHeadacheFromDB = function(headache){
         return new Promise(
             function(resolve, reject){
-                $http.delete('http://tw06v033.ugent.be/Chronic/rest/MedicineService/medicines/delete').
+                $http.delete('http://tw06v033.ugent.be/Chronic/rest/HeadacheService/headaches/delete?headacheID='+headache.id,{headers: {'Authorization': getAuthorization()}}).
                 success(function (data, status, headers, config) {
                     resolve();
                 }).error(function (data, status, headers, config) {
@@ -416,7 +416,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         var list = JSON.parse(localStorage.getItem("headacheList"));
         var current = JSON.parse(localStorage.getItem("currentHeadache"));
 
-        removeMedicineFromDB(current).then(function(result){
+            removeHeadacheFromDB(current).then(function(result){
             var index = -1;
             for (var i = 0; i < list.length; i++) {
                 if (list[i].intensityValues[0].key == current.intensityValues[0].key) {
@@ -428,8 +428,10 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
 
             localStorage.setItem("headacheList", JSON.stringify(list));
             headacheList = list;
-
-        });
+                resolve();
+        }, function(result){
+                reject()
+            });
 
 
         currentHeadache = null;
