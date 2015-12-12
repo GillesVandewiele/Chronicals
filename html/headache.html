@@ -129,6 +129,8 @@
       	<div class="navigatorTabBody">
 	      	<p class="label" style="vertical-align: 50%;">0</p> <input type="range" min="0" max="10" class="range intensitySlider" ng-model="newHeadacheValue"> <p class="label" style="vertical-align: 50%;">10</p><br>
 	      	<p class="label"> {{ newHeadacheValue }}  /  10 </p>
+
+            <p style="width:100%;" class="label description">{{advices[newHeadacheValue]}}</p>
       	</div>
 		<div class="navigatorTabFoot">
 		    <ons-bottom-toolbar>

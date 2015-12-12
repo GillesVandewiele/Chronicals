@@ -43,6 +43,52 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
         "cervical_left": false
     };
 
+    $scope.advices = [
+
+        "Geen pijn\n" +
+        "Geen hoofdpijn",
+
+        "Heel milde pijn\n" +
+        "Geen afleiding bij gewoonlijke activiteiten",
+
+        "Milde pijn\n" +
+        "Gewoonlijke activiteiten nog mogelijk\n" +
+        "Kunnen moeilijker zijn\n",
+
+        "Afleidende pijn\n" +
+        "Gewoonlijke activiteiten nog mogelijk\n" +
+        "/moeilijker zijn\n",
+
+        "Milde-middelmatige pijn\n" +
+        "Gewoonlijke activiteiten worden moelijker\n",
+
+        "Middelmatige pijn\n" +
+        "Nood om het wat rustiger aan te doen\n" +
+        "De pijn leidt meer af\n",
+
+        "Middelhoge pijn\n" +
+        "Limiteert dagelijkse activiteiten\n" +
+        "Sommige activiteiten krijgen lagere prioriteit\n",
+
+        "Hoge pijn\n" +
+        "Moeilijk om zich te concentreren\n" +
+        "Moeilijk om dagelijkste activiteiten uit te voeren\n",
+
+        "Hevige pijn\n" +
+        "Verhindert normale activiteiten\n" +
+        "rust aangeraden\n",
+
+        "Heel hevige pijn\n" +
+        "Mogelijk niet helder denken of spreken\n" +
+        "Mogelijk niet normaal functioneren\n" +
+        "bedrust aangeraden"
+        ,
+
+        "Hoogst mogelijke pijn\n" +
+        "onmogelijk om normaal te functioneren\n" +
+        "grootste indenkbare pijn\n" +
+        "bedrust aangeraden"];
+    $scope.description = $scope.advices[$scope.intensityValue];
     $scope.loadAreas = function () {
         $('#img_location1').mapster(
             {
