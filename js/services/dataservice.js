@@ -69,30 +69,30 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
             dataPost.locations = newLocations;
             var newTriggers = [];
             for (var trigger in headacheObj.triggers){
-                console.log("Trigger:"+headacheObj.triggers[trigger]);
-                console.log("Trigger id:"+headacheObj.triggers[trigger].id);
+                //console.log("Trigger:"+headacheObj.triggers[trigger]);
+                //console.log("Trigger id:"+headacheObj.triggers[trigger].id);
                 if(headacheObj.triggers[trigger].val){
                     newTriggers.push(headacheObj.triggers[trigger].id);
                 }
 
             }
-            console.log("Triggers", newTriggers);
+            //console.log("Triggers", newTriggers);
             dataPost.triggerIDs = newTriggers;
 
             var newSymptoms = [];
             for (var symptom in headacheObj.symptoms){
-                console.log("Symptom:"+headacheObj.symptoms[symptom]);
-                console.log("Symptom id:"+headacheObj.symptoms[symptom].id);
+                //console.log("Symptom:"+headacheObj.symptoms[symptom]);
+                //console.log("Symptom id:"+headacheObj.symptoms[symptom].id);
                 if(headacheObj.symptoms[symptom].val){
                     newSymptoms.push(headacheObj.symptoms[symptom].id);
                 }
 
             }
-            console.log("Symptoms", newSymptoms);
+            //console.log("Symptoms", newSymptoms);
             dataPost.symptomIDs = newSymptoms;
             var patientID = JSON.parse(localStorage.getItem("currentUser")).patientID;
             dataPost.headacheID = headacheObj.id;
-            console.log("Datapost:"+JSON.stringify(dataPost));
+            //console.log("Datapost:"+JSON.stringify(dataPost));
             $http({
                 method: 'POST',
                 url: "http://tw06v033.ugent.be/Chronic/rest/HeadacheService/headaches?patientID="+patientID,
@@ -314,8 +314,8 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                         var drugList = JSON.parse(localStorage.getItem("drugList"));
                         var drug = {};
                         for(var aDrug in drugList){
-                            console.log(drugList[aDrug]);
-                            console.log(drugID);
+                            //console.log(drugList[aDrug]);
+                            //console.log(drugID);
                             if(drugList[aDrug].id == drugID) drug = drugList[aDrug];
                         }
                         newMedicines.push({id: entry.drugID, drug: drug, quantity: quantity, date: date})
@@ -364,8 +364,8 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                 success(function (data, status, headers, config) {
                     resolve(data);
                 }).error(function (data, status, headers, config) {
-                    console.log("Status:"+status);
-                    console.log("data:"+data);
+                    //console.log("Status:"+status);
+                    //console.log("data:"+data);
                     reject(data);
                 });
             }
@@ -474,7 +474,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
 
                 localStorage.setItem("medicineList", JSON.stringify(list));
                 medicineList = list;
-                console.log("Gelukt+data:", result);
+                //console.log("Gelukt+data:", result);
                 resolve(result);
             }, function(result){
                 console.log("Rest fout", ""+result);
