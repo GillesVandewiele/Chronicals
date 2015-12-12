@@ -598,16 +598,6 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         setEmail(user.email);
         setAdvice(user.advice);
         //TODO: register on the server or check if server already has this shit
-        /*
-         localStorage.setItem("firstname", JSON.stringify(firstname));
-         localStorage.setItem("lastname",JSON.stringify(lastname));
-         localStorage.setItem("birthdate",JSON.stringify(birthdate));
-         localStorage.setItem("sex",JSON.stringify(sex));
-         localStorage.setItem("status", JSON.stringify(status));
-         localStorage.setItem("employment",JSON.stringify(employment));
-         localStorage.setItem("email", JSON.stringify(email));
-         localStorage.setItem("passwordHash",JSON.stringify(sha3));
-         */
     };
 
     var getCurrentUser = function(){

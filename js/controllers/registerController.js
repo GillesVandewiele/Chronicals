@@ -48,15 +48,6 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
 
 
     $scope.submitRegister = function () {
-        //console.log("firstname: ", $scope.firstname);
-        //console.log("lastname: ", $scope.lastname);
-        //console.log("birthdate: ", $scope.birthdate);
-        //console.log("sex: ", $scope.sex);
-        //console.log("status: ", $scope.status);
-        //console.log("employment: ", $scope.employment);
-        //console.log("email: ", $scope.email);
-        //console.log("password: ", $scope.password);
-
         //TODO: check if username already exists and stuff
 
 
@@ -66,10 +57,10 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
             "birthDate": "",
             "email": $scope.email,
             "password": "" + sha3_512($scope.password),
-            "isMale": true,
-            //"relation": 2,
+            "isMale": ($scope.sex),
+            "relation": $scope.status.toUpperCase(),
             "advice": "",
-            "isEmployed": true,
+            "isEmployed": ($scope.employment == "Beroepsmatig"),
             "diagnosis": ""
         };
 
@@ -79,12 +70,12 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                 'Content-Type': 'application/json'
             }
         }).
-        //$http({ method: 'POST', url: 'http://localhost:8080/Chronic/rest/PatientService/patients' , body: JSON.stringify(user)}).
         success(function (data, status, headers, config) {
 
             console.log("Return van indienen user:" + status);
+            console.log(data);
             dataService.clearCache();
-            dataService.registerUser(user.firstName, user.lastName, user.birthDate, user.isMale, "", user.isEmployed, user.email, user.password, 0);
+            dataService.registerUser(data.firstName, data.lastName, data.birthDate, data.isMale, "", data.isEmployed, data.email, data.password, data.patientID);
             location.href = "login.html";
         }).
         error(function (data, status, headers, config) {
@@ -92,7 +83,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
             console.log("data:" + data);
             alert("Geen verbinding met de REST service, we gaan verder met lokale gegevens voor testing-purposes");
             dataService.clearCache();
-            location.href = "login.html";
+            //location.href = "login.html";
         });
 
 
