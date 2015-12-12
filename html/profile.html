@@ -60,10 +60,77 @@
                 <h1>Profiel</h1>
             </div>
 
+            <ons-row style="margin-top: 2%;">
+                <p class="label list_header">Persoonlijke informatie</p>
+            </ons-row>
+            <ons-row style="margin-left: 2%; margin-top: 2%;">
+                <ons-col width="40%"><p class="label">Voornaam</p></ons-col>
+                <ons-col style="margin-right: 5%;"><input class="textField" type="text" ng-model="user.firstname"/></ons-col>
+            </ons-row>
+            <ons-row style="margin-left: 2%; margin-top: 2%;">
+                <ons-col width="40%"><p class="label">Familienaam</p></ons-col>
+                <ons-col style="margin-right: 5%;"><input class="textField" type="text" ng-model="user.lastname"/></ons-col>
+            </ons-row>
+            <ons-row style="margin-left: 2%; margin-top: 2%;">
+                <ons-col width="40%"><p class="label">Geboortedatum</p></ons-col>
+                <ons-col style="margin-right: 5%;"><input class="textField" type="date" ng-model="birthdate"/></ons-col>
+            </ons-row>
+            <ons-row style="margin-left: 2%; margin-top: 2%;">
+                <ons-col width="40%"><p class="label">Geslacht</p></ons-col>
+                <ons-col style="margin-right: 5%;">
+                    <select class="textField" ng-model="sex" ng-options="s for s in sexes"></select>
+                </ons-col>
+            </ons-row>
+            <ons-row style="margin-left: 2%; margin-top: 2%;">
+                <ons-col width="40%"><p class="label">Status</p></ons-col>
+                <ons-col style="margin-right: 5%;">
+                    <select class="textField" ng-model="employment" ng-options="e for e in employments">
+                </select></ons-col>
+            </ons-row>
+            <ons-row style="margin-left: 2%; margin-top: 2%;">
+                <ons-col width="40%"><p class="label">Werkstatus</p></ons-col>
+                <ons-col style="margin-right: 5%;"><input class="textField" type="text"/></ons-col>
+            </ons-row>
+            <ons-row style="margin-left: 2%; margin-top: 2%;">
+                <ons-col width="40%"><p class="label">E-mail</p></ons-col>
+                <ons-col style="margin-right: 5%;"><input class="textField" type="text" ng-model="user.email"/></ons-col>
+            </ons-row>
+
+            <ons-row style="margin-left: 2%; margin-top: 2%;">
+                <ons-col>
+                    <button id="change_pwd_btn" class="button" onclick="$('#change_pwd_btn').hide();$('#save_btn_1').hide();$('#change_password').show();" style="width: 100%;">Verander PIN</button>
+                </ons-col>
+                <ons-col>
+                    <button id="save_btn_1" class="button finishButton" onclick="" style="width: 90%; margin-left: 5%;">Sla op</button>
+                </ons-col>
+            </ons-row>
+
+            <div id="change_password" style="display:none;">
+                <ons-row style="margin-left: 2%; margin-top: 2%;">
+                    <ons-col><p class="label">Oude pin</p></ons-col>
+                    <ons-col><p>je moeder</p></ons-col>
+                </ons-row>
+                <ons-row style="margin-left: 2%; margin-top: 2%;">
+                    <ons-col><p class="label">Oude pin herhalen</p></ons-col>
+                    <ons-col><p>je moeder</p></ons-col>
+                </ons-row>
+                <ons-row style="margin-left: 2%; margin-top: 2%;">
+                    <ons-col><p class="label">Nieuw wachtwoord herhalen</p></ons-col>
+                    <ons-col><p>je moeder</p></ons-col>
+                </ons-row>
+                <ons-row>
+                    <ons-col>
+                        <button id="save_btn_2" class="button finishButton" onclick="" style="width: 45%;">Sla op</button>
+                    </ons-col>
+                </ons-row>
+            </div>
+
+
+
             <ons-row>
                 <div style="width: 100%">
                     <ons-row style="width: 100%;">
-                        <p class="label" style="width: 100%;">Dagelijkse innames medicijnen</p>
+                        <p class="label list_header">Dagelijkse innames medicijnen</p>
 
                     </ons-row>
                     <br>

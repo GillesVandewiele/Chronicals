@@ -79,6 +79,11 @@ html, body{
     color: #FFFFFF;
 }
 
+.textField{
+    background-color: #1a252f;
+    color: #FFFFFF;
+}
+
 .error{
 	color: red;
 	margin-left: 5%;

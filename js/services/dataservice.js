@@ -610,6 +610,10 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
          */
     };
 
+    var getCurrentUser = function(){
+        return JSON.parse(localStorage.getItem("currentUser"));
+    };
+
     var getApiKey = function () {
         return "FiFoEdUdLOI4D19lj7Vb5pi72dDZf2aB";
     };
@@ -625,6 +629,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         setCurrentMedicine: setCurrentMedicine,
         getCurrentHeadache: getCurrentHeadache,
         getCurrentMedicine: getCurrentMedicine,
+        getCurrentUser: getCurrentUser,
         getSymptoms: getSymptoms,
         getTriggers: getTriggers,
         removeHeadache: removeHeadache,
