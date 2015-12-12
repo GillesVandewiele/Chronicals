@@ -6,7 +6,9 @@
  This file contains the controller to add and modify headaches.
  */
 
-angular.module('Chronic').controller('headacheController', function ($scope, dataService, $http) {
+angular.module('Chronic').filter('unsafe', function ($sce) {
+    return $sce.trustAsHtml;
+}).controller('headacheController', function ($scope, dataService, $http) {
 
     ons.ready(function () {
         ons.bootstrap();
@@ -43,6 +45,54 @@ angular.module('Chronic').controller('headacheController', function ($scope, dat
         "cervical_left": false
     };
 
+    $scope.advices = [
+
+        "Geen pijn<br/><br/>" +
+        "Geen hoofdpijn",
+
+        "Heel milde pijn<br/><br/>" +
+        "Geen afleiding bij gewoonlijke activiteiten",
+
+        "Milde pijn<br/><br/>" +
+        "Gewoonlijke activiteiten nog mogelijk<br/><br/>" +
+        "Kunnen moeilijker zijn<br/><br/>",
+
+        "Afleidende pijn<br/><br/>" +
+        "Gewoonlijke activiteiten nog mogelijk<br/><br/>" +
+        "/moeilijker zijn<br/><br/>",
+
+        "Milde-middelmatige pijn<br/><br/>" +
+        "Gewoonlijke activiteiten worden moelijker<br/><br/>",
+
+        "Middelmatige pijn<br/><br/>" +
+        "Nood om het wat rustiger aan te doen<br/><br/>" +
+        "De pijn leidt meer af<br/><br/>",
+
+        "Middelhoge pijn<br/><br/>" +
+        "Limiteert dagelijkse activiteiten<br/><br/>" +
+        "Sommige activiteiten krijgen lagere prioriteit<br/><br/>",
+
+        "Hoge pijn<br/><br/>" +
+        "Moeilijk om zich te concentreren<br/><br/>" +
+        "Moeilijk om dagelijkste activiteiten uit te voeren<br/><br/>",
+
+        "Hevige pijn<br/><br/>" +
+        "Verhindert normale activiteiten<br/><br/>" +
+        "rust aangeraden<br/><br/>",
+
+        "Heel hevige pijn<br/><br/>" +
+        "Mogelijk niet helder denken of spreken<br/><br/>" +
+        "Mogelijk niet normaal functioneren<br/><br/>" +
+        "bedrust aangeraden"
+        ,
+
+        "Hoogst mogelijke pijn<br/><br/>" +
+        "onmogelijk om normaal te functioneren<br/><br/>" +
+        "grootste indenkbare pijn<br/><br/>" +
+        "bedrust aangeraden"];
+
+
+    $scope.description = $scope.advices[$scope.intensityValue];
     $scope.loadAreas = function () {
         $('#img_location1').mapster(
             {

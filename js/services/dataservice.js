@@ -595,6 +595,8 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
             employment: _employment, email: _email, passwordHash: _sha3, patientID: _patientID
         };
         localStorage.setItem("currentUser", JSON.stringify(user));
+        setEmail(user.email);
+        setAdvice(user.advice);
         //TODO: register on the server or check if server already has this shit
         /*
          localStorage.setItem("firstname", JSON.stringify(firstname));

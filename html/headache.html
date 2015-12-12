@@ -127,10 +127,21 @@
       	</div>
 
       	<div class="navigatorTabBody">
-	      	<p class="label" style="vertical-align: 50%;">0</p> <input type="range" min="0" max="10" class="range intensitySlider" ng-model="newHeadacheValue"> <p class="label" style="vertical-align: 50%;">10</p><br>
-	      	<p class="label"> {{ newHeadacheValue }}  /  10 </p>
-      	</div>
+            <div>
+                <p class="label" style="vertical-align: 50%;">0</p> <input type="range" min="0" max="10"
+                                                                           class="range intensitySlider"
+                                                                           ng-model="newHeadacheValue">
+
+                <p class="label" style="vertical-align: 50%;">10</p><br>
+
+                <p class="label"> {{ newHeadacheValue }} / 10 </p>
+
+                <p></p>
+            </div>
+            <br/>
+        </div>
 		<div class="navigatorTabFoot">
+            <p style="width:100%;" class="label description" ng-bind-html="advices[newHeadacheValue] | unsafe"></p>
 		    <ons-bottom-toolbar>
         		<button class="button cancelButton"  onclick="myNavigator.popPage();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
         		<button class="button nextButton" ng-click="setNewHeadacheValue(newHeadacheValue);myNavigator.replacePage('times.html')" style="float: right;">Volgende <ons-icon icon="ion-ios-arrow-forward buttonIcon"></ons-icon></button>
