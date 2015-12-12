@@ -48,37 +48,37 @@ angular.module('Chronic').filter('unsafe', function ($sce) {
     $scope.advices = [
 
         "Geen pijn<br/><br/>" +
-        "Geen hoofdpijn",
+        "Geen hoofdpijn<br/><br/><br/><br/><br/><br/>",
 
         "Heel milde pijn<br/><br/>" +
-        "Geen afleiding bij gewoonlijke activiteiten",
+        "Geen afleiding bij gewoonlijke activiteiten<br/><br/><br/><br/><br/>",
 
         "Milde pijn<br/><br/>" +
         "Gewoonlijke activiteiten nog mogelijk<br/><br/>" +
-        "Kunnen moeilijker zijn<br/><br/>",
+        "Kunnen moeilijker zijn<br/><br/><br/>",
 
         "Afleidende pijn<br/><br/>" +
         "Gewoonlijke activiteiten nog mogelijk<br/><br/>" +
-        "/moeilijker zijn<br/><br/>",
+        "/moeilijker zijn<br/><br/><br/>",
 
         "Milde-middelmatige pijn<br/><br/>" +
-        "Gewoonlijke activiteiten worden moelijker<br/><br/>",
+        "Gewoonlijke activiteiten worden moelijker<br/><br/><br/><br/><br/>",
 
         "Middelmatige pijn<br/><br/>" +
         "Nood om het wat rustiger aan te doen<br/><br/>" +
-        "De pijn leidt meer af<br/><br/>",
+        "De pijn leidt meer af<br/><br/><br/>",
 
         "Middelhoge pijn<br/><br/>" +
         "Limiteert dagelijkse activiteiten<br/><br/>" +
-        "Sommige activiteiten krijgen lagere prioriteit<br/><br/>",
+        "Sommige activiteiten krijgen lagere prioriteit<br/><br/><br/>",
 
         "Hoge pijn<br/><br/>" +
         "Moeilijk om zich te concentreren<br/><br/>" +
-        "Moeilijk om dagelijkste activiteiten uit te voeren<br/><br/>",
+        "Moeilijk om dagelijkste activiteiten uit te voeren<br/><br/><br/>",
 
         "Hevige pijn<br/><br/>" +
         "Verhindert normale activiteiten<br/><br/>" +
-        "rust aangeraden<br/><br/>",
+        "rust aangeraden<br/><br/><br/><br/>",
 
         "Heel hevige pijn<br/><br/>" +
         "Mogelijk niet helder denken of spreken<br/><br/>" +
