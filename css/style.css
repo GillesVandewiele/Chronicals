@@ -121,9 +121,19 @@ input[type=time]::-webkit-clear-button {
 	float: left;
 }
 
+.button {
+    width: 30%;
+    font-size: 100%;
+    font-size: 4vw;
+}
+
 .cancelButton {
 	background: red;
 	float: left;
+}
+
+.skipButton{
+    background: #642EFE;
 }
 
 .cancelButton:active {
