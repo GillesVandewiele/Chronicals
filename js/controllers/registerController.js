@@ -54,10 +54,10 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         var user = {
             "firstName": $scope.firstname,
             "lastName": $scope.lastname,
-            "birthDate": "",
+            "birthDate": $scope.birthdate,
             "email": $scope.email,
             "password": "" + sha3_512($scope.password),
-            "isMale": ($scope.sex),
+            "isMale": $scope.sex=="Man",
             "relation": $scope.status.toUpperCase(),
             "advice": "",
             "isEmployed": ($scope.employment == "Beroepsmatig"),
