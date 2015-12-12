@@ -57,7 +57,12 @@
             <div class="navigatorTab">
 
                 <ons-icon icon="fa-info-circle" style="font-size: 250%; margin-bottom: 5%; margin-top: 5%;"></ons-icon> <br>
-                <p class="label">{{advice}}</p>
+                <div ng-if="advice != ''">
+                    <p class="label">{{advice}}</p>
+                </div>
+                <div ng-if="advice == ''">
+                    <p class="label">U heeft nog geen advies ontvangen</p>
+                </div>
 
             </div>
         </ons-page>
