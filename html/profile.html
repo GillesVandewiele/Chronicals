@@ -30,6 +30,7 @@
     <script src="../js/controllers/chronic.js"> </script>
     <!--/*Dataservice VOOR de controller-->
     <script src="../js/services/dataservice.js"> </script>
+    <script src="../js/cryptojs/SHA3.js"></script>
     <script src="../js/controllers/profileController.js"> </script>
     <script src="../js/vendor/Chart.min.js"></script>
     <script src="../js/vendor/angular-chart.js"></script>
@@ -64,6 +65,10 @@
                 <p class="label list_header">Persoonlijke informatie</p>
             </ons-row>
 
+            <error class="error" style="margin-left: 2%; font-weight: bold; color: red; display: none;">
+                {{foutmelding}}
+            </error>
+
             <div ng-if="user != null">
                 <ons-row style="margin-left: 2%; margin-top: 2%;">
                     <ons-col width="45%"><p class="label">Voornaam</p></ons-col>
@@ -75,24 +80,24 @@
                 </ons-row>
                 <ons-row style="margin-left: 2%; margin-top: 2%;">
                     <ons-col width="45%"><p class="label">Geboortedatum</p></ons-col>
-                    <ons-col style="margin-right: 5%;"><input class="textField" type="date" ng-model="birthdate"/></ons-col>
+                    <ons-col style="margin-right: 5%;"><input class="textField" type="date" ng-model="data.birthdate"/></ons-col>
                 </ons-row>
                 <ons-row style="margin-left: 2%; margin-top: 2%;">
                     <ons-col width="45%"><p class="label">Geslacht</p></ons-col>
                     <ons-col style="margin-right: 5%;">
-                        <select class="textField" ng-model="sex" ng-options="s for s in sexes"></select>
+                        <select class="textField" ng-model="data.sex" ng-options="s for s in data.sexes"></select>
                     </ons-col>
                 </ons-row>
                 <ons-row style="margin-left: 2%; margin-top: 2%;">
                     <ons-col width="45%"><p class="label">Status</p></ons-col>
                     <ons-col style="margin-right: 5%;">
-                        <select class="textField" ng-model="relationship" ng-options="r for r in relationships">
+                        <select class="textField" ng-model="data.relationship" ng-options="r for r in data.relationships">
                         </select></ons-col>
                 </ons-row>
                 <ons-row style="margin-left: 2%; margin-top: 2%;">
                     <ons-col width="45%"><p class="label">Werkstatus</p></ons-col>
                     <ons-col style="margin-right: 5%;">
-                        <select class="textField" ng-model="employment" ng-options="e for e in employments">
+                        <select class="textField" ng-model="data.employment" ng-options="e for e in data.employments">
                         </select></ons-col>
                 </ons-row>
                 <ons-row style="margin-left: 2%; margin-top: 2%;">
@@ -112,17 +117,17 @@
                 <div id="change_password" style="display:none;">
                     <ons-row style="margin-left: 2%; margin-top: 2%;">
                         <ons-col width="45%"><p class="label">Oude pin</p></ons-col>
-                        <ons-col><input class="textField" type="password" ng-model="oldPin"/></ons-col>
+                        <ons-col><input class="textField" type="password" ng-model="data.oldPin"/></ons-col>
                     </ons-row>
                     <ons-row style="margin-left: 2%; margin-top: 2%;">
                         <ons-col width="45%"><p class="label">Nieuwe pin</p></ons-col>
-                        <ons-col><input class="textField" type="password" ng-model="newPin1"/></ons-col>
+                        <ons-col><input class="textField" type="password" ng-model="data.newPin1"/></ons-col>
                     </ons-row>
                     <ons-row style="margin-left: 2%; margin-top: 2%;">
                         <ons-col width="45%"><p class="label">Nieuwe pin herhalen</p></ons-col>
-                        <ons-col><input class="textField" type="password" ng-model="newPin2"/></ons-col>
+                        <ons-col><input class="textField" type="password" ng-model="data.newPin2"/></ons-col>
                     </ons-row>
-                    <ons-row>
+                    <ons-row style="margin-left: 2%; margin-top: 2%;">
                         <ons-col>
                             <button id="save_btn_2" class="button finishButton" ng-click="saveUser()" style="width: 45%;">Sla op</button>
                         </ons-col>

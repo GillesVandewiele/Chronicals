@@ -402,11 +402,16 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     };
 
     var getAdvice = function () {
-        return JSON.parse(localStorage.getItem("advice"));
+        console.log("advice ", localStorage.getItem("advice") );
+        if(localStorage.getItem("advice") != "" && localStorage.getItem("advice") != null ){
+            return JSON.parse(localStorage.getItem("advice"));
+        }
+        else return "";
     };
 
     var getDrugs = function () {
-        return JSON.parse(localStorage.getItem("drugList"));
+        if(localStorage.getItem("drugList") != null) return JSON.parse(localStorage.getItem("drugList"));
+        else return [];
     };
 
     var addDrug = function (drugName) {
@@ -577,16 +582,9 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         return passwordHash;
     };
 
-    var setEmail = function (user) {
-        email = user;
-        localStorage.setItem("email", JSON.stringify(user));
-    };
-
     var getEmail = function () {
-        email = JSON.parse(localStorage.getItem("email"));
-        if (email == null)
-            email = "";
-        return email;
+        var user = JSON.parse(localStorage.getItem("currentUser"));
+        return user.email;
     };
 
     var registerUser = function (_firstname, _lastname, _birthdate, _sex, _status, _employment, _email, _sha3, _patientID) {
@@ -596,8 +594,6 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         };
         console.log("User status = ", user.status);
         localStorage.setItem("currentUser", JSON.stringify(user));
-        setEmail(user.email);
-        setAdvice(user.advice);
         //TODO: register on the server or check if server already has this shit
     };
 
@@ -634,7 +630,6 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         addDrug: addDrug,
         getPasswordHash: getPasswordHash,
         getEmail: getEmail,
-        setEmail: setEmail,
         registerUser: registerUser,
         getApiKey: getApiKey,
         getAuthorization: getAuthorization,
