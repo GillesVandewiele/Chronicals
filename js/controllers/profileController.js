@@ -37,7 +37,7 @@ angular.module('Chronic').controller('profileController', function($scope, dataS
     if($scope.user.employment) $scope.employment = $scope.employments[0];
     else $scope.employment = $scope.employments[1];
 
-    console.log($scope.user);
+    //console.log($scope.user);
 
 
     //TODO: get current user from dataservice and initialize all inputs on profile page!

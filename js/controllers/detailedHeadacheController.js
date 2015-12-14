@@ -168,7 +168,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
 
 
         if(current.triggers == null){
-            console.log("no triggers")
+            //console.log("no triggers")
         }else{
             for(var i =0; i<current.triggers.length; i++){
                 if(current.triggers[i].val==true){
@@ -191,7 +191,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
 
 
     $scope.onClick = function (points, evt) {
-        console.log(points, evt);
+        //console.log(points, evt);
     };
 
 

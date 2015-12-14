@@ -72,8 +72,8 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         }).
         success(function (data, status, headers, config) {
 
-            console.log("Return van indienen user:" + status);
-            console.log(data);
+            //console.log("Return van indienen user:" + status);
+            //console.log(data);
             dataService.clearCache();
             dataService.registerUser(data.firstName, data.lastName, data.birthDate, data.isMale, "", data.isEmployed, data.email, data.password, data.patientID);
             location.href = "login.html";

@@ -24,7 +24,7 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
         };
 
         $scope.email = dataService.getEmail();
-    console.log("Email:" + $scope.email);
+    //console.log("Email:" + $scope.email);
         $scope.password = "";
 
         //Focus on the correct field
@@ -76,8 +76,8 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
                             }
                         }
                     }else{
-                        console.log("error loggin in: " + status);
-                        console.log("data:" + data);
+                        //console.log("error loggin in: " + status);
+                        //console.log("data:" + data);
                     }
 
 
