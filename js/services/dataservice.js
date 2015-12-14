@@ -605,6 +605,24 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         return "FiFoEdUdLOI4D19lj7Vb5pi72dDZf2aB";
     };
 
+    var sendNewHeadachesToDB = function(){
+        var headaches = JSON.parse(localStorage.getItem("headacheList"));
+        if(headaches == null || headaches.length <1){
+            console.log("no new headaches");
+        }else{
+            for (headache in headaches){
+                console.log("headache:"+headache);
+                if(headaches[headache].patientID==0){
+                    console.log("PRET EN RAPEN");
+                }
+            }
+        }
+    };
+
+    var sendNewMedicinesToDB = function(){
+
+    };
+
     return {
         addHeadache: addHeadache,
         addMedicine: addMedicine,
@@ -638,7 +656,9 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         syncDB: syncDB,
         getDBStatus: getDBStatus,
         sendHeadacheToDB: sendHeadacheToDB,
-        sendMedicineToDB: sendMedicineToDB
+        sendMedicineToDB: sendMedicineToDB,
+        sendNewHeadachesToDB: sendNewHeadachesToDB,
+        sendNewMedicinesToDB: sendNewMedicinesToDB
     };
 
 

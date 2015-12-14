@@ -27,7 +27,7 @@ angular.module('Chronic').controller('profileController', function($scope, dataS
         dataService.setDailyMedicineList($scope.dailyMedicines)
     };
 
-    $scope.user = dataServiceiy4vi7c();
+    $scope.user = dataService();
 
     if($scope.user != null) {
         $scope.data = {oldPin: "", newPin1: "", newPin2: "", birthdate: new Date(), relationship: "", employment: "", sex: ""};
