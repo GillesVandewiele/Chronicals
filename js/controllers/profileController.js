@@ -27,7 +27,7 @@ angular.module('Chronic').controller('profileController', function($scope, dataS
         dataService.setDailyMedicineList($scope.dailyMedicines)
     };
 
-    $scope.user = dataServiceiy4vi7c();
+    $scope.user = dataService();
 
     $scope.sexes = ["Man", "Vrouw"];
     if($scope.user.sex) $scope.sex=$scope.sexes[0];

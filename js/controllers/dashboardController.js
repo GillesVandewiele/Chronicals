@@ -52,40 +52,6 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
 
     ons.ready(function () {
         $('.hidden').removeClass("hidden");
-
-
-        ////register user
-        //$http.post('http://localhost:8080/Chronic/rest/PatientService/patients', JSON.stringify(user)).
-        //success(function (data, status, headers, config) {
-        //
-        //    console.log("Return van indienen user:"+status);
-        //}).
-        //error(function (data, status, headers, config) {
-        //    console.log("error creating user: "+status);
-        //    console.log("data:" +data);
-        //});
-
-        ////retrieve user
-        //$http.get('http://localhost:8080/Chronic/rest/PatientService/patients?lastName='+user.lastName+'&firstName='+user.firstName, {headers:{'Authorization':'Basic '+btoa(user.email+":"+sha3_512(user.password+dataService.getApiKey()))}}).
-        //success(function (data, status, headers, config) {
-        //    console.log("User retrieved:",data);
-        //}).
-        //error(function (data, status, headers, config) {
-        //    console.log("error retrieving user: "+status);
-        //    console.log("data:" +data);
-        //});
-
-
-        //console.log(dataService.getPasswordHash());
-        //$http({ method: 'GET', url: 'http://localhost:8080/Chronic/rest/SymptomService/Symptoms' }).
-        //success(function (data, status, headers, config) {
-        //    alert(""+data);
-        //    console.log(data);
-        //}).
-        //error(function (data, status, headers, config) {
-        //    alert("error retrieving data")
-        //});
-        //
         if (dataService.getHeadachesNoEnd().length > 0) {
             $('.dashboardFooter').css("background-color", "#f9332f");
             $('.dashboardFooter').empty();
