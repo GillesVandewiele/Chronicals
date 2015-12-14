@@ -53,7 +53,8 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
                     //console.log("User succesfully logged in:", data);
                     var user = data;
                     dataService.setAdvice(data.advice);
-                    dataService.registerUser(user.firstName, user.lastName, user.birthDate, user.isMale, user.relationshipStatus, user.isEmployed, user.email, sha3_512($scope.password), user.patientID);
+                    console.log("Got user: ", JSON.stringify(user));
+                    dataService.registerUser(user.firstName, user.lastName, user.birthDate, user.isMale, user.relation, user.isEmployed, user.email, sha3_512($scope.password), user.patientID);
                     dataService.syncDB().then(function (result) {
                         $scope.transition();
                         location.href = "dashboard.html";

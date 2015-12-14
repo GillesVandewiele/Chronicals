@@ -82,6 +82,7 @@ html, body{
 .textField{
     background-color: #1a252f;
     color: #FFFFFF;
+    width: 90%;
 }
 
 .error{
@@ -126,10 +127,26 @@ input[type=time]::-webkit-clear-button {
 	float: left;
 }
 
+p{
+    font-size: 4vw;
+}
+
+@media all and (max-width: 500px) {
+    p{
+        font-size: 5vw;
+    }
+}
+
+
+@media all and (max-width: 500px) {
+    .button {
+        font-size: 100%;
+        font-size: 4vw;
+    }
+}
+
 .button {
     width: 30%;
-    font-size: 100%;
-    font-size: 4vw;
 }
 
 .cancelButton {

@@ -594,6 +594,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
             firstname: _firstname, lastname: _lastname, birthdate: _birthdate, sex: _sex, status: _status,
             employment: _employment, email: _email, passwordHash: _sha3, patientID: _patientID
         };
+        console.log("User status = ", user.status);
         localStorage.setItem("currentUser", JSON.stringify(user));
         setEmail(user.email);
         setAdvice(user.advice);
