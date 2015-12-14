@@ -584,7 +584,8 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
 
     var getEmail = function () {
         var user = JSON.parse(localStorage.getItem("currentUser"));
-        return user.email;
+        if(user != null) return user.email;
+        else return "";
     };
 
     var registerUser = function (_firstname, _lastname, _birthdate, _sex, _status, _employment, _email, _sha3, _patientID) {
