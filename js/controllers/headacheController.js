@@ -319,6 +319,10 @@ angular.module('Chronic').filter('unsafe', function ($sce) {
                 //console.log("Rest fout");
                 //console.log($scope.headache);
                 dataService.setCurrentHeadache(null);
+                var list = dataService.getHeadacheList();
+                $scope.headache.id = 0;
+                list[$scope.headacheIndex] = $scope.headache;
+                dataService.setHeadacheList(list);
                 location.href="dashboard.html";
             });
         } else{
@@ -327,6 +331,14 @@ angular.module('Chronic').filter('unsafe', function ($sce) {
                 var list = dataService.getHeadacheList();
                 //console.log("Nieuwe id:",result.headacheID);
                 $scope.headache.id = result.headacheID;
+                list[$scope.headacheIndex] = $scope.headache;
+                dataService.setHeadacheList(list);
+                dataService.addHeadache($scope.headache);
+                location.href = "dashboard.html";
+            }, function(result){
+                var list = dataService.getHeadacheList();
+                //console.log("Nieuwe id:",result.headacheID);
+                $scope.headache.id = 0;
                 list[$scope.headacheIndex] = $scope.headache;
                 dataService.setHeadacheList(list);
                 dataService.addHeadache($scope.headache);
