@@ -114,8 +114,6 @@
                                     </div>
                                     <div class="list-center" ng-class="{'medicine': !obj.hasOwnProperty('end')}">
                                         {{obj.hasOwnProperty('end')? getTimeDateString(obj.intensityValues[0].key) : getTimeDateString(obj.date)}}
-                                        <!--{{""+((new Date(obj.intensityValues[0].key)).getDate())+"/"+(obj.intensityValues[0].key.getMonth()+1)+"         "+obj.intensityValues[0].key.getHours()+":"+obj.intensityValues[0].key.getMinutes()}}-->
-                                        <!--12 okt 15:45-->
                                     </div>
                                     <div class="list-right"  ng-class="{'medicine': !obj.hasOwnProperty('end')}">
                                         {{obj.hasOwnProperty('end') ? obj.intensityValues[0].value+"/10" : obj.quantity +" mg"}}
@@ -155,15 +153,18 @@
     <ons-dialog var="dialog" cancelable style="background-color: #1a252f;">
 
         <ons-list style="background-color: #1a252f;" >
-            <ons-list-item class="listitem"  ng-click="closeListItem()"  onclick="location.reload()" modifier="tappable" style="border-bottom: 1px solid #FFFFFF;">
-                Sluit hoofdpijn af (eind = nu)
-            </ons-list-item>
+            <!--<ons-list-item class="listitem"  ng-click="closeListItem()"  onclick="location.reload()" modifier="tappable" style="border-bottom: 1px solid #FFFFFF;">-->
+                <!--Sluit hoofdpijn af (eind = nu)-->
+            <!--</ons-list-item>-->
             <ons-list-item ng-click="addDetailsListItem()" onclick="location.href='headache.html'" class="listitem" modifier="tappable" style="border-bottom: 1px solid #FFFFFF;">
                 Intensiteit hoofdpijn toevoegen
             </ons-list-item>
-            <ons-list-item ng-click="deleteListItem()" onclick="location.reload()" class="listitem" modifier="tappable">
-                Hoofdpijn verwijderen
-            </ons-list-item>
+            <ons-list-item style="display: none;"></ons-list-item>
+            <ons-list-item style="display: none;"></ons-list-item><ons-list-item style="display: none;"></ons-list-item>
+
+            <!--<ons-list-item ng-click="deleteListItem()" onclick="location.reload()" class="listitem" modifier="tappable">-->
+                <!--Hoofdpijn verwijderen-->
+            <!--</ons-list-item>-->
         </ons-list>
 
     </ons-dialog>
