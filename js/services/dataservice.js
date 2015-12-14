@@ -610,10 +610,12 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         if(headaches == null || headaches.length <1){
             console.log("no new headaches");
         }else{
-            for (headache in headaches){
+            for (var headache in headaches){
                 console.log("headache:"+headache);
-                if(headaches[headache].patientID==0){
+                console.log("headache:"+JSON.stringify(headaches[headache]));
+                if(headaches[headache].id<1){
                     console.log("PRET EN RAPEN");
+                    sendHeadacheToDB(headaches[headache]);
                 }
             }
         }
