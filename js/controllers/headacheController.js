@@ -326,7 +326,6 @@ angular.module('Chronic').filter('unsafe', function ($sce) {
                 location.href="dashboard.html";
             });
         } else{
-
             dataService.sendHeadacheToDB($scope.headache).then(function(result){
                 var list = dataService.getHeadacheList();
                 //console.log("Nieuwe id:",result.headacheID);

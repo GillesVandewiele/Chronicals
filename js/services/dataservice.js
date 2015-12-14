@@ -611,11 +611,21 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
             console.log("no new headaches");
         }else{
             for (var headache in headaches){
-                console.log("headache:"+headache);
-                console.log("headache:"+JSON.stringify(headaches[headache]));
+                //console.log("headache:"+headache);
+                //console.log("headache:"+JSON.stringify(headaches[headache]));
                 if(headaches[headache].id<1){
                     console.log("PRET EN RAPEN");
-                    sendHeadacheToDB(headaches[headache]);
+                    sendHeadacheToDB(headaches[headache]).then(function(result){
+                        setCurrentHeadache(null);
+                        var list = getHeadacheList();
+                        headaches[headache].id = result.headacheID;
+                        list.push(headaches[headache]);
+                        setHeadacheList(list);
+                    }, function(result){
+                        //console.log("Rest fout");
+                        //console.log($scope.headache);
+                        console.log("fout bij toevoegen van nog niet in de database zittende headache");
+                    });
                 }
             }
         }
