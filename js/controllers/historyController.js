@@ -58,7 +58,7 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
                 return (new Date(dateB.toString())) - (new Date(dateA.toString()));
             });
 
-        console.log("listIems legnth"+ $scope.listItems.length);
+        //console.log("listIems legnth"+ $scope.listItems.length);
     };
 
     $scope.loadEvents();
@@ -161,14 +161,14 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
     };
 
     $scope.listClick = function(obj){
-        console.log("listClick event:", obj);
+        //console.log("listClick event:", obj);
         if(obj.title == "Hoofdpijn" || obj.hasOwnProperty('intensityValues')){
             if(obj.hasOwnProperty('title')){
                 dataService.setCurrentHeadache(obj.object);
             }else{
                 dataService.setCurrentHeadache(obj);
             }
-            console.log("De geklikte dinge is:",dataService.getCurrentHeadache());
+            //console.log("De geklikte dinge is:",dataService.getCurrentHeadache());
             $scope.transition();
             location.href='detailedHeadache.html';
         }else{

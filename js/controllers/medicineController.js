@@ -21,7 +21,7 @@ angular.module('Chronic').controller('medicineController', function($scope, data
 
     // Initialize all fields on default values or on the values of current medicine (when modifying)
 	$scope.medicine = dataService.getCurrentMedicine();
-    console.log("Current Medicine = ", $scope.medicine);
+    //console.log("Current Medicine = ", $scope.medicine);
 
 	if($scope.medicine != null && $scope.medicine.drug != null){
 		$scope.selectedDrug = $scope.medicine.drug;
@@ -108,9 +108,9 @@ angular.module('Chronic').controller('medicineController', function($scope, data
             else var medicine = {id: $scope.medicine.id, drug: $scope.selectedDrug, quantity: $scope.drugQuantity, date: dateObj};
 		}
 
-        console.log("Going to store ", medicine);
+        //console.log("Going to store ", medicine);
         $scope.medicine = medicine;
-        console.log("Medicine index:"+$scope.medicineIndex);
+        //console.log("Medicine index:"+$scope.medicineIndex);
 		if($scope.medicineIndex != -1){
             if(profile){
                 dataService.setDailyMedicineList(list);
@@ -124,8 +124,8 @@ angular.module('Chronic').controller('medicineController', function($scope, data
                     $scope.transition();
                     location.href = newLocation;
                 }, function(){
-                    console.log("Rest fout");
-                    console.log($scope.medicine);
+                    //console.log("Rest fout");
+                    //console.log($scope.medicine);
                     dataService.setCurrentMedicine(null);
                     $scope.transition();
                     location.href=newLocation;
@@ -138,7 +138,7 @@ angular.module('Chronic').controller('medicineController', function($scope, data
             }else{
                 dataService.sendMedicineToDB($scope.medicine).then(function(result, status){
                     var list = dataService.getMedicineList();
-                    console.log("Nieuwe id:",result.medicineID);
+                    //console.log("Nieuwe id:",result.medicineID);
                     $scope.medicine.id = result.medicineID;
                     list[$scope.medicineIndex] = $scope.medicine;
                     dataService.setMedicineList(list);

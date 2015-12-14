@@ -163,7 +163,7 @@ angular.module('Chronic').filter('unsafe', function ($sce) {
 
     $scope.headache = dataService.getCurrentHeadache();
 
-    console.log($scope.headache);
+    //console.log($scope.headache);
 
     if ($scope.headache == null) {
         $scope.headache = {
@@ -177,20 +177,20 @@ angular.module('Chronic').filter('unsafe', function ($sce) {
     }
 
     $scope.setEnd = function (endDate, endTime) {
-        console.log(endDate, endTime);
+        //console.log(endDate, endTime);
         if (endDate != null && endTime != null) {
             $scope.headache.end = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), endTime.getHours(), endTime.getMinutes(), endTime.getSeconds());
         }
-        console.log("nieuw eind =", $scope.headache.end);
+        //console.log("nieuw eind =", $scope.headache.end);
     };
 
     $scope.setAreas = function(){
-        console.log("setting areas..");
+        //console.log("setting areas..");
             if($scope.headache.location != null){
                 for (var loc in $scope.headache.location) {
-                    console.log("teset1");
+                    //console.log("teset1");
                     if ($scope.headache.location.hasOwnProperty(loc) && $scope.headache.location[loc]) {
-                        console.log("test21");
+                        //console.log("test21");
                         $('img').mapster('set', $scope.headache.location[loc], loc);
                     }
                 }
@@ -204,7 +204,7 @@ angular.module('Chronic').filter('unsafe', function ($sce) {
             $scope.end = new Date($scope.headache.end);
             $scope.endDate = $scope.end;
             $scope.endTime = $scope.end;
-            console.log("hallo!", $scope.end);
+            //console.log("hallo!", $scope.end);
         }
     } else $scope.end = null;
 
@@ -306,8 +306,8 @@ angular.module('Chronic').filter('unsafe', function ($sce) {
         if ($scope.headacheIndex != -1) {
 
             dataService.sendHeadacheToDB($scope.headache).then(function(result){
-                console.log("result:"+JSON.stringify(result));
-                console.log("Return van indienen hoofdpijn:"+status);
+                //console.log("result:"+JSON.stringify(result));
+                //console.log("Return van indienen hoofdpijn:"+status);
 
                 dataService.setCurrentHeadache(null);
                 var list = dataService.getHeadacheList();
@@ -316,8 +316,8 @@ angular.module('Chronic').filter('unsafe', function ($sce) {
                 dataService.setHeadacheList(list);
                 location.href = "dashboard.html";
             }, function(result){
-                console.log("Rest fout");
-                console.log($scope.headache);
+                //console.log("Rest fout");
+                //console.log($scope.headache);
                 dataService.setCurrentHeadache(null);
                 location.href="dashboard.html";
             });
@@ -325,7 +325,7 @@ angular.module('Chronic').filter('unsafe', function ($sce) {
 
             dataService.sendHeadacheToDB($scope.headache).then(function(result){
                 var list = dataService.getHeadacheList();
-                console.log("Nieuwe id:",result.headacheID);
+                //console.log("Nieuwe id:",result.headacheID);
                 $scope.headache.id = result.headacheID;
                 list[$scope.headacheIndex] = $scope.headache;
                 dataService.setHeadacheList(list);

@@ -24,7 +24,7 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
         };
 
         $scope.email = dataService.getEmail();
-    console.log("Email:" + $scope.email);
+    //console.log("Email:" + $scope.email);
         $scope.password = "";
 
         //Focus on the correct field
@@ -64,20 +64,24 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
 
                 }).
                 error(function (data, status, headers, config) {
-                    console.log("error loggin in: " + status);
-                    console.log("data:" + data);
-                    if (dataService.getPasswordHash() == null || dataService.getPasswordHash().length < 1) {
-                        $(".error_message").show();
-                    } else {
-                        if (dataService.getPasswordHash().toString() == pwHash.toString() && dataService.getEmail() == $scope.email) {
-                            //$("#container").css("display", "none");
-                            //$("#loadingImg").show();
-                            $scope.transition();
-                            location.href = "dashboard.html";
+                    if(status==0){
+                        alert("U bent niet verbonden met het internet, of de server is offline. U werkt nu verder met lokale gegevens tot u opnieuw verbinding met de server heeft");
+                        if (dataService.getCurrentUser() == null || dataService.getCurrentUser().passwordHash == null || dataService.getCurrentUser().passwordHash.length < 1) {
+                            alert("Er is lokaal nog geen gebruiker ingesteld. Verbind eerst met het internet en probeer in te loggen");
                         } else {
-                            $(".error_message").show();
+                            if (dataService.getCurrentUser().passwordHash == pwHash.toString() && dataService.getCurrentUser().email == $scope.email) {
+                                $scope.transition();
+                                location.href = "dashboard.html";
+                            } else {
+                                $(".error_message").show();
+                            }
                         }
+                    }else{
+                        //console.log("error loggin in: " + status);
+                        //console.log("data:" + data);
                     }
+
+
 
                 });
             //});

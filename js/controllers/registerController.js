@@ -72,17 +72,38 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         }).
         success(function (data, status, headers, config) {
 
-            console.log("Return van indienen user:" + status);
-            console.log(data);
+            //console.log("Return van indienen user:" + status);
+            //console.log(data);
             dataService.clearCache();
             dataService.registerUser(data.firstName, data.lastName, data.birthDate, data.isMale, data.relation, data.isEmployed, data.email, data.password, data.patientID);
             location.href = "login.html";
         }).
         error(function (data, status, headers, config) {
+            if(status==417){
+                //Cannot parse JSON Object from the body
+                alert("De server kan het object dat meegegeven werd niet verwerken. Vraag raad aan de systeembeheerder of verantwoordelijke.");
+                location.href="register.html";
+
+            }else if(status==409){
+                alert("Deze gebruiker bestaat reeds in de databank. Gelieve een ander email adres te gebruiken. Als u uw wachtwoord bent vergeten kan u terecht bij de systeembeheerder of verantwoordelijke.");
+                location.href="register.html";
+
+            }else if(status==500){
+                //Internal server error
+                alert("Er ging iets mis bij het indienen van uw request. Vraag raad aan de systeembeheerder of verantwoordelijke.");
+                location.href="register.html";
+
+            }else if(status==0){
+                alert("U moet internet hebben voor u kan registreren. Indien u internetverbinding heeft, en het toch niet lukt, raadpleeg dan de systeembeheerder of verantwoordelijke.");
+            }else{
+                //Some random error happened we didn't anticipate
+                alert("WTF? RARE ERROR..");
+
+            }
+
             console.log("error creating user: " + status);
             console.log("data:" + data);
-            alert("Geen verbinding met de REST service, we gaan verder met lokale gegevens voor testing-purposes");
-            dataService.clearCache();
+            //dataService.clearCache();
             //location.href = "login.html";
         });
 
