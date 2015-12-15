@@ -38,18 +38,6 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     };
 
 
-    var addHeadache = function (newObj) {
-        if (JSON.parse(localStorage.getItem("headacheList")) != null) {
-            headacheList = JSON.parse(localStorage.getItem("headacheList"));
-            headacheList.push(newObj);
-            localStorage.setItem("headacheList", JSON.stringify(headacheList));
-
-        }
-        else {
-            localStorage.setItem("headacheList", JSON.stringify([newObj]));
-            headacheList = [newObj];
-        }
-    };
 
     var sendHeadacheToDB = function(headacheObj){
         return new Promise(function(resolve,reject) {
@@ -127,15 +115,27 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                     'Authorization': getAuthorization()
                 }
             }).success(function (data, status, headers, config) {
-                resolve(data, status);
+                resolve(data);
             }).
             error(function (data, status, headers, config) {
-                reject(data, status);
+                reject(data);
             });
         });
     };
 
 
+    var addHeadache = function (newObj) {
+        if (JSON.parse(localStorage.getItem("headacheList")) != null) {
+            headacheList = JSON.parse(localStorage.getItem("headacheList"));
+            headacheList.push(newObj);
+            localStorage.setItem("headacheList", JSON.stringify(headacheList));
+
+        }
+        else {
+            localStorage.setItem("headacheList", JSON.stringify([newObj]));
+            headacheList = [newObj];
+        }
+    };
 
     var addMedicine = function (newObj) {
         if (JSON.parse(localStorage.getItem("medicineList")) != null) {
@@ -145,6 +145,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         }
         else {
             localStorage.setItem("medicineList", JSON.stringify([newObj]));
+            medicineList = [newObj];
         }
     };
 
@@ -285,7 +286,13 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                                 }
                             }
                         }
-                        newHeadaches.push({id: entry.headacheID, end: entry.end, intensityValues: entry.intensityValues, location: newLocations,
+                        var end;
+                        if(entry.end == "null" || entry.end=="" || entry.end==null){
+                            end = null;
+                        }else{
+                            end = entry.end;
+                        }
+                        newHeadaches.push({id: entry.headacheID, end: end, intensityValues: entry.intensityValues, location: newLocations,
                                            symptoms: newHeadacheSymptoms, triggers: newHeadacheTriggers});
                     });
                     localStorage.setItem("headacheList", JSON.stringify(newHeadaches));
@@ -633,7 +640,30 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     };
 
     var sendNewMedicinesToDB = function(){
+        var medicines = JSON.parse(localStorage.getItem("medicineList"));
+        if(medicines == null || medicines.length <1){
+            console.log("no new medicines");
+        }else{
+            for (var medicine in medicines){
+                //console.log("medicine:"+medicine);
+                //console.log("medicine:"+JSON.stringify(medicines[medicine]));
 
+                if(medicines[medicine].id<1){
+                    console.log("PRET EN RAPEN");
+                    sendMedicineToDB(medicines[medicine]).then(function(result){
+                        setCurrentMedicine(null);
+                        var list = getMedicineList();
+                        medicines[medicine].id = result.medicineID;
+                        list.push(medicines[medicine]);
+                        setMedicineList(list);
+                    }, function(result){
+                        //console.log("Rest fout");
+                        //console.log($scope.medicine);
+                        console.log("fout bij toevoegen van nog niet in de database zittende medicine");
+                    });
+                }
+            }
+        }
     };
 
     return {

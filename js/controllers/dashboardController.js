@@ -93,7 +93,9 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
     Array.prototype.push.apply($scope.listItems, dataService.getHeadacheList());
     Array.prototype.push.apply($scope.listItems, dataService.getMedicineList());
 
+
     if ($scope.listItems != null && $scope.listItems.length > 0)
+        console.log("ListItems", $scope.listItems);
         $scope.listItems.sort(function (a, b) {
 
             if (a.hasOwnProperty('end')) {//if it is a headache it has property end
@@ -101,7 +103,6 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
             } else {
                 dateA = a.date;
             }
-
             if (b.hasOwnProperty('end')) {//if it is a headache it has property end
                 dateB = b.intensityValues[0].key;
             } else {

@@ -314,6 +314,7 @@ angular.module('Chronic').filter('unsafe', function ($sce) {
                 $scope.headache.id = result.headacheID;
                 list[$scope.headacheIndex] = $scope.headache;
                 dataService.setHeadacheList(list);
+                $scope.transition();
                 location.href = "dashboard.html";
             }, function(result){
                 //console.log("Rest fout");
