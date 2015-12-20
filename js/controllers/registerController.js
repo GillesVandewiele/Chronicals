@@ -20,7 +20,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     $httpProvider.defaults.headers.patch = {};
 
 }]).controller('registerController', function ($scope, dataService, $http) {
-
+    app.initialize();
     ons.ready(function () {
         $('.hidden').removeClass("hidden");
         $('#loadingImg').hide();

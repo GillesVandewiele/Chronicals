@@ -8,6 +8,8 @@
 
 angular.module('Chronic').controller('indexController', function($scope, dataService){
 
+    app.initialize();
+
     ons.ready(function() {
         $('.hidden').removeClass("hidden");
         $('#loadingImg').hide();
