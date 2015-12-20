@@ -1,7 +1,6 @@
 angular.module('Chronic').controller('adviceController', function($scope, dataService){
 
     ons.ready(function() {
-        ons.bootstrap();
         $('.hidden').removeClass("hidden");
         $('#loadingImg').hide();
         ons.disableDeviceBackButtonHandler();
