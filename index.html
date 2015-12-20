@@ -53,14 +53,24 @@
         // device APIs are available
         //
         function onDeviceReady() {
-            var element = document.getElementById('deviceProperties');
-            element.innerHTML = 'Device Model: '    + device.model    + '<br />' +
-                'Device Cordova: '  + device.cordova  + '<br />' +
-                'Device Platform: ' + device.platform + '<br />' +
-                'Device UUID: '     + device.uuid     + '<br />' +
-                'Device Version: '  + device.version  + '<br />';
+            document.addEventListener("backbutton", onBackKeyPress, false);
         }
+        function onBackKeyPress() {
+            /* If the current page is the login page, disable the button completely (aka do nothing) */
+            if ($.mobile.activePage.attr('id') == 'login_page') {
+            }
 
+            /* Else, execute log off code */
+            else {
+                if (confirm("Are you sure you want to logout?")) {
+                    /* Here is where my AJAX code for logging off goes */
+                }
+                else {
+                    return false;
+                }
+            }
+            location.href="./html/register.html";
+        }
     </script>
 
 
