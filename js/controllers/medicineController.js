@@ -96,7 +96,7 @@ angular.module('Chronic').controller('medicineController', function($scope, data
 		var dateObj = new Date($scope.drugDate.getFullYear(), $scope.drugDate.getMonth(), $scope.drugDate.getDate(), $scope.drugTime.getHours(), $scope.drugTime.getMinutes(), $scope.drugTime.getSeconds());
         if($scope.ownDrug != null){
 			var drug = {id: 0, name:$scope.ownDrug, description:""};
-			var medicine = {id: -1, drug: drug, quantity: $scope.drugQuantity, date: dateObj};
+			var medicine = {id: 0, drug: drug, quantity: $scope.drugQuantity, date: dateObj};
             if(JSON.parse(localStorage.getItem("ownDrugList")) == null){
                 localStorage.setItem("ownDrugList",JSON.stringify([drug]));
             }else{
@@ -104,7 +104,7 @@ angular.module('Chronic').controller('medicineController', function($scope, data
             }
             localStorage.setItem("drugList",JSON.stringify(JSON.parse(localStorage.getItem("drugList")).concat([drug])));
 		} else {
-            if($scope.medicineIndex == -1) var medicine = {id: -1, drug: $scope.selectedDrug, quantity: $scope.drugQuantity, date: dateObj};
+            if($scope.medicineIndex == -1) var medicine = {id: 0, drug: $scope.selectedDrug, quantity: $scope.drugQuantity, date: dateObj};
             else var medicine = {id: $scope.medicine.id, drug: $scope.selectedDrug, quantity: $scope.drugQuantity, date: dateObj};
 		}
 
@@ -149,7 +149,6 @@ angular.module('Chronic').controller('medicineController', function($scope, data
                     console.log("Rest fout");
                     console.log($scope.medicine);
                     console.log("Data:"+result);
-                    conosle.log("Status", status);
                     dataService.setCurrentMedicine(null);
                     $scope.transition();
                     location.href=newLocation;
