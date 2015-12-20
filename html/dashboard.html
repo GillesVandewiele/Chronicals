@@ -11,7 +11,7 @@
     <!-- Our style sheet -->
     <link rel="stylesheet" href="../css/style.css">
 
-
+    <script src="../cordova.js"></script>
     <!-- AngularJS + ngStorage | MIT License | https://angularjs.org/ -->
     <script src="../js/angular/angular.js"></script>
     <script src="../js/angular/ngStorage.min.js"></script>
@@ -26,6 +26,7 @@
     <!-- Main file & Dashboard controller -->
     <script src="../js/controllers/chronic.js"></script>
     <script src="../js/services/dataservice.js"></script>
+    <script src="../js/index.js"></script>
     <script src="../js/controllers/dashboardController.js"></script>
     <script src="../js/vendor/Chart.min.js"></script>
     <script src="../js/vendor/angular-chart.js"></script>
@@ -49,22 +50,15 @@
         }
         function backKeyDown(e) {
             e.preventDefault();
-            alert("HALLO JA DIT WERKT");
+            if(confirm("Wil je de app afsluiten?")){
+                navigator.app.exitApp();
+            }else{
+
+            }
 
         };
 
-        // Cordova is loaded and it is now safe to make calls Cordova methods
-        //
-        function onDeviceReady() {
-            // Now safe to use the Cordova API
-            alert("WELKOM JAJ AJA JA AJ");
-            document.addEventListener("backbutton", backKeyDown, true);
-            function backKeyDown(e) {
-                e.preventDefault();
-                alert("HALLO JA DIT WERKT");
 
-            };
-        }
 
     </script>
 

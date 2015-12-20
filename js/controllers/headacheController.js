@@ -11,9 +11,20 @@ angular.module('Chronic').filter('unsafe', function ($sce) {
 }).controller('headacheController', function ($scope, dataService, $http) {
 
     ons.ready(function () {
-        ons.bootstrap();
         $('.hidden').removeClass("hidden");
         $('#loadingImg').hide();
+        ons.disableDeviceBackButtonHandler();
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+        // device APIs are available
+        //
+        function onDeviceReady() {
+            document.addEventListener("backbutton", onBackKeyPress, false);
+        }
+        function onBackKeyPress(e) {
+            e.preventDefault();
+
+        }
     });
 
     $scope.transition = function () {
@@ -314,6 +325,7 @@ angular.module('Chronic').filter('unsafe', function ($sce) {
                 $scope.headache.id = result.headacheID;
                 list[$scope.headacheIndex] = $scope.headache;
                 dataService.setHeadacheList(list);
+                $scope.transition();
                 location.href = "dashboard.html";
             }, function(result){
                 //console.log("Rest fout");

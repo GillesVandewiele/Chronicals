@@ -20,10 +20,22 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     $httpProvider.defaults.headers.patch = {};
 
 }]).controller('registerController', function ($scope, dataService, $http) {
-
+    app.initialize();
     ons.ready(function () {
         $('.hidden').removeClass("hidden");
         $('#loadingImg').hide();
+        ons.disableDeviceBackButtonHandler();
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+        // device APIs are available
+        //
+        function onDeviceReady() {
+            document.addEventListener("backbutton", onBackKeyPress, false);
+        }
+        function onBackKeyPress(e) {
+            e.preventDefault();
+
+        }
     });
 
     $scope.transition = function () {
@@ -51,11 +63,12 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         //TODO: check if username already exists and stuff
 
 
+
         var user = {
-            "firstName": $scope.firstname,
-            "lastName": $scope.lastname,
+            "firstName": sha3_512($scope.firstname),
+            "lastName": sha3_512($scope.lastname),
             "birthDate": $scope.birthdate,
-            "email": $scope.email,
+            "email": sha3_512($scope.email),
             "password": "" + sha3_512($scope.password),
             "isMale": $scope.sex=="Man",
             "relation": $scope.status.toUpperCase(),
@@ -63,7 +76,6 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
             "isEmployed": ($scope.employment == "Beroepsmatig"),
             "diagnosis": ""
         };
-
 
         $http.post('http://tw06v033.ugent.be/Chronic/rest/PatientService/patients', JSON.stringify(user), {
             headers: {
@@ -75,8 +87,26 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
             //console.log("Return van indienen user:" + status);
             //console.log(data);
             dataService.clearCache();
-            dataService.registerUser(data.firstName, data.lastName, data.birthDate, data.isMale, data.relation, data.isEmployed, data.email, data.password, data.patientID);
-            location.href = "login.html";
+            dataService.registerUser($scope.firstname, $scope.lastname, data.birthDate, data.isMale, data.relation, data.isEmployed, $scope.email, user.password, data.patientID);
+            alert("Voor beveiligingsredenen is het nodig om enkele gegevens door te sturen naar de dokters van het uz, zodat ze later uw identiteit aan de data kunnen koppelen. Gelieve in het volgende scherm bij het mailtje op versturen te klikken.");
+            cordova.plugins.email.open({
+                    to:          ["uzgent.chronic@gmail.com"], // email addresses for TO field
+                    cc:          [], // email addresses for CC field
+                    bcc:         [], // email addresses for BCC field
+                    attachments: [], // file paths or base64 data streams
+                    subject:    "Register User - Chronic", // subject of the email
+                    body:       "<h1>Gebruiker is geregistreerd met volgende info:</h1>"+
+                    "<p>Voornaam: "+$scope.firstname+"</p>"+
+                    "<p>Familienaam: "+$scope.lastname+"</p>"+
+                    "<p>Emailhash: "+$scope.email+"</p>"+
+                    "<p>patientID: "+data.patientID+"</p>", // email body (for HTML, set isHtml to true)
+                    isHtml:    true, // indicats if the body is HTML or plain text
+                },
+                function(){
+                    location.href = "login.html";
+                }
+                , this);
+
         }).
         error(function (data, status, headers, config) {
             if(status==417){
@@ -106,6 +136,10 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
             //dataService.clearCache();
             //location.href = "login.html";
         });
+
+
+
+
 
 
     }

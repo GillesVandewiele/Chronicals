@@ -12,6 +12,18 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
         ons.ready(function () {
             $('.hidden').removeClass("hidden");
             $('#loadingImg').hide();
+            ons.disableDeviceBackButtonHandler();
+            document.addEventListener("deviceready", onDeviceReady, false);
+
+            // device APIs are available
+            //
+            function onDeviceReady() {
+                document.addEventListener("backbutton", onBackKeyPress, false);
+            }
+            function onBackKeyPress(e) {
+                e.preventDefault();
+
+            }
         });
 
         // Set everything to null until a login has occured
@@ -41,20 +53,20 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
         };
 
         $scope.submitLogin = function () {
-
+            dataService.registerUser
             var pwHash = sha3_512($scope.password);
             //try to login
             //retrieve user
-
+            dataService.registerUser(dataService.getCurrentUser().firstName, dataService.getCurrentUser().lastName, dataService.getCurrentUser().birthDate, dataService.getCurrentUser().isMale, dataService.getCurrentUser().relation, dataService.getCurrentUser().isEmployed, $scope.email, sha3_512($scope.password), dataService.getCurrentUser().patientID);
             // We can't use getAuthorization yet from the dataservice since no user is registered yet.
             //dataService.getDBStatus().then(function(result){
-                $http.get('http://tw06v033.ugent.be/Chronic/rest/PatientService/login', {headers: {'Authorization': 'Basic ' + btoa($scope.email + ":" + sha3_512(sha3_512($scope.password) + dataService.getApiKey()))}}).
+                $http.get('http://tw06v033.ugent.be/Chronic/rest/PatientService/login', {headers: {'Authorization': dataService.getAuthorization()}}).
                 success(function (data, status, headers, config) {
                     //console.log("User succesfully logged in:", data);
                     var user = data;
                     dataService.setAdvice(data.advice);
                     console.log("Got user: ", JSON.stringify(user));
-                    dataService.registerUser(user.firstName, user.lastName, user.birthDate, user.isMale, user.relation, user.isEmployed, user.email, sha3_512($scope.password), user.patientID);
+                    dataService.registerUser(dataService.getCurrentUser().firstName, dataService.getCurrentUser().lastName, user.birthDate, user.isMale, user.relation, user.isEmployed, $scope.email, sha3_512($scope.password), user.patientID);
                     dataService.sendNewHeadachesToDB();
                     dataService.sendNewMedicinesToDB();
                     dataService.syncDB().then(function (result) {

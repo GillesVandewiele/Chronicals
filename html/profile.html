@@ -12,7 +12,7 @@
     <meta charset="utf-8">
 
     <title>Profiel</title>
-
+    <script src="../cordova.js"></script>
     <!-- Our style sheet -->
     <link rel="stylesheet" href="../css/style.css">
 
@@ -31,6 +31,7 @@
     <!--/*Dataservice VOOR de controller-->
     <script src="../js/services/dataservice.js"> </script>
     <script src="../js/cryptojs/SHA3.js"></script>
+    <script src="../js/index.js"></script>
     <script src="../js/controllers/profileController.js"> </script>
     <script src="../js/vendor/Chart.min.js"></script>
     <script src="../js/vendor/angular-chart.js"></script>
@@ -70,14 +71,6 @@
             </error>
 
             <div ng-if="user != null">
-                <ons-row style="margin-left: 2%; margin-top: 2%;">
-                    <ons-col width="45%"><p class="label">Voornaam</p></ons-col>
-                    <ons-col style="margin-right: 5%;"><input class="textField" type="text" ng-model="user.firstname"/></ons-col>
-                </ons-row>
-                <ons-row style="margin-left: 2%; margin-top: 2%;">
-                    <ons-col width="45%"><p class="label">Familienaam</p></ons-col>
-                    <ons-col style="margin-right: 5%;"><input class="textField" type="text" ng-model="user.lastname"/></ons-col>
-                </ons-row>
                 <ons-row style="margin-left: 2%; margin-top: 2%;">
                     <ons-col width="45%"><p class="label">Geboortedatum</p></ons-col>
                     <ons-col style="margin-right: 5%;"><input class="textField" type="date" ng-model="data.birthdate"/></ons-col>

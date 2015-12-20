@@ -10,6 +10,18 @@ angular.module('Chronic').controller('medicineController', function($scope, data
     ons.ready(function() {
         $('.hidden').removeClass("hidden");
         $('#loadingImg').hide();
+        ons.disableDeviceBackButtonHandler();
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+        // device APIs are available
+        //
+        function onDeviceReady() {
+            document.addEventListener("backbutton", onBackKeyPress, false);
+        }
+        function onBackKeyPress(e) {
+            e.preventDefault();
+
+        }
     });
 
     $scope.transition = function(){
@@ -107,36 +119,47 @@ angular.module('Chronic').controller('medicineController', function($scope, data
             if($scope.medicineIndex == -1) var medicine = {id: 0, drug: $scope.selectedDrug, quantity: $scope.drugQuantity, date: dateObj};
             else var medicine = {id: $scope.medicine.id, drug: $scope.selectedDrug, quantity: $scope.drugQuantity, date: dateObj};
 		}
+        console.log("Nieuwe medicine:"+JSON.stringify(medicine));
 
         //console.log("Going to store ", medicine);
-        $scope.medicine = medicine;
-        //console.log("Medicine index:"+$scope.medicineIndex);
+        $scope.medicine = medicine
+        console.log("Medicine index:"+$scope.medicineIndex);
+        console.log("Medicine to add:"+JSON.stringify($scope.medicine));
 		if($scope.medicineIndex != -1){
             if(profile){
                 dataService.setDailyMedicineList(list);
             }else{
-                dataService.sendMedicineToDB(medicine).then(function(result) {
+                dataService.sendMedicineToDB($scope.medicine).then(function(result) {
                     var list = dataService.getMedicineList();
                     $scope.medicine.id = result.medicineID;
                     list[$scope.medicineIndex] = $scope.medicine;
                     dataService.setMedicineList(list);
-                    dataService.setCurrentMedicine(null);
                     $scope.transition();
                     location.href = newLocation;
                 }, function(){
                     //console.log("Rest fout");
-                    //console.log($scope.medicine);
-                    dataService.setCurrentMedicine(null);
-                    $scope.transition();
+                    //console.log($scope.headache);
+
+                    var list = dataService.getMedicineList();
+
+                    $scope.medicine.id = 0;
+                    list[$scope.medicineIndex] = $scope.medicine;
+                    dataService.setMedicineList(list);
                     location.href=newLocation;
+
+                    //console.log("Rest fout");
+                    //console.log($scope.medicine);
+                    //dataService.setCurrentMedicine(null);
+                    //$scope.transition();
+                    //location.href=newLocation;
                 });
             }
 		}
 		else {
             if(profile){
-                dataService.addDailyMedicine(medicine)
+                dataService.addDailyMedicine($scope.medicine)
             }else{
-                dataService.sendMedicineToDB($scope.medicine).then(function(result, status){
+                dataService.sendMedicineToDB($scope.medicine).then(function(result){
                     var list = dataService.getMedicineList();
                     //console.log("Nieuwe id:",result.medicineID);
                     $scope.medicine.id = result.medicineID;
@@ -145,13 +168,28 @@ angular.module('Chronic').controller('medicineController', function($scope, data
                     dataService.addMedicine($scope.medicine);
                     $scope.transition();
                     location.href = newLocation;
-                }, function(result, status){
-                    console.log("Rest fout");
-                    console.log($scope.medicine);
-                    console.log("Data:"+result);
-                    dataService.setCurrentMedicine(null);
-                    $scope.transition();
-                    location.href=newLocation;
+                }, function(result){
+                    //console.log("Nieuwe id:",result.headacheID);
+                    console.log("Trying to add new medicine:"+JSON.stringify($scope.medicine));
+                    var list = dataService.getMedicineList();
+                    console.log("Trying to add new list:"+JSON.stringify(list));
+                    if(list == null){
+                        list = [];
+                    }
+                    $scope.medicine.id = 0;
+                    list[$scope.medicineIndex] = $scope.medicine;
+                    console.log("New list after adding:"+JSON.stringify(list));
+                    dataService.setMedicineList(list);
+                    console.log("MedicineList after adding:"+JSON.stringify(dataService.getMedicineList()));
+                    dataService.addMedicine($scope.medicine);
+                    console.log("MedicineList final:"+JSON.stringify(dataService.getMedicineList()));
+                    location.href = newLocation;
+                    //console.log("Rest fout");
+                    //console.log($scope.medicine);
+                    //console.log("Data:"+result);
+                    //dataService.setCurrentMedicine(null);
+                    //$scope.transition();
+                    //location.href=newLocation;
                 });
             }
 
