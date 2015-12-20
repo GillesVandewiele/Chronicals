@@ -34,7 +34,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         }
         function onBackKeyPress(e) {
             e.preventDefault();
-            alert("Stop met op die backbutton te duwen dikhoofd");
+
         }
     });
 
@@ -62,13 +62,13 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     $scope.submitRegister = function () {
         //TODO: check if username already exists and stuff
 
-        $scope.email = sha3_512($scope.email);
+
 
         var user = {
-            //"firstName": $scope.firstname,
-            //"lastName": $scope.lastname,
+            "firstName": sha3_512($scope.firstname),
+            "lastName": sha3_512($scope.lastname),
             "birthDate": $scope.birthdate,
-            "email": $scope.email,
+            "email": sha3_512($scope.email),
             "password": "" + sha3_512($scope.password),
             "isMale": $scope.sex=="Man",
             "relation": $scope.status.toUpperCase(),
@@ -77,63 +77,67 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
             "diagnosis": ""
         };
 
-        cordova.plugins.email.open({
-            to:          ["uzgent.chronic@gmail.com"], // email addresses for TO field
-            cc:          [], // email addresses for CC field
-            bcc:         [], // email addresses for BCC field
-            attachments: [], // file paths or base64 data streams
-            subject:    "Register User - Chronic", // subject of the email
-            body:       "<h1>Gebruiker is geregistreerd met volgende info:</h1>"+
-                            "<p>Voornaam: "+$scope.firstname+"</p>"+
-                            "<p>Familienaam: "+$scope.lastname+"</p>"+
-                            "<p>Emailhash: "+$scope.email+"</p>", // email body (for HTML, set isHtml to true)
-            isHtml:    true, // indicats if the body is HTML or plain text
-        },
-            function(){
-                $http.post('http://tw06v033.ugent.be/Chronic/rest/PatientService/patients', JSON.stringify(user), {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                }).
-                success(function (data, status, headers, config) {
+        $http.post('http://tw06v033.ugent.be/Chronic/rest/PatientService/patients', JSON.stringify(user), {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).
+        success(function (data, status, headers, config) {
 
-                    //console.log("Return van indienen user:" + status);
-                    //console.log(data);
-                    dataService.clearCache();
-                    dataService.registerUser(data.firstName, data.lastName, data.birthDate, data.isMale, data.relation, data.isEmployed, data.email, data.password, data.patientID);
+            //console.log("Return van indienen user:" + status);
+            //console.log(data);
+            dataService.clearCache();
+            dataService.registerUser(data.firstName, data.lastName, data.birthDate, data.isMale, data.relation, data.isEmployed, data.email, data.password, data.patientID);
+            alert("Voor beveiligingsredenen is het nodig om enkele gegevens door te sturen naar de dokters van het uz, zodat ze later uw identiteit aan de data kunnen koppelen. Gelieve in het volgende scherm bij het mailtje op versturen te klikken.");
+            cordova.plugins.email.open({
+                    to:          ["uzgent.chronic@gmail.com"], // email addresses for TO field
+                    cc:          [], // email addresses for CC field
+                    bcc:         [], // email addresses for BCC field
+                    attachments: [], // file paths or base64 data streams
+                    subject:    "Register User - Chronic", // subject of the email
+                    body:       "<h1>Gebruiker is geregistreerd met volgende info:</h1>"+
+                    "<p>Voornaam: "+$scope.firstname+"</p>"+
+                    "<p>Familienaam: "+$scope.lastname+"</p>"+
+                    "<p>Emailhash: "+$scope.email+"</p>"+
+                    "<p>patientID: "+data.patientID+"</p>", // email body (for HTML, set isHtml to true)
+                    isHtml:    true, // indicats if the body is HTML or plain text
+                },
+                function(){
                     location.href = "login.html";
-                }).
-                error(function (data, status, headers, config) {
-                    if(status==417){
-                        //Cannot parse JSON Object from the body
-                        alert("De server kan het object dat meegegeven werd niet verwerken. Vraag raad aan de systeembeheerder of verantwoordelijke.");
-                        location.href="register.html";
+                }
+                , this);
 
-                    }else if(status==409){
-                        alert("Deze gebruiker bestaat reeds in de databank. Gelieve een ander email adres te gebruiken. Als u uw wachtwoord bent vergeten kan u terecht bij de systeembeheerder of verantwoordelijke.");
-                        location.href="register.html";
+        }).
+        error(function (data, status, headers, config) {
+            if(status==417){
+                //Cannot parse JSON Object from the body
+                alert("De server kan het object dat meegegeven werd niet verwerken. Vraag raad aan de systeembeheerder of verantwoordelijke.");
+                location.href="register.html";
 
-                    }else if(status==500){
-                        //Internal server error
-                        alert("Er ging iets mis bij het indienen van uw request. Vraag raad aan de systeembeheerder of verantwoordelijke.");
-                        location.href="register.html";
+            }else if(status==409){
+                alert("Deze gebruiker bestaat reeds in de databank. Gelieve een ander email adres te gebruiken. Als u uw wachtwoord bent vergeten kan u terecht bij de systeembeheerder of verantwoordelijke.");
+                location.href="register.html";
 
-                    }else if(status==0){
-                        alert("U moet internet hebben voor u kan registreren. Indien u internetverbinding heeft, en het toch niet lukt, raadpleeg dan de systeembeheerder of verantwoordelijke.");
-                    }else{
-                        //Some random error happened we didn't anticipate
-                        alert("WTF? RARE ERROR..");
+            }else if(status==500){
+                //Internal server error
+                alert("Er ging iets mis bij het indienen van uw request. Vraag raad aan de systeembeheerder of verantwoordelijke.");
+                location.href="register.html";
 
-                    }
-
-                    console.log("error creating user: " + status);
-                    console.log("data:" + data);
-                    //dataService.clearCache();
-                    //location.href = "login.html";
-                });
+            }else if(status==0){
+                alert("U moet internet hebben voor u kan registreren. Indien u internetverbinding heeft, en het toch niet lukt, raadpleeg dan de systeembeheerder of verantwoordelijke.");
+            }else{
+                //Some random error happened we didn't anticipate
+                alert("WTF? RARE ERROR..");
 
             }
-            , this);
+
+            console.log("error creating user: " + status);
+            console.log("data:" + data);
+            //dataService.clearCache();
+            //location.href = "login.html";
+        });
+
+
 
 
 
