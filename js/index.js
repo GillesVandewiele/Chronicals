@@ -15,6 +15,10 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        alert("App is ready");
+        if(dataService.getEmail()!=null && dataService.getEmail().length>0){
+            location.href="./html/login.html";
+        }else{
+            location.href="./html/register.html";
+        }
     }
 };
