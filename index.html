@@ -55,8 +55,10 @@
         function onDeviceReady() {
             document.addEventListener("backbutton", onBackKeyPress, false);
         }
-        function onBackKeyPress() {
+        function onBackKeyPress(e) {
+
             if (confirm("Wil je registreren?")) {
+                e.preventDefault();
                     /* Here is where my AJAX code for logging off goes */
                 location.href="./html/register.html";
             }
