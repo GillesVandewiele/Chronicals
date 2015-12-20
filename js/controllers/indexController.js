@@ -13,6 +13,8 @@ angular.module('Chronic').controller('indexController', function($scope, dataSer
     ons.ready(function() {
         $('.hidden').removeClass("hidden");
         $('#loadingImg').hide();
+        var handler = myPage.getDeviceBackButtonHandler();
+        handler.disable();
         if(dataService.getEmail()!=null && dataService.getEmail().length>0){
             location.href="./html/login.html";
         }else{

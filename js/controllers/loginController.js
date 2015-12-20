@@ -12,6 +12,8 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
         ons.ready(function () {
             $('.hidden').removeClass("hidden");
             $('#loadingImg').hide();
+            var handler = myPage.getDeviceBackButtonHandler();
+            handler.disable();
         });
 
         // Set everything to null until a login has occured
