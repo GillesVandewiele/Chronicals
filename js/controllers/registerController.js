@@ -24,8 +24,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     ons.ready(function () {
         $('.hidden').removeClass("hidden");
         $('#loadingImg').hide();
-        var handler = myPage.getDeviceBackButtonHandler();
-        handler.disable();
+        ons.disableDeviceBackButtonHandler();
         document.addEventListener("deviceready", onDeviceReady, false);
 
         // device APIs are available
