@@ -28,7 +28,6 @@
 
     <access origin="*" />
     <allow-navigation href = "http://tw06v033.ugent.be/*" />
-    <plugin name="cordova-plugin-whitelist" spec="1" />
     <gap:plugin name="de.appplant.cordova.plugin.email-composer" version="0.8.2" />
 
 </widget>
