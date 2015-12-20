@@ -11,7 +11,6 @@ angular.module('Chronic').filter('unsafe', function ($sce) {
 }).controller('headacheController', function ($scope, dataService, $http) {
 
     ons.ready(function () {
-        ons.bootstrap();
         $('.hidden').removeClass("hidden");
         $('#loadingImg').hide();
         ons.disableDeviceBackButtonHandler();
