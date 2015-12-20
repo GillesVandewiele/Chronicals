@@ -53,9 +53,7 @@
         // device APIs are available
         //
         function onDeviceReady() {
-            document.addEventListener("backbutton", onBackKeyPress, false);
-        }
-        function onBackKeyPress(e) {
+            document.addEventListener("backbutton", function(e) {
 
             if (confirm("Wil je registreren?")) {
                 e.preventDefault();
@@ -66,7 +64,7 @@
                     return false;
             }
 
-        }
+        }, false);}
     </script>
 
 
