@@ -58,11 +58,14 @@
         //
         function onDeviceReady() {
             // Now safe to use the Cordova API
-            alert("WELKOM JAJ AJA JA AJ");
             document.addEventListener("backbutton", backKeyDown, true);
             function backKeyDown(e) {
                 e.preventDefault();
-                alert("HALLO JA DIT WERKT");
+                if(confirm("Wil je de app afsluiten?")){
+                    navigator.app.exitApp();
+                }else{
+
+                }
 
             };
         }
