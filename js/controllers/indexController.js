@@ -11,11 +11,11 @@ angular.module('Chronic').controller('indexController', function($scope, dataSer
     ons.ready(function() {
         $('.hidden').removeClass("hidden");
         $('#loadingImg').hide();
-        if(dataService.getEmail()!=null && dataService.getEmail().length>0){
-            location.href="./html/login.html";
-        }else{
-            location.href="./html/register.html";
-        }
+        //if(dataService.getEmail()!=null && dataService.getEmail().length>0){
+        //    location.href="./html/login.html";
+        //}else{
+        //    location.href="./html/register.html";
+        //}
     });
 
     $scope.transition = function(){
