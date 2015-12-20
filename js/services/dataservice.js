@@ -33,7 +33,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
 
     var getAuthorization = function () {
         var currentUser = JSON.parse(localStorage.getItem("currentUser"));
-        if (currentUser != null) return 'Basic ' + btoa(currentUser.email + ":" + sha3_512(currentUser.passwordHash + getApiKey()));
+        if (currentUser != null) return 'Basic ' + btoa(sha3_512(currentUser.email) + ":" + sha3_512(currentUser.passwordHash + getApiKey()));
         else return null;
     };
 
