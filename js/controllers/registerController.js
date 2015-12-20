@@ -24,6 +24,17 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     ons.ready(function () {
         $('.hidden').removeClass("hidden");
         $('#loadingImg').hide();
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+        // device APIs are available
+        //
+        function onDeviceReady() {
+            document.addEventListener("backbutton", onBackKeyPress, false);
+        }
+        function onBackKeyPress(e) {
+            e.preventDefault();
+            alert("Stop met op die backbutton te duwen dikhoofd");
+        }
     });
 
     $scope.transition = function () {
