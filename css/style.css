@@ -1,5 +1,5 @@
 /*!
- 	NAAM VAN ONS PROJECT, v1.0
+ 	Chronicals, v1.0
  	Created by Kiani Lannoye & Gilles Vandewiele, commissioned by UZ Ghent
     https://github.com/kianilannoye/Chronicals
 
@@ -79,6 +79,12 @@ html, body{
     color: #FFFFFF;
 }
 
+.textField{
+    background-color: #1a252f;
+    color: #FFFFFF;
+    width: 90%;
+}
+
 .error{
 	color: red;
 	margin-left: 5%;
@@ -121,9 +127,35 @@ input[type=time]::-webkit-clear-button {
 	float: left;
 }
 
+p{
+    font-size: 4vw;
+}
+
+@media all and (max-width: 500px) {
+    p{
+        font-size: 5vw;
+    }
+}
+
+
+@media all and (max-width: 500px) {
+    .button {
+        font-size: 100%;
+        font-size: 4vw;
+    }
+}
+
+.button {
+    width: 30%;
+}
+
 .cancelButton {
 	background: red;
 	float: left;
+}
+
+.skipButton{
+    background: #642EFE;
 }
 
 .cancelButton:active {
@@ -314,12 +346,25 @@ div .last{
 	padding: 0;
 	align-content: center;
 	text-align: center;
-	display: inline-block;
+	display: flex;
+    flex-direction: column;
     border-bottom: 4px solid #1e1f3f;
 
     margin-right: 0 !important;
+    overflow: scroll;
 
 }
+
+.tile.large > div {
+    flex: 1;
+    overflow: scroll;
+}
+
+.dashboardlist {
+    height:100%;
+    overflow: scroll;
+}
+
 .row.footer.dashboardFooter{
 	background-color: #01579B;
     width: 96%;
@@ -330,7 +375,7 @@ div .last{
 }
 
 #midTile{
-    height: 74%;
+    height: 90%;
 }
 
 .dashboardMidIcon{
@@ -541,9 +586,11 @@ div .last{
 }
 
 .list_header{
-    width: 100%;
     background-color: #1a252f;
+    width: 100%;
     text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 .detailMedicine > .tekstLijn{
@@ -567,4 +614,9 @@ div .last{
 /*Manual*/
 .list__item--chevron:before{
     color: ghostwhite;
+}
+
+.dialog{
+    top: 80%;
+    min-height:0px;
 }

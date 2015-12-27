@@ -1,5 +1,5 @@
 /*!
- NAAM VAN ONS PROJECT, v1.0
+ Chronicals, v1.0
  Created by Kiani Lannoye & Gilles Vandewiele, commissioned by UZ Ghent
  https://github.com/kianilannoye/Chronicals
 
@@ -12,6 +12,18 @@ angular.module('Chronic').controller("settingsController", function($scope, data
     ons.ready(function() {
         $('.hidden').removeClass("hidden");
         $('#loadingImg').hide();
+        ons.disableDeviceBackButtonHandler();
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+        // device APIs are available
+        //
+        function onDeviceReady() {
+            document.addEventListener("backbutton", onBackKeyPress, false);
+        }
+        function onBackKeyPress(e) {
+            e.preventDefault();
+
+        }
     });
 
     $scope.transition = function(){

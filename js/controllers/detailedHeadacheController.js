@@ -1,5 +1,5 @@
 /*!
- NAAM VAN ONS PROJECT, v1.0
+ Chronicals, v1.0
  Created by Kiani Lannoye & Gilles Vandewiele, commissioned by UZ Ghent
  https://github.com/kianilannoye/Chronicals
 
@@ -7,7 +7,18 @@
  */
 
 
-angular.module('Chronic').controller("detailedHeadacheController", function($scope, dataService) {
+angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common["X-Requested-With"];
+    $httpProvider.defaults.headers.common["Accept"] = "application/json";
+
+    $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+    $httpProvider.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
+    $httpProvider.defaults.headers.common = {};
+    $httpProvider.defaults.headers.post = {};
+    $httpProvider.defaults.headers.put = {};
+    $httpProvider.defaults.headers.patch = {};
+}]).controller("detailedHeadacheController", function($scope, dataService) {
 
 
     $scope.transition = function(){
@@ -17,7 +28,13 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
     };
 
     $scope.deleteEntry = function(){
-        dataService.removeHeadache();
+
+        dataService.removeHeadache().then(function(result){
+            location.href = "history.html";
+        }, function(result){
+            location.href = "history.html";
+        });
+
     };
 
 
@@ -31,7 +48,7 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
         sorted = sorted.sort(function(a,b){
             // Turn your strings into dates, and then subtract them
             // to get a value that is either negative, positive, or zero.
-            return a-b;
+            return new Date(a)-new Date(b);
         });
 
         var newArray = [];
@@ -57,7 +74,7 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
     if(current == null){
         current = dataService.getCurrentHeadache();
         if(current==null){
-            dataService.setCurrentHeadache(dataService.getHeadacheList()[0]);
+            //dataService.setCurrentHeadache(dataService.getHeadacheList()[0]);
             current = dataService.getCurrentHeadache();
         }
     }
@@ -100,25 +117,27 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
             if (!(entry.date < sorted[0].key || entry.date > sorted[sorted.length - 1].key)) {
                 //update sorted
                 var inserted = false;
-                var counter = 1;
-                while (!inserted) {
-                    if (sorted[counter].hasOwnProperty('key')) {
-                        if (new Date(sorted[counter].key) > new Date(entry.date)) {
-                            $scope.labels.splice(counter, 0, "" + (new Date(entry.date)).getHours() + ":" + ((new Date(entry.date)).getMinutes() < 10 ? '0' : '') + (new Date(entry.date)).getMinutes());
-                            sorted.splice(counter, 0, entry);
-                            var value = (Number($scope.data[counter - 1]) + Number($scope.data[counter])) / 2;
-                            $scope.data.splice(counter, 0, value);
-                            medicinePositions.splice(counter, 0, 1);
-                            inserted = true;
-                        }
-                    } else {
-                        if (new Date(sorted[counter].date) > new Date(entry.date)) {
-                            $scope.labels.splice(counter, 0, "" + (new Date(entry.date)).getHours() + ":" + ((new Date(entry.date)).getMinutes() < 10 ? '0' : '') + (new Date(entry.date)).getMinutes());
-                            sorted.splice(counter, 0, entry);
-                            var value = (Number($scope.data[counter - 1]) + Number($scope.data[counter])) / 2;
-                            $scope.data.splice(counter, 0, value);
-                            medicinePositions.splice(counter, 0, 1);
-                            inserted = true;
+                var counter = 0;
+                while (!inserted && counter < sorted.length) {
+                    if(sorted[counter] != null){
+                        if (sorted[counter].hasOwnProperty('key')) {
+                            if (new Date(sorted[counter].key) > new Date(entry.date)) {
+                                $scope.labels.splice(counter, 0, "" + (new Date(entry.date)).getHours() + ":" + ((new Date(entry.date)).getMinutes() < 10 ? '0' : '') + (new Date(entry.date)).getMinutes());
+                                sorted.splice(counter, 0, entry);
+                                var value = (Number($scope.data[counter - 1]) + Number($scope.data[counter])) / 2;
+                                $scope.data.splice(counter, 0, value);
+                                medicinePositions.splice(counter, 0, 1);
+                                inserted = true;
+                            }
+                        } else {
+                            if (new Date(sorted[counter].date) > new Date(entry.date)) {
+                                $scope.labels.splice(counter, 0, "" + (new Date(entry.date)).getHours() + ":" + ((new Date(entry.date)).getMinutes() < 10 ? '0' : '') + (new Date(entry.date)).getMinutes());
+                                sorted.splice(counter, 0, entry);
+                                var value = (Number($scope.data[counter - 1]) + Number($scope.data[counter])) / 2;
+                                $scope.data.splice(counter, 0, value);
+                                medicinePositions.splice(counter, 0, 1);
+                                inserted = true;
+                            }
                         }
                     }
 
@@ -148,24 +167,31 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
 
 
 
+        if(current.triggers == null){
+            //console.log("no triggers")
+        }else{
+            for(var i =0; i<current.triggers.length; i++){
+                if(current.triggers[i].val==true){
+                    $scope.triggers.push(current.triggers[i].name);
+                }
+            }
 
-        for(var i =0; i<current.triggers.length; i++){
-            if(current.triggers[i].val==true){
-                $scope.triggers.push(current.triggers[i].name);
+        }
+        if(current.symptoms != null){
+            for(var i =0; i<current.symptoms.length; i++){
+                if(current.symptoms[i].val==true){
+                    $scope.symptoms.push(current.symptoms[i].name);
+                }
             }
         }
-        for(var i =0; i<current.symptoms.length; i++){
-            if(current.symptoms[i].val==true){
-                $scope.symptoms.push(current.symptoms[i].name);
-            }
-        }
+
 
 
     }
 
 
     $scope.onClick = function (points, evt) {
-        console.log(points, evt);
+        //console.log(points, evt);
     };
 
 
@@ -182,6 +208,18 @@ angular.module('Chronic').controller("detailedHeadacheController", function($sco
 
         }
         myNewChart.update();
+        ons.disableDeviceBackButtonHandler();
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+        // device APIs are available
+        //
+        function onDeviceReady() {
+            document.addEventListener("backbutton", onBackKeyPress, false);
+        }
+        function onBackKeyPress(e) {
+            e.preventDefault();
+
+        }
     });
 
 });

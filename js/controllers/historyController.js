@@ -1,5 +1,5 @@
 /*!
- NAAM VAN ONS PROJECT, v1.0
+ Chronicals, v1.0
  Created by Kiani Lannoye & Gilles Vandewiele, commissioned by UZ Ghent
  https://github.com/kianilannoye/Chronicals
 
@@ -11,6 +11,18 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
     ons.ready(function() {
         $('.hidden').removeClass("hidden");
         $('#loadingImg').hide();
+        ons.disableDeviceBackButtonHandler();
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+        // device APIs are available
+        //
+        function onDeviceReady() {
+            document.addEventListener("backbutton", onBackKeyPress, false);
+        }
+        function onBackKeyPress(e) {
+            e.preventDefault();
+
+        }
     });
 
     $scope.transition = function(){
@@ -24,42 +36,20 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
         return ""+(datum.getDate())+"/"+(datum.getMonth()+1)+" "+(datum.getHours()<10?'0':'')+datum.getHours()+":"+(datum.getMinutes()<10?'0':'')+datum.getMinutes();
     };
 
+    $scope.objTracker = function(object){
+        if(object.hasOwnProperty('end')){
+            return Math.random() + object.intensityValues + object.end + object.location + object.symptoms + object.triggers;
+        } else {
+            return Math.random() + object.drug + object.quantity + object.date;
+        }
+    };
+
     $scope.listItems =[];
     if($scope.listItems.length>0){
         $scope.listItems = [];
     }
 
-    $scope.listItems = [];
-    Array.prototype.push.apply($scope.listItems,dataService.getHeadacheList());
-    Array.prototype.push.apply($scope.listItems, dataService.getMedicineList());
-
-    if($scope.listItems != null && $scope.listItems.length>0)
-        $scope.listItems.sort(function(a,b){ //sort the list on their start dates // date of consumption
-
-            if(a.hasOwnProperty('end')){//if it is a headache it has property end
-                dateA = a.intensityValues[0].key;
-            }else{
-                dateA = a.date;
-            }
-
-            if(b.hasOwnProperty('end')){//if it is a headache it has property end
-                dateB = b.intensityValues[0].key;
-            }else{
-                dateB = b.date;
-            }
-            return (new Date(dateB.toString())) - (new Date(dateA.toString()));
-        });
-
-    /* Onload fill event list of the calendar */
-    $scope.fillEvents = function () {
-
-        var dateA = null;
-        var dateB = null;
-        $scope.listItems =[];
-        if($scope.listItems.length>0){
-            $scope.listItems = [];
-        }
-
+    $scope.loadEvents = function(){
         Array.prototype.push.apply($scope.listItems,dataService.getHeadacheList());
         Array.prototype.push.apply($scope.listItems, dataService.getMedicineList());
 
@@ -79,6 +69,18 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
                 }
                 return (new Date(dateB.toString())) - (new Date(dateA.toString()));
             });
+
+        //console.log("listIems legnth"+ $scope.listItems.length);
+    };
+
+    $scope.loadEvents();
+
+    /* Onload fill event list of the calendar */
+    $scope.fillEvents = function () {
+
+        var dateA = null;
+        var dateB = null;
+
 
 
         // page is now ready, initialize the calendar...
@@ -135,38 +137,6 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
         }
 
         $('.loadingImg').hide();
-
-
-
-
-        //$('#calendar').fullCalendar('renderEvent',
-        //    eventSources= [
-        //
-        //        // your event source
-        //        {
-        //            events: [ // put the array in the `events` property
-        //                {
-        //                    title: 'Medicijn',
-        //                    start: '2015-10-18T12:30:00'
-        //                },
-        //                {
-        //                    title: 'Hoofdpijn',
-        //                    start: '2015-10-19T12:30:00',
-        //                    end: '2015-10-22T12:30:00'
-        //                },
-        //                {
-        //                    title: 'Medicijn',
-        //                    start: '2015-10-25T12:30:00'
-        //                }
-        //            ],
-        //            color: 'black',     // an option!
-        //            textColor: 'yellow' // an option!
-        //        }
-        //
-        //        // any other event sources...
-        //
-        //    ]
-        //, true);
     };
 
     ons.ready(function() {
@@ -203,13 +173,15 @@ angular.module('Chronic').controller("historyController", function($scope, dataS
     };
 
     $scope.listClick = function(obj){
-        console.log("listClick event:", obj);
+        //console.log("listClick event:", obj);
         if(obj.title == "Hoofdpijn" || obj.hasOwnProperty('intensityValues')){
             if(obj.hasOwnProperty('title')){
                 dataService.setCurrentHeadache(obj.object);
             }else{
                 dataService.setCurrentHeadache(obj);
             }
+            //console.log("De geklikte dinge is:",dataService.getCurrentHeadache());
+            $scope.transition();
             location.href='detailedHeadache.html';
         }else{
             if(obj.hasOwnProperty('title')){

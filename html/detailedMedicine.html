@@ -7,7 +7,7 @@
 
     <!-- Our style sheet -->
     <link rel="stylesheet" href="../css/style.css">
-
+    <script src="../cordova.js"></script>
     <!-- AngularJS | MIT License | https://angularjs.org/ -->
     <script src="../js/angular/angular.js"></script>
     <script src="../js/angular/ngStorage.min.js"></script>
@@ -20,10 +20,11 @@
 
     <script src="../js/controllers/chronic.js"></script>
     <script src="../js/services/dataservice.js"></script>
+    <script src="../js/index.js"></script>
     <script src="../js/controllers/detailedMedicineController.js"></script>
     <script src="../js/vendor/Chart.min.js"></script>
     <script src="../js/vendor/angular-chart.js"></script>
-
+    <script src="../js/cryptojs/SHA3.js"></script>
     <link rel="stylesheet" href="../css/angular-chart.css">
 
 </head>
@@ -48,7 +49,7 @@
                     <ons-icon icon="fa fa-pencil" ng-click=";transition();" onclick="location.href='medicine.html'"></ons-icon>
                 </ons-toolbar-button>
                 <ons-toolbar-button>
-                    <ons-icon icon="fa  fa-trash-o buttonIcon" ng-click="deleteEntry();transition();" onclick="location.href='history.html'"></ons-icon>
+                    <ons-icon icon="fa  fa-trash-o buttonIcon" ng-click="deleteEntry();"></ons-icon>
                 </ons-toolbar-button>
             </div>
         </ons-toolbar>

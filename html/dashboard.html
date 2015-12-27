@@ -21,6 +21,7 @@
 =======
 >>>>>>> 13bf4e40c594611cdeeafff57c74b6075acab6f6
 
+    <script src="../cordova.js"></script>
     <!-- AngularJS + ngStorage | MIT License | https://angularjs.org/ -->
     <script src="../js/angular/angular.js"></script>
     <script src="../js/angular/ngStorage.min.js"></script>
@@ -35,6 +36,7 @@
     <!-- Main file & Dashboard controller -->
     <script src="../js/controllers/chronic.js"></script>
     <script src="../js/services/dataservice.js"></script>
+    <script src="../js/index.js"></script>
     <script src="../js/controllers/dashboardController.js"></script>
     <script src="../js/vendor/Chart.min.js"></script>
     <script src="../js/vendor/angular-chart.js"></script>
@@ -58,22 +60,15 @@
         }
         function backKeyDown(e) {
             e.preventDefault();
-            alert("HALLO JA DIT WERKT");
+            if(confirm("Wil je de app afsluiten?")){
+                navigator.app.exitApp();
+            }else{
+
+            }
 
         };
 
-        // Cordova is loaded and it is now safe to make calls Cordova methods
-        //
-        function onDeviceReady() {
-            // Now safe to use the Cordova API
-            alert("WELKOM JAJ AJA JA AJ");
-            document.addEventListener("backbutton", backKeyDown, true);
-            function backKeyDown(e) {
-                e.preventDefault();
-                alert("HALLO JA DIT WERKT");
 
-            };
-        }
 
     </script>
 </head>
@@ -121,7 +116,7 @@
                     <i class="icon fa fa-calendar-check-o dashboardMidIcon"></i>
 
                     <div id="midTile" style="width:100%;">
-                        <ons-list class="list" style="height: 100%;overflow: scroll;">
+                        <ons-list class="list dashboardlist" style="height: 90%;overflow: scroll;">
                             <ons-list-item ng-repeat="obj in listItems" class="list__item headache">
                                 <span class="list__item__line-height">
                                     <div class="list-left">
@@ -129,8 +124,6 @@
                                     </div>
                                     <div class="list-center" ng-class="{'medicine': !obj.hasOwnProperty('end')}">
                                         {{obj.hasOwnProperty('end')? getTimeDateString(obj.intensityValues[0].key) : getTimeDateString(obj.date)}}
-                                        <!--{{""+((new Date(obj.intensityValues[0].key)).getDate())+"/"+(obj.intensityValues[0].key.getMonth()+1)+"         "+obj.intensityValues[0].key.getHours()+":"+obj.intensityValues[0].key.getMinutes()}}-->
-                                        <!--12 okt 15:45-->
                                     </div>
                                     <div class="list-right"  ng-class="{'medicine': !obj.hasOwnProperty('end')}">
                                         {{obj.hasOwnProperty('end') ? obj.intensityValues[0].value+"/10" : obj.quantity +" mg"}}
@@ -146,7 +139,7 @@
             </ons-row>
             <ons-row class="row">
                 <div class="tileContent tile half">
-                    <div class="tileContentInner">
+                    <div class="tileContentInner" ng-click="transition();" onclick="location.href='advice.html'">
                         <i class="icon fa fa-info-circle"></i>
                         <p>Advies</p>
                     </div>
@@ -170,15 +163,18 @@
     <ons-dialog var="dialog" cancelable style="background-color: #1a252f;">
 
         <ons-list style="background-color: #1a252f;" >
-            <ons-list-item class="listitem"  ng-click="closeListItem()"  onclick="location.reload()" modifier="tappable" style="border-bottom: 1px solid #FFFFFF;">
-                Sluit hoofdpijn af (eind = nu)
-            </ons-list-item>
+            <!--<ons-list-item class="listitem"  ng-click="closeListItem()"  onclick="location.reload()" modifier="tappable" style="border-bottom: 1px solid #FFFFFF;">-->
+                <!--Sluit hoofdpijn af (eind = nu)-->
+            <!--</ons-list-item>-->
             <ons-list-item ng-click="addDetailsListItem()" onclick="location.href='headache.html'" class="listitem" modifier="tappable" style="border-bottom: 1px solid #FFFFFF;">
                 Intensiteit hoofdpijn toevoegen
             </ons-list-item>
-            <ons-list-item ng-click="deleteListItem()" onclick="location.reload()" class="listitem" modifier="tappable">
-                Hoofdpijn verwijderen
-            </ons-list-item>
+            <ons-list-item style="display: none;"></ons-list-item>
+            <ons-list-item style="display: none;"></ons-list-item><ons-list-item style="display: none;"></ons-list-item>
+
+            <!--<ons-list-item ng-click="deleteListItem()" onclick="location.reload()" class="listitem" modifier="tappable">-->
+                <!--Hoofdpijn verwijderen-->
+            <!--</ons-list-item>-->
         </ons-list>
 
     </ons-dialog>

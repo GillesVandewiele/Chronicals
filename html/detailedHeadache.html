@@ -7,7 +7,7 @@
 
     <!-- Our style sheet -->
     <link rel="stylesheet" href="../css/style.css">
-
+    <script src="../cordova.js"></script>
     <!-- AngularJS | MIT License | https://angularjs.org/ -->
     <script src="../js/angular/angular.js"></script>
     <script src="../js/angular/ngStorage.min.js"></script>
@@ -20,9 +20,11 @@
 
     <script src="../js/controllers/chronic.js"></script>
     <script src="../js/services/dataservice.js"></script>
+    <script src="../js/index.js"></script>
     <script src="../js/controllers/detailedHeadacheController.js"></script>
     <script src="../js/vendor/Chart.min.js"></script>
     <script src="../js/vendor/angular-chart.js"></script>
+    <script src="../js/cryptojs/SHA3.js"></script>
 
     <link rel="stylesheet" href="../css/angular-chart.css">
 
@@ -48,7 +50,7 @@
                     <ons-icon icon="fa fa-pencil" ng-click=";transition();" onclick="location.href='headache.html'"></ons-icon>
                 </ons-toolbar-button>
                 <ons-toolbar-button>
-                    <ons-icon icon="fa  fa-trash-o buttonIcon" ng-click="deleteEntry();transition();" onclick="location.href='history.html'"></ons-icon>
+                    <ons-icon icon="fa  fa-trash-o buttonIcon" ng-click="deleteEntry();transition();"></ons-icon>
                 </ons-toolbar-button>
             </div>
         </ons-toolbar>
@@ -62,24 +64,26 @@
                 <div class="label" style="width: 35%;">Eindtijd:</div>
                 <div class="label" style="width: 65%;text-align: right">{{endTime}}</div>
             </ons-row>
-            <ons-row>
-                <p class="label list_header" style="width: 100%; text-align: center;">Intensiteitscurve</p>
-                <canvas id="line" class="chart chart-line" chart-data="data"
-                        chart-labels="labels" chart-click="onClick">
-                </canvas>
+            <ons-row style="margin-top: 2%;">
+                <p class="label list_header">Intensiteitscurve</p>
+                <div style="margin:auto;">
+                    <canvas id="line" class="chart chart-line" chart-data="data"
+                            chart-labels="labels" chart-click="onClick">
+                    </canvas>
+                </div>
             </ons-row>
             <ons-row>
                 <div class="detailsList">
                     <div class="list_header">
                         Symptomen
                     </div>
-                    <div ng-repeat="symptom in symptoms">
+                    <div ng-repeat="symptom in symptoms" style="margin-top:2%;">
                         <p>{{symptom}}</p>
                     </div>
                     <div class="list_header">
                         Triggers
                     </div>
-                    <div ng-repeat="symptom in triggers">
+                    <div ng-repeat="symptom in triggers" style="margin-top:2%;">
                         <p>{{symptom}}</p>
                     </div>
                 </div>
