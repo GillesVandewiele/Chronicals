@@ -70,19 +70,19 @@
                               </select>
                          </div>
                          <input id="ownDrug" type="text" ng-model="ownDrug" ng-change="typeText(ownDrug)">
-                         <input type="number" name="quantity" style="width: 20%;" min="1" class="medicineQuantity" ng-model="drugQuantity" ng-change="typeNumber(drugQuantity)" required>
-                         <label style="margin-left: 2%;">mg</label>
+                         <!--<input type="number" name="quantity" style="width: 20%;" min="1" class="medicineQuantity" ng-model="drugQuantity" ng-change="typeNumber(drugQuantity)" required>
+                         <label style="margin-left: 2%;">mg</label>-->
 
                      </ons-row>
                     <ons-row style="margin-top: 5%;">
                         <p style="margin-left: 5%;">{{selectedDrug.description}}</p>
                     </ons-row>
-                    <small class="error" ng-show="addMedicineForm.quantity.$error.required">
+                    <!--<small class="error" ng-show="addMedicineForm.quantity.$error.required">
                         - U moet een hoeveelheid ingeven!
                     </small> <br/>
                     <small class="error" ng-show="addMedicineForm.quantity.$error.min">
                         - U moet een correcte hoeveelheid ingeven!
-                    </small> <br/>
+                    </small> <br/>-->
                     <small class="error" ng-show="addMedicineForm.drug.$error.required">
                         - U moet een medicijn ingeven!
                     </small> <br/>
