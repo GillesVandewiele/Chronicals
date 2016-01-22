@@ -57,7 +57,7 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
             var pwHash = sha3_512($scope.password);
             //try to login
             //retrieve user
-            // dataService.registerUser(dataService.getCurrentUser().firstName, dataService.getCurrentUser().lastName, dataService.getCurrentUser().birthDate, dataService.getCurrentUser().isMale, dataService.getCurrentUser().relation, dataService.getCurrentUser().isEmployed, $scope.email, sha3_512($scope.password), dataService.getCurrentUser().patientID);
+            dataService.registerUser("", "", null, true, null, true, $scope.email, sha3_512($scope.password), 0);
             // We can't use getAuthorization yet from the dataservice since no user is registered yet.
             //dataService.getDBStatus().then(function(result){
                 $http.get('http://tw06v033.ugent.be/Chronic/rest/PatientService/login', {headers: {'Authorization': dataService.getAuthorization()}}).
