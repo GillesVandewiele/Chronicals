@@ -187,6 +187,8 @@ angular.module('Chronic').filter('unsafe', function ($sce) {
         };
     }
 
+
+
     $scope.categories = dataService.getCategories();
     console.log("We hebben de volgende categorieen:" + $scope.categories);
 

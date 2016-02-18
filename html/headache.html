@@ -441,7 +441,7 @@
                     <ons-list-item ng-repeat="symptom in headache.symptoms | filter: {category: cat}" style="overflow: scroll">
                       <ons-row>
                         <ons-col width="15%">
-                              <label class="checkbox checkbox--list-item" ng-click="showTimeField(symptom)">
+                              <label class="checkbox checkbox--list-item">
                                 <input type="checkbox" ng-model="symptom.val">
                                 <div class="checkbox__checkmark checkbox--list-item__checkmark"></div>
                               </label>
@@ -451,8 +451,14 @@
                               <ons-icon icon="ion-help" id="helpButtonSymptom{{symptom.id}}" class="helpIcon"></ons-icon>
                         </ons-col>
                       </ons-row>
-                      <ons-row>
-                          <input type="time" ng-model="symptom.duration" class="timePicker symptomDuration" style="display:none;" id="{{symptom.name.replace(' ', '')}}Duration"/>
+                      <ons-row ng-show="symptom.val && symptom.category=='Aurasymptomen'">
+                          <input type="range" name="minutes" min="0" max="65" ng-model="symptom.duration" class="timePicker symptomDuration" style="margin-left:5%;" id="{{symptom.name.replace(' ', '')}}Duration"/>
+                          <p ng-if="symptom.duration > 1 && symptom.duration < 61" class="label" style="vertical-align: middle; line-height: 22px; padding-left: 2%;">  {{symptom.duration}} minuten</p>
+                          <p ng-if="symptom.duration > 60" class="label" style="vertical-align: middle; line-height: 22px; padding-left: 2%;">  meer dan 1 uur</p>
+                          <p ng-if="symptom.duration == 1" class="label" style="vertical-align: middle; line-height: 22px; padding-left: 2%;">  {{symptom.duration}} minuut</p>
+                          <!--<p ng-if="symptom.duration < 1 && " class="label" style="vertical-align: middle; line-height: 22px; padding-left: 2%;"> Geen </p>-->
+
+
                       </ons-row>
                     </ons-list-item>
                 </div>
