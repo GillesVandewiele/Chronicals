@@ -584,6 +584,12 @@ div .last{
     width: 100%;
 }
 
+.symptomDuration{
+    margin-left: 35%;
+    width: 30%;
+    display: none;
+}
+
 .list_header{
     background-color: #1a252f;
     width: 100%;

@@ -441,7 +441,7 @@
                     <ons-list-item ng-repeat="symptom in headache.symptoms | filter: {category: cat}" style="overflow: scroll">
                       <ons-row>
                         <ons-col width="15%">
-                              <label class="checkbox checkbox--list-item">
+                              <label class="checkbox checkbox--list-item" ng-click="showTimeField(symptom)">
                                 <input type="checkbox" ng-model="symptom.val">
                                 <div class="checkbox__checkmark checkbox--list-item__checkmark"></div>
                               </label>
@@ -450,6 +450,9 @@
                               {{symptom.name}}
                               <ons-icon icon="ion-help" id="helpButtonSymptom{{symptom.id}}" class="helpIcon"></ons-icon>
                         </ons-col>
+                      </ons-row>
+                      <ons-row>
+                          <input type="time" ng-model="symptom.duration" class="timePicker symptomDuration" style="display:none;" id="{{symptom.name.replace(' ', '')}}Duration"/>
                       </ons-row>
                     </ons-list-item>
                 </div>

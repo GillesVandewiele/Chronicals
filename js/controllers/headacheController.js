@@ -325,6 +325,15 @@ angular.module('Chronic').filter('unsafe', function ($sce) {
         $scope.startTimeString = day + " " + month + " " + hour + ":" + minute;
     };
 
+    $scope.showTimeField = function(symptom){
+        if(symptom.category == "Aurasymptomen") {
+            var time = document.getElementById(symptom.name.replace(" ", "")+"Duration");
+
+            if(time.style.display != 'none') time.style.display = 'none';
+            else time.style.display = 'block';
+        }
+    }
+
     $scope.$watch('headache.intensityValues[0]', $scope.updateStartTimeString);
 
     /* closeAndSave is called when the user pressed the "Sla op" button */

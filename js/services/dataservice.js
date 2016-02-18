@@ -228,6 +228,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                                           val: false, category: entry.category});
                         categories.push(entry.category);
                     });
+                    console.log("Got symptoms: ", symptoms[0]);
                     var uniqueCategories = categories.filter(onlyUnique);
                     localStorage.setItem("symptoms", JSON.stringify(newSymptoms));
                     localStorage.setItem("categories", JSON.stringify(uniqueCategories));
