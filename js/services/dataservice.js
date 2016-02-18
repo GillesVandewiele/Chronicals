@@ -211,6 +211,9 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                 });
             });
     };
+    function onlyUnique(value, index, self) {
+        return self.indexOf(value) === index;
+    };
 
     var getSymptomsFromDB = function(){
         return new Promise(
@@ -219,11 +222,15 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                 success(function (data, status, headers, config) {
                     var symptoms = data;
                     var newSymptoms = [];
+                    var categories = [];
                     symptoms.forEach(function (entry) {
                         newSymptoms.push({id: entry.symptomID, name: entry.name, description: entry.description,
-                                          val: false});
+                                          val: false, category: entry.category});
+                        categories.push(entry.category);
                     });
+                    var uniqueCategories = categories.filter(onlyUnique);
                     localStorage.setItem("symptoms", JSON.stringify(newSymptoms));
+                    localStorage.setItem("categories", JSON.stringify(uniqueCategories));
                     resolve();
                 }).
                 error(function (data, status, headers, config) {
@@ -233,6 +240,10 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                 });
             });
     };
+
+    var getCategories = function(){
+        return JSON.parse(localStorage.getItem("categories"));
+    }
 
     var getTriggersFromDB = function(){
         return new Promise(
@@ -701,7 +712,8 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         sendHeadacheToDB: sendHeadacheToDB,
         sendMedicineToDB: sendMedicineToDB,
         sendNewHeadachesToDB: sendNewHeadachesToDB,
-        sendNewMedicinesToDB: sendNewMedicinesToDB
+        sendNewMedicinesToDB: sendNewMedicinesToDB,
+        getCategories: getCategories
     };
 
 

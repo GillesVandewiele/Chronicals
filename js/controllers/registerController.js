@@ -89,7 +89,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
             dataService.clearCache();
             dataService.registerUser($scope.firstname, $scope.lastname, data.birthDate, data.isMale, data.relation, data.isEmployed, $scope.email, user.password, data.patientID);
             alert("Voor beveiligingsredenen is het nodig om enkele gegevens door te sturen naar de dokters van het uz, zodat ze later uw identiteit aan de data kunnen koppelen. Gelieve in het volgende scherm bij het mailtje op versturen te klikken.");
-            cordova.plugins.email.open({
+            /*cordova.plugins.email.open({
                     to:          ["uzgent.chronic@gmail.com"], // email addresses for TO field
                     cc:          [], // email addresses for CC field
                     bcc:         [], // email addresses for BCC field
@@ -105,7 +105,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                 function(){
                     location.href = "login.html";
                 }
-                , this);
+                , this);*/
 
         }).
         error(function (data, status, headers, config) {

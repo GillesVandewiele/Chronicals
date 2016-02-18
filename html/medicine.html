@@ -63,7 +63,7 @@
                         <p class="label list_header">Medicijn + hoeveelheid</p>
                     </ons-row>
                     <ons-row>
-                        <div class="selectDiv" style="width: 40%;">
+                        <div class="selectDiv" style="width: 80%; margin-left: 10%;">
                             <span class="selectDefault">{{selectedDrug.name}}</span>
                               <select id="drugDropdown" ng-change="dropdownClick(selectedDrug)" ng-model="selectedDrug" name="drug" ng-options="drug as drug.name for drug in drugs" required>
                                 <option style="display:none" value=""></option>
@@ -75,7 +75,7 @@
 
                      </ons-row>
                     <ons-row style="margin-top: 5%;">
-                        <p style="margin-left: 5%;">{{selectedDrug.description}}</p>
+                        <p style="margin-left: 10%;">{{selectedDrug.description}}</p>
                     </ons-row>
                     <!--<small class="error" ng-show="addMedicineForm.quantity.$error.required">
                         - U moet een hoeveelheid ingeven!
@@ -83,7 +83,7 @@
                     <small class="error" ng-show="addMedicineForm.quantity.$error.min">
                         - U moet een correcte hoeveelheid ingeven!
                     </small> <br/>-->
-                    <small class="error" ng-show="addMedicineForm.drug.$error.required">
+                    <small class="error" ng-show="addMedicineForm.drug.$error.required" style="margin-left: 10%;">
                         - U moet een medicijn ingeven!
                     </small> <br/>
                      <ons-row>

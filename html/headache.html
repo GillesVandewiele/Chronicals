@@ -435,21 +435,24 @@
       	</div>
 
       	<div class="navigatorTabBody">
-      		<ons-list>
-		        <ons-list-item ng-repeat="symptom in headache.symptoms">
-		          <ons-row>
-		          	<ons-col width="15%">
-				          <label class="checkbox checkbox--list-item">
-				            <input type="checkbox" ng-model="symptom.val">
-				            <div class="checkbox__checkmark checkbox--list-item__checkmark"></div>
-				          </label>
-			        </ons-col>
-			        <ons-col>
-				          {{symptom.name}}
-				          <ons-icon icon="ion-help" id="helpButtonSymptom{{symptom.id}}" class="helpIcon"></ons-icon>
-		            </ons-col>
-		          </ons-row>
-		        </ons-list-item>
+      		<ons-list ng-repeat="cat in categories" style="margin-top: 0%;">
+                <p class="label list_header" ng-click="toggle_visibility(cat);">{{cat}}   <i id="{{cat}}Icon" class="fa fa-chevron-right" style="float:right; margin-right: 5%;"> </i></p>
+                <div id="{{cat}}" style="display:none;">
+                    <ons-list-item ng-repeat="symptom in headache.symptoms | filter: {category: cat}" style="overflow: scroll">
+                      <ons-row>
+                        <ons-col width="15%">
+                              <label class="checkbox checkbox--list-item">
+                                <input type="checkbox" ng-model="symptom.val">
+                                <div class="checkbox__checkmark checkbox--list-item__checkmark"></div>
+                              </label>
+                        </ons-col>
+                        <ons-col>
+                              {{symptom.name}}
+                              <ons-icon icon="ion-help" id="helpButtonSymptom{{symptom.id}}" class="helpIcon"></ons-icon>
+                        </ons-col>
+                      </ons-row>
+                    </ons-list-item>
+                </div>
 		    </ons-list>
       	</div>
 

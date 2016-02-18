@@ -175,7 +175,6 @@ p{
 }
 
 .selectDiv {
-    margin-left: 5%;
     overflow: hidden;
     background: url('../img/dropdown.png') no-repeat right #FEFEFE;
     background-color: #1a252f;
@@ -189,7 +188,7 @@ p{
 }
 
 .selectDefault {
-    padding-left:8px;
+    padding-left:10px;
     background-color: #1a252f;
     color: #FFFFFF;
 }

@@ -98,7 +98,7 @@ angular.module('Chronic').controller('profileController', function($scope, dataS
                 success(function (data, status, headers, config) {
                     console.log("Return van indienen user:" + status);
                     console.log(data);
-                    dataService.registerUser(user.firstName, user.lastName, user.birthDate, user.isMale, user.relation, user.isEmployed, user.email, user.password, user.patientID);
+                    dataService.registerUser(user.firstName, user.lastName, user.birthDate, user.isMale, user.relation, user.isEmployed, $scope.user.email, user.password, user.patientID);
                     location.reload();
                 }).
                 error(function (data, status, headers, config) {
@@ -135,7 +135,7 @@ angular.module('Chronic').controller('profileController', function($scope, dataS
             success(function (data, status, headers, config) {
                 console.log("Return van indienen user:" + status);
                 console.log(data);
-                dataService.registerUser(user.firstName, user.lastName, user.birthDate, user.isMale, user.relation, user.isEmployed, user.email, user.password, user.patientID);
+                dataService.registerUser(user.firstName, user.lastName, user.birthDate, user.isMale, user.relation, user.isEmployed, $scope.user.email, user.password, user.patientID);
                 location.reload();
             }).
             error(function (data, status, headers, config) {

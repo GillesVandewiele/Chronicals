@@ -187,6 +187,9 @@ angular.module('Chronic').filter('unsafe', function ($sce) {
         };
     }
 
+    $scope.categories = dataService.getCategories();
+    console.log("We hebben de volgende categorieen:" + $scope.categories);
+
     $scope.setEnd = function (endDate, endTime) {
         //console.log(endDate, endTime);
         if (endDate != null && endTime != null) {
@@ -292,6 +295,20 @@ angular.module('Chronic').filter('unsafe', function ($sce) {
     $scope.headacheIndex = $scope.getIndexOfHeadache();
 
     /* Create a nice short time string from the start date and time */
+
+    $scope.toggle_visibility = function(id) {
+        var e = document.getElementById(id);
+        var icon = document.getElementById(id+"Icon");
+        console.log(icon);
+        if(e.style.display != 'none') {
+            e.style.display = 'none';
+            icon.className = "fa fa-chevron-right";
+        }
+        else {
+            e.style.display = 'block';
+            icon.className = "fa fa-chevron-down";
+        }
+    };
 
     $scope.updateStartTimeString = function () {
         if ($scope.headache.intensityValues[0] == null) {

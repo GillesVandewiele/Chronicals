@@ -72,6 +72,10 @@
 
             <div ng-if="user != null">
                 <ons-row style="margin-left: 2%; margin-top: 2%;">
+                    <ons-col width="45%"><p class="label">ID</p></ons-col>
+                    <ons-col style="margin-right: 5%;"><span><strong>{{user.patientID}}</strong></span></ons-col>
+                </ons-row>
+                <ons-row style="margin-left: 2%; margin-top: 2%;">
                     <ons-col width="45%"><p class="label">Geboortedatum</p></ons-col>
                     <ons-col style="margin-right: 5%;"><input class="textField" type="date" ng-model="data.birthdate"/></ons-col>
                 </ons-row>
