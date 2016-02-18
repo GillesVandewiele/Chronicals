@@ -452,10 +452,10 @@
                         </ons-col>
                       </ons-row>
                       <ons-row ng-show="symptom.val && symptom.category=='Aurasymptomen'">
-                          <input type="range" name="minutes" min="0" max="65" ng-model="symptom.duration" class="timePicker symptomDuration" style="margin-left:5%;" id="{{symptom.name.replace(' ', '')}}Duration"/>
-                          <p ng-if="symptom.duration > 1 && symptom.duration < 61" class="label" style="vertical-align: middle; line-height: 22px; padding-left: 2%;">  {{symptom.duration}} minuten</p>
-                          <p ng-if="symptom.duration > 60" class="label" style="vertical-align: middle; line-height: 22px; padding-left: 2%;">  meer dan 1 uur</p>
-                          <p ng-if="symptom.duration == 1" class="label" style="vertical-align: middle; line-height: 22px; padding-left: 2%;">  {{symptom.duration}} minuut</p>
+                          <input type="range" name="minutes" min="0" max="65" ng-model="symptom.duration" class="range intensitySlider timePicker symptomDuration" style="width: 40%; background-color:#2c3e50; margin-left:5%;" id="{{symptom.name.replace(' ', '')}}Duration"/>
+                          <p ng-if="symptom.duration > 1 && symptom.duration < 61" class="label" style="vertical-align: middle; padding-left: 2%;">  {{symptom.duration}} minuten</p>
+                          <p ng-if="symptom.duration > 60" class="label" style="vertical-align: middle; padding-left: 2%;">  meer dan 1 uur</p>
+                          <p ng-if="symptom.duration == 1" class="label" style="vertical-align: middle; padding-left: 2%;">  {{symptom.duration}} minuut</p>
                           <!--<p ng-if="symptom.duration < 1 && " class="label" style="vertical-align: middle; line-height: 22px; padding-left: 2%;"> Geen </p>-->
 
 
