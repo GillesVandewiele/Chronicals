@@ -371,6 +371,8 @@ angular.module('Chronic').filter('unsafe', function ($sce) {
                 list[$scope.headacheIndex] = $scope.headache;
                 dataService.setHeadacheList(list);
                 dataService.addHeadache($scope.headache);
+                console.log($scope.headache);
+                $scope.transition();
                 location.href = "dashboard.html";
             }, function(result){
                 var list = dataService.getHeadacheList();

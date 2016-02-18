@@ -225,7 +225,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                     var categories = [];
                     symptoms.forEach(function (entry) {
                         newSymptoms.push({id: entry.symptomID, name: entry.name, description: entry.description,
-                                          val: false, category: entry.category});
+                                          val: false, category: entry.category, duration: entry.duration});
                         categories.push(entry.category);
                     });
                     console.log("Got symptoms: ", symptoms[0]);
