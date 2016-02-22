@@ -83,7 +83,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
             //console.log("Datapost:"+JSON.stringify(dataPost));
             $http({
                 method: 'POST',
-                url: "http://tw06v033.ugent.be/Chronic/rest/HeadacheService/headaches?patientID="+patientID,
+                url: "https://tw06v033.ugent.be/Chronic/rest/HeadacheService/headaches?patientID="+patientID,
                 data: JSON.stringify(dataPost),
                 headers: {
                     'Content-Type': 'application/json'
@@ -108,7 +108,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
             var patientID = JSON.parse(localStorage.getItem("currentUser")).patientID;
             $http({
                 method: 'POST',
-                url: "http://tw06v033.ugent.be/Chronic/rest/MedicineService/medicines?patientID="+patientID,
+                url: "https://tw06v033.ugent.be/Chronic/rest/MedicineService/medicines?patientID="+patientID,
                 data: JSON.stringify(dataPost),
                 headers: {
                     'Content-Type': 'application/json',
@@ -186,7 +186,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     var getDrugsFromDB = function(){
         return new Promise(
             function (resolve, reject) {
-                $http.get('http://tw06v033.ugent.be/Chronic/rest/DrugService/drugs', {headers: {'Authorization': getAuthorization()}}).
+                $http.get('https://tw06v033.ugent.be/Chronic/rest/DrugService/drugs', {headers: {'Authorization': getAuthorization()}}).
                 success(function (data, status, headers, config) {
                     //alert("CONNECTED TO INTERNET OR DATABASE " + status);
                     var list = data;
@@ -218,7 +218,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     var getSymptomsFromDB = function(){
         return new Promise(
             function (resolve, reject) {
-                $http.get('http://tw06v033.ugent.be/Chronic/rest/SymptomService/symptoms', {headers: {'Authorization': getAuthorization()}}).
+                $http.get('https://tw06v033.ugent.be/Chronic/rest/SymptomService/symptoms', {headers: {'Authorization': getAuthorization()}}).
                 success(function (data, status, headers, config) {
                     var symptoms = data;
                     var newSymptoms = [];
@@ -249,7 +249,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     var getTriggersFromDB = function(){
         return new Promise(
             function (resolve, reject) {
-                $http.get('http://tw06v033.ugent.be/Chronic/rest/TriggerService/triggers', {headers: {'Authorization': getAuthorization()}}).
+                $http.get('https://tw06v033.ugent.be/Chronic/rest/TriggerService/triggers', {headers: {'Authorization': getAuthorization()}}).
                 success(function (data, status, headers, config) {
                     var triggers = data;
                     var newTriggers = [];
@@ -272,7 +272,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         return new Promise(
             function (resolve, reject) {
                 var patientID = JSON.parse(localStorage.getItem("currentUser")).patientID;
-                $http.get('http://tw06v033.ugent.be/Chronic/rest/HeadacheService/headaches?patientID='+patientID, {headers: {'Authorization': getAuthorization()}}).
+                $http.get('https://tw06v033.ugent.be/Chronic/rest/HeadacheService/headaches?patientID='+patientID, {headers: {'Authorization': getAuthorization()}}).
                 success(function (data, status, headers, config) {
                     var headaches = data;
                     var newHeadaches = [];
@@ -322,7 +322,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         return new Promise(
             function (resolve, reject) {
                 var patientID = JSON.parse(localStorage.getItem("currentUser")).patientID;
-                $http.get('http://tw06v033.ugent.be/Chronic/rest/MedicineService/medicines?patientID='+patientID, {headers: {'Authorization': getAuthorization()}}).
+                $http.get('https://tw06v033.ugent.be/Chronic/rest/MedicineService/medicines?patientID='+patientID, {headers: {'Authorization': getAuthorization()}}).
                 success(function (data, status, headers, config) {
                     var medicines = data;
                     var newMedicines = [];
@@ -353,7 +353,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     var getDBStatus = function(){
         return new Promise(
             function(resolve, reject){
-                $http.get('http://tw06v033.ugent.be/Chronic/rest/DBService/status').
+                $http.get('https://tw06v033.ugent.be/Chronic/rest/DBService/status').
                 success(function (data, status, headers, config) {
                     resolve();
                 }).error(function (data, status, headers, config) {
@@ -366,7 +366,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     var removeHeadacheFromDB = function(headache){
         return new Promise(
             function(resolve, reject){
-                $http.delete('http://tw06v033.ugent.be/Chronic/rest/HeadacheService/headaches/delete?headacheID='+headache.id,{headers: {'Authorization': getAuthorization()}}).
+                $http.delete('https://tw06v033.ugent.be/Chronic/rest/HeadacheService/headaches/delete?headacheID='+headache.id,{headers: {'Authorization': getAuthorization()}}).
                 success(function (data, status, headers, config) {
                     resolve();
                 }).error(function (data, status, headers, config) {
@@ -379,7 +379,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     var removeMedicineFromDB = function(medicine){
         return new Promise(
             function(resolve, reject){
-                $http.delete('http://tw06v033.ugent.be/Chronic/rest/MedicineService/medicines/delete?medicineID='+medicine.id,{headers: {'Authorization': getAuthorization()}}).
+                $http.delete('https://tw06v033.ugent.be/Chronic/rest/MedicineService/medicines/delete?medicineID='+medicine.id,{headers: {'Authorization': getAuthorization()}}).
                 success(function (data, status, headers, config) {
                     resolve(data);
                 }).error(function (data, status, headers, config) {
@@ -564,7 +564,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         list.forEach(function (s) {
             var medicine;
             //medicine.patientID = dataService.get
-            $http.post('http://tw06v033.ugent.be/Chronic/rest/MedicineService/medicines', {headers: {'Authorization': getAuthorization()}}).
+            $http.post('https://tw06v033.ugent.be/Chronic/rest/MedicineService/medicines', {headers: {'Authorization': getAuthorization()}}).
             success(function (data, status, headers, config) {
                 alert("CONNECTED TO INTERNET OR DATABASE " + status)
                 // Get advice for patient
@@ -574,7 +574,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                 // Get new symptoms
                 var symptomsList = JSON.parse(localStorage.getItem("symptoms"));
                 if (symptomsList == null) symptomsList = [];
-                $http({method: 'GET', url: 'http://tw06v033.ugent.be/Chronic/rest/SymptomService/symptoms'}).
+                $http({method: 'GET', url: 'https://tw06v033.ugent.be/Chronic/rest/SymptomService/symptoms'}).
                 success(function (data, status, headers, config) {
                     //alert(""+data);
                     symptoms = data;

@@ -89,7 +89,7 @@ angular.module('Chronic').controller('profileController', function($scope, dataS
                     "diagnosis": "",
                     "patientID": $scope.user.patientID
                 };
-                $http.post('http://tw06v033.ugent.be/Chronic/rest/PatientService/patients/update', JSON.stringify(user), {
+                $http.post('https://tw06v033.ugent.be/Chronic/rest/PatientService/patients/update', JSON.stringify(user), {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': dataService.getAuthorization()
@@ -126,7 +126,7 @@ angular.module('Chronic').controller('profileController', function($scope, dataS
                 "diagnosis": "",
                 "patientID": $scope.user.patientID
             };
-            $http.post('http://tw06v033.ugent.be/Chronic/rest/PatientService/patients/update', JSON.stringify(user), {
+            $http.post('https://tw06v033.ugent.be/Chronic/rest/PatientService/patients/update', JSON.stringify(user), {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': dataService.getAuthorization()
