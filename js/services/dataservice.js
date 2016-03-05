@@ -244,7 +244,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
 
     var getCategories = function(){
         return JSON.parse(localStorage.getItem("categories"));
-    }
+    };
 
     var getTriggersFromDB = function(){
         return new Promise(

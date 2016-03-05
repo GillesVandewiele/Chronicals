@@ -9,6 +9,8 @@
 angular.module('Chronic').controller('loginController', function ($scope, dataService, $http) {
 
 
+        var VERSION_NUMBER = '1.0';
+
         ons.ready(function () {
             $('.hidden').removeClass("hidden");
             $('#loadingImg').hide();
@@ -52,6 +54,13 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
                 });
         };
 
+        var checkVersion = function(){
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open( "GET", "https://tw06v033.ugent.be/Chronic/rest/VersionService/version", false ); // false for synchronous request
+            xmlHttp.send( null );
+            return xmlHttp.responseText;
+        };
+
         $scope.submitLogin = function () {
             dataService.registerUser(null, null, null, null, null, null, null, null);
             var pwHash = sha3_512($scope.password);
@@ -72,6 +81,10 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
                     dataService.syncDB().then(function (result) {
                         $scope.transition();
                         location.href = "dashboard.html";
+                        console.log(checkVersion());
+                        if(VERSION_NUMBER != checkVersion()){
+                            alert("Er is een nieuwe versie beschikbaar op https://build.phonegap.com/apps/1669916/builds");
+                        }
                     }, function(result){
                         alert("failed");
                     });
