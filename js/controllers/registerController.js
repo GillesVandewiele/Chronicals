@@ -127,7 +127,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
                 alert("U moet internet hebben voor u kan registreren. Indien u internetverbinding heeft, en het toch niet lukt, raadpleeg dan de systeembeheerder of verantwoordelijke.");
             }else{
                 //Some random error happened we didn't anticipate
-                alert("WTF? RARE ERROR..");
+                //alert("WTF? RARE ERROR..");
 
             }
 
