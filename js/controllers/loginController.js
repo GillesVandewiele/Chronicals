@@ -56,7 +56,7 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
 
         var checkVersion = function(){
             var xmlHttp = new XMLHttpRequest();
-            xmlHttp.open( "GET", "https://tw06v033.ugent.be/Chronic/rest/VersionService/version", false ); // false for synchronous request
+            xmlHttp.open( "GET", "http://tw06v033.ugent.be/Chronic/rest/VersionService/version", false ); // false for synchronous request
             xmlHttp.send( null );
             return xmlHttp.responseText;
         };
@@ -69,7 +69,7 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
             dataService.registerUser("", "", null, true, null, true, $scope.email, sha3_512($scope.password), 0);
             // We can't use getAuthorization yet from the dataservice since no user is registered yet.
             //dataService.getDBStatus().then(function(result){
-                $http.get('https://tw06v033.ugent.be/Chronic/rest/PatientService/login', {headers: {'Authorization': dataService.getAuthorization()}}).
+                $http.get('http://tw06v033.ugent.be/Chronic/rest/PatientService/login', {headers: {'Authorization': dataService.getAuthorization()}}).
                 success(function (data, status, headers, config) {
                     //console.log("User succesfully logged in:", data);
                     var user = data;
