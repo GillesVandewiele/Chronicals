@@ -88,6 +88,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
             //console.log(data);
             dataService.clearCache();
             dataService.registerUser($scope.firstname, $scope.lastname, data.birthDate, data.isMale, data.relation, data.isEmployed, $scope.email, user.password, data.patientID);
+            location.href = "login.html";
             /*alert("Voor beveiligingsredenen is het nodig om enkele gegevens door te sturen naar de dokters van het uz, zodat ze later uw identiteit aan de data kunnen koppelen. Gelieve in het volgende scherm bij het mailtje op versturen te klikken.");*/
             /*cordova.plugins.email.open({
                     to:          ["uzgent.chronic@gmail.com"], // email addresses for TO field
