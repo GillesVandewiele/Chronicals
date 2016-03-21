@@ -56,7 +56,7 @@ angular.module('Chronic').controller('profileController', function($scope, dataS
         else if ($scope.user.status == "GETROUWD") $scope.data.relationship = $scope.data.relationships[2];
         else $scope.data.relationship = $scope.data.relationships[1];
 
-        $scope.data.employments = ["Beroepsmatig", "Werkloos"];
+        $scope.data.employments = ["Werkende", "Niet-werkende"];
         if ($scope.user.employment) $scope.data.employment = $scope.data.employments[0];
         else $scope.data.employment = $scope.data.employments[1];
 
@@ -85,7 +85,7 @@ angular.module('Chronic').controller('profileController', function($scope, dataS
                     "isMale": ($scope.data.sex == "Man"),
                     "relation": $scope.data.relationship.toUpperCase(),
                     "advice": dataService.getAdvice(),
-                    "isEmployed": ($scope.data.employment == "Beroepsmatig"),
+                    "isEmployed": ($scope.data.employment == "Werkende"),
                     "diagnosis": "",
                     "patientID": $scope.user.patientID
                 };
@@ -122,7 +122,7 @@ angular.module('Chronic').controller('profileController', function($scope, dataS
                 "isMale": ($scope.data.sex == "Man"),
                 "relation": $scope.data.relationship.toUpperCase(),
                 "advice": dataService.getAdvice(),
-                "isEmployed": ($scope.data.employment == "Beroepsmatig"),
+                "isEmployed": ($scope.data.employment == "Werkende"),
                 "diagnosis": "",
                 "patientID": $scope.user.patientID
             };
