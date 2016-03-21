@@ -28,13 +28,14 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     };
 
     $scope.deleteEntry = function(){
-
-        dataService.removeHeadache().then(function(result){
-            location.href = "history.html";
-        }, function(result){
-            location.href = "history.html";
-        });
-
+        if (confirm('Ben je zeker dat je deze hoofdpijn wil verwijderen?')){
+            $scope.transition();
+            dataService.removeHeadache().then(function (result) {
+                location.href = "history.html";
+            }, function (result) {
+                location.href = "history.html";
+            });
+        }
     };
 
 

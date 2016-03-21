@@ -445,9 +445,13 @@ angular.module('Chronic').filter('unsafe', function ($sce) {
     $scope.newHeadacheTime;
 
     $scope.deleteEntry = function (item) {
-        $scope.headache.intensityValues.splice($scope.headache.intensityValues.indexOf(item), 1);
-        $scope.$broadcast('endDateValidation');
-        if ($scope.headache.intensityValues.length == 0) $("#endDateForm").hide();
+        if (confirm('Ben je zeker dat je deze intensiteit wil verwijderen?')) {
+            $scope.headache.intensityValues.splice($scope.headache.intensityValues.indexOf(item), 1);
+            $scope.$broadcast('endDateValidation');
+            if ($scope.headache.intensityValues.length == 0) $("#endDateForm").hide();
+        } else {
+            // Do nothing!
+        }
     };
 
     $scope.setNewHeadacheValue = function (newValue) {

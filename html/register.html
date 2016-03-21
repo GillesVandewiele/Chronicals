@@ -51,21 +51,21 @@
 
             <div class="form__field">
                 <label class="fontawesome-user" style="width: 110px; padding-left: 5px; padding-right: 0px;"
-                       for="register__firstname"> <span class="hidden">Voornaam</span></label>
+                       for="register__firstname"> <span class="hidden">Voornaam (*)</span></label>
                 <input id="register__firstname" ng-model="firstname" type="text" class="form__input"
                        placeholder="Voornaam" required>
             </div>
 
             <div class="form__field">
                 <label class="fontawesome-user" style="width: 110px; padding-left: 5px; padding-right: 0px;"
-                       for="register__lastname"> <span class="hidden">Achternaam</span></label>
+                       for="register__lastname"> <span class="hidden">Achternaam (*)</span></label>
                 <input id="register__lastname" ng-model="lastname" type="text" class="form__input"
                        placeholder="Achternaam" required>
             </div>
 
             <div class="form__field">
                 <label class="fontawesome-calendar" style="width: 110px; padding-left: 5px; padding-right: 0px;"
-                       for="register__birthdate"> <span class="hidden">Geboorte</span></label>
+                       for="register__birthdate"> <span class="hidden">Geboorte (*)</span></label>
                 <input id="register__birthdate" ng-model="birthdate" type="date" min="1900-01-01" max="2050-01-01"
                        class="form__input" placeholder="Last name" required>
             </div>
@@ -97,21 +97,21 @@
                        for="register__employment"> <span class="hidden">Werkstatus</span></label>
                 <select style="width: 100%; border-color: #3b4148" id="register__employment" ng-model="employment"
                         class="form__input" required>
-                    <option value="Beroepsmatig">Beroepsmatig</option>
-                    <option value="Werkloos">Werkloos</option>
+                    <option value="Beroepsmatig">Werkende</option>
+                    <option value="Werkloos">Niet-werkende</option>
                 </select>
             </div>
 
             <div class="form__field">
                 <label class="fontawesome-envelope" style="width: 80px; padding-left: 10px; padding-right: 10px;"
-                       for="login__username"> <span class="hidden">Email</span></label>
+                       for="login__username"> <span class="hidden">Email (*)</span></label>
                 <input id="login__username" ng-model="email" type="email" class="form__input" placeholder="email"
                        required>
             </div>
 
             <div class="form__field">
                 <label class="fontawesome-lock" style="width: 80px; padding-left: 10px; padding-right: 10px;"
-                       for="login__password"> <span class="hidden">Pin</span></label>
+                       for="login__password"> <span class="hidden">Pin (*)</span></label>
                 <input id="login__password" type="password" ng-model="password" class="form__input"
                        placeholder="Paswoord" required pattern="[0-9]*" inputmode="numeric">
             </div>
