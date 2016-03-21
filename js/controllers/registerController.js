@@ -73,7 +73,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
             "isMale": $scope.sex=="Man",
             "relation": $scope.status.toUpperCase(),
             "advice": "",
-            "isEmployed": ($scope.employment == "Beroepsmatig"),
+            "isEmployed": ($scope.employment == "Werkende"),
             "diagnosis": ""
         };
 
