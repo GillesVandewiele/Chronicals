@@ -40,7 +40,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
 
 
     var sendHeadacheToDB = function(headacheObj){
-        return new Promise(function(resolve,reject) {
+        return new $q(function(resolve,reject) {
             var dataPost = {
                 "intensityValues" : headacheObj.intensityValues,
                 "end": headacheObj.end,
@@ -98,7 +98,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     };
 
     var sendMedicineToDB = function(medicineObj){
-        return new Promise(function(resolve,reject) {
+        return new $q(function(resolve,reject) {
             var dataPost = {
                 "drugID" : medicineObj.drug.id,
                 "date": medicineObj.date.toString(),
@@ -184,7 +184,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     };
 
     var getDrugsFromDB = function(){
-        return new Promise(
+        return new $q(
             function (resolve, reject) {
                 $http.get('http://tw06v033.ugent.be/Chronic/rest/DrugService/drugs', {headers: {'Authorization': getAuthorization()}}).
                 success(function (data, status, headers, config) {
@@ -216,7 +216,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     };
 
     var getSymptomsFromDB = function(){
-        return new Promise(
+        return new $q(
             function (resolve, reject) {
                 $http.get('http://tw06v033.ugent.be/Chronic/rest/SymptomService/symptoms', {headers: {'Authorization': getAuthorization()}}).
                 success(function (data, status, headers, config) {
@@ -247,7 +247,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     };
 
     var getTriggersFromDB = function(){
-        return new Promise(
+        return new $q(
             function (resolve, reject) {
                 $http.get('http://tw06v033.ugent.be/Chronic/rest/TriggerService/triggers', {headers: {'Authorization': getAuthorization()}}).
                 success(function (data, status, headers, config) {
@@ -269,7 +269,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     };
 
     var getHeadachesFromDB = function(){
-        return new Promise(
+        return new $q(
             function (resolve, reject) {
                 var patientID = JSON.parse(localStorage.getItem("currentUser")).patientID;
                 $http.get('http://tw06v033.ugent.be/Chronic/rest/HeadacheService/headaches?patientID='+patientID, {headers: {'Authorization': getAuthorization()}}).
@@ -319,7 +319,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     };
 
     var getMedicinesFromDB = function(){
-        return new Promise(
+        return new $q(
             function (resolve, reject) {
                 var patientID = JSON.parse(localStorage.getItem("currentUser")).patientID;
                 $http.get('http://tw06v033.ugent.be/Chronic/rest/MedicineService/medicines?patientID='+patientID, {headers: {'Authorization': getAuthorization()}}).
@@ -351,7 +351,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     };
 
     var getDBStatus = function(){
-        return new Promise(
+        return new $q(
             function(resolve, reject){
                 $http.get('http://tw06v033.ugent.be/Chronic/rest/DBService/status').
                 success(function (data, status, headers, config) {
@@ -364,7 +364,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     };
 
     var removeHeadacheFromDB = function(headache){
-        return new Promise(
+        return new $q(
             function(resolve, reject){
                 $http.delete('http://tw06v033.ugent.be/Chronic/rest/HeadacheService/headaches/delete?headacheID='+headache.id,{headers: {'Authorization': getAuthorization()}}).
                 success(function (data, status, headers, config) {
@@ -377,7 +377,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     };
 
     var removeMedicineFromDB = function(medicine){
-        return new Promise(
+        return new $q(
             function(resolve, reject){
                 $http.delete('http://tw06v033.ugent.be/Chronic/rest/MedicineService/medicines/delete?medicineID='+medicine.id,{headers: {'Authorization': getAuthorization()}}).
                 success(function (data, status, headers, config) {
@@ -394,7 +394,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     var syncDB = function () {
         return $q.all([getDrugsFromDB(), getSymptomsFromDB(), getTriggersFromDB(),
             getHeadachesFromDB(), getMedicinesFromDB()]);
-        //return Promise.all([getDrugsFromDB(), getSymptomsFromDB(), getTriggersFromDB(),
+        //return $q.all([getDrugsFromDB(), getSymptomsFromDB(), getTriggersFromDB(),
         //    getHeadachesFromDB(), getMedicinesFromDB()]);
     };
 
@@ -453,7 +453,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     };
 
     var removeHeadache = function () {
-        return new Promise(function(resolve,reject) {
+        return new $q(function(resolve,reject) {
 
         var list = JSON.parse(localStorage.getItem("headacheList"));
         var current = JSON.parse(localStorage.getItem("currentHeadache"));
@@ -483,7 +483,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     };
 
     var removeMedicine = function () {
-        return new Promise(function(resolve,reject) {
+        return new $q(function(resolve,reject) {
 
             var list = JSON.parse(localStorage.getItem("medicineList"));
             var current = JSON.parse(localStorage.getItem("currentMedicine"));
