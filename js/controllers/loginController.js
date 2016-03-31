@@ -71,12 +71,12 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
             //dataService.getDBStatus().then(function(result){
                 var test = [$http.get('http://tw06v033.ugent.be/Chronic/rest/PatientService/login', {headers: {'Authorization': dataService.getAuthorization()}})]
                 $q.all(test).then(function () {
-                        alert("q is gelukt");
+
                     }
                 );
             $http.get('http://tw06v033.ugent.be/Chronic/rest/PatientService/login', {headers: {'Authorization': dataService.getAuthorization()}}).
             success(function (data, status, headers, config) {
-                    alert("Succes");
+
                     //console.log("User succesfully logged in:", data);
                     var user = data;
                     dataService.setAdvice(data.advice);
@@ -84,8 +84,9 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
                     dataService.registerUser(user.firstName, user.lastName, user.birthDate, user.isMale, user.relation, user.isEmployed, $scope.email, sha3_512($scope.password), user.patientID);
                     dataService.sendNewHeadachesToDB();
                     dataService.sendNewMedicinesToDB();
-                    alert("Checking syncDB");
+
                     dataService.syncDB().then(function (result) {
+                        alert("Succes syncDB");
                         $scope.transition();
                         location.href = "dashboard.html";
                         console.log(checkVersion());
