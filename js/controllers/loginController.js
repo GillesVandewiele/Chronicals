@@ -62,7 +62,7 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
         };
 
         $scope.submitLogin = function () {
-            alert("yeeeep")
+
             var pwHash = sha3_512($scope.password);
             //try to login
             //retrieve user
@@ -71,6 +71,7 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
             //dataService.getDBStatus().then(function(result){
                 $http.get('http://tw06v033.ugent.be/Chronic/rest/PatientService/login', {headers: {'Authorization': dataService.getAuthorization()}}).
                 success(function (data, status, headers, config) {
+                    alert("Succes")
                     //console.log("User succesfully logged in:", data);
                     var user = data;
                     dataService.setAdvice(data.advice);
