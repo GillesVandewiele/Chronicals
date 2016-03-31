@@ -6,7 +6,7 @@
  This file contains the controller to add and modify headaches.
  */
 
-angular.module('Chronic').controller('loginController', function ($scope, dataService, $http) {
+angular.module('Chronic').controller('loginController', function ($scope, dataService, $http, $q) {
 
 
         var VERSION_NUMBER = '1.0';
@@ -69,8 +69,13 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
             dataService.registerUser("", "", null, true, null, true, $scope.email, sha3_512($scope.password), 0);
             // We can't use getAuthorization yet from the dataservice since no user is registered yet.
             //dataService.getDBStatus().then(function(result){
-                $http.get('http://tw06v033.ugent.be/Chronic/rest/PatientService/login', {headers: {'Authorization': dataService.getAuthorization()}}).
-                success(function (data, status, headers, config) {
+                var test = [$http.get('http://tw06v033.ugent.be/Chronic/rest/PatientService/login', {headers: {'Authorization': dataService.getAuthorization()}})]
+                $q.all(test).then(function () {
+                        alert("q is gelukt");
+                    }
+                );
+            $http.get('http://tw06v033.ugent.be/Chronic/rest/PatientService/login', {headers: {'Authorization': dataService.getAuthorization()}}).
+            success(function (data, status, headers, config) {
                     alert("Succes")
                     //console.log("User succesfully logged in:", data);
                     var user = data;
