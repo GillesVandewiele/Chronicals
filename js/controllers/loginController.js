@@ -62,7 +62,6 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
         };
 
         $scope.submitLogin = function () {
-            dataService.registerUser(null, null, null, null, null, null, null, null);
             var pwHash = sha3_512($scope.password);
             //try to login
             //retrieve user
@@ -85,16 +84,16 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
                         if(VERSION_NUMBER != checkVersion()){
                             alert("Er is een nieuwe versie beschikbaar op https://build.phonegap.com/apps/1669916/builds");
                         }
-                    }, function(result){
-                        alert("failed");
+                    }, function(data, status, headers, config){
+                        alert("failed" + status);
                     });
 
                 }).
                 error(function (data, status, headers, config) {
                     if(status==0){
-                        alert("U bent niet verbonden met het internet, of de server is offline. U werkt nu verder met lokale gegevens tot u opnieuw verbinding met de server heeft");
+                        alert("U bent niet verbonden met het internet, of de server is offline. U werkt nu verder met lokale gegevens tot u opnieuw verbinding met de server heeft " + status);
                         if (dataService.getCurrentUser() == null || dataService.getCurrentUser().passwordHash == null || dataService.getCurrentUser().passwordHash.length < 1) {
-                            alert("Er is lokaal nog geen gebruiker ingesteld. Verbind eerst met het internet en probeer in te loggen");
+                            alert("Er is lokaal nog geen gebruiker ingesteld. Verbind eerst met het internet en probeer in te loggen " + status);
                         } else {
                             if (dataService.getCurrentUser().passwordHash == pwHash.toString() && dataService.getCurrentUser().email == $scope.email) {
                                 $scope.transition();
@@ -104,8 +103,7 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
                             }
                         }
                     }else{
-                        //console.log("error loggin in: " + status);
-                        //console.log("data:" + data);
+                        alert("Er is een fout opgetreden... " + status  + "\n" + data)
                     }
 
 
