@@ -9,7 +9,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     $httpProvider.defaults.headers.post = {};
     $httpProvider.defaults.headers.put = {};
     $httpProvider.defaults.headers.patch = {};
-}]).service('dataService', function ($http) {
+}]).service('dataService', function ($http,$q) {
 
     // Reset the local storage; always comment this out!
     //  $localStorage.$reset();
@@ -392,8 +392,10 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     };
 
     var syncDB = function () {
-        return Promise.all([getDrugsFromDB(), getSymptomsFromDB(), getTriggersFromDB(),
-                            getHeadachesFromDB(), getMedicinesFromDB()]);
+        return $q.all([getDrugsFromDB(), getSymptomsFromDB(), getTriggersFromDB(),
+            getHeadachesFromDB(), getMedicinesFromDB()]);
+        //return Promise.all([getDrugsFromDB(), getSymptomsFromDB(), getTriggersFromDB(),
+        //    getHeadachesFromDB(), getMedicinesFromDB()]);
     };
 
 
