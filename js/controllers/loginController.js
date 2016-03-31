@@ -88,6 +88,7 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
                     dataService.syncDB().then(function (result) {
                         alert("Succes syncDB");
                         $scope.transition();
+                        alert("Succes syncDB");
                         location.href = "dashboard.html";
                         console.log(checkVersion());
                         if(VERSION_NUMBER != checkVersion()){
