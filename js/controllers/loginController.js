@@ -62,6 +62,7 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
         };
 
         $scope.submitLogin = function () {
+            alert("yeeeep")
             var pwHash = sha3_512($scope.password);
             //try to login
             //retrieve user
@@ -85,11 +86,12 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
                             alert("Er is een nieuwe versie beschikbaar op https://build.phonegap.com/apps/1669916/builds");
                         }
                     }, function(data, status, headers, config){
-                        alert("failed" + status);
+                        alert("Er is een fout opgetreden... " + status  + "\n" + data)
                     });
 
                 }).
                 error(function (data, status, headers, config) {
+                    alert("Er is een fout opgetreden... " + status  + "\n" + data)
                     if(status==0){
                         alert("U bent niet verbonden met het internet, of de server is offline. U werkt nu verder met lokale gegevens tot u opnieuw verbinding met de server heeft " + status);
                         if (dataService.getCurrentUser() == null || dataService.getCurrentUser().passwordHash == null || dataService.getCurrentUser().passwordHash.length < 1) {
