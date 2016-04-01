@@ -209,7 +209,6 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
 
         }
         myNewChart.update();
-        $('#line').opacity = "1.0";
         ons.disableDeviceBackButtonHandler();
         document.addEventListener("deviceready", onDeviceReady, false);
 
