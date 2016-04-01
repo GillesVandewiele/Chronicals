@@ -55,7 +55,7 @@
             </div>
         </ons-toolbar>
 
-        <div class="detailHeadache">
+        <div style="overflow: hidden" class="detailHeadache">
             <ons-row style="margin-top: 6%;">
                 <div class="label" style="width: 35%;">Starttijd:</div>
                 <div class="label" style="width: 65%;text-align: right">{{startTime}}</div>
@@ -67,8 +67,8 @@
             <ons-row style="margin-top: 2%;">
                 <div class="list_header">Intensiteitscurve</div>
             </ons-row>
-            <ons-row>
-                <div style="margin:auto;">
+            <ons-row style="overflow: hidden">
+                <div style="overflow: hidden;margin:auto;">
                     <canvas id="line" class="chart chart-line" chart-data="data"
                             chart-labels="labels" chart-click="onClick">
                     </canvas>
