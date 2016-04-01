@@ -24,6 +24,9 @@ angular.module('Chronic').controller('medicineController', function($scope, data
         }
     });
 
+    $scope.drugDate;
+    $scope.drugTime;
+
     $scope.transition = function(){
         $("body").children().eq(0).show();
         $('body').children().eq(1).hide();

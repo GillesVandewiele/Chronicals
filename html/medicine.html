@@ -90,8 +90,8 @@
                          <p class="label list_header">Tijdstip van inname</p>
                      </ons-row>
                      <ons-row style="width: 100%;">
-                         <ons-col class="col ons-col-inner"><input style='width:8em' type="date" name="medicineDate" ng-model="drugDate" ng-change="typeDate(drugDate)"  min="2015-01-01" max="2050-01-01" class="datePicker" required></ons-col>
-                         <ons-col class="col ons-col-inner"><input style='width:8em' type="time" name="medicineTime" placeholder="HH:mm" ng-model="drugTime" ng-change="typeTime(drugTime)"  class="timePicker" step="60" required></ons-col>
+                         <ons-col class="col ons-col-inner"><input style='width:8em' type="date" name="medicineDate" ng-model="drugDate" min="2015-01-01" max="2050-01-01" class="datePicker" required></ons-col>
+                         <ons-col class="col ons-col-inner"><input style='width:8em' type="time" name="medicineTime" placeholder="HH:mm" ng-model="drugTime" class="timePicker" step="60" required></ons-col>
                         <small class="error" ng-show="addMedicineForm.medicineTime.$error.time">
                             - U moet een geldig tijdstip ingeven!
                          </small>
@@ -105,7 +105,7 @@
             <div class="navigatorTabFoot">
                 <ons-bottom-toolbar>
                     <button class="button cancelButton"  ng-click="cancel();;transition();"><ons-icon icon="ion-close-round buttonIcon"></ons-icon> Annuleer</button>
-                    <button class="button finishButton" ng-disabled="addMedicineForm.$invalid" ng-click="addMedicine('dashboard.html');" style="float: right;">Sla op <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
+                    <button class="button finishButton" ng-disabled="addMedicineForm.$invalid" ng-click="typeTime(drugTime); typeDate(drugDate);addMedicine('dashboard.html');" style="float: right;">Sla op <ons-icon icon="ion-checkmark-round buttonIcon"></ons-icon></button>
                 </ons-bottom-toolbar>
             </div>
           </div>
