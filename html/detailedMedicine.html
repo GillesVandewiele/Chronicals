@@ -54,15 +54,16 @@
             </div>
         </ons-toolbar>
 
-        <div class="detailMedicine">
-            <ons-row class="tekstLijn" style="margin-top: 6%;">
+        <div class="detailMedicine" style="width: 100%" >
+            <ons-row class="tekstLijn" style="margin-top: 6%;width: 100%">
                 <div class="label" style="width: 35%;">Tijdstip:</div>
                 <div class="label" style="width: 65%;text-align: right">{{getTimeDateString(current.date)}}</div>
             </ons-row>
 
 
-            <ons-row>
+            <ons-row style="width: 100%" >
                 <div class="list_header" style="width: 100%; text-align: center;">Naam medicijn</div>
+
                 <div>{{current.drug.name}}</div>
             </ons-row>
             <ons-row>
@@ -71,7 +72,6 @@
             </ons-row>
 
         </div>
-        <p>{{current}}</p>
 
     </ons-page>
 </ons-navigator>
