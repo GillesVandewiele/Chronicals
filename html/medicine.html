@@ -91,8 +91,8 @@
                      </ons-row>
                      <ons-row style="width: 100%;">
                          <ons-col></ons-col>
-                         <ons-col class="col ons-col-inner" style="margin-left: 5%; width: 40%;"><input type="date" name="medicineDate" ng-model="drugDate" ng-change="typeDate(drugDate)"  min="2015-01-01" max="2050-01-01" class="datePicker" required></ons-col>
-                         <ons-col class="col ons-col-inner" style="width: 40%;"><input type="time" name="medicineTime" placeholder="HH:mm" ng-model="drugTime" ng-change="typeTime(drugTime)"  class="timePicker" step="60" required></ons-col>
+                         <ons-col class="col ons-col-inner" style="margin-left: 5%; width: 40%;"><input style='width:20em' type="date" name="medicineDate" ng-model="drugDate" ng-change="typeDate(drugDate)"  min="2015-01-01" max="2050-01-01" class="datePicker" required></ons-col>
+                         <ons-col class="col ons-col-inner" style="width: 40%;"><input style='width:20em' type="time" name="medicineTime" placeholder="HH:mm" ng-model="drugTime" ng-change="typeTime(drugTime)"  class="timePicker" step="60" required></ons-col>
                          <ons-col></ons-col>
                         <small class="error" ng-show="addMedicineForm.medicineTime.$error.time">
                             - U moet een geldig tijdstip ingeven!
