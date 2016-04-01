@@ -69,7 +69,7 @@
                                 <option style="display:none" value=""></option>
                               </select>
                          </div>
-                         <input id="ownDrug" type="text" ng-model="ownDrug" ng-change="typeText(ownDrug)">
+                         <!--<input id="ownDrug" type="text" ng-model="ownDrug" ng-change="typeText(ownDrug)">-->
                          <!--<input type="number" name="quantity" style="width: 20%;" min="1" class="medicineQuantity" ng-model="drugQuantity" ng-change="typeNumber(drugQuantity)" required>
                          <label style="margin-left: 2%;">mg</label>-->
 
@@ -91,7 +91,11 @@
                      </ons-row>
                      <ons-row style="width: 100%;">
                          <ons-col class="col ons-col-inner"><input style='width:8em' type="date" name="medicineDate" ng-model="drugDate" min="2015-01-01" max="2050-01-01" class="datePicker" required></ons-col>
+                         </ons-row>
+                    <ons-row>
                          <ons-col class="col ons-col-inner"><input style='width:8em' type="time" name="medicineTime" placeholder="HH:mm" ng-model="drugTime" class="timePicker" step="60" required></ons-col>
+                        </ons-row>
+                    <ons-row>
                         <small class="error" ng-show="addMedicineForm.medicineTime.$error.time">
                             - U moet een geldig tijdstip ingeven!
                          </small>
