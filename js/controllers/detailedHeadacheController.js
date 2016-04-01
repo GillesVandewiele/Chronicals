@@ -199,6 +199,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
     ons.ready(function() {
         $('.hidden').removeClass("hidden");
         $('#loadingImg').hide();
+        $('canvas').css('opacity', '0.99');
         var ctx = $('canvas').get(0).getContext("2d");
         var myNewChart = new Chart(ctx).Line($scope.data, null);
         for (var iter = 0; iter < medicinePositions.length; iter++) {
@@ -209,7 +210,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
 
         }
         myNewChart.update();
-        $('canvas').css('opacity', '0.99');
+        $('canvas').css('opacity', '1.0');
         ons.disableDeviceBackButtonHandler();
         document.addEventListener("deviceready", onDeviceReady, false);
 
