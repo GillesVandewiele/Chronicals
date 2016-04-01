@@ -29,7 +29,7 @@
     <allow-navigation href = "http://tw06v033.ugent.be/*" />
     <allow-navigation href = "http://*/*" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
-    <plugin name="org.crosswalk.engine" spec="1.6.0" source="pgb" />
+    <plugin name="org.crosswalk.engine" spec="1.5.0" source="pgb" />
     <access origin="http://localhost/*" />
     <access origin="*" />
 
