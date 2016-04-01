@@ -110,7 +110,7 @@
                                         {{obj.hasOwnProperty('end')? getTimeDateString(obj.intensityValues[0].key) : getTimeDateString(obj.date)}}
                                     </div>
                                     <div class="list-right"  ng-class="{'medicine': !obj.hasOwnProperty('end')}">
-                                        {{obj.hasOwnProperty('end') ? obj.intensityValues[0].value+"/10" : obj.quantity +" mg"}}
+                                        {{obj.hasOwnProperty('end') ? obj.intensityValues[0].value+"/10" : '&#160;'}}
 
                                         <!--8/10-->
                                     </div>
