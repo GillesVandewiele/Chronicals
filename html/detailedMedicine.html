@@ -55,9 +55,9 @@
         </ons-toolbar>
 
         <div class="detailMedicine" style="width: 100%" >
-            <ons-row class="tekstLijn" style="margin-top: 6%;width: 100%">
+            <ons-row class="tekstLijn" style="margin-left: auto; margin-right: auto;margin-top: 6%">
                 <div class="label" style="width: 35%;">Tijdstip:</div>
-                <div class="label" style="width: 65%;text-align: right">{{getTimeDateString(current.date)}}</div>
+                <div class="label" style="width: 30%;margin-left: auto">{{getTimeDateString(current.date)}}</div>
             </ons-row>
 
 
@@ -65,14 +65,14 @@
                 <div class="list_header" style="width: 100%; text-align: center;">Naam medicijn</div>
             </ons-row>
             <ons-row>
-                <div class="label">{{current.drug.name}}</div>
+                <p style="margin-left: auto; margin-right: auto;" class="label">{{current.drug.name}}</p>
             </ons-row>
-            <ons-row>
-                <div class="list_header" style="width: 100%; text-align: center;">Hoeveelheid ingenomen</div>
-            </ons-row>
-            <ons-row>
-                <div class="label">{{current.quantity}} mg</div>
-            </ons-row>
+            <!--<ons-row>-->
+                <!--<div class="list_header" style="width: 100%; text-align: center;">Hoeveelheid ingenomen</div>-->
+            <!--</ons-row>-->
+            <!--<ons-row>-->
+                <!--<div class="label">{{current.quantity}} mg</div>-->
+            <!--</ons-row>-->
 
         </div>
 

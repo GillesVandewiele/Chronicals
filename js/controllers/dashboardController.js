@@ -71,7 +71,7 @@ angular.module('Chronic').controller("dashboardController", function($scope, dat
             //console.log("lel", dataService.getHeadachesNoEnd()[dataService.getHeadachesNoEnd().length - 1].intensityValues[0].key);
             var hours = parseInt(Math.abs(new Date() - new Date(dataService.getHeadachesNoEnd()[dataService.getHeadachesNoEnd().length - 1].intensityValues[0].key)) / 36e5);
             //console.log("duratie: ", hours);
-            $('.dashboardFooter').append('<p>Uw hoofdpijn duurt al ' + hours + ' uur</p><br/><p>Druk hier om meer info toe te voegen</p>');
+            $('.dashboardFooter').append('<ons-row style="margin-left:auto;margin-right:auto;"><p style="margin-left:auto;margin-right:auto;">Uw hoofdpijn duurt al ' + hours + ' uur</p></ons-row><ons-row style="margin-left:auto;margin-right:auto;"><p style="margin-left:auto;margin-right:auto;">Druk hier om meer info toe te voegen</p></ons-row>');
             var current = dataService.getHeadachesNoEnd()[dataService.getHeadachesNoEnd().length - 1];
             dataService.setCurrentHeadache(current);
             //console.log("currentHeadache:", dataService.getCurrentHeadache());
