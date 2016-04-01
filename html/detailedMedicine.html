@@ -60,16 +60,18 @@
                 <div class="label" style="width: 65%;text-align: right">{{getTimeDateString(current.date)}}</div>
             </ons-row>
 
+
             <ons-row>
                 <div class="list_header" style="width: 100%; text-align: center;">Naam medicijn</div>
-                <p style="font-weight: bold;width: 100%;text-align: center">{{current.drug.name}}</p>
+                <p style="text-align: center">{{current.drug.name}}</p>
             </ons-row>
             <ons-row>
                 <div class="list_header" style="width: 100%; text-align: center;">Hoeveelheid ingenomen</div>
-                <p style="font-weight: bold;width: 100%;text-align: center">{{current.quantity}} mg</div>
+                <p style="text-align: center">{{current.quantity}} mg</p>
             </ons-row>
 
         </div>
+        <p>{{current}}</p>
 
     </ons-page>
 </ons-navigator>

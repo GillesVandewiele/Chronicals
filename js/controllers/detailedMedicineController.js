@@ -34,13 +34,14 @@ angular.module('Chronic').controller("detailedMedicineController", function($sco
     };
 
     $scope.deleteEntry = function(){
-
-        dataService.removeMedicine().then(function(result){
-            location.href = "history.html";
-        }, function(result){
-            //location.href = "history.html";
-        });
-
+        if (confirm('Ben je zeker dat je deze medicijn consumptie wil verwijderen?')){
+            $scope.transition();
+            dataService.removeMedicine().then(function(result){
+                location.href = "history.html";
+            }, function(result){
+                //location.href = "history.html";
+            });
+        }
     };
 
     $scope.current = dataService.getCurrentMedicine();
