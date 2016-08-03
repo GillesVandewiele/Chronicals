@@ -131,7 +131,7 @@
 
 
             <div class="form__field">
-                <ons-button type="submit" ng-disabled="!checkCode() || registerForm.hospitalCode.$invalid" style="width:100%; text-align: center;"/> Registreer </ons-button>
+                <ons-button type="submit" ng-click='submitRegister()' ng-disabled="!checkCode() || registerForm.hospitalCode.$invalid" style="width:100%; text-align: center;"/> Registreer </ons-button>
                 <!--  <button type="submit" style="background-color: #154682; color: #eee; font-weight: bold; text-transform: uppercase;" ng-disabled="(registerForm.hospitalCode.$touched && registerForm.hospitalCode.$invalid)"> Log in </button> -->
             </div>
 
