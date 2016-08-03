@@ -609,6 +609,26 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         else return "";
     };
 
+    var getCodeList = function() {
+        return new $q(
+            function (resolve, reject) {
+                $http({method: 'GET', url: 'http://tw06v033.ugent.be/Chronic/rest/VersionService/verification'}).
+                success(function (data, status, headers, config) {
+                    //alert(""+data);
+                    console.log('Got codes:', data);
+                    resolve(data);
+                }).
+                error(function (data, status, headers, config) {
+                    alert("error connecting to database")
+                    reject(data);
+                })
+            });
+    };
+
+    var checkCode = function (_code, _list) {
+
+    };
+
     var registerUser = function (_firstname, _lastname, _birthdate, _sex, _status, _employment, _email, _sha3, _patientID) {
         var user = {
             firstname: _firstname, lastname: _lastname, birthdate: _birthdate, sex: _sex, status: _status,
@@ -716,7 +736,9 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
         sendMedicineToDB: sendMedicineToDB,
         sendNewHeadachesToDB: sendNewHeadachesToDB,
         sendNewMedicinesToDB: sendNewMedicinesToDB,
-        getCategories: getCategories
+        getCategories: getCategories,
+        getCodeList: getCodeList,
+        checkCode: checkCode
     };
 
 

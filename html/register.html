@@ -47,7 +47,7 @@
 
     <div class="grid__container">
 
-        <form ng-submit="submitRegister()" method="post" class="form form--login">
+        <form ng-submit="submitRegister()" method="post" class="form form--login" name="registerForm">
 
             <div class="form__field">
                 <label class="fontawesome-user" style="width: 110px; padding-left: 5px; padding-right: 0px;"
@@ -116,9 +116,23 @@
                        placeholder="Paswoord" required pattern="[0-9]*" inputmode="numeric">
             </div>
 
+            <div class="form__field">
+                <label class="fontawesome-lock" style="width: 80px; padding-left: 10px; padding-right: 10px;"
+                       for="hospitalCode"> <span class="hidden">UZ Code (*)</span></label>
+                <input id="hospitalCode" name="hospitalCode" type="text" ng-model="currentCode" class="form__input"
+                       placeholder="Code" required pattern="[A-z0-9]*">
+             </div>
+
+            <div style="width: 100%; margin: 0 auto;">
+                <span ng-show="registerForm.hospitalCode.$touched && registerForm.hospitalCode.$invalid" style="width: 100%; color:red; margin-bottom: 5%; display: inline-block; text-align: center; font-size: 15px;">U moet een code ingeven</span>
+                <span ng-show="!checkCode()" style="width: 100%; color:red; margin-bottom: 5%; display: inline-block; text-align: center; font-size: 15px;">Foute UZ code</span>
+            </div>
+
+
 
             <div class="form__field">
-                <input type="submit" value="Log in" ng-disabled="form.$invalid">
+                <ons-button type="submit" ng-disabled="!checkCode() || registerForm.hospitalCode.$invalid" style="width:100%; text-align: center;"/> Registreer </ons-button>
+                <!--  <button type="submit" style="background-color: #154682; color: #eee; font-weight: bold; text-transform: uppercase;" ng-disabled="(registerForm.hospitalCode.$touched && registerForm.hospitalCode.$invalid)"> Log in </button> -->
             </div>
 
         </form>

@@ -21,12 +21,18 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
 
 }]).controller('registerController', function ($scope, dataService, $http) {
     app.initialize();
+    $scope.codeList = [];
     ons.ready(function () {
         $('.hidden').removeClass("hidden");
         $('#loadingImg').hide();
         ons.disableDeviceBackButtonHandler();
         document.addEventListener("deviceready", onDeviceReady, false);
-
+        dataService.getCodeList().then(function (result) {
+            $scope.codeList = result;
+            console.log($scope.codeList);
+        }, function(data, status, headers, config){
+            alert("Er is een fout opgetreden... " + status  + "\n" + data)
+        });
         // device APIs are available
         //
         function onDeviceReady() {
@@ -58,6 +64,11 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
 
     $scope.employment = "";
 
+    $scope.currentCode = "";
+
+    $scope.checkCode = function() {
+        console.log($scope.codeList);
+        return $scope.codeList.indexOf($scope.currentCode) >= 0;}
 
     $scope.submitRegister = function () {
         //TODO: check if username already exists and stuff
