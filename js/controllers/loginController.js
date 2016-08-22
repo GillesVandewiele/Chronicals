@@ -37,7 +37,7 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
             $('body').children().eq(1).hide();
         };
 
-        $scope.email = dataService.getEmail();
+        $scope.email = dataService.getEmail().toLowerCase();
     //console.log("Email:" + $scope.email);
         $scope.password = "";
 
@@ -66,7 +66,7 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
             var pwHash = sha3_512($scope.password);
             //try to login
             //retrieve user
-            dataService.registerUser("", "", null, true, null, true, $scope.email, sha3_512($scope.password), 0);
+            dataService.registerUser("", "", null, true, null, true, $scope.email.toLowerCase();, sha3_512($scope.password), 0);
             // We can't use getAuthorization yet from the dataservice since no user is registered yet.
             //dataService.getDBStatus().then(function(result){
                 var test = [$http.get('http://tw06v033.ugent.be/Chronic/rest/PatientService/login', {headers: {'Authorization': dataService.getAuthorization()}})]
@@ -81,7 +81,7 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
                     var user = data;
                     dataService.setAdvice(data.advice);
                     console.log("Got user: ", JSON.stringify(user));
-                    dataService.registerUser(user.firstName, user.lastName, user.birthDate, user.isMale, user.relation, user.isEmployed, $scope.email, sha3_512($scope.password), user.patientID);
+                    dataService.registerUser(user.firstName, user.lastName, user.birthDate, user.isMale, user.relation, user.isEmployed, $scope.email.toLowerCase(), sha3_512($scope.password), user.patientID);
                     dataService.sendNewHeadachesToDB();
                     dataService.sendNewMedicinesToDB();
 
@@ -104,7 +104,7 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
                         if (dataService.getCurrentUser() == null || dataService.getCurrentUser().passwordHash == null || dataService.getCurrentUser().passwordHash.length < 1) {
                             alert("Er is lokaal nog geen gebruiker ingesteld. Verbind eerst met het internet en probeer in te loggen " + status);
                         } else {
-                            if (dataService.getCurrentUser().passwordHash == pwHash.toString() && dataService.getCurrentUser().email == $scope.email) {
+                            if (dataService.getCurrentUser().passwordHash == pwHash.toString() && dataService.getCurrentUser().email == $scope.email.toLowerCase()) {
                                 $scope.transition();
                                 location.href = "dashboard.html";
                             } else {
