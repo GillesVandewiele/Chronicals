@@ -37,7 +37,10 @@ angular.module('Chronic').controller('loginController', function ($scope, dataSe
             $('body').children().eq(1).hide();
         };
 
-        $scope.email = dataService.getEmail().toLowerCase();
+        $scope.email = dataService.getEmail();
+        if($scope.email != null){
+            $scope.email = $scope.email.toLowerCase();
+        }
     //console.log("Email:" + $scope.email);
         $scope.password = "";
 
