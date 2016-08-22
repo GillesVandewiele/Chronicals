@@ -79,7 +79,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
             "firstName": sha3_512($scope.firstname),
             "lastName": sha3_512($scope.lastname),
             "birthDate": $scope.birthdate,
-            "email": sha3_512($scope.email),
+            "email": sha3_512($scope.email.toLowerCase()),
             "password": "" + sha3_512($scope.password),
             "isMale": $scope.sex=="Man",
             "relation": $scope.status.toUpperCase(),
@@ -98,7 +98,7 @@ angular.module('Chronic').config(['$httpProvider', function ($httpProvider) {
             //console.log("Return van indienen user:" + status);
             //console.log(data);
             dataService.clearCache();
-            dataService.registerUser($scope.firstname, $scope.lastname, data.birthDate, data.isMale, data.relation, data.isEmployed, $scope.email, user.password, data.patientID);
+            dataService.registerUser($scope.firstname, $scope.lastname, data.birthDate, data.isMale, data.relation, data.isEmployed, $scope.email.toLowerCase(), user.password, data.patientID);
             location.href = "login.html";
             /*alert("Voor beveiligingsredenen is het nodig om enkele gegevens door te sturen naar de dokters van het uz, zodat ze later uw identiteit aan de data kunnen koppelen. Gelieve in het volgende scherm bij het mailtje op versturen te klikken.");*/
             /*cordova.plugins.email.open({
