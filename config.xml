@@ -11,6 +11,7 @@
         A headache diary app
     </description>
 
+    <icon src="icon.png.png" />
     <author>
         Kiani Lannoye and Gilles Vandewiele
     </author>
